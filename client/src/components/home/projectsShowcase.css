@@ -1,0 +1,582 @@
+.n2x-section {
+  width: 100%;
+  min-height: 100vh;
+  padding: 100px 40px 140px;
+  overflow: hidden;
+  color: #ffffff;
+  background:
+    radial-gradient(
+      circle at 18% 12%,
+      rgba(59, 130, 246, 0.25),
+      transparent 28%
+    ),
+    radial-gradient(
+      circle at 80% 30%,
+      rgba(14, 165, 233, 0.16),
+      transparent 30%
+    ),
+    linear-gradient(180deg, #071120 0%, #0f172a 45%, #08111f 100%);
+}
+
+.n2x-title {
+  position: relative;
+  z-index: 10;
+  margin-bottom: 55px;
+  margin-inline: auto;
+  width: min(100%, 1600px);
+  font-size: clamp(38px, 5vw, 76px);
+  font-weight: 900;
+  line-height: 1;
+  letter-spacing: -2px;
+}
+
+.n2x-title span {
+  color: #468aff;
+}
+
+.n2x-title p {
+  max-width: 620px;
+  margin: 18px 0 0;
+  color: #b7bdc9;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.7;
+  letter-spacing: 0;
+}
+
+.top-cards {
+  position: relative;
+  z-index: 5;
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 42px;
+  margin-bottom: 90px;
+  margin-inline: auto;
+  max-width: 1600px;
+}
+
+.premium-card {
+  position: relative;
+  overflow: visible;
+  border-radius: 30px;
+  background: transparent;
+  cursor: pointer;
+}
+
+.top-card {
+  width: 100%;
+  height: 420px;
+}
+
+.moving-card {
+  width: min(calc((88vw - 52px) / 3), 520px);
+  min-width: min(calc((88vw - 52px) / 3), 520px);
+  height: 360px;
+  flex: 0 0 min(calc((88vw - 52px) / 3), 520px);
+  opacity: 0;
+  transform: translateY(120px) scale(0.85);
+}
+
+.card-inner {
+  position: relative;
+  isolation: isolate;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  border: 1px solid rgba(70, 138, 255, 0.25);
+  border-radius: 30px;
+  background: rgba(8, 11, 18, 0.9);
+  box-shadow:
+    0 0 35px rgba(70, 138, 255, 0.14),
+    inset 0 0 30px rgba(255, 255, 255, 0.03);
+  transition:
+    transform 0.45s ease,
+    border-color 0.45s ease,
+    box-shadow 0.45s ease;
+}
+
+.card-inner::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  inset: -22px;
+  border-radius: 38px;
+  opacity: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(70, 138, 255, 0.65),
+    rgba(168, 85, 247, 0.45),
+    rgba(255, 214, 10, 0.22)
+  );
+  filter: blur(30px);
+  transition: opacity 0.45s ease;
+}
+
+.premium-card:hover .card-inner {
+  transform: translateY(-12px);
+  border-color: rgba(70, 138, 255, 0.8);
+  box-shadow:
+    0 0 45px rgba(70, 138, 255, 0.42),
+    0 0 85px rgba(168, 85, 247, 0.22);
+}
+
+.premium-card:hover .card-inner::before {
+  opacity: 1;
+}
+
+.base-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: scale(1.04);
+  transition:
+    transform 0.7s ease,
+    filter 0.7s ease;
+}
+
+.premium-card:hover .base-img {
+  transform: scale(1.1);
+  filter: brightness(0.5);
+}
+
+.hover-image-layer {
+  position: absolute;
+  z-index: 4;
+  inset: 0;
+  overflow: hidden;
+  border-radius: inherit;
+  transform: translateY(-101%);
+  transition: transform 0.65s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.hover-image-layer img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(0.55) saturate(1.2);
+}
+
+.premium-card:hover .hover-image-layer {
+  transform: translateY(0);
+}
+
+.card-overlay {
+  position: absolute;
+  z-index: 4;
+  inset: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(
+      to top,
+      rgba(0, 0, 0, 0.92),
+      rgba(0, 0, 0, 0.25) 65%,
+      transparent
+    ),
+    linear-gradient(to right, rgba(5, 6, 10, 0.75), transparent);
+}
+
+.card-content {
+  position: absolute;
+  z-index: 6;
+  right: 26px;
+  bottom: 34px;
+  left: 30px;
+}
+
+.top-card .card-content {
+  right: 34px;
+  bottom: 38px;
+  left: 38px;
+}
+
+.card-content h2 {
+  margin: 0 0 10px;
+  font-size: 27px;
+  line-height: 1.1;
+}
+
+.top-card .card-content h2 {
+  font-size: 38px;
+}
+
+.card-content p {
+  margin: 0;
+  color: #d2d6df;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.top-card .card-content p {
+  max-width: 520px;
+  font-size: 16px;
+}
+
+.moving-wrapper {
+  position: relative;
+  width: 100%;
+  min-height: 640px;
+  margin-top: 90px;
+  padding: 150px 0;
+  overflow: visible;
+}
+
+.orbit-wrap {
+  position: absolute;
+  z-index: 1;
+  top: 48%;
+  left: 50%;
+  width: 520px;
+  height: 520px;
+  opacity: 0;
+  pointer-events: none;
+  transform: translate(-50%, -50%) scale(0.8);
+}
+
+.orbit-ring {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+}
+
+.orbit-ring::before {
+  content: "";
+  position: absolute;
+  inset: 70px;
+  border: 1px solid rgba(70, 138, 255, 0.25);
+  border-radius: 50%;
+  box-shadow:
+    0 0 70px rgba(70, 138, 255, 0.28),
+    inset 0 0 60px rgba(168, 85, 247, 0.14);
+}
+
+.orbit-card {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 145px;
+  height: 180px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 22px;
+  background: #080b12;
+  box-shadow:
+    0 0 25px rgba(70, 138, 255, 0.35),
+    0 0 55px rgba(168, 85, 247, 0.18);
+  transform:
+    translate(-50%, -50%)
+    rotate(calc((360deg / var(--total)) * var(--i)))
+    translateY(-250px)
+    rotate(calc((-360deg / var(--total)) * var(--i)));
+}
+
+.orbit-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(0.65);
+}
+
+.orbit-card span {
+  position: absolute;
+  z-index: 2;
+  right: 14px;
+  bottom: 14px;
+  left: 14px;
+  color: #ffffff;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.moving-row {
+  position: relative;
+  z-index: 3;
+  width: max-content;
+  display: flex;
+  animation: smoothProjectMarquee 28s linear infinite;
+  will-change: transform;
+}
+
+.moving-set {
+  display: flex;
+  flex-shrink: 0;
+  gap: 26px;
+  padding-right: 26px;
+}
+
+.mobile-project-carousel,
+.moving-carousel-controls {
+  display: none;
+}
+
+@keyframes smoothProjectMarquee {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+
+  to {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+@media (max-width: 1200px) {
+  .n2x-section {
+    padding-inline: 28px;
+  }
+
+  .top-cards {
+    gap: 26px;
+  }
+
+  .top-card {
+    height: 390px;
+  }
+}
+
+@media (max-width: 900px) {
+  .n2x-section {
+    padding: 90px 24px 115px;
+  }
+
+  .n2x-title {
+    margin-bottom: 42px;
+  }
+
+  .top-cards {
+    grid-template-columns: 1fr;
+    gap: 24px;
+    margin-bottom: 55px;
+  }
+
+  .premium-card {
+    width: 75vw;
+    min-width: 75vw;
+  }
+
+  .top-card {
+    width: 100%;
+    min-width: 100%;
+    height: 380px;
+  }
+
+  .orbit-wrap {
+    width: 390px;
+    height: 390px;
+  }
+
+  .orbit-card {
+    width: 110px;
+    height: 145px;
+    transform:
+      translate(-50%, -50%)
+      rotate(calc((360deg / var(--total)) * var(--i)))
+      translateY(-190px)
+      rotate(calc((-360deg / var(--total)) * var(--i)));
+  }
+}
+
+@media (max-width: 600px) {
+  .n2x-section {
+    padding: 75px 5vw 100px;
+  }
+
+  .premium-card {
+    width: 84vw;
+    min-width: 84vw;
+  }
+
+  .top-card {
+    width: 100%;
+    min-width: 100%;
+  }
+
+  .top-card .card-content h2 {
+    font-size: 30px;
+  }
+
+  .moving-wrapper {
+    min-height: 560px;
+    padding-block: 130px;
+  }
+}
+
+@media (max-width: 768px) {
+  .moving-wrapper {
+    display: none;
+  }
+
+  .mobile-project-carousel {
+    display: block;
+    margin-top: 35px;
+    padding: 35px 0 20px;
+  }
+
+  .orbit-wrap {
+    display: none;
+  }
+
+  .mobile-project-viewport {
+    width: 100%;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-behavior: smooth;
+    scroll-snap-type: x mandatory;
+    overscroll-behavior-inline: contain;
+    scrollbar-width: none;
+  }
+
+  .mobile-project-viewport::-webkit-scrollbar {
+    display: none;
+  }
+
+  .mobile-project-track {
+    width: max-content;
+    display: flex;
+  }
+
+  .mobile-project-set {
+    display: flex;
+    flex-shrink: 0;
+    gap: 16px;
+    padding-right: 16px;
+  }
+
+  .mobile-project-card {
+    width: 78vw;
+    min-width: 78vw;
+    height: clamp(280px, 68vw, 350px);
+    flex: 0 0 78vw;
+    scroll-snap-align: start;
+  }
+
+  .moving-carousel-controls {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 8px;
+  }
+
+  .moving-carousel-controls button {
+    width: 48px;
+    height: 48px;
+    display: grid;
+    place-items: center;
+    border: 1px solid rgba(44, 184, 96, 0.55);
+    border-radius: 50%;
+    color: #f7f7f8;
+    background: rgba(17, 24, 44, 0.84);
+    cursor: pointer;
+    box-shadow: 0 10px 24px rgba(3, 7, 26, 0.22);
+    transition:
+      color 0.25s ease,
+      background-color 0.25s ease,
+      transform 0.25s ease;
+  }
+
+  .moving-carousel-controls button:active {
+    color: #11182c;
+    background: #2cb860;
+    transform: scale(0.93);
+  }
+
+  .moving-carousel-controls svg {
+    width: 21px;
+    height: 21px;
+  }
+}
+
+@media (max-width: 480px) {
+  .n2x-section {
+    padding: 70px 14px 82px;
+  }
+
+  .n2x-title {
+    font-size: 42px;
+  }
+
+  .top-card {
+    height: 330px;
+  }
+
+  .top-card .card-content {
+    right: 20px;
+    bottom: 24px;
+    left: 20px;
+  }
+
+  .top-card .card-content h2 {
+    font-size: 27px;
+  }
+
+  .top-card .card-content p {
+    font-size: 14px;
+  }
+
+  .moving-card {
+    width: 84vw;
+    min-width: 84vw;
+    flex-basis: 84vw;
+  }
+
+  .mobile-project-card {
+    width: 84vw;
+    min-width: 84vw;
+    flex-basis: 84vw;
+  }
+
+  .card-content {
+    right: 18px;
+    bottom: 22px;
+    left: 20px;
+  }
+
+  .card-content h2 {
+    font-size: 23px;
+  }
+}
+
+@media (hover: none) {
+  .premium-card:hover .card-inner,
+  .premium-card:hover .base-img {
+    transform: none;
+  }
+
+  .premium-card:hover .base-img {
+    filter: none;
+  }
+
+  .premium-card:hover .hover-image-layer {
+    transform: translateY(-101%);
+  }
+}
+
+@media (max-height: 700px) and (min-width: 769px) {
+  .moving-wrapper {
+    min-height: 560px;
+    padding-block: 95px;
+  }
+
+  .orbit-wrap {
+    width: 450px;
+    height: 450px;
+  }
+
+  .orbit-card {
+    transform:
+      translate(-50%, -50%)
+      rotate(calc((360deg / var(--total)) * var(--i)))
+      translateY(-215px)
+      rotate(calc((-360deg / var(--total)) * var(--i)));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .moving-row {
+    animation-play-state: paused;
+  }
+}

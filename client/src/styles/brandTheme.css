@@ -1,0 +1,303 @@
+/* Shared QueLogics palette, sampled from the original website reference. */
+
+.hero-badge,
+.hero-highlight {
+  color: var(--ql-green);
+}
+
+.hero-badge {
+  border-color: rgba(44, 184, 96, 0.75);
+}
+
+.hero-badge-dot,
+.hero-primary-button {
+  border-color: var(--ql-green);
+  background-color: var(--ql-green);
+}
+
+.hero-underline {
+  border-color: var(--ql-green);
+  background: transparent;
+}
+
+.hero-primary-button:hover {
+  background-color: #38c66e;
+}
+
+.client-logo-marquee {
+  border-color: var(--ql-border);
+  background: var(--ql-surface-alt);
+}
+
+/* Main projects */
+.n2x-section {
+  color: var(--ql-navy);
+  background:
+    linear-gradient(
+      90deg,
+      rgba(3, 7, 26, 0.96) 0%,
+      rgba(3, 7, 26, 0.87) 45%,
+      rgba(8, 54, 44, 0.72) 100%
+    ),
+    url("/assets/images/hero-bg.jpg") center / cover no-repeat;
+}
+
+.n2x-title span {
+  color: var(--ql-green);
+}
+
+.n2x-title p {
+  color: rgba(231, 235, 243, 0.7);
+}
+
+.n2x-title {
+  color: var(--ql-white);
+}
+
+.card-inner {
+  border-color: rgba(44, 184, 96, 0.3);
+  background: var(--ql-navy-deep);
+  box-shadow: 0 0 34px rgba(24, 33, 60, 0.14);
+}
+
+.card-inner::before {
+  background: linear-gradient(135deg, rgba(44, 184, 96, 0.6), rgba(186, 233, 210, 0.38), transparent);
+}
+
+.premium-card:hover .card-inner {
+  border-color: var(--ql-green);
+  box-shadow: 0 0 44px rgba(44, 184, 96, 0.28), 0 0 75px rgba(24, 33, 60, 0.16);
+}
+
+.card-content h2 {
+  color: var(--ql-white);
+}
+
+.orbit-ring::before,
+.orbit-card {
+  border-color: rgba(44, 184, 96, 0.28);
+  box-shadow: 0 0 54px rgba(44, 184, 96, 0.2);
+}
+
+/* Services */
+.services-explorer {
+  --services-green: var(--ql-green);
+  --services-navy: var(--ql-navy);
+  --services-text: var(--ql-navy);
+  background: var(--ql-surface);
+}
+
+.services-explorer-heading p {
+  color: var(--ql-muted);
+}
+
+.services-explorer-shell {
+  border-color: var(--ql-border);
+  background: var(--ql-white);
+  box-shadow: 0 30px 72px rgba(24, 33, 60, 0.12);
+}
+
+.services-explorer-nav {
+  background:
+    radial-gradient(circle at 40% 15%, rgba(44, 184, 96, 0.13), transparent 35%),
+    linear-gradient(180deg, var(--ql-navy) 0%, var(--ql-navy-deep) 100%);
+}
+
+.services-explorer-detail {
+  background: linear-gradient(145deg, #f4f4f5, var(--ql-surface-alt));
+}
+
+.services-explorer-stack-card {
+  background: rgba(247, 247, 248, 0.88);
+  box-shadow: 0 28px 62px rgba(24, 33, 60, 0.14), inset 0 1px 0 #fff;
+}
+
+.services-explorer-visual {
+  background: linear-gradient(115deg, var(--ql-navy-deep), var(--ql-navy-soft));
+}
+
+.services-explorer-copy > p,
+.services-explorer-copy li {
+  color: var(--ql-muted);
+}
+
+/* Industries */
+.industry-accordion-section {
+  --industry-green: var(--ql-green);
+  background:
+    radial-gradient(circle at 50% -10%, rgba(44, 184, 96, 0.14), transparent 38%),
+    linear-gradient(180deg, var(--ql-navy) 0%, var(--ql-navy-deep) 100%);
+}
+
+.industry-panel {
+  --industry-accent: var(--ql-green) !important;
+  --industry-surface: linear-gradient(135deg, var(--ql-navy-soft), #153d36) !important;
+}
+
+.industry-copy a {
+  background: var(--ql-green);
+}
+
+/* Selected work */
+.selected-work-marquee-section {
+  --selected-work-blue: var(--ql-green);
+  background: #ffffff !important;
+}
+
+.selected-work-marquee-topline,
+.selected-work-marquee-note {
+  color: rgba(24, 33, 60, 0.58);
+}
+
+/* Paired project stack */
+.project-stack-section {
+  --project-green: var(--ql-green);
+  color: var(--ql-navy);
+  background: var(--ql-surface);
+}
+
+.project-stack-heading > span,
+.project-stack-heading > p {
+  color: var(--ql-muted);
+}
+
+.project-stack-stage {
+  background:
+    linear-gradient(rgba(24, 33, 60, 0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(24, 33, 60, 0.025) 1px, transparent 1px),
+    var(--ql-surface);
+  background-size: 54px 54px, 54px 54px, auto;
+}
+
+.project-stack-stage::before {
+  background:
+    linear-gradient(to bottom, var(--ql-surface) 0%, transparent 16%, transparent 84%, var(--ql-surface) 100%),
+    radial-gradient(circle at center, transparent 25%, rgba(231, 231, 233, 0.5) 100%);
+}
+
+.project-stack-card {
+  --project-accent: var(--ql-green) !important;
+  color: var(--ql-white);
+  border-color: rgba(44, 184, 96, 0.25);
+  background:
+    linear-gradient(145deg, rgba(255, 255, 255, 0.06), transparent 50%),
+    var(--ql-navy-soft);
+  box-shadow: 0 30px 75px rgba(24, 33, 60, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+.project-stack-card-description {
+  color: rgba(247, 247, 248, 0.68);
+}
+
+/* Client reviews */
+.client-reviews-section {
+  --reviews-green: var(--ql-green);
+  --reviews-navy: var(--ql-navy);
+  background:
+    radial-gradient(circle at 78% 50%, rgba(44, 184, 96, 0.08), transparent 34%),
+    linear-gradient(115deg, var(--ql-navy-deep), var(--ql-navy));
+}
+
+.client-review-tile {
+  background: #202a43;
+}
+
+.client-review-tile.is-initials {
+  background: linear-gradient(135deg, #174032, var(--ql-green-dark));
+}
+
+.client-review-floating-card {
+  background: var(--ql-white);
+}
+
+.client-review-floating-card blockquote strong {
+  color: var(--ql-green-dark);
+}
+
+/* Process */
+.process-showcase-section {
+  --process-navy: var(--ql-navy);
+  --process-green: var(--ql-green);
+  color: var(--ql-navy);
+  background:
+    radial-gradient(circle at 85% 50%, rgba(44, 184, 96, 0.08), transparent 28%),
+    var(--ql-surface);
+}
+
+.process-showcase-copy h2 {
+  color: var(--ql-navy);
+}
+
+.process-showcase-copy > p {
+  color: var(--ql-muted);
+}
+
+.process-showcase-nav-item {
+  color: rgba(24, 33, 60, 0.65);
+}
+
+.process-showcase-nav-item::after {
+  background: rgba(24, 33, 60, 0.1);
+}
+
+.process-showcase-nav-item:hover,
+.process-showcase-nav-item:focus-visible {
+  color: var(--ql-navy);
+  background: rgba(255, 255, 255, 0.58);
+}
+
+.process-nav-icon {
+  border-color: rgba(24, 33, 60, 0.14);
+  background: rgba(255, 255, 255, 0.5);
+}
+
+.process-showcase-nav-item.is-active {
+  color: var(--ql-navy-deep);
+  border-color: var(--ql-green);
+  background: var(--ql-green);
+}
+
+.process-showcase-panel {
+  color: var(--ql-white);
+  border-color: rgba(44, 184, 96, 0.2);
+  background: var(--ql-navy);
+}
+
+.process-panel-footer {
+  background: rgba(10, 17, 34, 0.35);
+}
+
+.process-design-cards i:first-child,
+.process-terminal-progress span,
+.process-chart b {
+  background: var(--ql-green);
+}
+
+/* Navigation and footer */
+.mobile-navigation {
+  background: rgba(24, 33, 60, 0.98);
+}
+
+.mobile-navigation > a svg,
+.mobile-navigation-actions a {
+  color: var(--ql-green);
+}
+
+.mobile-navigation-actions a:last-child {
+  color: var(--ql-navy-deep);
+  background: var(--ql-green);
+}
+
+.site-footer {
+  --footer-navy: var(--ql-navy);
+  --footer-green: var(--ql-green);
+  background: var(--ql-navy);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+  }
+}
