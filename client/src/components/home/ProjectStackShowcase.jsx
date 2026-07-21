@@ -148,7 +148,9 @@ const ProjectStackShowcase = () => {
       (context) => {
         const { desktop, mobile, reduceMotion } = context.conditions;
         const pairs = gsap.utils.toArray(
-          ".project-stack-pair",
+          mobile
+            ? ".project-stack-stage-inner--mobile .project-stack-pair"
+            : ".project-stack-stage-inner--desktop .project-stack-pair",
           stageRef.current,
         );
 
@@ -281,7 +283,7 @@ const ProjectStackShowcase = () => {
           <div className="project-stack-aurora aurora-one" aria-hidden="true"></div>
           <div className="project-stack-aurora aurora-two" aria-hidden="true"></div>
 
-          <div className="project-stack-stage-inner">
+          <div className="project-stack-stage-inner project-stack-stage-inner--desktop">
             {projectPairs.map((pair, pairIndex) => (
               <div
                 className="project-stack-pair"
@@ -291,6 +293,18 @@ const ProjectStackShowcase = () => {
                 {pair.map((project) => (
                   <ProjectCard project={project} key={project.number} />
                 ))}
+              </div>
+            ))}
+          </div>
+
+          <div className="project-stack-stage-inner project-stack-stage-inner--mobile">
+            {projects.map((project, projectIndex) => (
+              <div
+                className="project-stack-pair project-stack-pair--single"
+                aria-label={`Project ${projectIndex + 1} of ${projects.length}`}
+                key={`mobile-${project.number}`}
+              >
+                <ProjectCard project={project} />
               </div>
             ))}
           </div>
