@@ -23,33 +23,34 @@ const Home = () => {
         <div className="hero-content">
           <div className="hero-badge">
             <span className="hero-badge-dot"></span>
-            AI-Enabled Growth & Development Partner
+            Systems that remove bottlenecks and accelerate growth
           </div>
 
           <h1 className="hero-heading">
-            We build the systems behind
+            We don&apos;t sell services.
             <span className="hero-highlight">
-              scalable revenue.
+              We close growth gaps.
               <span className="hero-underline"></span>
             </span>
           </h1>
 
           <p className="hero-description">
-            Custom Development, AI Automation, and Performance Marketing —
-            built for <strong>SaaS founders, ecommerce brands,</strong> and
-            <strong> B2B companies</strong> that are serious about growth.
+            Every day you wait, someone else is automating what your team still
+            does by hand. Quelogics builds <strong>custom software, AI
+            automation, mobile products, and growth systems</strong> that make
+            sure that someone else is you.
           </p>
 
           <div className="hero-actions">
             <a href="/contact" className="hero-primary-button">
               <Phone size={18} />
-              Book Strategy Call
+              Close Your Biggest Gap
               <ArrowUpRight size={17} />
             </a>
 
             <a href="/case-studies" className="hero-secondary-button">
               <Play size={18} fill="currentColor" />
-              See Our Work
+              See Systems in Action
             </a>
           </div>
         </div>
@@ -65,11 +66,7 @@ const Home = () => {
             >
               {clientLogos.map((logo) => (
                 <div className="client-logo-item" key={`${copyIndex}-${logo}`}>
-                  <img
-                    src={logo}
-                    alt=""
-                    draggable="false"
-                  />
+                  <img src={logo} alt="" draggable="false" />
                 </div>
               ))}
             </div>

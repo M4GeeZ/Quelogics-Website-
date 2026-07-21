@@ -70,6 +70,7 @@
 }
 
 .selected-work-marquee-copy {
+  font-family: var(--font-display);
   display: inline-block;
   padding-right: 0.25em;
   color: var(--selected-work-blue);

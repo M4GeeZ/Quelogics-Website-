@@ -3,6 +3,11 @@
 }
 
 :root {
+  --font-company: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji",
+    "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --font-display: "Space Grotesk", sans-serif;
+  --font-ui: "Inter", sans-serif;
   --ql-green: #2cb860;
   --ql-green-dark: #2cb15e;
   --ql-navy: #18213c;
@@ -32,8 +37,36 @@ html {
 
 body {
   overflow-x: hidden;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-ui);
   background-color: var(--ql-surface);
+}
+
+[dir="rtl"] body {
+  font-family: "Segoe UI", Tahoma, Arial, sans-serif;
+}
+
+[dir="rtl"] .explore-kicker,
+[dir="rtl"] .mega-menu-overview,
+[dir="rtl"] .mega-menu-group,
+[dir="rtl"] .company-hero-inner,
+[dir="rtl"] .detail-hero-copy,
+[dir="rtl"] .explore-hero-copy,
+[dir="rtl"] .client-reviews-copy,
+[dir="rtl"] .process-showcase-copy {
+  text-align: right;
+}
+
+/* Shared type system: display headings, UI copy, and the company mark. */
+h1,
+h2 {
+  font-family: var(--font-display);
+}
+
+button,
+input,
+textarea,
+select {
+  font-family: var(--font-ui);
 }
 
 ::selection {

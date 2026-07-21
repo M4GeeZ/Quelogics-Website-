@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { ChevronDown } from "lucide-react";
 
 const NavItem = ({
@@ -19,7 +19,13 @@ const NavItem = ({
       }`}
       onMouseEnter={handleMouseEnter}
     >
-      <Link to={item.path} className="nav-link">
+      <NavLink
+        to={item.path}
+        className={({ isActive: isRouteActive }) =>
+          `nav-link${isRouteActive ? " is-current" : ""}`
+        }
+        onFocus={handleMouseEnter}
+      >
         <span>{item.title}</span>
 
         {item.hasDropdown && (
@@ -29,7 +35,7 @@ const NavItem = ({
             strokeWidth={1.8}
           />
         )}
-      </Link>
+      </NavLink>
     </li>
   );
 };

@@ -10,41 +10,41 @@ const steps = [
   {
     id: "discovery",
     label: "Discovery",
-    title: "We find the signal in the noise.",
+    title: "We find the work your system should handle.",
     description:
-      "We learn how your business works, where momentum is being lost, and what a measurable win looks like.",
+      "We map the repeated tasks, disconnected tools, slow approvals, and missed handoffs that quietly drain time and revenue.",
     icon: Compass,
   },
   {
     id: "design",
     label: "Design",
-    title: "We turn the strategy into a clear experience.",
+    title: "We connect the path from task to outcome.",
     description:
-      "Flows, systems, and interfaces are shaped together so the final product feels obvious to use.",
+      "Workflows, data, and interfaces are shaped together so the new system feels obvious to use and easy to adopt.",
     icon: PenTool,
   },
   {
     id: "build",
     label: "Build",
-    title: "We build for the next stage, not just launch day.",
+    title: "We turn repeated work into reliable software.",
     description:
-      "Our engineers ship in focused increments, keeping quality high and progress visible at every step.",
+      "Our engineers ship in focused increments with quality assurance built in, keeping progress visible and ownership in your hands.",
     icon: Code2,
   },
   {
     id: "launch",
     label: "Launch",
-    title: "We launch with a plan for momentum.",
+    title: "We make the win measurable from day one.",
     description:
-      "Tracking, performance, and growth loops are ready before your product meets its first real users.",
+      "Tracking, performance, and growth loops are ready before launch so every improvement can be seen, tested, and scaled.",
     icon: Rocket,
   },
   {
     id: "support",
     label: "Support",
-    title: "We stay close after the handoff.",
+    title: "We improve the system as your business grows.",
     description:
-      "Your team gets a reliable partner to improve, automate, and keep the system moving forward.",
+      "No runaround and no dependency traps—just a reliable partner improving automations, integrations, and performance over time.",
     icon: LifeBuoy,
   },
 ];
@@ -184,11 +184,11 @@ const ProcessShowcase = () => {
     <section className="process-showcase-section" ref={sectionRef}>
       <div className="process-showcase-shell">
         <div className="process-showcase-copy">
-          <span className="process-showcase-eyebrow">A better way to move</span>
-          <h2>From first question to <em>real momentum.</em></h2>
+          <span className="process-showcase-eyebrow">No runaround. Just systems that work.</span>
+          <h2>From painful bottleneck to <em>real momentum.</em></h2>
           <p>
-            A focused process keeps the right people in the room and the next
-            best decision in view.
+            No bloated retainers or vendor lock-in. We find the gap, design the
+            right system, build it, launch it, and keep improving what matters.
           </p>
 
           <nav className="process-showcase-nav" aria-label="Our process">

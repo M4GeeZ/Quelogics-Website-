@@ -1,21 +1,47 @@
-import { useState } from "react";
-import { Link } from "react-router-dom";
+import { useEffect, useRef, useState } from "react";
+import { Link, NavLink } from "react-router-dom";
 import {
   Search,
   Globe,
   Menu,
   ArrowUpRight,
+  ChevronDown,
+  Check,
   X,
 } from "lucide-react";
 
 import NavItem from "./NavItem";
 import { navigationLinks } from "../../data/navbarData";
+import { marketOptions, useLanguage } from "../../i18n/LanguageContext";
 import "./navbar.css";
 
 const Navbar = () => {
   const [activeMenu, setActiveMenu] = useState(null);
   const [menuVisible, setMenuVisible] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [mobileSubmenu, setMobileSubmenu] = useState(null);
+  const [languageOpen, setLanguageOpen] = useState(false);
+  const languageRef = useRef(null);
+  const { currentMarket, setLocale, t } = useLanguage();
+
+  useEffect(() => {
+    const closeLanguageMenu = (event) => {
+      if (event.key === "Escape" || !languageRef.current?.contains(event.target)) {
+        setLanguageOpen(false);
+      }
+    };
+
+    document.addEventListener("pointerdown", closeLanguageMenu);
+    document.addEventListener("keydown", closeLanguageMenu);
+    return () => {
+      document.removeEventListener("pointerdown", closeLanguageMenu);
+      document.removeEventListener("keydown", closeLanguageMenu);
+    };
+  }, []);
+
+  const activeMenuData = navigationLinks.find(
+    (item) => item.title === activeMenu,
+  );
 
   const openMenu = (menuTitle) => {
     setActiveMenu(menuTitle);
@@ -30,6 +56,11 @@ const Navbar = () => {
     }, 450);
   };
 
+  const closeMobileMenu = () => {
+    setMobileOpen(false);
+    setMobileSubmenu(null);
+  };
+
   return (
     <header
       className="navbar"
@@ -42,6 +73,17 @@ const Navbar = () => {
 
         <nav className="desktop-navigation">
           <ul className="nav-list">
+            <li className="nav-item nav-home-item" onMouseEnter={closeMenu}>
+              <NavLink
+                className={({ isActive }) =>
+                  `nav-link nav-home-link${isActive ? " is-current" : ""}`
+                }
+                to="/"
+                end
+              >
+                {t("Home")}
+              </NavLink>
+            </li>
             {navigationLinks.map((item) => (
               <NavItem
                 key={item.id}
@@ -73,13 +115,52 @@ const Navbar = () => {
             <Search size={19} />
           </button>
 
-          <button
-            type="button"
-            className="icon-button"
-            aria-label="Language"
-          >
-            <Globe size={19} />
-          </button>
+          <div className={`language-selector${languageOpen ? " is-open" : ""}`} ref={languageRef}>
+            <button
+              type="button"
+              className="icon-button language-trigger"
+              aria-label={`${t("Language")}: ${currentMarket.native}`}
+              aria-haspopup="listbox"
+              aria-expanded={languageOpen}
+              onClick={() => setLanguageOpen((isOpen) => !isOpen)}
+            >
+              <Globe size={19} />
+              <span>{currentMarket.flag}</span>
+            </button>
+
+            <div className="language-popover" role="listbox" aria-label={t("Choose your market and language")}>
+              <div className="language-popover-heading">
+                <span>{t("Market & language")}</span>
+                <small>{t("Choose your experience")}</small>
+              </div>
+              <div className="language-options">
+                {marketOptions.map((option) => {
+                  const isSelected = option.code === currentMarket.code;
+                  return (
+                    <button
+                      type="button"
+                      role="option"
+                      aria-selected={isSelected}
+                      className={isSelected ? "is-selected" : ""}
+                      onClick={() => {
+                        setLocale(option.code);
+                        setLanguageOpen(false);
+                      }}
+                      key={option.code}
+                    >
+                      <span className="language-flag" aria-hidden="true">{option.flag}</span>
+                      <span className="language-option-copy">
+                        <strong>{option.native}</strong>
+                        <small>{option.market}</small>
+                      </span>
+                      {isSelected && <Check aria-hidden="true" />}
+                    </button>
+                  );
+                })}
+              </div>
+              <p>{t("Your selection is saved for your next visit.")}</p>
+            </div>
+          </div>
 
           <button
             type="button"
@@ -87,7 +168,10 @@ const Navbar = () => {
             aria-label={mobileOpen ? "Close menu" : "Open menu"}
             aria-controls="mobile-navigation"
             aria-expanded={mobileOpen}
-            onClick={() => setMobileOpen((isOpen) => !isOpen)}
+            onClick={() => {
+              setMobileOpen((isOpen) => !isOpen);
+              setMobileSubmenu(null);
+            }}
           >
             {mobileOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
@@ -99,7 +183,7 @@ const Navbar = () => {
         type="button"
         aria-label="Close navigation"
         tabIndex={mobileOpen ? 0 : -1}
-        onClick={() => setMobileOpen(false)}
+        onClick={closeMobileMenu}
       />
 
       <nav
@@ -108,19 +192,85 @@ const Navbar = () => {
         aria-label="Mobile navigation"
         aria-hidden={!mobileOpen}
       >
-        {navigationLinks.map((item) => (
-          <Link to={item.path} onClick={() => setMobileOpen(false)} key={item.id}>
-            <span>{item.title}</span>
-            <ArrowUpRight aria-hidden="true" />
-          </Link>
-        ))}
+        <NavLink
+          className={({ isActive }) =>
+            `mobile-navigation-link mobile-home-link${isActive ? " is-current" : ""}`
+          }
+          to="/"
+          end
+          onClick={closeMobileMenu}
+        >
+          <span>{t("Home")}</span>
+          <ArrowUpRight aria-hidden="true" />
+        </NavLink>
+
+        {navigationLinks.map((item) => {
+          if (!item.hasDropdown) {
+            return (
+              <Link
+                className="mobile-navigation-link"
+                to={item.path}
+                onClick={closeMobileMenu}
+                key={item.id}
+              >
+                <span>{item.title}</span>
+                <ArrowUpRight aria-hidden="true" />
+              </Link>
+            );
+          }
+
+          const isExpanded = mobileSubmenu === item.title;
+
+          return (
+            <div
+              className={`mobile-navigation-group${isExpanded ? " is-expanded" : ""}`}
+              key={item.id}
+            >
+              <button
+                type="button"
+                aria-expanded={isExpanded}
+                onClick={() =>
+                  setMobileSubmenu((current) =>
+                    current === item.title ? null : item.title,
+                  )
+                }
+              >
+                <span>{item.title}</span>
+                <ChevronDown aria-hidden="true" />
+              </button>
+
+              <div className="mobile-navigation-submenu">
+                <div>
+                  {item.groups.map((group) => (
+                    <section key={group.title}>
+                      <h2>{group.title}</h2>
+                      {group.links.map(([label, path]) => (
+                        <Link to={path} onClick={closeMobileMenu} key={label}>
+                          {label}
+                        </Link>
+                      ))}
+                    </section>
+                  ))}
+                  <Link
+                    className="mobile-navigation-view-all"
+                    to={item.path}
+                    onClick={closeMobileMenu}
+                  >
+                    View all {item.title}
+                    <ArrowUpRight aria-hidden="true" />
+                  </Link>
+                </div>
+              </div>
+            </div>
+          );
+        })}
         <div className="mobile-navigation-actions">
-          <Link to="/careers" onClick={() => setMobileOpen(false)}>Careers</Link>
-          <Link to="/contact" onClick={() => setMobileOpen(false)}>Contact us</Link>
+          <Link to="/careers" onClick={closeMobileMenu}>Careers</Link>
+          <Link to="/contact" onClick={closeMobileMenu}>Contact us</Link>
         </div>
       </nav>
 
-      {activeMenu && (
+      {activeMenuData && (
         <div
           className={`mega-menu ${
             menuVisible ? "mega-menu-open" : "mega-menu-close"
@@ -128,12 +278,34 @@ const Navbar = () => {
           onMouseEnter={() => setMenuVisible(true)}
         >
           <div className="mega-menu-inner">
-            <div className="mega-menu-content">
-              <h2>{activeMenu}</h2>
+            <div className="mega-menu-content" key={activeMenuData.id}>
+              <div className="mega-menu-overview">
+                <span>Explore {activeMenuData.title}</span>
+                <h2>{activeMenuData.menuTitle}</h2>
+                <p>{activeMenuData.description}</p>
+                <Link to={activeMenuData.path} onClick={closeMenu}>
+                  View all {activeMenuData.title}
+                  <ArrowUpRight aria-hidden="true" />
+                </Link>
+              </div>
 
-              <p>
-                Mega menu content yahan add hoga.
-              </p>
+              <div className="mega-menu-groups">
+                {activeMenuData.groups.map((group) => (
+                  <section className="mega-menu-group" key={group.title}>
+                    <h3>{group.title}</h3>
+                    <ul>
+                      {group.links.map(([label, path]) => (
+                        <li key={label}>
+                          <Link to={path} onClick={closeMenu}>
+                            <span>{label}</span>
+                            <ArrowUpRight aria-hidden="true" />
+                          </Link>
+                        </li>
+                      ))}
+                    </ul>
+                  </section>
+                ))}
+              </div>
             </div>
           </div>
         </div>

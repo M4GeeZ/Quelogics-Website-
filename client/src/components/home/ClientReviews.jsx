@@ -206,37 +206,38 @@ const ClientReviews = () => {
     <section className="client-reviews-section" id="client-reviews" ref={sectionRef}>
       <div className="client-reviews-shell">
         <div className="client-reviews-copy">
-          <span className="client-reviews-eyebrow">Client reviews</span>
+          <span className="client-reviews-eyebrow">After Quelogics</span>
           <h2>
-            Trusted by teams who turn complexity into <em>growth</em>
+            Less busywork. More room for <em>growth.</em>
           </h2>
           <p className="client-reviews-intro">
-            Quelogics builds the AI systems, custom software, and growth
-            engines behind scaling businesses across industries and markets.
+            Before Quelogics: disconnected tools, slow approvals, and reports
+            rebuilt by hand. After Quelogics: one connected system that gives
+            teams back the time to sell, serve, and scale.
           </p>
 
           <div className="client-reviews-actions">
             <div className="client-reviews-action-row">
               <div>
-                <h3>Book a strategy call</h3>
+                <h3>Show us the bottleneck</h3>
                 <p>
-                  A focused conversation to map your problem and the right
-                  solution.
+                  Tell us the painful manual task your team repeats every week.
+                  We&apos;ll show you how to eliminate it.
                 </p>
               </div>
               <a href="/contact">
-                Book
+                Let&apos;s talk
                 <CalendarDays aria-hidden="true" />
               </a>
             </div>
 
             <div className="client-reviews-action-row">
               <div>
-                <h3>See our work</h3>
-                <p>Real products and growth systems teams rely on every day.</p>
+                <h3>See systems in production</h3>
+                <p>Real products replacing busywork with measurable momentum.</p>
               </div>
               <a href="/case-studies">
-                Open
+                View work
                 <ArrowRight aria-hidden="true" />
               </a>
             </div>

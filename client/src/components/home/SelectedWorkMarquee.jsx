@@ -35,10 +35,10 @@ const SelectedWorkMarquee = () => {
       <div className="selected-work-marquee-topline">
         <span className="selected-work-marquee-label">
           <i aria-hidden="true"></i>
-          Selected work
+          Systems in production
         </span>
         <span className="selected-work-marquee-note">
-          Quelogics / Selected work
+          Quelogics / Proof that performs
           <ArrowDownRight aria-hidden="true" />
         </span>
       </div>
@@ -51,7 +51,7 @@ const SelectedWorkMarquee = () => {
               aria-hidden={copyIndex > 0 ? "true" : undefined}
               key={copyIndex}
             >
-              Selected works <b>—</b>
+              Work that closes gaps <b>—</b>
             </span>
           ))}
         </div>

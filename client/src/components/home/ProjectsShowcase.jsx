@@ -28,7 +28,7 @@ const topCards = [
   },
   {
     title: "Gaming Arcade - Play & Earn",
-    desc: "An all-in-one gaming platform featuring mini-games, live chat, coin rewards, and a secure digital wallet.",
+    desc: "A launch-ready gaming ecosystem connecting mini-games, live chat, rewards, and a secure digital wallet.",
     img: Eaglechathover,
     hoverImg: EagleChat,
   },
@@ -301,10 +301,11 @@ const ProjectsShowcase = () => {
   return (
     <section className="n2x-section" ref={sectionRef}>
       <div className="n2x-title">
-        <span>Quelogics</span>
+        <span>Proof, not promises.</span>
         <p>
-          Premium digital solutions crafted with modern design, clean
-          animation, and smooth user interaction.
+          Someone else&apos;s app is live while yours is still almost ready.
+          These are connected products Quelogics shipped to turn operational
+          gaps into measurable progress.
         </p>
       </div>
 
@@ -380,7 +381,7 @@ const ProjectsShowcase = () => {
                     <div className="card-content small">
                       <h2>{card.title}</h2>
                       <p>
-                        Creative, clean and conversion-focused digital solution.
+                        A connected digital system built to remove bottlenecks and drive growth.
                       </p>
                     </div>
                   </div>
@@ -417,7 +418,7 @@ const ProjectsShowcase = () => {
                       <div className="card-content small">
                         <h2>{card.title}</h2>
                         <p>
-                          Creative, clean and conversion-focused digital solution.
+                          A connected digital system built to remove bottlenecks and drive growth.
                         </p>
                       </div>
                     </div>

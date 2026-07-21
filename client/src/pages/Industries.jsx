@@ -1,5 +1,5 @@
-import React from 'react';
+import ExploreHub from "./ExploreHub";
 
 export default function Industries() {
-  return <div>Industries page</div>;
+  return <ExploreHub sectionKey="industries" />;
 }

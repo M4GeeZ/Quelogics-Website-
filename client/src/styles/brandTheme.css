@@ -162,17 +162,11 @@
 }
 
 .project-stack-stage {
-  background:
-    linear-gradient(rgba(24, 33, 60, 0.025) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(24, 33, 60, 0.025) 1px, transparent 1px),
-    var(--ql-surface);
-  background-size: 54px 54px, 54px 54px, auto;
+  background: #ffffff;
 }
 
 .project-stack-stage::before {
-  background:
-    linear-gradient(to bottom, var(--ql-surface) 0%, transparent 16%, transparent 84%, var(--ql-surface) 100%),
-    radial-gradient(circle at center, transparent 25%, rgba(231, 231, 233, 0.5) 100%);
+  background: none;
 }
 
 .project-stack-card {
@@ -182,7 +176,7 @@
   background:
     linear-gradient(145deg, rgba(255, 255, 255, 0.06), transparent 50%),
     var(--ql-navy-soft);
-  box-shadow: 0 30px 75px rgba(24, 33, 60, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1);
 }
 
 .project-stack-card-description {

@@ -96,8 +96,7 @@
   color: var(--reviews-green);
   background: rgba(42, 222, 104, 0.08);
   font-size: 13px;
-  font-weight: 850;
-  text-decoration: none;
+  font-weight: 850;  text-decoration: none;
   transition:
     color 0.25s ease,
     background-color 0.25s ease,
@@ -281,7 +280,7 @@ button.client-review-tile {
 .client-review-card-topline > span {
   height: 42px;
   color: rgba(42, 222, 104, 0.16);
-  font-family: Georgia, serif;
+  font-family: var(--font-display);
   font-size: 74px;
   font-weight: 800;
   line-height: 0.88;

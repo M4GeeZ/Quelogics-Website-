@@ -130,14 +130,15 @@ const IndustryAccordion = () => {
       <div className="industry-accordion-heading">
         <span className="industry-eyebrow">
           <i aria-hidden="true"></i>
-          Industries we serve
+          Built for real operations
         </span>
         <h2>
-          Software shaped to your <em>sector.</em>
+          Smarter systems for every <em>sector.</em>
         </h2>
         <p>
-          Hover or tap a sector to explore digital products built around its
-          real-world challenges, teams, and customers.
+          Generic software creates new gaps. Hover or tap a sector to see how
+          Quelogics connects the workflows, data, and customer journeys that
+          matter in your industry.
         </p>
       </div>
 
@@ -182,7 +183,7 @@ const IndustryAccordion = () => {
                   <h3>{industry.title}</h3>
                   <p>{industry.description}</p>
                   <a href="/industries" tabIndex={isActive ? 0 : -1}>
-                    View work
+                    Explore solutions
                     <ArrowUpRight aria-hidden="true" />
                   </a>
                 </div>

@@ -160,7 +160,7 @@ const ProjectStackShowcase = () => {
           gsap.set(pairs, {
             zIndex: (index) => index + 1,
             transformOrigin: "center top",
-            force3D: true,
+            force3D: false,
           });
 
           gsap.set(pairs.slice(1), {
@@ -173,42 +173,23 @@ const ProjectStackShowcase = () => {
             scrollTrigger: {
               trigger: stageRef.current,
               start: "top top",
-              end: () =>
-                `+=${
-                  (pairs.length - 1) *
-                  Math.max((stageRef.current?.clientHeight ?? 0) * 0.92, 560)
-                }`,
-              scrub: 0.85,
-              pin: true,
-              anticipatePin: 1,
+              end: "bottom bottom",
+              scrub: 1,
               invalidateOnRefresh: true,
             },
           });
 
           pairs.slice(1).forEach((pair, index) => {
-            const previousPair = pairs[index];
-
-            mobileTimeline
-              .to(
-                previousPair,
-                {
-                  y: -10,
-                  scale: 0.975,
-                  opacity: 0.82,
-                  duration: 1,
-                },
-                index,
-              )
-              .to(
-                pair,
-                {
-                  yPercent: 0,
-                  scale: 1,
-                  opacity: 1,
-                  duration: 1,
-                },
-                index,
-              );
+            mobileTimeline.to(
+              pair,
+              {
+                yPercent: 0,
+                scale: 1,
+                opacity: 1,
+                duration: 1,
+              },
+              index,
+            );
           });
 
           return () => mobileTimeline.kill();
@@ -221,7 +202,7 @@ const ProjectStackShowcase = () => {
         gsap.set(pairs, {
           zIndex: (index) => index + 1,
           transformOrigin: "center top",
-          force3D: true,
+          force3D: false,
         });
 
         gsap.set(pairs.slice(1), {
@@ -234,37 +215,22 @@ const ProjectStackShowcase = () => {
           scrollTrigger: {
             trigger: stageRef.current,
             start: "top top",
-            end: () => `+=${(pairs.length - 1) * 1050}`,
-            scrub: 1.25,
-            pin: true,
-            anticipatePin: 1,
+            end: "bottom bottom",
+            scrub: 1.15,
             invalidateOnRefresh: true,
           },
         });
 
         pairs.slice(1).forEach((pair, index) => {
-          const previousPair = pairs[index];
-          const position = index;
-
-          timeline
-            .to(
-              previousPair,
-              {
-                y: -16,
-                scale: 0.975,
-                duration: 1,
-              },
-              position,
-            )
-            .to(
-              pair,
-              {
-                yPercent: 0,
-                scale: 1,
-                duration: 1,
-              },
-              position,
-            );
+          timeline.to(
+            pair,
+            {
+              yPercent: 0,
+              scale: 1,
+              duration: 1,
+            },
+            index,
+          );
         });
 
         return () => timeline.kill();
@@ -298,35 +264,37 @@ const ProjectStackShowcase = () => {
       <div className="project-stack-heading">
         <span>
           <i aria-hidden="true"></i>
-          Selected projects
+          Systems in the real world
         </span>
         <h2>
-          Work designed to <em>perform.</em>
+          Built to close the <em>gap.</em>
         </h2>
         <p>
-          Scroll to move through paired project stories. Every layer represents
-          a different product, challenge, and measurable digital outcome.
+          Scroll through products that replaced disconnected tools, manual
+          work, and stalled ideas with connected experiences built for
+          measurable outcomes.
         </p>
       </div>
 
       <div className="project-stack-stage" ref={stageRef}>
-        <div className="project-stack-aurora aurora-one" aria-hidden="true"></div>
-        <div className="project-stack-aurora aurora-two" aria-hidden="true"></div>
+        <div className="project-stack-sticky">
+          <div className="project-stack-aurora aurora-one" aria-hidden="true"></div>
+          <div className="project-stack-aurora aurora-two" aria-hidden="true"></div>
 
-        <div className="project-stack-stage-inner">
-          {projectPairs.map((pair, pairIndex) => (
-            <div
-              className="project-stack-pair"
-              aria-label={`Project pair ${pairIndex + 1} of ${projectPairs.length}`}
-              key={pair.map((project) => project.number).join("-")}
-            >
-              {pair.map((project) => (
-                <ProjectCard project={project} key={project.number} />
-              ))}
-            </div>
-          ))}
+          <div className="project-stack-stage-inner">
+            {projectPairs.map((pair, pairIndex) => (
+              <div
+                className="project-stack-pair"
+                aria-label={`Project pair ${pairIndex + 1} of ${projectPairs.length}`}
+                key={pair.map((project) => project.number).join("-")}
+              >
+                {pair.map((project) => (
+                  <ProjectCard project={project} key={project.number} />
+                ))}
+              </div>
+            ))}
+          </div>
         </div>
-
       </div>
     </section>
   );

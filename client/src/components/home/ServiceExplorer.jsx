@@ -78,7 +78,7 @@ const services = [
     tag: "AI",
     icon: Workflow,
     description:
-      "Connect people, software, and AI into dependable workflows that remove repetitive work without losing oversight.",
+      "Turn repeatable manual work into dependable AI workflows so your team can stop chasing updates and focus on growth.",
     features: [
       ["Workflow mapping", "find the highest-impact automation points."],
       ["Smart routing", "move work to the right system automatically."],
@@ -114,7 +114,7 @@ const services = [
     tag: "WEB",
     icon: MonitorSmartphone,
     description:
-      "High-performance websites and web applications that feel polished, load quickly, and turn attention into action.",
+      "Build a website that converts instead of merely existing, with fast performance, clear journeys, and measurable intent.",
     features: [
       ["Responsive experiences", "consistent quality on every screen."],
       ["Performance first", "fast loading and smooth interaction."],
@@ -162,7 +162,7 @@ const services = [
     tag: "GROWTH",
     icon: Megaphone,
     description:
-      "Capture high-intent demand with focused search campaigns, compelling landing journeys, and disciplined optimization.",
+      "Replace cold-contact chasing with a qualified lead system built around search intent, focused journeys, and disciplined optimization.",
     features: [
       ["Intent-led campaigns", "reach buyers already searching."],
       ["Lead quality systems", "optimize for customers, not empty forms."],
@@ -237,7 +237,7 @@ const ServiceCard = ({ service, depth, isEntering, isTop }) => {
         <h3>{service.title}</h3>
         <p>{service.description}</p>
 
-        <h4>Why teams choose us</h4>
+        <h4>What changes for your team</h4>
         <ul>
           {service.features.map(([title, detail]) => (
             <li key={title}>
@@ -254,7 +254,7 @@ const ServiceCard = ({ service, depth, isEntering, isTop }) => {
           className="services-explorer-link"
           tabIndex={isTop ? 0 : -1}
         >
-          Read More
+          Explore this capability
           <ArrowUpRight aria-hidden="true" />
         </a>
       </div>
@@ -380,11 +380,12 @@ const ServiceExplorer = () => {
   return (
     <section className="services-explorer" ref={sectionRef}>
       <div className="services-explorer-heading">
-        <span>Built for ambitious teams</span>
-        <h2>Expertise that moves your business forward.</h2>
+        <span>What we close gaps in</span>
+        <h2>Your team isn&apos;t slow. Your systems are.</h2>
         <p>
-          Strategy, technology, automation, and growth—brought together as one
-          connected delivery team.
+          Quelogics replaces disconnected tools, manual approvals, hand-built
+          reports, and missed follow-ups with one connected system designed
+          around how your business actually works.
         </p>
       </div>
 

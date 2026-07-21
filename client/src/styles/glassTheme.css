@@ -1,0 +1,1056 @@
+/* QueLogics glass system — preserves the existing type and brand palette. */
+
+:root {
+  --ql-glass-light: rgba(255, 255, 255, 0.56);
+  --ql-glass-light-soft: rgba(255, 255, 255, 0.38);
+  --ql-glass-dark: rgba(12, 21, 42, 0.68);
+  --ql-glass-dark-soft: rgba(18, 31, 53, 0.52);
+  --ql-glass-border: rgba(255, 255, 255, 0.42);
+  --ql-glass-border-dark: rgba(255, 255, 255, 0.15);
+  --ql-glass-shadow: 0 22px 58px rgba(24, 33, 60, 0.12);
+  --ql-glass-shadow-dark: 0 24px 64px rgba(2, 8, 24, 0.24);
+  --ql-glass-blur: blur(22px) saturate(145%);
+}
+
+body {
+  background:
+    radial-gradient(circle at 12% 8%, rgba(44, 184, 96, 0.16), transparent 28%),
+    radial-gradient(circle at 88% 30%, rgba(186, 233, 210, 0.24), transparent 31%),
+    radial-gradient(circle at 48% 86%, rgba(24, 33, 60, 0.09), transparent 34%),
+    linear-gradient(135deg, #e8eceb 0%, #f6f7f6 45%, #e4e9e8 100%);
+  background-attachment: fixed;
+}
+
+#root {
+  position: relative;
+  isolation: isolate;
+}
+
+/* Navigation */
+.navbar-container {
+  padding-inline: 18px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-top: 0;
+  border-radius: 0 0 20px 20px;
+  background:
+    linear-gradient(120deg, rgba(8, 15, 34, 0.72), rgba(16, 48, 44, 0.58)),
+    rgba(10, 18, 38, 0.52);
+  box-shadow: 0 16px 42px rgba(3, 9, 25, 0.18), inset 0 -1px 0 rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(24px) saturate(155%);
+  -webkit-backdrop-filter: blur(24px) saturate(155%);
+}
+
+.icon-button,
+.mobile-menu-button {
+  border: 1px solid transparent;
+  border-radius: 50%;
+  transition: border-color 0.25s ease, background-color 0.25s ease, transform 0.25s ease;
+}
+
+.icon-button:hover,
+.mobile-menu-button:hover {
+  border-color: rgba(255, 255, 255, 0.18);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.mega-menu-inner {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.58);
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.84), rgba(239, 247, 244, 0.73)),
+    rgba(255, 255, 255, 0.68);
+  box-shadow: 0 26px 70px rgba(12, 24, 39, 0.18), inset 0 1px 0 rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(30px) saturate(150%);
+  -webkit-backdrop-filter: blur(30px) saturate(150%);
+}
+
+.language-popover,
+.mobile-navigation {
+  border-color: rgba(255, 255, 255, 0.32);
+  background:
+    linear-gradient(145deg, rgba(255, 255, 255, 0.78), rgba(239, 247, 244, 0.67)),
+    rgba(255, 255, 255, 0.58);
+  box-shadow: var(--ql-glass-shadow);
+  backdrop-filter: blur(28px) saturate(160%);
+  -webkit-backdrop-filter: blur(28px) saturate(160%);
+}
+
+.mobile-navigation {
+  background:
+    linear-gradient(145deg, rgba(9, 17, 39, 0.88), rgba(18, 54, 48, 0.76)),
+    rgba(7, 15, 35, 0.72);
+  box-shadow: var(--ql-glass-shadow-dark);
+}
+
+/* Hero surfaces */
+.hero-content {
+  padding: clamp(35px, 5vw, 68px);
+  border: 1px solid rgba(255, 255, 255, 0.13);
+  border-radius: 36px;
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.065), transparent 46%),
+    rgba(5, 13, 31, 0.24);
+  box-shadow: 0 34px 90px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(14px) saturate(125%);
+  -webkit-backdrop-filter: blur(14px) saturate(125%);
+}
+
+.hero-badge,
+.industry-pill,
+.services-explorer-tag,
+.explore-kicker {
+  backdrop-filter: blur(12px) saturate(145%);
+  -webkit-backdrop-filter: blur(12px) saturate(145%);
+}
+
+.client-logo-marquee {
+  background: rgba(255, 255, 255, 0.48);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.78), inset 0 -1px 0 rgba(255, 255, 255, 0.62);
+  backdrop-filter: blur(20px) saturate(140%);
+  -webkit-backdrop-filter: blur(20px) saturate(140%);
+}
+
+/* Project showcase */
+.n2x-section {
+  background:
+    radial-gradient(circle at 80% 15%, rgba(44, 184, 96, 0.16), transparent 31%),
+    linear-gradient(125deg, rgba(8, 15, 34, 0.94), rgba(16, 49, 44, 0.88));
+}
+
+.n2x-title,
+.project-stack-heading {
+  border: 1px solid rgba(255, 255, 255, 0.11);
+  border-radius: 28px;
+  background: rgba(255, 255, 255, 0.045);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(18px) saturate(135%);
+  -webkit-backdrop-filter: blur(18px) saturate(135%);
+}
+
+.n2x-title { padding: clamp(25px, 4vw, 48px); }
+.project-stack-heading { padding: clamp(28px, 5vw, 58px); }
+
+.card-inner,
+.orbit-card {
+  border-color: rgba(255, 255, 255, 0.19);
+  background:
+    linear-gradient(145deg, rgba(255, 255, 255, 0.08), transparent 45%),
+    rgba(9, 17, 36, 0.64);
+  box-shadow: 0 24px 58px rgba(1, 7, 22, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(18px) saturate(140%);
+  -webkit-backdrop-filter: blur(18px) saturate(140%);
+}
+
+.project-stack-section,
+.project-stack-stage {
+  background: rgba(248, 250, 249, 0.34) !important;
+  backdrop-filter: blur(16px) saturate(130%);
+  -webkit-backdrop-filter: blur(16px) saturate(130%);
+}
+
+.project-stack-card {
+  border-color: rgba(255, 255, 255, 0.2);
+  background:
+    linear-gradient(145deg, rgba(255, 255, 255, 0.1), transparent 50%),
+    rgba(17, 31, 52, 0.76);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.12) !important;
+  backdrop-filter: blur(20px) saturate(145%);
+  -webkit-backdrop-filter: blur(20px) saturate(145%);
+}
+
+.project-stack-card-media {
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+
+/* Services and industries */
+.services-explorer,
+.selected-work-marquee-section,
+.process-showcase-section {
+  background: rgba(242, 245, 244, 0.48) !important;
+  backdrop-filter: blur(14px) saturate(125%);
+  -webkit-backdrop-filter: blur(14px) saturate(125%);
+}
+
+.services-explorer-heading,
+.industry-accordion-heading,
+.selected-work-marquee-topline {
+  border: 1px solid rgba(255, 255, 255, 0.52);
+  border-radius: 26px;
+  background: var(--ql-glass-light-soft);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.72);
+  backdrop-filter: var(--ql-glass-blur);
+  -webkit-backdrop-filter: var(--ql-glass-blur);
+}
+
+.services-explorer-heading,
+.industry-accordion-heading { padding: clamp(26px, 4vw, 48px); }
+.selected-work-marquee-topline { padding: 22px 28px; }
+
+.services-explorer-shell {
+  border-color: rgba(255, 255, 255, 0.54);
+  background: var(--ql-glass-light-soft);
+  box-shadow: var(--ql-glass-shadow), inset 0 1px 0 rgba(255, 255, 255, 0.78);
+  backdrop-filter: blur(28px) saturate(150%);
+  -webkit-backdrop-filter: blur(28px) saturate(150%);
+}
+
+.services-explorer-nav {
+  background:
+    radial-gradient(circle at 35% 10%, rgba(44, 184, 96, 0.2), transparent 38%),
+    rgba(14, 27, 49, 0.78);
+  backdrop-filter: blur(24px) saturate(145%);
+  -webkit-backdrop-filter: blur(24px) saturate(145%);
+}
+
+.services-explorer-detail,
+.services-explorer-stack-card {
+  border-color: rgba(255, 255, 255, 0.58);
+  background:
+    linear-gradient(145deg, rgba(255, 255, 255, 0.64), rgba(238, 244, 242, 0.42)),
+    rgba(255, 255, 255, 0.32);
+  box-shadow: 0 24px 56px rgba(24, 33, 60, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.84);
+  backdrop-filter: blur(24px) saturate(145%);
+  -webkit-backdrop-filter: blur(24px) saturate(145%);
+}
+
+.services-explorer-visual,
+.process-showcase-panel,
+.process-terminal,
+.process-launch-dashboard,
+.process-support-panel {
+  border-color: rgba(255, 255, 255, 0.16);
+  background:
+    linear-gradient(145deg, rgba(255, 255, 255, 0.075), transparent 48%),
+    rgba(12, 25, 48, 0.72);
+  box-shadow: var(--ql-glass-shadow-dark), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(22px) saturate(145%);
+  -webkit-backdrop-filter: blur(22px) saturate(145%);
+}
+
+.industry-accordion-section {
+  background:
+    radial-gradient(circle at 50% 0%, rgba(44, 184, 96, 0.18), transparent 38%),
+    rgba(11, 22, 43, 0.88) !important;
+}
+
+.industry-panel {
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  background:
+    linear-gradient(145deg, rgba(255, 255, 255, 0.08), transparent 47%),
+    rgba(18, 42, 52, 0.68) !important;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(22px) saturate(145%);
+  -webkit-backdrop-filter: blur(22px) saturate(145%);
+}
+
+/* Reviews and process */
+.client-reviews-section {
+  background:
+    radial-gradient(circle at 80% 44%, rgba(44, 184, 96, 0.14), transparent 32%),
+    rgba(10, 20, 41, 0.91) !important;
+}
+
+.client-reviews-copy,
+.client-reviews-visual,
+.process-showcase-copy {
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 28px;
+  background: rgba(255, 255, 255, 0.045);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(20px) saturate(140%);
+  -webkit-backdrop-filter: blur(20px) saturate(140%);
+}
+
+.client-reviews-copy,
+.process-showcase-copy { padding: clamp(25px, 3.5vw, 44px); }
+.client-reviews-visual { padding: 14px; }
+
+.client-review-tile,
+.client-review-floating-card,
+.client-reviews-action-row {
+  border-color: rgba(255, 255, 255, 0.14);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.09);
+  backdrop-filter: blur(16px) saturate(135%);
+  -webkit-backdrop-filter: blur(16px) saturate(135%);
+}
+
+.client-review-tile { background: rgba(255, 255, 255, 0.075); }
+.client-review-floating-card { background: rgba(255, 255, 255, 0.82); }
+
+.process-showcase-nav-item:not(.is-active) {
+  border-color: rgba(24, 33, 60, 0.08);
+  background: rgba(255, 255, 255, 0.28);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+/* Explore, detail, and company pages */
+.explore-page {
+  background: rgba(239, 243, 242, 0.42);
+}
+
+.explore-hero,
+.detail-hero,
+.company-hero {
+  background:
+    radial-gradient(circle at 78% 20%, rgba(44, 184, 96, 0.22), transparent 32%),
+    linear-gradient(116deg, rgba(7, 13, 32, 0.94), rgba(18, 29, 53, 0.91) 58%, rgba(18, 57, 47, 0.9));
+}
+
+.explore-hero-copy,
+.detail-hero-copy,
+.company-hero-inner {
+  padding: clamp(28px, 4vw, 54px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 30px;
+  background: rgba(255, 255, 255, 0.045);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(18px) saturate(135%);
+  -webkit-backdrop-filter: blur(18px) saturate(135%);
+}
+
+.explore-hero-visual,
+.detail-signal,
+.explore-visual-core,
+.detail-signal-core,
+.explore-floating-note {
+  backdrop-filter: blur(20px) saturate(150%);
+  -webkit-backdrop-filter: blur(20px) saturate(150%);
+}
+
+.explore-directory,
+.detail-capabilities,
+.detail-process,
+.detail-related,
+.company-values,
+.explore-cta {
+  background: rgba(244, 247, 246, 0.38) !important;
+  backdrop-filter: blur(14px) saturate(125%);
+  -webkit-backdrop-filter: blur(14px) saturate(125%);
+}
+
+.explore-section-heading,
+.detail-capabilities-intro,
+.detail-related-heading {
+  padding: clamp(22px, 3vw, 38px);
+  border: 1px solid rgba(255, 255, 255, 0.58);
+  border-radius: 24px;
+  background: rgba(255, 255, 255, 0.34);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.74);
+  backdrop-filter: blur(20px) saturate(140%);
+  -webkit-backdrop-filter: blur(20px) saturate(140%);
+}
+
+.explore-card,
+.detail-capability,
+.detail-related-card,
+.company-card {
+  border-color: rgba(255, 255, 255, 0.68);
+  background:
+    linear-gradient(145deg, rgba(255, 255, 255, 0.62), rgba(239, 245, 243, 0.34)),
+    rgba(255, 255, 255, 0.3);
+  box-shadow: 0 18px 46px rgba(24, 33, 60, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.82);
+  backdrop-filter: blur(22px) saturate(145%);
+  -webkit-backdrop-filter: blur(22px) saturate(145%);
+}
+
+.explore-card:hover,
+.detail-capability:hover,
+.detail-related-card:hover,
+.company-card:hover {
+  border-color: color-mix(in srgb, var(--page-accent) 55%, rgba(255, 255, 255, 0.7));
+  background: rgba(255, 255, 255, 0.58);
+  box-shadow: 0 24px 58px rgba(24, 33, 60, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.88);
+}
+
+.explore-principles,
+.detail-outcome-card,
+.explore-cta-card,
+.company-contact-note,
+.detail-proofbar {
+  border: 1px solid rgba(255, 255, 255, 0.13);
+  background:
+    radial-gradient(circle at 10% 90%, var(--page-accent-soft, rgba(44, 184, 96, 0.13)), transparent 32%),
+    rgba(12, 23, 44, 0.78);
+  box-shadow: var(--ql-glass-shadow-dark), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(24px) saturate(145%);
+  -webkit-backdrop-filter: blur(24px) saturate(145%);
+}
+
+.detail-related-card:hover { background: rgba(255, 255, 255, 0.7); }
+
+/* Footer */
+.site-footer {
+  border-top: 1px solid rgba(255, 255, 255, 0.16);
+  background:
+    radial-gradient(circle at 14% 0%, rgba(44, 184, 96, 0.18), transparent 30%),
+    linear-gradient(125deg, rgba(10, 18, 39, 0.94), rgba(16, 45, 43, 0.9));
+  box-shadow: 0 -18px 54px rgba(3, 9, 25, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(26px) saturate(145%);
+  -webkit-backdrop-filter: blur(26px) saturate(145%);
+}
+
+.site-footer-column {
+  min-width: 0;
+  padding: 22px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.045);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.07);
+  backdrop-filter: blur(18px) saturate(135%);
+  -webkit-backdrop-filter: blur(18px) saturate(135%);
+}
+
+.site-footer-bottom {
+  border-color: rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.035);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+}
+
+.site-footer-socials a {
+  border: 1px solid rgba(255, 255, 255, 0.46);
+  background: rgba(255, 255, 255, 0.76);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.72);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+@media (max-width: 1100px) {
+  .navbar-container { padding-inline: 14px; }
+  .hero-content { border-radius: 28px; }
+}
+
+@media (max-width: 760px) {
+  :root { --ql-glass-blur: blur(15px) saturate(135%); }
+
+  .hero-content,
+  .explore-hero-copy,
+  .detail-hero-copy,
+  .company-hero-inner {
+    padding: 24px 18px;
+    border-radius: 22px;
+  }
+
+  .site-footer-column {
+    padding: 0 14px;
+    border-right: 0;
+    border-left: 0;
+    border-radius: 0;
+    background: rgba(255, 255, 255, 0.025);
+  }
+
+  .client-reviews-copy,
+  .process-showcase-copy { padding: 24px 18px; }
+}
+
+@supports not ((backdrop-filter: blur(2px)) or (-webkit-backdrop-filter: blur(2px))) {
+  .navbar-container,
+  .mega-menu-inner,
+  .services-explorer-shell,
+  .explore-card,
+  .detail-capability,
+  .company-card,
+  .site-footer-column {
+    background-color: rgba(245, 248, 247, 0.94);
+  }
+
+  .navbar-container,
+  .site-footer-column { background-color: rgba(12, 23, 44, 0.96); }
+}
+
+@media (prefers-reduced-transparency: reduce) {
+  .navbar-container,
+  .mega-menu-inner,
+  .services-explorer-shell,
+  .explore-card,
+  .detail-capability,
+  .company-card {
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+  }
+}
+
+/*
+  Selective glass corrections.
+  Glass belongs on structural surfaces—not around every heading or copy block.
+*/
+.hero-content,
+.n2x-title,
+.project-stack-heading,
+.services-explorer-heading,
+.industry-accordion-heading,
+.selected-work-marquee-topline,
+.client-reviews-copy,
+.client-reviews-visual,
+.process-showcase-copy,
+.explore-hero-copy,
+.detail-hero-copy,
+.company-hero-inner,
+.explore-section-heading,
+.detail-capabilities-intro,
+.detail-related-heading {
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+}
+
+.hero-content,
+.n2x-title,
+.services-explorer-heading,
+.industry-accordion-heading,
+.selected-work-marquee-topline,
+.client-reviews-copy,
+.client-reviews-visual,
+.process-showcase-copy,
+.explore-hero-copy,
+.detail-hero-copy,
+.company-hero-inner,
+.explore-section-heading,
+.detail-capabilities-intro,
+.detail-related-heading {
+  padding: 0;
+}
+
+.project-stack-heading {
+  padding: 125px 0 95px;
+}
+
+.services-explorer-nav {
+  background:
+    radial-gradient(circle at 35% 10%, rgba(44, 184, 96, 0.13), transparent 38%),
+    rgba(20, 34, 57, 0.92);
+}
+
+.services-explorer-detail {
+  background: rgba(245, 247, 247, 0.86);
+  backdrop-filter: blur(12px) saturate(115%);
+  -webkit-backdrop-filter: blur(12px) saturate(115%);
+}
+
+.services-explorer-stack-card {
+  background: rgba(249, 250, 250, 0.78);
+  box-shadow: 0 20px 44px rgba(24, 33, 60, 0.09), inset 0 1px 0 rgba(255, 255, 255, 0.88);
+  backdrop-filter: blur(10px) saturate(115%);
+  -webkit-backdrop-filter: blur(10px) saturate(115%);
+}
+
+.process-showcase-panel,
+.process-terminal,
+.process-launch-dashboard,
+.process-support-panel {
+  background:
+    linear-gradient(145deg, rgba(255, 255, 255, 0.05), transparent 46%),
+    rgba(21, 34, 60, 0.9);
+  box-shadow: 0 24px 58px rgba(24, 33, 60, 0.16), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(14px) saturate(125%);
+  -webkit-backdrop-filter: blur(14px) saturate(125%);
+}
+
+/* Never put backdrop filters on a GSAP pin target or its transformed cards. */
+.project-stack-section,
+.project-stack-stage,
+.project-stack-sticky,
+.project-stack-card,
+.project-stack-pair {
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+.project-stack-section {
+  background: rgba(244, 247, 246, 0.62) !important;
+}
+
+.project-stack-stage {
+  background:
+    radial-gradient(circle at 12% 18%, rgba(44, 184, 96, 0.08), transparent 30%),
+    #f7f9f8 !important;
+}
+
+.project-stack-card {
+  border-color: rgba(44, 184, 96, 0.23);
+  background:
+    linear-gradient(145deg, rgba(255, 255, 255, 0.055), transparent 50%),
+    rgba(27, 37, 56, 0.96);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1) !important;
+}
+
+.site-footer-column {
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+}
+
+@media (max-width: 900px) {
+  .project-stack-heading { padding: 90px 0 62px; }
+}
+
+@media (max-width: 760px) {
+  .hero-content,
+  .explore-hero-copy,
+  .detail-hero-copy,
+  .company-hero-inner,
+  .client-reviews-copy,
+  .process-showcase-copy {
+    padding: 0;
+  }
+}
+
+@media (max-width: 600px) {
+  .project-stack-heading { padding: 76px 0 52px; }
+}
+
+/* Full-site glassmorphism layer */
+.hero-content,
+.n2x-title,
+.project-stack-heading,
+.services-explorer-heading,
+.industry-accordion-heading,
+.selected-work-marquee-topline,
+.client-reviews-copy,
+.client-reviews-visual,
+.process-showcase-copy,
+.explore-hero-copy,
+.detail-hero-copy,
+.company-hero-inner,
+.explore-section-heading,
+.detail-capabilities-intro,
+.detail-related-heading {
+  border: 1px solid rgba(255, 255, 255, 0.46);
+  border-radius: 28px;
+  background:
+    linear-gradient(145deg, rgba(255, 255, 255, 0.32), rgba(255, 255, 255, 0.08)),
+    rgba(238, 246, 243, 0.2);
+  box-shadow:
+    0 22px 56px rgba(15, 29, 48, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.78);
+  backdrop-filter: blur(22px) saturate(155%);
+  -webkit-backdrop-filter: blur(22px) saturate(155%);
+}
+
+.hero-content,
+.explore-hero-copy,
+.detail-hero-copy,
+.company-hero-inner {
+  padding: clamp(30px, 4vw, 58px);
+  border-color: rgba(255, 255, 255, 0.17);
+  background:
+    linear-gradient(145deg, rgba(255, 255, 255, 0.105), rgba(255, 255, 255, 0.025)),
+    rgba(8, 18, 38, 0.25);
+  box-shadow:
+    0 28px 74px rgba(0, 7, 24, 0.18),
+    inset 0 1px 0 rgba(255, 255, 255, 0.13);
+}
+
+.n2x-title,
+.services-explorer-heading,
+.industry-accordion-heading,
+.selected-work-marquee-topline,
+.client-reviews-copy,
+.client-reviews-visual,
+.process-showcase-copy,
+.explore-section-heading,
+.detail-capabilities-intro,
+.detail-related-heading {
+  padding: clamp(24px, 3.5vw, 44px);
+}
+
+.n2x-title,
+.industry-accordion-heading,
+.client-reviews-copy,
+.client-reviews-visual {
+  border-color: rgba(255, 255, 255, 0.14);
+  background:
+    linear-gradient(145deg, rgba(255, 255, 255, 0.075), rgba(255, 255, 255, 0.018)),
+    rgba(10, 23, 45, 0.38);
+  box-shadow:
+    0 25px 62px rgba(0, 7, 24, 0.18),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+.project-stack-heading {
+  width: min(1180px, calc(100% - 48px));
+  margin: 42px auto 72px;
+  padding: clamp(32px, 5vw, 62px);
+}
+
+.services-explorer-detail,
+.services-explorer-stack-card {
+  border-color: rgba(255, 255, 255, 0.62);
+  background:
+    linear-gradient(145deg, rgba(255, 255, 255, 0.54), rgba(238, 247, 243, 0.18)),
+    rgba(255, 255, 255, 0.25);
+  box-shadow:
+    0 22px 52px rgba(24, 33, 60, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.82);
+  backdrop-filter: blur(26px) saturate(155%);
+  -webkit-backdrop-filter: blur(26px) saturate(155%);
+}
+
+.process-showcase-panel,
+.process-terminal,
+.process-launch-dashboard,
+.process-support-panel {
+  background:
+    linear-gradient(145deg, rgba(255, 255, 255, 0.1), transparent 48%),
+    rgba(15, 29, 54, 0.7);
+  box-shadow:
+    0 24px 58px rgba(24, 33, 60, 0.17),
+    inset 0 1px 0 rgba(255, 255, 255, 0.13);
+  backdrop-filter: blur(22px) saturate(145%);
+  -webkit-backdrop-filter: blur(22px) saturate(145%);
+}
+
+/* GSAP pin targets keep translucent layers but no backdrop blur. This prevents
+   blank frames and compositing jumps during the stacked-card scroll. */
+.project-stack-section,
+.project-stack-stage,
+.project-stack-card,
+.project-stack-pair {
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+.project-stack-section {
+  background:
+    radial-gradient(circle at 12% 16%, rgba(44, 184, 96, 0.13), transparent 31%),
+    rgba(235, 241, 239, 0.46) !important;
+}
+
+.project-stack-stage {
+  background: transparent !important;
+}
+
+.project-stack-sticky {
+  background:
+    radial-gradient(circle at 12% 18%, rgba(44, 184, 96, 0.15), transparent 32%),
+    radial-gradient(circle at 88% 72%, rgba(19, 55, 57, 0.11), transparent 36%),
+    rgba(248, 251, 250, 0.48) !important;
+}
+
+.project-stack-card {
+  border-color: rgba(255, 255, 255, 0.2);
+  background:
+    linear-gradient(145deg, rgba(255, 255, 255, 0.105), rgba(255, 255, 255, 0.018) 48%),
+    rgba(16, 31, 55, 0.94);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.14),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.08) !important;
+}
+
+.site-footer-column {
+  padding: 22px;
+  border: 1px solid rgba(255, 255, 255, 0.11);
+  border-radius: 22px 22px 0 0;
+  background:
+    linear-gradient(145deg, rgba(255, 255, 255, 0.075), rgba(255, 255, 255, 0.02)),
+    rgba(8, 22, 38, 0.18);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.09);
+  backdrop-filter: blur(20px) saturate(140%);
+  -webkit-backdrop-filter: blur(20px) saturate(140%);
+}
+
+.services-explorer-nav-item,
+.process-showcase-nav-item,
+.detail-process-step,
+.explore-principle,
+.client-logo-item,
+.language-options button,
+.mega-menu-group a {
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  background: rgba(255, 255, 255, 0.14);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.32);
+  backdrop-filter: blur(13px) saturate(140%);
+  -webkit-backdrop-filter: blur(13px) saturate(140%);
+}
+
+.detail-process-step,
+.explore-principle {
+  border-color: rgba(255, 255, 255, 0.58);
+  border-radius: 20px;
+  padding: 22px;
+  background:
+    linear-gradient(145deg, rgba(255, 255, 255, 0.48), rgba(255, 255, 255, 0.14)),
+    rgba(236, 245, 241, 0.2);
+}
+
+.client-logo-item,
+.mega-menu-group a {
+  border-color: transparent;
+  box-shadow: none;
+}
+
+.mega-menu-group a:hover,
+.language-options button:hover {
+  border-color: rgba(44, 184, 96, 0.32);
+  background: rgba(255, 255, 255, 0.42);
+}
+
+.premium-card,
+.selected-work-marquee-window,
+.client-reviews-action-row,
+.detail-signal,
+.explore-hero-visual {
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  box-shadow:
+    0 24px 62px rgba(2, 10, 27, 0.16),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(18px) saturate(145%);
+  -webkit-backdrop-filter: blur(18px) saturate(145%);
+}
+
+.home-page > section,
+.explore-page > section {
+  position: relative;
+  isolation: isolate;
+}
+
+.home-page > section::before,
+.explore-page > section::before {
+  content: "";
+  position: absolute;
+  inset: 12px;
+  z-index: -1;
+  pointer-events: none;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  border-radius: clamp(20px, 3vw, 38px);
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.08), transparent 58%);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.28);
+}
+
+@media (max-width: 900px) {
+  .project-stack-heading {
+    width: min(100% - 32px, 1180px);
+    margin: 28px auto 52px;
+    padding: 34px 26px;
+  }
+}
+
+/* Join the navigation outline with the first-page glass frame so both read as
+   one continuous shell instead of two offset rounded rectangles. */
+.navbar-container {
+  border-radius: 22px 22px 0 0;
+}
+
+.home-page > .hero-section::before,
+.explore-page > section:first-child::before {
+  top: 14px;
+  right: auto;
+  bottom: 12px;
+  left: 50%;
+  width: min(calc(100% - 36px), 1480px);
+  border-radius: 22px 22px 38px 38px;
+  transform: translateX(-50%);
+  clip-path: inset(73px 0 0 0 round 0 0 38px 38px);
+}
+
+@media (max-width: 1100px) {
+  .home-page > .hero-section::before,
+  .explore-page > section:first-child::before {
+    width: calc(100% - 28px);
+  }
+}
+
+@media (max-width: 600px) {
+  .navbar-container {
+    border-radius: 18px 18px 0 0;
+  }
+
+  .home-page > .hero-section::before,
+  .explore-page > section:first-child::before {
+    top: 10px;
+    bottom: 10px;
+    width: calc(100% - 20px);
+    border-radius: 18px 18px 28px 28px;
+    clip-path: inset(65px 0 0 0 round 0 0 28px 28px);
+  }
+}
+
+@media (max-width: 760px) {
+  .hero-content,
+  .explore-hero-copy,
+  .detail-hero-copy,
+  .company-hero-inner,
+  .client-reviews-copy,
+  .process-showcase-copy {
+    padding: 24px 18px;
+    border-radius: 22px;
+  }
+
+  .site-footer-column {
+    padding: 18px 14px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 18px;
+    background: rgba(255, 255, 255, 0.045);
+  }
+}
+
+@media (max-width: 600px) {
+  .project-stack-heading {
+    width: calc(100% - 24px);
+    margin-bottom: 42px;
+    padding: 28px 18px;
+  }
+}
+
+/* Scroll showcase polish: the pinned stage must cover the intro panel instead
+   of letting that panel float above the cards. */
+.project-stack-heading {
+  z-index: 1;
+}
+
+.project-stack-stage {
+  z-index: 3;
+  background: transparent !important;
+  box-shadow: none;
+}
+
+.project-stack-sticky {
+  background:
+    radial-gradient(circle at 12% 18%, rgba(44, 184, 96, 0.15), transparent 32%),
+    radial-gradient(circle at 88% 72%, rgba(19, 55, 57, 0.1), transparent 36%),
+    rgba(247, 250, 249, 0.9) !important;
+  box-shadow:
+    0 -1px 0 rgba(255, 255, 255, 0.8),
+    0 -24px 60px rgba(18, 40, 49, 0.07);
+}
+
+/* Keep the marquee metadata in its own compact glass strip and reserve a
+   separate lane for the oversized moving headline. */
+.selected-work-marquee-section {
+  min-height: 360px;
+  padding-block: 22px 12px;
+}
+
+.selected-work-marquee-topline {
+  top: 24px;
+  padding: 17px 22px;
+  border-radius: 18px;
+}
+
+.selected-work-marquee-window {
+  margin-top: 82px;
+  padding-block: 14px 22px;
+}
+
+@media (max-width: 700px) {
+  .selected-work-marquee-section {
+    min-height: 270px;
+  }
+
+  .selected-work-marquee-topline {
+    padding: 14px 17px;
+  }
+
+  .selected-work-marquee-window {
+    margin-top: 68px;
+    padding-block: 10px 14px;
+  }
+}
+
+@media (max-width: 380px) {
+  .selected-work-marquee-section {
+    min-height: 225px;
+  }
+
+  .selected-work-marquee-topline {
+    top: 16px;
+  }
+
+  .selected-work-marquee-window {
+    margin-top: 58px;
+  }
+}
+
+/* Premium transparent navigation glass */
+.navbar {
+  padding-top: 14px;
+}
+
+.navbar-container {
+  width: min(calc(100% - 36px), 1480px);
+  height: 74px;
+  padding-inline: 18px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 22px 22px 0 0;
+  background:
+    radial-gradient(circle at 68% -40%, rgba(79, 218, 137, 0.19), transparent 42%),
+    linear-gradient(118deg, rgba(8, 16, 37, 0.58), rgba(11, 48, 45, 0.38)),
+    rgba(8, 18, 38, 0.27);
+  box-shadow:
+    0 18px 52px rgba(0, 7, 24, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.17),
+    inset 0 -1px 0 rgba(255, 255, 255, 0.055);
+  backdrop-filter: blur(30px) saturate(175%);
+  -webkit-backdrop-filter: blur(30px) saturate(175%);
+}
+
+.navbar-container::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border-radius: inherit;
+  pointer-events: none;
+  background:
+    linear-gradient(112deg, rgba(255, 255, 255, 0.08), transparent 28%),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.055), transparent 46%);
+}
+
+.navbar-logo {
+  text-shadow: 0 2px 16px rgba(0, 0, 0, 0.22);
+}
+
+.nav-link,
+.navbar-actions > a,
+.navbar-actions > button,
+.language-selector {
+  position: relative;
+  z-index: 1;
+}
+
+.mega-menu {
+  top: 92px;
+}
+
+@media (max-width: 1100px) {
+  .navbar-container {
+    width: calc(100% - 28px);
+    padding-inline: 16px;
+  }
+
+  .mobile-navigation {
+    top: 98px;
+    background:
+      radial-gradient(circle at 85% 0%, rgba(44, 184, 96, 0.18), transparent 34%),
+      linear-gradient(145deg, rgba(9, 17, 39, 0.78), rgba(18, 54, 48, 0.62)),
+      rgba(7, 15, 35, 0.54);
+    backdrop-filter: blur(30px) saturate(165%);
+    -webkit-backdrop-filter: blur(30px) saturate(165%);
+  }
+}
+
+@media (max-width: 600px) {
+  .navbar {
+    padding-top: 10px;
+  }
+
+  .navbar-container {
+    width: calc(100% - 20px);
+    height: 66px;
+    padding-inline: 14px;
+    border-radius: 18px 18px 0 0;
+  }
+
+  .mobile-navigation,
+  .language-popover {
+    top: 84px;
+  }
+}

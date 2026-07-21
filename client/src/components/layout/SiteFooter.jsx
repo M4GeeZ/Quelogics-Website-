@@ -63,9 +63,9 @@ const footerColumns = [
     title: "Company",
     links: [
       ["About QueLogics", "/about"],
-      ["Our Work & Portfolio", "/case-studies"],
+      ["Our Work & Portfolio", "/portfolio"],
       ["Case Studies", "/case-studies"],
-      ["Client Reviews", "/#client-reviews"],
+      ["Client Reviews", "/client-reviews"],
       ["Blog & Insights", "/insights"],
       ["Industries We Serve", "/industries"],
       ["Careers", "/careers"],
