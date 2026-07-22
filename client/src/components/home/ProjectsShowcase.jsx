@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useLayoutEffect, useRef } from "react";
+import { useCallback, useEffect, useLayoutEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ArrowLeft, ArrowRight } from "lucide-react";
@@ -35,22 +35,25 @@ const topCards = [
 ];
 
 const movingCards = [
-  { title: "PizzaMama", img: PizzaMamaPreview },
-  { title: "Jabulani", img: JabulaniPreview },
-  { title: "Mindora", img: MindoraPreview },
-  { title: "TMS", img: TMSPreview },
-  { title: "TrueTrucker", img: TrueTruckerPreview },
-  { title: "POS", img: POSPreview },
-  { title: "Resturent System", img: RestaurantPreview },
-  { title: "L M S", img: LMSAPPPreview },
-  { title: "Garage Management System", img: GMSPreview },
+  { title: "PizzaMama", type: "Commerce platform", desc: "A fast ordering experience supported by connected store operations, product management and customer journeys.", img: PizzaMamaPreview },
+  { title: "Jabulani", type: "Digital experience", desc: "A focused product experience built to make complex customer actions feel direct, simple and dependable.", img: JabulaniPreview },
+  { title: "Mindora", type: "Mobile product", desc: "A thoughtfully structured mobile platform connecting users with the tools and information they need every day.", img: MindoraPreview },
+  { title: "Transport Management System", type: "Operations platform", desc: "One operational view for planning, dispatch, fleet activity and the decisions that keep logistics moving.", img: TMSPreview },
+  { title: "TrueTrucker", type: "Industry marketplace", desc: "A purpose-built digital product that connects transport professionals, opportunities and essential workflows.", img: TrueTruckerPreview },
+  { title: "Point of Sale", type: "Retail system", desc: "A reliable sales and inventory system designed to keep everyday retail operations quick and accurate.", img: POSPreview },
+  { title: "Restaurant System", type: "Hospitality operations", desc: "Connected ordering, kitchen and management workflows that help hospitality teams deliver consistently.", img: RestaurantPreview },
+  { title: "Learning Management System", type: "Education platform", desc: "A clear learning environment for courses, progress, administration and meaningful learner engagement.", img: LMSAPPPreview },
+  { title: "Garage Management System", type: "Business operations", desc: "An end-to-end workspace for bookings, jobs, customers, teams and the daily running of a modern garage.", img: GMSPreview },
 ];
 
 const ProjectsShowcase = () => {
+  const [activeProject, setActiveProject] = useState(0);
   const sectionRef = useRef(null);
   const mobileScrollerRef = useRef(null);
   const mobileProjectIndexRef = useRef(0);
   const mobileResetTimerRef = useRef(null);
+  const storyFrameRef = useRef(null);
+  const activeProjectRef = useRef(0);
 
   const scrollMobileProjects = useCallback((direction) => {
     const scroller = mobileScrollerRef.current;
@@ -171,10 +174,6 @@ const ProjectsShowcase = () => {
         );
       });
 
-      const orbitCards = gsap.utils.toArray(".orbit-card");
-      const finalCards = gsap.utils.toArray(".primary-set .moving-card");
-      const duplicateCards = gsap.utils.toArray(".clone-set .moving-card");
-
       media.add(
         {
           desktop: "(min-width: 769px)",
@@ -184,108 +183,33 @@ const ProjectsShowcase = () => {
         ({ conditions }) => {
           const { desktop, mobile, reduceMotion } = conditions;
 
-          if (mobile) {
-            gsap.set(".orbit-wrap", { display: "none" });
-            gsap.set([...finalCards, ...duplicateCards], {
-              autoAlpha: 1,
-              y: 0,
-              scale: 1,
-            });
-
-            if (reduceMotion) {
-              return undefined;
-            }
-
-            const mobileReveal = gsap.from(
-              [...finalCards, ...duplicateCards],
-              {
-                y: 42,
-                opacity: 0,
-                duration: 0.65,
-                stagger: 0.045,
-                ease: "power3.out",
-                scrollTrigger: {
-                  trigger: ".moving-wrapper",
-                  start: "top 88%",
-                  toggleActions: "play none none reverse",
-                },
-              },
-            );
-
-            return () => mobileReveal.kill();
-          }
-
-          if (!desktop || reduceMotion) {
-            gsap.set(".orbit-wrap", { display: "none" });
-            gsap.set([...finalCards, ...duplicateCards], {
-              autoAlpha: 1,
-              y: 0,
-              scale: 1,
-            });
+          if ((!desktop && !mobile) || reduceMotion) {
             return undefined;
           }
 
-          gsap.set(".orbit-wrap", { display: "block", autoAlpha: 1, scale: 1 });
-          gsap.set([...finalCards, ...duplicateCards], {
-            autoAlpha: 0,
-            y: 120,
-            scale: 0.85,
-          });
-
-          const orbitSpin = gsap.to(".orbit-ring", {
-            rotate: 360,
-            duration: 18,
-            repeat: -1,
-            ease: "none",
-          });
-
-          const timeline = gsap.timeline({
-            scrollTrigger: {
-              trigger: ".moving-wrapper",
-              start: "top top",
-              end: "+=1800",
-              scrub: 1,
-              pin: true,
-              anticipatePin: 1,
-              invalidateOnRefresh: true,
+          const storyTrigger = ScrollTrigger.create({
+            trigger: ".project-story-stage",
+            start: "top top",
+            end: `+=${movingCards.length * (mobile ? 380 : 620)}`,
+            pin: true,
+            anticipatePin: 1,
+            invalidateOnRefresh: true,
+            onUpdate: (self) => {
+              const nextIndex = Math.min(
+                movingCards.length - 1,
+                Math.round(self.progress * (movingCards.length - 1)),
+              );
+              if (nextIndex === activeProjectRef.current) return;
+              activeProjectRef.current = nextIndex;
+              window.cancelAnimationFrame(storyFrameRef.current);
+              storyFrameRef.current = window.requestAnimationFrame(() => {
+                setActiveProject(nextIndex);
+              });
             },
           });
-
-          movingCards.forEach((_, index) => {
-            timeline.to(
-              orbitCards[index],
-              {
-                autoAlpha: 0,
-                scale: 0.2,
-                duration: 0.4,
-                ease: "power2.inOut",
-              },
-              index * 0.16,
-            );
-
-            timeline.to(
-              [finalCards[index], duplicateCards[index]],
-              {
-                autoAlpha: 1,
-                y: 0,
-                scale: 1,
-                duration: 0.55,
-                ease: "power3.out",
-              },
-              index * 0.16 + 0.08,
-            );
-          });
-
-          timeline.to(".orbit-wrap", {
-            autoAlpha: 0,
-            scale: 0.65,
-            duration: 0.5,
-            ease: "power2.out",
-          });
-
           return () => {
-            orbitSpin.kill();
-            timeline.kill();
+            window.cancelAnimationFrame(storyFrameRef.current);
+            storyTrigger.kill();
           };
         },
       );
@@ -340,55 +264,32 @@ const ProjectsShowcase = () => {
         ))}
       </div>
 
-      <div className="moving-wrapper">
-        <div className="orbit-wrap">
-          <div className="orbit-ring">
-            {movingCards.map((card, index) => (
-              <div
-                className="orbit-card"
-                key={card.title}
-                style={{
-                  "--i": index,
-                  "--total": movingCards.length,
-                }}
-              >
-                <img src={card.img} alt={card.title} loading="lazy" decoding="async" />
-                <span>{card.title}</span>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        <div className="moving-row">
-          {["primary-set", "clone-set"].map((setName) => (
-            <div
-              className={`moving-set ${setName}`}
-              aria-hidden={setName === "clone-set" ? "true" : undefined}
-              key={setName}
-            >
-              {movingCards.map((card) => (
-                <article className="premium-card moving-card" key={card.title}>
-                  <div className="card-inner">
-                    <img
-                      className="base-img"
-                      src={card.img}
-                      alt={setName === "primary-set" ? card.title : ""}
-                      loading="lazy"
-                      decoding="async"
-                    />
-                    <div className="card-overlay"></div>
-
-                    <div className="card-content small">
-                      <h2>{card.title}</h2>
-                      <p>
-                        A connected digital system built to remove bottlenecks and drive growth.
-                      </p>
-                    </div>
-                  </div>
+      <div className="project-story-stage">
+        <div className="project-story-inner">
+          <div className="project-card-rail" aria-label="Selected projects">
+            {movingCards.map((card, index) => {
+              const offset = index - activeProject;
+              return (
+                <article
+                  className={`story-card${offset === 0 ? " is-active" : offset < 0 ? " is-before" : " is-after"}`}
+                  style={{ "--card-distance": Math.abs(offset) }}
+                  aria-hidden={Math.abs(offset) > 2}
+                  key={card.title}
+                >
+                  <img src={card.img} alt={card.title} loading="lazy" decoding="async" />
+                  <span>{String(index + 1).padStart(2, "0")}</span>
                 </article>
-              ))}
-            </div>
-          ))}
+              );
+            })}
+          </div>
+
+          <div className="project-story-content" aria-live="polite">
+            <span className="project-story-count">{String(activeProject + 1).padStart(2, "0")} / {String(movingCards.length).padStart(2, "0")}</span>
+            <p className="project-story-type">{movingCards[activeProject].type}</p>
+            <h2 key={`title-${activeProject}`}>{movingCards[activeProject].title}</h2>
+            <p className="project-story-description" key={`desc-${activeProject}`}>{movingCards[activeProject].desc}</p>
+            <a href="/case-studies">View case study <ArrowRight aria-hidden="true" /></a>
+          </div>
         </div>
       </div>
 

@@ -21,7 +21,79 @@
 }
 
 .hero-primary-button:hover {
-  background-color: #38c66e;
+  background-color: #22ce68;
+}
+
+/* Exact reference palette lock. Every primary branded surface uses only these
+   three sampled brand colours: #22ce68, #07102f and #030821. */
+.hero-section,
+.industry-accordion-section,
+.client-reviews-section,
+.site-footer {
+  background-color: #030821;
+  background-image: linear-gradient(120deg, #030821 0%, #07102f 70%, #030821 100%);
+}
+
+/* Projects showcase: requested light canvas with true-black cards. */
+.n2x-section {
+  color: #07102f;
+  background: #ffffff;
+}
+
+.n2x-title p {
+  color: #697386;
+}
+
+.n2x-section .card-inner,
+.n2x-section .orbit-card {
+  border-color: #000000;
+  background: #000000;
+  box-shadow: none;
+}
+
+.n2x-section .premium-card:hover .card-inner {
+  border-color: #22ce68;
+  box-shadow: 0 18px 42px rgba(3, 8, 33, 0.16);
+}
+
+.n2x-section .card-inner::before {
+  background: none;
+}
+
+.n2x-section .moving-carousel-controls button {
+  color: #ffffff;
+  border-color: #000000;
+  background: #000000;
+}
+
+.services-explorer-nav,
+.services-explorer-visual,
+.project-stack-card,
+.process-showcase-panel,
+.client-review-tile,
+.mobile-navigation {
+  background-color: #07102f;
+  background-image: none;
+}
+
+.hero-primary-button,
+.industry-copy a,
+.process-showcase-nav-item.is-active,
+.mobile-navigation-actions a:last-child,
+.services-explorer-active-indicator {
+  border-color: #22ce68;
+  background-color: #22ce68;
+  background-image: none;
+}
+
+.hero-kicker,
+.hero-proof dt,
+.hero-assurances svg,
+.n2x-title span,
+.industry-eyebrow,
+.industry-accordion-heading em,
+.client-review-floating-card blockquote strong {
+  color: #22ce68;
 }
 
 .client-logo-marquee {
@@ -32,14 +104,7 @@
 /* Main projects */
 .n2x-section {
   color: var(--ql-navy);
-  background:
-    linear-gradient(
-      90deg,
-      rgba(3, 7, 26, 0.96) 0%,
-      rgba(3, 7, 26, 0.87) 45%,
-      rgba(8, 54, 44, 0.72) 100%
-    ),
-    url("/assets/images/hero-bg.jpg") center / cover no-repeat;
+  background: #ffffff;
 }
 
 .n2x-title span {
@@ -47,21 +112,21 @@
 }
 
 .n2x-title p {
-  color: rgba(231, 235, 243, 0.7);
+  color: #697386;
 }
 
 .n2x-title {
-  color: var(--ql-white);
+  color: var(--ql-navy);
 }
 
 .card-inner {
-  border-color: rgba(44, 184, 96, 0.3);
-  background: var(--ql-navy-deep);
-  box-shadow: 0 0 34px rgba(24, 33, 60, 0.14);
+  border-color: #000000;
+  background: #000000;
+  box-shadow: none;
 }
 
 .card-inner::before {
-  background: linear-gradient(135deg, rgba(44, 184, 96, 0.6), rgba(186, 233, 210, 0.38), transparent);
+  background: none;
 }
 
 .premium-card:hover .card-inner {

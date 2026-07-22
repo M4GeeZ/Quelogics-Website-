@@ -93,6 +93,12 @@
     transform 0.25s ease;
 }
 
+/* Restrained enterprise navigation */
+.nav-list { gap: 2px; }
+.nav-link, .nav-home-link { min-height: 38px; border-color: transparent; border-radius: 3px; background: transparent; box-shadow: none; }
+.nav-link:hover, .nav-home-link:hover, .nav-link.is-current, .nav-home-link.is-current, .nav-item-active .nav-link { color: #fff; border-color: transparent; background: rgba(255,255,255,.08); box-shadow: none; }
+.contact-link { min-height: 38px; padding: 0 15px; border: 1px solid rgba(255,255,255,.42); border-radius: 3px; }
+
 .nav-link:hover,
 .nav-link:focus-visible {
   opacity: 1;

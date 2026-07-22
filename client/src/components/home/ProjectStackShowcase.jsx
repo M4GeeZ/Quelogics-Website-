@@ -89,16 +89,6 @@ const projects = [
   },
 ];
 
-const projectPairs = projects.reduce((pairs, project, index) => {
-  if (index % 2 === 0) {
-    pairs.push([project]);
-  } else {
-    pairs[pairs.length - 1].push(project);
-  }
-
-  return pairs;
-}, []);
-
 const ProjectCard = ({ project }) => (
   <article
     className="project-stack-card"
@@ -203,36 +193,54 @@ const ProjectStackShowcase = () => {
 
         gsap.set(pairs, {
           zIndex: (index) => index + 1,
-          transformOrigin: "center top",
-          force3D: false,
+          transformOrigin: "center center",
+          force3D: true,
         });
 
         gsap.set(pairs.slice(1), {
-          yPercent: 112,
-          scale: 0.98,
+          yPercent: 118,
+          scale: 0.94,
+          opacity: 1,
         });
 
         const timeline = gsap.timeline({
-          defaults: { ease: "none" },
+          defaults: { ease: "power2.inOut" },
           scrollTrigger: {
             trigger: stageRef.current,
             start: "top top",
             end: "bottom bottom",
-            scrub: 1.15,
+            scrub: 0.85,
+            fastScrollEnd: false,
             invalidateOnRefresh: true,
           },
         });
 
         pairs.slice(1).forEach((pair, index) => {
+          const previousPair = pairs[index];
+
+          timeline.to(
+            previousPair,
+            {
+              yPercent: -4,
+              scale: 0.955,
+              opacity: 0.46,
+              duration: 0.9,
+            },
+            index,
+          );
+
           timeline.to(
             pair,
             {
               yPercent: 0,
               scale: 1,
-              duration: 1,
+              opacity: 1,
+              duration: 0.9,
             },
             index,
           );
+
+          timeline.to({}, { duration: 0.16 });
         });
 
         return () => timeline.kill();
@@ -284,15 +292,13 @@ const ProjectStackShowcase = () => {
           <div className="project-stack-aurora aurora-two" aria-hidden="true"></div>
 
           <div className="project-stack-stage-inner project-stack-stage-inner--desktop">
-            {projectPairs.map((pair, pairIndex) => (
+            {projects.map((project, projectIndex) => (
               <div
-                className="project-stack-pair"
-                aria-label={`Project pair ${pairIndex + 1} of ${projectPairs.length}`}
-                key={pair.map((project) => project.number).join("-")}
+                className="project-stack-pair project-stack-pair--single"
+                aria-label={`Project ${projectIndex + 1} of ${projects.length}`}
+                key={`desktop-${project.number}`}
               >
-                {pair.map((project) => (
-                  <ProjectCard project={project} key={project.number} />
-                ))}
+                <ProjectCard project={project} />
               </div>
             ))}
           </div>

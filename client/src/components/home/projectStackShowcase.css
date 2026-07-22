@@ -116,6 +116,25 @@
   display: none;
 }
 
+.project-stack-stage-inner--desktop {
+  width: min(calc(100% - 96px), 1260px);
+  height: min(700px, calc(100vh - 100px));
+  min-height: 610px;
+}
+
+.project-stack-stage-inner--desktop .project-stack-pair {
+  grid-template-columns: minmax(0, 1fr);
+  gap: 0;
+}
+
+.project-stack-stage-inner--desktop .project-stack-card {
+  padding: clamp(28px, 2.4vw, 42px);
+}
+
+.project-stack-stage-inner--desktop .project-stack-card-media {
+  margin-top: 24px;
+}
+
 .project-stack-pair {
   position: absolute;
   inset: 0;
@@ -123,8 +142,9 @@
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 28px;
   backface-visibility: hidden;
-  contain: layout;
-  will-change: transform;
+  transform: translateZ(0);
+  contain: layout paint;
+  will-change: transform, opacity;
 }
 
 .project-stack-card {
@@ -651,7 +671,7 @@
 }
 
 .project-stack-stage {
-  height: calc(100vh + max(2400px, 285vh));
+  height: calc(100vh + max(7800px, 980vh));
   min-height: 0;
   display: block;
   overflow: visible;
@@ -670,6 +690,8 @@
   overflow: hidden;
   perspective: 1400px;
   background: #f7faf9;
+  transform: translateZ(0);
+  isolation: isolate;
 }
 
 .project-stack-sticky::before {

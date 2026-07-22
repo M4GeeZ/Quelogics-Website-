@@ -8,18 +8,19 @@
     "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   --font-display: "Space Grotesk", sans-serif;
   --font-ui: "Inter", sans-serif;
-  --ql-green: #2cb860;
-  --ql-green-dark: #2cb15e;
-  --ql-navy: #18213c;
-  --ql-navy-soft: #1b2538;
-  --ql-navy-deep: #11182c;
-  --ql-surface: #ebebed;
-  --ql-surface-alt: #e7e7e9;
-  --ql-white: #f7f7f8;
-  --ql-muted: #797f8e;
-  --ql-muted-light: #979aa7;
-  --ql-mint: #bae9d2;
-  --ql-border: #d5d7dc;
+  /* Locked QueLogics reference palette — do not approximate these values. */
+  --ql-green: #22ce68;
+  --ql-green-dark: #22ce68;
+  --ql-navy: #07102f;
+  --ql-navy-soft: #07102f;
+  --ql-navy-deep: #030821;
+  --ql-surface: #ffffff;
+  --ql-surface-alt: #ffffff;
+  --ql-white: #ffffff;
+  --ql-muted: #697386;
+  --ql-muted-light: #c2cadd;
+  --ql-mint: #22ce68;
+  --ql-border: #e4e7eb;
 }
 
 html,

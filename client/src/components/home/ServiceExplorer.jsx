@@ -207,6 +207,11 @@ const services = [
   },
 ];
 
+const mobileServiceLabels = [
+  "AI", "Agents", "RAG", "LLMs", "AI Auto", "Software", "SaaS", "Web",
+  "Commerce", "API / CRM", "Marketing", "Google Ads", "SEO", "CRO", "MarTech",
+];
+
 const ServiceCard = ({ service, depth, isEntering, isTop }) => {
   const ServiceIcon = service.icon;
 
@@ -421,7 +426,8 @@ const ServiceExplorer = () => {
                 key={service.title}
               >
                 <Icon aria-hidden="true" />
-                <span>{service.title}</span>
+                <span className="service-full-label">{service.title}</span>
+                <span className="service-short-label">{mobileServiceLabels[index]}</span>
               </button>
             );
           })}

@@ -12,6 +12,34 @@
   --ql-glass-blur: blur(22px) saturate(145%);
 }
 
+/* Final projects-section override: this intentionally sits at the end of the
+   theme cascade so glass styling cannot restore the dark page background. */
+.home-page .n2x-section {
+  background-color: #ffffff !important;
+  background-image: none !important;
+}
+
+.home-page .n2x-title {
+  color: #07102f !important;
+  border-color: #e4e7eb !important;
+  background-color: #ffffff !important;
+  background-image: none !important;
+  box-shadow: none !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+.home-page .n2x-title p {
+  color: #697386 !important;
+}
+
+.home-page .n2x-section .card-inner,
+.home-page .n2x-section .orbit-card {
+  border-color: #000000 !important;
+  background-color: #000000 !important;
+  background-image: none !important;
+}
+
 body {
   background:
     radial-gradient(circle at 12% 8%, rgba(44, 184, 96, 0.16), transparent 28%),
@@ -607,6 +635,75 @@ body {
   .project-stack-heading { padding: 76px 0 52px; }
 }
 
+/* Client-review CTAs use a clean enterprise list, not glass cards. */
+.client-reviews-section .client-reviews-actions {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.client-reviews-section .client-reviews-action-row {
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  gap: clamp(18px, 2vw, 34px);
+  margin: 0;
+  padding: 24px 0;
+  border: 0 !important;
+  border-top: 1px solid rgba(255, 255, 255, 0.12) !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+.client-reviews-section .client-reviews-action-row h3 {
+  color: #ffffff;
+  font-size: clamp(18px, 1.25vw, 21px);
+  line-height: 1.2;
+  letter-spacing: -0.025em;
+}
+
+.client-reviews-section .client-reviews-action-row p {
+  margin-top: 8px;
+  color: rgba(255, 255, 255, 0.62);
+  line-height: 1.55;
+}
+
+.client-reviews-section .client-reviews-action-row a {
+  min-width: 128px;
+  min-height: 46px;
+  margin: 0;
+  justify-content: center;
+  white-space: nowrap;
+  border-color: rgba(34, 206, 104, 0.62);
+  color: #22ce68;
+  background: rgba(34, 206, 104, 0.06);
+}
+
+@media (max-width: 650px) {
+  .client-reviews-section .client-reviews-actions {
+    margin-top: 34px;
+  }
+
+  .client-reviews-section .client-reviews-action-row {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 16px;
+    padding: 21px 0 23px;
+  }
+
+  .client-reviews-section .client-reviews-action-row p {
+    max-width: 36ch;
+    margin-top: 7px;
+    font-size: 13px;
+  }
+
+  .client-reviews-section .client-reviews-action-row a {
+    width: max-content;
+    min-width: 116px;
+    min-height: 42px;
+    padding-inline: 16px;
+  }
+}
+
 /* Full-site glassmorphism layer */
 .hero-content,
 .n2x-title,
@@ -673,6 +770,85 @@ body {
   box-shadow:
     0 25px 62px rgba(0, 7, 24, 0.18),
     inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+/* Industries is intentionally a solid, high-contrast brand section. Keep the
+   global glass system from washing out this accordion on desktop or mobile. */
+.industry-accordion-section {
+  background-color: #030821 !important;
+  background-image:
+    radial-gradient(circle at 50% -12%, rgba(34, 206, 104, 0.1), transparent 36%),
+    linear-gradient(180deg, #07102f 0%, #030821 100%) !important;
+}
+
+.industry-accordion-section .industry-accordion-heading {
+  padding: 0 !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+.industry-accordion-section .industry-accordion-heading h2 {
+  color: #ffffff !important;
+  text-shadow: none !important;
+}
+
+.industry-accordion-section .industry-accordion-heading h2 em,
+.industry-accordion-section .industry-eyebrow {
+  color: #22ce68 !important;
+}
+
+.industry-accordion-section .industry-accordion-heading p {
+  color: rgba(255, 255, 255, 0.7) !important;
+}
+
+.industry-accordion-section .industry-panels {
+  border-color: rgba(255, 255, 255, 0.1) !important;
+  background: #030821 !important;
+  box-shadow: none !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+.industry-accordion-section .industry-panel {
+  border-width: 0 1px 0 0 !important;
+  border-style: solid !important;
+  border-color: rgba(255, 255, 255, 0.1) !important;
+  border-radius: 0 !important;
+  background:
+    linear-gradient(180deg, rgba(7, 16, 47, 0.86), rgba(3, 8, 33, 0.98)),
+    var(--industry-surface) !important;
+  box-shadow: none !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+.industry-accordion-section .industry-panel.is-active {
+  background:
+    linear-gradient(180deg, rgba(3, 9, 33, 0.06) 0%, rgba(3, 8, 33, 0.25) 42%, #030821 100%),
+    var(--industry-surface) !important;
+}
+
+.industry-accordion-section .industry-panel:last-child {
+  border-right: 0 !important;
+}
+
+.industry-accordion-section .industry-pill {
+  background: #07102f !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+.industry-accordion-section .industry-copy h3,
+.industry-accordion-section .industry-vertical-title {
+  color: #ffffff !important;
+}
+
+.industry-accordion-section .industry-copy p {
+  color: rgba(255, 255, 255, 0.74) !important;
 }
 
 .project-stack-heading {

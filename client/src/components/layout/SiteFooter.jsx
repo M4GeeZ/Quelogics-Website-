@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { ChevronDown } from "lucide-react";
+import { ArrowUpRight, ChevronDown } from "lucide-react";
 import "./siteFooter.css";
 
 const footerColumns = [
@@ -107,9 +107,25 @@ const SiteFooter = () => {
     });
   };
 
+  const moveGlow = (event) => {
+    const bounds = event.currentTarget.getBoundingClientRect();
+    event.currentTarget.style.setProperty("--glow-x", `${event.clientX - bounds.left}px`);
+    event.currentTarget.style.setProperty("--glow-y", `${event.clientY - bounds.top}px`);
+  };
+
   return (
     <footer className="site-footer">
       <div className="site-footer-main">
+        <div className="site-footer-lead">
+          <div>
+            <span>Start a conversation</span>
+            <h2>Build the system your next stage needs.</h2>
+          </div>
+          <Link to="/contact">
+            Discuss your project
+            <ArrowUpRight aria-hidden="true" />
+          </Link>
+        </div>
         <div className="site-footer-columns">
           {footerColumns.map((column) => {
             const isOpen = openColumns.has(column.title);
@@ -118,7 +134,7 @@ const SiteFooter = () => {
               .replace(/[^a-z0-9]+/g, "-")}`;
 
             return (
-            <nav className={`site-footer-column${isOpen ? " is-open" : ""}`} aria-label={column.title} key={column.title}>
+            <nav className={`site-footer-column${isOpen ? " is-open" : ""}`} aria-label={column.title} onPointerMove={moveGlow} key={column.title}>
               <button
                 className="site-footer-column-toggle"
                 type="button"
