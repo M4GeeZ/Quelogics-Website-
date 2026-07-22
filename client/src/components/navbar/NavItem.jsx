@@ -14,7 +14,7 @@ const NavItem = ({
 
   return (
     <li
-      className={`nav-item ${
+      className={`nav-item${item.title === "About" ? " nav-about-item" : ""} ${
         isActive ? "nav-item-active" : ""
       }`}
       onMouseEnter={handleMouseEnter}
@@ -22,7 +22,7 @@ const NavItem = ({
       <NavLink
         to={item.path}
         className={({ isActive: isRouteActive }) =>
-          `nav-link${isRouteActive ? " is-current" : ""}`
+          `nav-link${item.title === "About" ? " nav-about-link" : ""}${isRouteActive ? " is-current" : ""}`
         }
         onFocus={handleMouseEnter}
       >

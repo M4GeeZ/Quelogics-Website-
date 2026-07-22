@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useLocation } from "react-router-dom";
 import {
   Search,
   Globe,
@@ -21,7 +21,12 @@ const Navbar = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [mobileSubmenu, setMobileSubmenu] = useState(null);
   const [languageOpen, setLanguageOpen] = useState(false);
+  const [scrolledPastHero, setScrolledPastHero] = useState(false);
   const languageRef = useRef(null);
+  const { pathname } = useLocation();
+  const isHomePage = pathname === "/";
+  const closeTimerRef = useRef(null);
+  const clearMenuTimerRef = useRef(null);
   const { currentMarket, setLocale, t } = useLanguage();
 
   useEffect(() => {
@@ -39,21 +44,58 @@ const Navbar = () => {
     };
   }, []);
 
+  useEffect(() => () => {
+    window.clearTimeout(closeTimerRef.current);
+    window.clearTimeout(clearMenuTimerRef.current);
+  }, []);
+
+  useEffect(() => {
+    const updateNavbarTheme = () => {
+      const hero = document.querySelector(".hero-section");
+      setScrolledPastHero(hero
+        ? hero.getBoundingClientRect().bottom <= 82
+        : window.scrollY > 24);
+    };
+
+    updateNavbarTheme();
+    window.addEventListener("scroll", updateNavbarTheme, { passive: true });
+    window.addEventListener("resize", updateNavbarTheme);
+    return () => {
+      window.removeEventListener("scroll", updateNavbarTheme);
+      window.removeEventListener("resize", updateNavbarTheme);
+    };
+  }, []);
+
   const activeMenuData = navigationLinks.find(
     (item) => item.title === activeMenu,
   );
 
   const openMenu = (menuTitle) => {
+    window.clearTimeout(closeTimerRef.current);
+    window.clearTimeout(clearMenuTimerRef.current);
     setActiveMenu(menuTitle);
     setMenuVisible(true);
   };
 
   const closeMenu = () => {
+    window.clearTimeout(closeTimerRef.current);
+    window.clearTimeout(clearMenuTimerRef.current);
     setMenuVisible(false);
 
-    setTimeout(() => {
+    clearMenuTimerRef.current = window.setTimeout(() => {
       setActiveMenu(null);
     }, 450);
+  };
+
+  const scheduleCloseMenu = () => {
+    window.clearTimeout(closeTimerRef.current);
+    closeTimerRef.current = window.setTimeout(closeMenu, 180);
+  };
+
+  const keepMenuOpen = () => {
+    window.clearTimeout(closeTimerRef.current);
+    window.clearTimeout(clearMenuTimerRef.current);
+    if (activeMenu) setMenuVisible(true);
   };
 
   const closeMobileMenu = () => {
@@ -63,12 +105,14 @@ const Navbar = () => {
 
   return (
     <header
-      className="navbar"
-      onMouseLeave={closeMenu}
+      className={`navbar${scrolledPastHero ? " is-scrolled" : ""}${isHomePage ? "" : " navbar--dark-page"}`}
+      onMouseEnter={keepMenuOpen}
+      onMouseLeave={scheduleCloseMenu}
     >
       <div className="navbar-container">
-        <Link to="/" className="navbar-logo">
-          QUELOGICS
+        <Link to="/" className="navbar-logo" aria-label="QueLogics home">
+          <span className="navbar-logo-mark"><i /></span>
+          <span>Que<span>Logics</span></span>
         </Link>
 
         <nav className="desktop-navigation">
@@ -103,7 +147,7 @@ const Navbar = () => {
           </Link>
 
           <Link to="/contact" className="contact-link">
-            Contact
+            <span>Contact</span>
             <ArrowUpRight size={16} />
           </Link>
 
@@ -207,15 +251,15 @@ const Navbar = () => {
         {navigationLinks.map((item) => {
           if (!item.hasDropdown) {
             return (
-              <Link
-                className="mobile-navigation-link"
+              <NavLink
+                className={({ isActive }) => `mobile-navigation-link${item.title === "About" ? " mobile-about-link" : ""}${isActive ? " is-current" : ""}`}
                 to={item.path}
                 onClick={closeMobileMenu}
                 key={item.id}
               >
                 <span>{item.title}</span>
                 <ArrowUpRight aria-hidden="true" />
-              </Link>
+              </NavLink>
             );
           }
 
@@ -266,7 +310,10 @@ const Navbar = () => {
         })}
         <div className="mobile-navigation-actions">
           <Link to="/careers" onClick={closeMobileMenu}>Careers</Link>
-          <Link to="/contact" onClick={closeMobileMenu}>Contact us</Link>
+          <Link className="mobile-contact-link" to="/contact" onClick={closeMobileMenu}>
+            <span>Contact us</span>
+            <ArrowUpRight aria-hidden="true" />
+          </Link>
         </div>
       </nav>
 
@@ -275,7 +322,8 @@ const Navbar = () => {
           className={`mega-menu ${
             menuVisible ? "mega-menu-open" : "mega-menu-close"
           }`}
-          onMouseEnter={() => setMenuVisible(true)}
+          onMouseEnter={keepMenuOpen}
+          onMouseLeave={scheduleCloseMenu}
         >
           <div className="mega-menu-inner">
             <div className="mega-menu-content" key={activeMenuData.id}>

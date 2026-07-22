@@ -1,4 +1,4 @@
-import { ArrowRight, Check, Play } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import ProjectsShowcase from "../components/home/ProjectsShowcase";
 import ServiceExplorer from "../components/home/ServiceExplorer";
 import IndustryAccordion from "../components/home/IndustryAccordion";
@@ -20,40 +20,37 @@ const Home = () => {
       <section className="hero-section">
         <div className="hero-content">
           <div className="hero-copy">
-            <p className="hero-kicker">Digital engineering partner</p>
-            <h1 className="hero-heading">Software built for the way your business works.</h1>
+            <h1 className="hero-heading">
+              We engineer the <span>systems</span> behind growth.
+            </h1>
             <p className="hero-description">
-              QueLogics designs and engineers dependable digital products,
-              automation and platforms for organisations ready to modernise
-              critical operations.
+              Strategy, software and intelligent automation built around how
+              your business actually works.
             </p>
             <div className="hero-actions">
               <a href="/contact" className="hero-primary-button">
-                Discuss your project <ArrowRight size={18} />
-              </a>
-              <a href="/case-studies" className="hero-secondary-button">
-                <Play size={16} /> View selected work
+                Build what&apos;s next <ArrowRight size={18} />
               </a>
             </div>
-            <ul className="hero-assurances" aria-label="Engagement benefits">
-              <li><Check aria-hidden="true" /> Senior delivery team</li>
-              <li><Check aria-hidden="true" /> Clear scope and reporting</li>
-              <li><Check aria-hidden="true" /> Built for long-term scale</li>
-            </ul>
           </div>
 
-          <aside className="hero-proof" aria-label="QueLogics at a glance">
-            <div className="hero-proof-heading">
-              <span>Delivery, not theatre</span>
-              <p>From first workshop to production and beyond.</p>
+          <div className="hero-visual" aria-hidden="true">
+            <div className="hero-orbit hero-orbit-one" />
+            <div className="hero-orbit hero-orbit-two" />
+            <div className="hero-orbit hero-orbit-three" />
+            <div className="hero-signal-core">
+              <span className="hero-signal-mark"><i /></span>
+              <small>QUELOGICS</small>
             </div>
-            <dl>
-              <div><dt>35+</dt><dd>client partnerships</dd></div>
-              <div><dt>2019</dt><dd>founded in Lahore</dd></div>
-              <div><dt>4</dt><dd>core capability areas</dd></div>
-            </dl>
-            <a href="/about">How we work <ArrowRight size={16} /></a>
-          </aside>
+            <span className="hero-visual-label hero-visual-label-one">Products</span>
+            <span className="hero-visual-label hero-visual-label-two">Intelligence</span>
+            <span className="hero-visual-label hero-visual-label-three">Operations</span>
+          </div>
+
+          <div className="hero-footnote">
+            <span>Independent technology partner</span>
+            <a href="/case-studies">Explore our work <ArrowRight aria-hidden="true" /></a>
+          </div>
         </div>
       </section>
 
