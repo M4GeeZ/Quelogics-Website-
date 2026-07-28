@@ -269,72 +269,158 @@ const Solutions = () => {
       const media = gsap.matchMedia();
 
       media.add("(min-width: 981px)", () => {
-        const panels = gsap.utils.toArray(".solutions-outcome-panel");
+        const stage = outcomeStageRef.current;
+        const panels = gsap.utils.toArray(
+          ".solutions-outcome-panel",
+          stage,
+        );
+        const railMarkers = gsap.utils.toArray(
+          ".solutions-outcome-rail i",
+          stage,
+        );
 
-        if (!outcomeStageRef.current || panels.length < 2) return undefined;
+        if (!stage || panels.length !== 4) return undefined;
+
+        const cardTravel = () => stage.getBoundingClientRect().height + 140;
+        const transitionDuration = 1.12;
+        const readingPause = 0.72;
+
+        const inactiveMarker = {
+          color: "rgba(255, 255, 255, 0.45)",
+          borderColor: "rgba(255, 255, 255, 0.13)",
+          backgroundColor: "transparent",
+          boxShadow: "none",
+        };
+        const activeMarker = {
+          color: "#030821",
+          borderColor: "#22ce68",
+          backgroundColor: "#22ce68",
+          boxShadow: "0 0 0 5px rgba(34, 206, 104, 0.12)",
+        };
 
         gsap.set(panels, {
-          transformPerspective: 1400,
-          transformOrigin: "50% 50%",
+          autoAlpha: 0,
+          y: cardTravel(),
+          z: 120,
+          scale: 0.94,
+          rotateX: -5,
+          force3D: true,
+          transformPerspective: 1600,
+          transformOrigin: "50% 12%",
+          transformStyle: "preserve-3d",
         });
-        gsap.set(panels[0], { xPercent: 0, autoAlpha: 1, scale: 1, rotateY: 0 });
-        gsap.set(panels.slice(1), {
-          xPercent: 112,
+
+        panels.forEach((panel, index) => {
+          gsap.set(panel, { zIndex: index + 1 });
+        });
+
+        gsap.set(panels[0], {
           autoAlpha: 1,
-          scale: 0.96,
-          rotateY: -8,
+          y: 0,
+          z: 0,
+          scale: 1,
+          rotateX: 0,
         });
+
+        gsap.set(railMarkers, inactiveMarker);
+        if (railMarkers[0]) gsap.set(railMarkers[0], activeMarker);
 
         const stackTimeline = gsap.timeline({
           scrollTrigger: {
-            trigger: outcomeStageRef.current,
+            trigger: stage,
             start: "top 82px",
-            end: () => `+=${window.innerHeight * (panels.length * 1.05)}`,
+            end: () =>
+              `+=${Math.max(
+                window.innerHeight * 4.15,
+                (panels.length - 1) * 1040 + 900,
+              )}`,
             pin: true,
-            scrub: 0.85,
+            pinSpacing: true,
+            scrub: 0.9,
             anticipatePin: 1,
             invalidateOnRefresh: true,
           },
         });
 
-        stackTimeline.to({}, { duration: 0.45 });
+        // Let the first card remain readable before the next card enters.
+        stackTimeline.to({}, { duration: readingPause });
 
-        panels.slice(1).forEach((panel, index) => {
-          const previous = panels[index];
-          const position = `panel-${index + 1}`;
+        panels.slice(1).forEach((panel, sliceIndex) => {
+          const incomingIndex = sliceIndex + 1;
+          const transitionStart = stackTimeline.duration();
 
-          stackTimeline
-            .addLabel(position)
-            .to(
-              previous,
+          // Push every visible card slightly backwards while keeping the stack
+          // on screen. The newest card always remains above the older cards.
+          panels
+            .slice(0, incomingIndex)
+            .forEach((previousPanel, previousIndex) => {
+              const depth = incomingIndex - previousIndex;
+
+              stackTimeline.to(
+                previousPanel,
+                {
+                  y: -18 - (depth - 1) * 10,
+                  z: -92 * depth,
+                  scale: 1 - 0.026 * depth,
+                  rotateX: 1.3 * depth,
+                  autoAlpha: Math.max(0.56, 1 - 0.14 * depth),
+                  duration: transitionDuration,
+                  ease: "power2.inOut",
+                  force3D: true,
+                },
+                transitionStart,
+              );
+            });
+
+          // Each of the remaining three cards uses the same bottom-to-centre
+          // entrance. Pixel-based travel avoids the disappearing-card issue
+          // caused by percentage transforms inside the pinned stage.
+          stackTimeline.fromTo(
+            panel,
+            {
+              y: cardTravel,
+              z: 120,
+              scale: 0.94,
+              rotateX: -5,
+              autoAlpha: 0,
+            },
+            {
+              y: 0,
+              z: 0,
+              scale: 1,
+              rotateX: 0,
+              autoAlpha: 1,
+              duration: transitionDuration,
+              ease: "power3.out",
+              force3D: true,
+              immediateRender: false,
+            },
+            transitionStart,
+          );
+
+          if (railMarkers[incomingIndex]) {
+            stackTimeline.to(
+              railMarkers[incomingIndex],
               {
-                xPercent: -12,
-                yPercent: -2,
-                scale: 0.91,
-                rotateY: 6,
-                autoAlpha: 0.42,
-                duration: 0.68,
-                ease: "power2.inOut",
+                ...activeMarker,
+                duration: 0.24,
+                ease: "power2.out",
               },
-              position,
-            )
-            .to(
-              panel,
-              {
-                xPercent: 0,
-                yPercent: 0,
-                scale: 1,
-                rotateY: 0,
-                autoAlpha: 1,
-                duration: 0.78,
-                ease: "power3.out",
-              },
-              position,
-            )
-            .to({}, { duration: 0.5 });
+              transitionStart + transitionDuration * 0.68,
+            );
+          }
+
+          // Give every arrived card a clear pause before the next one starts.
+          stackTimeline.to({}, { duration: readingPause });
         });
 
-        return () => stackTimeline.kill();
+        // Keep the fourth card on screen briefly before releasing the section.
+        stackTimeline.to({}, { duration: 0.82 });
+
+        return () => {
+          stackTimeline.scrollTrigger?.kill();
+          stackTimeline.kill();
+        };
       });
 
       if (processRef.current) {

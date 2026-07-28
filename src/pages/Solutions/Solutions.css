@@ -673,8 +673,8 @@
 }
 
 .solutions-outcome-panel:not(:first-child) {
-  opacity: 0;
-  transform: translateX(110%) scale(0.96) rotateY(-8deg);
+  opacity: 1;
+  transform: translate3d(0, 116%, 70px) scale(0.985) rotateX(-3.5deg);
 }
 
 .solutions-outcome-panel::before {
