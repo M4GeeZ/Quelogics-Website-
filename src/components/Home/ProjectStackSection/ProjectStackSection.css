@@ -1,0 +1,952 @@
+.project-stack-section {
+  --project-green: #22ce68;
+
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  color: #ffffff;
+  background: #020615;
+}
+
+.project-stack-heading {
+  position: relative;
+  z-index: 4;
+  width: min(100% - 64px, 1600px);
+  margin: 0 auto;
+  padding: 125px 0 95px;
+}
+
+.project-stack-heading > span {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 23px;
+  color: rgba(223, 229, 241, 0.7);
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.project-stack-heading > span i {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--project-green);
+  box-shadow: 0 0 16px rgba(34, 206, 104, 0.85);
+}
+
+.project-stack-heading h2 {
+  max-width: 1200px;
+  margin: 0;
+  font-size: clamp(54px, 6.5vw, 108px);
+  font-weight: 700;
+  line-height: 0.94;
+  letter-spacing: -0.065em;
+}
+
+.project-stack-heading h2 em {
+  color: var(--project-green);
+  font-style: normal;
+}
+
+.project-stack-heading > p {
+  max-width: 800px;
+  margin: 30px 0 0;
+  color: rgba(211, 218, 233, 0.65);
+  font-size: clamp(16px, 1.2vw, 20px);
+  line-height: 1.65;
+}
+
+.project-stack-stage {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  min-height: 610px;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  perspective: 1400px;
+  /* Keep the space around the cards clean; the cards provide the visual focus. */
+  background: #ffffff;
+}
+
+.project-stack-stage::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background: none;
+}
+
+.project-stack-aurora {
+  position: absolute;
+  z-index: 0;
+  width: 42vw;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  filter: blur(125px);
+  opacity: 0.17;
+  pointer-events: none;
+  display: none;
+}
+
+.project-stack-aurora.aurora-one {
+  top: -18%;
+  left: -6%;
+  background: #22ce68;
+}
+
+.project-stack-aurora.aurora-two {
+  right: -10%;
+  bottom: -24%;
+  background: #466dff;
+}
+
+.project-stack-stage-inner {
+  position: relative;
+  z-index: 2;
+  width: min(calc(100% - 80px), 1600px);
+  height: min(680px, calc(100vh - 110px));
+  min-height: 610px;
+}
+
+.project-stack-stage-inner--mobile {
+  display: none;
+}
+
+.project-stack-stage-inner--desktop {
+  width: min(calc(100% - 120px), 1180px);
+  height: clamp(360px, 74svh, 580px);
+  min-height: 0;
+  max-height: calc(100svh - 40px);
+}
+
+.project-stack-stage-inner--desktop .project-stack-pair {
+  grid-template-columns: minmax(0, 1fr);
+  gap: 0;
+}
+
+.project-stack-stage-inner--desktop .project-stack-card {
+  padding: clamp(20px, 1.8vw, 30px);
+}
+
+.project-stack-stage-inner--desktop .project-stack-card-media {
+  margin-top: 16px;
+}
+
+.project-stack-stage-inner--desktop .project-stack-card-description {
+  min-height: 42px;
+  margin-top: 16px;
+}
+
+.project-stack-pair {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 28px;
+  backface-visibility: hidden;
+  transform: translateZ(0);
+  contain: layout paint;
+  will-change: transform, opacity;
+}
+
+.project-stack-card {
+  --project-accent: #22ce68;
+  --project-card-navy: #030923;
+
+  position: relative;
+  height: 100%;
+  min-width: 0;
+  padding: clamp(18px, 1.5vw, 27px);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 38px;
+  background:
+    linear-gradient(145deg, rgba(255, 255, 255, 0.045), transparent 48%, rgba(255, 255, 255, 0.018)),
+    var(--project-card-navy);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.07),
+    inset 0 -1px 0 rgba(255, 255, 255, 0.018),
+    0 22px 55px rgba(1, 4, 18, 0.18);
+  backface-visibility: hidden;
+  contain: paint;
+  isolation: isolate;
+}
+
+.project-stack-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border-radius: inherit;
+  pointer-events: none;
+  background:
+    linear-gradient(125deg, rgba(255, 255, 255, 0.055), transparent 20%, transparent 72%, rgba(255, 255, 255, 0.018)),
+    radial-gradient(circle at 10% 0%, color-mix(in srgb, var(--project-accent) 11%, transparent), transparent 34%);
+}
+
+.project-stack-card-glow {
+  position: absolute;
+  top: -75px;
+  left: -85px;
+  width: 240px;
+  height: 240px;
+  z-index: -1;
+  border-radius: 50%;
+  opacity: 0.1;
+  background: var(--project-accent);
+  filter: blur(72px);
+}
+
+.project-stack-card-header {
+  min-height: 60px;
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: start;
+  gap: 16px;
+}
+
+.project-stack-card-number {
+  color: rgba(255, 255, 255, 0.9);
+  font-family: var(--font-display);
+  font-size: clamp(42px, 3.8vw, 68px);
+  font-weight: 400;
+  line-height: 0.9;
+  letter-spacing: -0.055em;
+}
+
+.project-stack-card-title h3 {
+  margin: 2px 0 7px;
+  overflow: hidden;
+  color: #ffffff;
+  font-size: clamp(19px, 1.55vw, 27px);
+  font-weight: 800;
+  line-height: 1.08;
+  letter-spacing: -0.035em;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.project-stack-card-title p {
+  margin: 0;
+  overflow: hidden;
+  color: rgba(220, 225, 236, 0.54);
+  font-size: 12px;
+  line-height: 1.4;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.project-stack-card-header a {
+  min-height: 43px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 0 17px;
+  border: 1px solid rgba(255, 255, 255, 0.17);
+  border-radius: 999px;
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.035);
+  font-size: 12px;
+  font-weight: 800;
+  text-decoration: none;
+  transition:
+    color 0.28s ease,
+    border-color 0.28s ease,
+    background-color 0.28s ease,
+    transform 0.28s ease;
+}
+
+.project-stack-card-header a svg {
+  width: 15px;
+  height: 15px;
+}
+
+.project-stack-card-header a:hover {
+  border-color: var(--project-accent);
+  color: #04190e;
+  background: var(--project-accent);
+  transform: translateY(-3px);
+}
+
+.project-stack-card-media {
+  position: relative;
+  width: 100%;
+  min-height: 0;
+  flex: 1 1 auto;
+  margin-top: 18px;
+  overflow: hidden;
+  border: 1px solid color-mix(in srgb, var(--project-accent) 26%, rgba(255, 255, 255, 0.08));
+  border-radius: 20px;
+  background: #080c17;
+}
+
+.project-stack-card-media::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(to top, rgba(3, 6, 16, 0.62), transparent 38%),
+    linear-gradient(125deg, rgba(255, 255, 255, 0.08), transparent 24%);
+}
+
+.project-stack-card-media img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  object-position: top center;
+  filter: saturate(0.9) brightness(0.88);
+  transform: scale(1.015);
+  backface-visibility: hidden;
+  transition:
+    transform 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+    filter 0.7s ease;
+}
+
+.project-stack-card:hover .project-stack-card-media img {
+  filter: saturate(1.08) brightness(1);
+  transform: scale(1.055);
+}
+
+.project-stack-card-media span {
+  position: absolute;
+  right: 18px;
+  bottom: 15px;
+  z-index: 2;
+  color: rgba(255, 255, 255, 0.62);
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+}
+
+.project-stack-card-description {
+  min-height: 53px;
+  margin: 23px 0 0;
+  color: rgba(222, 227, 237, 0.7);
+  font-size: clamp(13px, 0.95vw, 16px);
+  line-height: 1.6;
+}
+
+@media (max-width: 1180px) {
+  .project-stack-stage-inner {
+    width: min(calc(100% - 48px), 1040px);
+    height: clamp(340px, 72svh, 530px);
+    min-height: 0;
+    max-height: calc(100svh - 32px);
+  }
+
+  .project-stack-pair {
+    gap: 20px;
+  }
+
+  .project-stack-card {
+    padding: 24px;
+    border-radius: 30px;
+  }
+
+  .project-stack-card-header {
+    grid-template-columns: auto minmax(0, 1fr);
+  }
+
+  .project-stack-card-header a {
+    display: none;
+  }
+}
+
+@media (max-width: 900px) {
+  .project-stack-heading {
+    width: calc(100% - 36px);
+    padding: 90px 0 62px;
+  }
+
+  .project-stack-heading h2 {
+    font-size: clamp(48px, 12vw, 72px);
+  }
+
+  .project-stack-stage {
+    height: 100svh;
+    min-height: 620px;
+    display: grid;
+    align-items: start;
+    justify-items: center;
+    padding: 38px 18px 0;
+    overflow: hidden;
+  }
+
+  .project-stack-stage-inner {
+    width: min(calc(100% - 24px), 590px);
+    height: clamp(300px, 68svh, 470px);
+    min-height: 0;
+    max-height: calc(100svh - 32px);
+  }
+
+  .project-stack-stage-inner--desktop {
+    display: none;
+  }
+
+  .project-stack-stage-inner--mobile {
+    display: block;
+    width: min(calc(100% - 24px), 560px);
+  }
+
+  .project-stack-aurora {
+    display: none;
+  }
+
+  .project-stack-pair {
+    position: absolute;
+    inset: 0;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+    margin: 0;
+    z-index: 1;
+    contain: none;
+    will-change: transform, opacity;
+  }
+
+  .project-stack-pair--single {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0;
+  }
+
+  .project-stack-pair--single .project-stack-card {
+    padding: clamp(20px, 4vw, 30px);
+    border-radius: 32px;
+  }
+
+  .project-stack-pair--single .project-stack-card-header {
+    min-height: 72px;
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    gap: 16px;
+  }
+
+  .project-stack-pair--single .project-stack-card-header a {
+    display: inline-flex;
+  }
+
+  .project-stack-pair--single .project-stack-card-number {
+    font-size: clamp(40px, 10vw, 58px);
+  }
+
+  .project-stack-pair--single .project-stack-card-title h3 {
+    font-size: clamp(18px, 4.5vw, 24px);
+  }
+
+  .project-stack-pair--single .project-stack-card-title p {
+    font-size: 11px;
+  }
+
+  .project-stack-pair--single .project-stack-card-media {
+    margin-top: 18px;
+    border-radius: 22px;
+  }
+
+  .project-stack-pair--single .project-stack-card-description {
+    min-height: 46px;
+    display: block;
+    margin-top: 18px;
+    font-size: 13px;
+  }
+
+  .project-stack-pair:nth-child(2) { z-index: 2; }
+  .project-stack-pair:nth-child(3) { z-index: 3; }
+  .project-stack-pair:nth-child(4) { z-index: 4; }
+
+  .project-stack-card {
+    height: 100%;
+    padding: clamp(13px, 2.4vw, 20px);
+    border-radius: 24px;
+  }
+
+  .project-stack-card-header {
+    min-height: 58px;
+    grid-template-columns: auto minmax(0, 1fr);
+    gap: 12px;
+  }
+
+  .project-stack-card-header a {
+    display: none;
+  }
+
+  .project-stack-card-number {
+    font-size: clamp(32px, 6vw, 48px);
+  }
+
+  .project-stack-card-title h3 {
+    font-size: clamp(15px, 2.6vw, 21px);
+  }
+
+  .project-stack-card-title p {
+    font-size: 10px;
+  }
+
+  .project-stack-card-media {
+    margin-top: 14px;
+    border-radius: 17px;
+  }
+
+  .project-stack-card-description {
+    min-height: 42px;
+    margin-top: 14px;
+    font-size: 12px;
+    line-height: 1.45;
+  }
+
+}
+
+@media (max-width: 600px) {
+  .project-stack-heading {
+    width: calc(100% - 28px);
+    padding: 76px 0 52px;
+  }
+
+  .project-stack-heading h2 {
+    font-size: 48px;
+  }
+
+  .project-stack-stage {
+    min-height: 540px;
+    padding-inline: 10px;
+  }
+
+  .project-stack-stage-inner {
+    width: min(calc(100% - 12px), 500px);
+    height: clamp(280px, 66svh, 420px);
+    min-height: 0;
+    max-height: calc(100svh - 24px);
+  }
+
+  .project-stack-pair {
+    gap: 8px;
+  }
+
+  .project-stack-card {
+    padding: 10px;
+    border-radius: 18px;
+  }
+
+  .project-stack-card-header {
+    min-height: 44px;
+    gap: 7px;
+  }
+
+  .project-stack-card-number {
+    font-size: clamp(25px, 8vw, 34px);
+  }
+
+  .project-stack-card-title h3 {
+    overflow: visible;
+    font-size: clamp(12px, 3.5vw, 16px);
+    line-height: 1.05;
+    text-overflow: clip;
+    white-space: normal;
+  }
+
+  .project-stack-card-title p,
+  .project-stack-card-description {
+    display: none;
+  }
+
+  .project-stack-card-media {
+    margin-top: 10px;
+    border-radius: 12px;
+  }
+
+  .project-stack-card-media span {
+    right: 8px;
+    bottom: 8px;
+    left: 8px;
+    overflow: hidden;
+    font-size: 7px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+}
+
+@media (max-width: 480px) {
+  .project-stack-stage {
+    padding-inline: 8px;
+  }
+
+  .project-stack-card-header {
+    gap: 6px;
+  }
+
+  .project-stack-card-number {
+    font-size: 27px;
+  }
+
+  .project-stack-card-title h3 {
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 360px) {
+  .project-stack-heading h2 {
+    font-size: 41px;
+  }
+
+  .project-stack-card-number {
+    font-size: 24px;
+  }
+
+  .project-stack-card-title h3 {
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 900px) and (max-height: 650px) {
+  .project-stack-stage {
+    min-height: 500px;
+  }
+
+  .project-stack-stage-inner {
+    height: calc(100svh - 82px);
+    min-height: 400px;
+  }
+}
+
+@media (max-width: 900px) and (prefers-reduced-motion: reduce) {
+  .project-stack-stage {
+    height: auto;
+    min-height: 0;
+    padding-block: 24px 72px;
+    overflow: visible;
+  }
+
+  .project-stack-stage-inner {
+    height: auto;
+    min-height: 0;
+  }
+
+  .project-stack-pair {
+    position: relative;
+    inset: auto;
+    min-height: 500px;
+    margin-bottom: 12px;
+  }
+}
+
+@media (max-height: 700px) and (min-width: 901px) {
+  .project-stack-stage {
+    min-height: 560px;
+  }
+
+  .project-stack-stage-inner {
+    height: calc(100vh - 40px);
+    min-height: 520px;
+  }
+
+  .project-stack-card {
+    padding: 20px;
+    border-radius: 28px;
+  }
+
+  .project-stack-card-header {
+    min-height: 62px;
+  }
+
+  .project-stack-card-media {
+    margin-top: 16px;
+  }
+
+  .project-stack-card-description {
+    min-height: 44px;
+    margin-top: 16px;
+    font-size: 13px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .project-stack-card-media img,
+  .project-stack-card-header a {
+    transition: none;
+  }
+}
+
+/*
+  Native sticky scroll track.
+  The viewport panel is held by CSS instead of ScrollTrigger pinning, removing
+  the fixed-position jump at both the start and end of the card sequence.
+*/
+.project-stack-section {
+  overflow: clip;
+}
+
+.project-stack-stage {
+  height: calc(100vh + max(7800px, 980vh));
+  min-height: 0;
+  display: block;
+  overflow: visible;
+  perspective: none;
+  background: transparent;
+}
+
+.project-stack-sticky {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  height: 100svh;
+  min-height: 0;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  perspective: 1400px;
+  background: #f7faf9;
+  transform: translateZ(0);
+  isolation: isolate;
+}
+
+.project-stack-sticky::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background: none;
+}
+
+@media (max-width: 900px) {
+  .project-stack-stage {
+    height: calc(100svh + max(3080px, 476svh));
+    min-height: 0;
+    display: block;
+    padding: 0;
+    overflow: visible;
+  }
+
+  .project-stack-sticky {
+    height: 100svh;
+    min-height: 0;
+    display: grid;
+    place-items: center;
+    padding: 24px 12px;
+  }
+}
+
+@media (max-width: 600px) {
+  .project-stack-sticky {
+    min-height: 0;
+    padding: 18px 6px;
+  }
+
+  .project-stack-pair--single .project-stack-card {
+    padding: 18px;
+    border-radius: 26px;
+  }
+
+  .project-stack-pair--single .project-stack-card-header {
+    min-height: 62px;
+    grid-template-columns: auto minmax(0, 1fr);
+    gap: 12px;
+  }
+
+  .project-stack-pair--single .project-stack-card-header a {
+    display: none;
+  }
+
+  .project-stack-pair--single .project-stack-card-title p {
+    display: block;
+  }
+
+  .project-stack-pair--single .project-stack-card-description {
+    display: block;
+    min-height: 42px;
+  }
+}
+
+@media (max-width: 420px) {
+  .project-stack-pair--single .project-stack-card-description {
+    display: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .project-stack-sticky {
+    padding-inline: 4px;
+  }
+}
+
+@media (max-height: 700px) and (min-width: 901px) {
+  .project-stack-sticky {
+    min-height: 0;
+  }
+
+  .project-stack-stage-inner--desktop {
+    width: min(calc(100% - 140px), 980px);
+    height: clamp(280px, 66svh, 420px);
+    max-height: calc(100svh - 30px);
+  }
+}
+
+@media (max-width: 900px) and (max-height: 650px) {
+  .project-stack-sticky {
+    min-height: 0;
+  }
+
+  .project-stack-stage-inner--mobile {
+    height: clamp(260px, 66svh, 390px);
+    max-height: calc(100svh - 22px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .project-stack-stage {
+    height: auto;
+    min-height: 0;
+  }
+
+  .project-stack-sticky {
+    position: relative;
+    height: auto;
+    min-height: 0;
+    padding-block: 24px 72px;
+    overflow: visible;
+  }
+
+  .project-stack-stage-inner {
+    height: auto;
+    min-height: 0;
+  }
+
+  .project-stack-pair {
+    position: relative;
+    inset: auto;
+    min-height: 560px;
+    margin-bottom: 18px;
+  }
+
+}
+
+@media (max-width: 900px) and (prefers-reduced-motion: reduce) {
+  .project-stack-stage-inner--desktop {
+    display: none;
+  }
+
+  .project-stack-stage-inner--mobile {
+    display: block;
+  }
+}
+
+/* Mobile/tablet card sizing and scroll pacing. Desktop (901px+) is unchanged. */
+@media (max-width: 900px) and (prefers-reduced-motion: no-preference) {
+  .project-stack-stage {
+    /* One controlled scroll step per card. The last card has no trailing step. */
+    height: calc(
+      100svh +
+      var(--project-mobile-scroll-distance, 512svh)
+    );
+  }
+
+  .project-stack-sticky {
+    place-items: center;
+    padding: clamp(14px, 2.4svh, 26px) clamp(10px, 2.5vw, 22px);
+  }
+
+  .project-stack-stage-inner--mobile {
+    width: min(100%, 780px);
+    height: min(82svh, 760px);
+    min-height: 0;
+    max-height: calc(100svh - 28px);
+  }
+
+  .project-stack-stage-inner--mobile .project-stack-pair {
+    inset: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  .project-stack-stage-inner--mobile .project-stack-card {
+    width: 100%;
+    height: 100%;
+    padding: clamp(20px, 3.2vw, 30px);
+    border-radius: clamp(28px, 4vw, 36px);
+  }
+
+  .project-stack-stage-inner--mobile .project-stack-card-header {
+    min-height: clamp(66px, 8svh, 80px);
+  }
+
+  .project-stack-stage-inner--mobile .project-stack-card-media {
+    min-height: 0;
+    margin-top: clamp(14px, 2svh, 20px);
+    border-radius: clamp(18px, 3vw, 24px);
+  }
+
+  .project-stack-stage-inner--mobile .project-stack-card-description {
+    margin-top: clamp(14px, 2svh, 20px);
+  }
+}
+
+@media (max-width: 600px) and (prefers-reduced-motion: no-preference) {
+  .project-stack-sticky {
+    padding: clamp(12px, 2svh, 20px) 8px;
+  }
+
+  .project-stack-stage-inner--mobile {
+    width: 100%;
+    height: min(84svh, 720px);
+    max-height: calc(100svh - 24px);
+  }
+
+  .project-stack-stage-inner--mobile .project-stack-card {
+    padding: clamp(17px, 4.5vw, 23px);
+    border-radius: clamp(24px, 6vw, 30px);
+  }
+
+  .project-stack-stage-inner--mobile .project-stack-card-header {
+    min-height: clamp(58px, 7.5svh, 70px);
+    gap: 10px;
+  }
+
+  .project-stack-stage-inner--mobile .project-stack-card-number {
+    font-size: clamp(32px, 9vw, 44px);
+  }
+
+  .project-stack-stage-inner--mobile .project-stack-card-title h3 {
+    font-size: clamp(15px, 4.4vw, 20px);
+  }
+
+  .project-stack-stage-inner--mobile .project-stack-card-title p {
+    display: block;
+    font-size: clamp(9px, 2.6vw, 11px);
+  }
+
+  .project-stack-stage-inner--mobile .project-stack-card-media {
+    margin-top: 12px;
+    border-radius: clamp(15px, 4vw, 20px);
+  }
+}
+
+@media (max-width: 420px) and (prefers-reduced-motion: no-preference) {
+  .project-stack-stage-inner--mobile {
+    height: min(85svh, 690px);
+    max-height: calc(100svh - 20px);
+  }
+
+  .project-stack-stage-inner--mobile .project-stack-card {
+    padding: 16px;
+  }
+
+  .project-stack-stage-inner--mobile .project-stack-card-number {
+    font-size: clamp(31px, 9vw, 38px);
+  }
+
+  .project-stack-stage-inner--mobile .project-stack-card-title h3 {
+    font-size: clamp(15px, 4.3vw, 18px);
+  }
+
+  .project-stack-stage-inner--mobile .project-stack-card-description {
+    display: none;
+  }
+}

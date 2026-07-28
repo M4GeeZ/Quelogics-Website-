@@ -1,0 +1,110 @@
+* {
+  box-sizing: border-box;
+}
+
+:root {
+  --font-company: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji",
+    "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --font-display: "Space Grotesk", sans-serif;
+  --font-ui: "Inter", sans-serif;
+  /* Locked QueLogics reference palette — do not approximate these values. */
+  --ql-green: #22ce68;
+  --ql-green-dark: #22ce68;
+  --ql-navy: #07102f;
+  --ql-navy-soft: #07102f;
+  --ql-navy-deep: #030821;
+  --ql-surface: #ffffff;
+  --ql-surface-alt: #ffffff;
+  --ql-white: #ffffff;
+  --ql-muted: #697386;
+  --ql-muted-light: #c2cadd;
+  --ql-mint: #22ce68;
+  --ql-border: #e4e7eb;
+}
+
+html,
+body,
+#root {
+  width: 100%;
+  min-height: 100%;
+  margin: 0;
+}
+
+html {
+  min-width: 320px;
+  scroll-behavior: smooth;
+}
+
+body {
+  overflow-x: hidden;
+  font-family: var(--font-ui);
+  background-color: var(--ql-surface);
+}
+
+[dir="rtl"] body {
+  font-family: "Segoe UI", Tahoma, Arial, sans-serif;
+}
+
+[dir="rtl"] .explore-kicker,
+[dir="rtl"] .mega-menu-overview,
+[dir="rtl"] .mega-menu-group,
+[dir="rtl"] .company-hero-inner,
+[dir="rtl"] .detail-hero-copy,
+[dir="rtl"] .explore-hero-copy,
+[dir="rtl"] .client-reviews-copy,
+[dir="rtl"] .process-showcase-copy {
+  text-align: right;
+}
+
+/* Shared type system: display headings, UI copy, and the company mark. */
+h1,
+h2 {
+  font-family: var(--font-display);
+}
+
+button,
+input,
+textarea,
+select {
+  font-family: var(--font-ui);
+}
+
+::selection {
+  color: var(--ql-navy-deep);
+  background: var(--ql-green);
+}
+
+img,
+svg {
+  max-width: 100%;
+}
+
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+.hero-placeholder {
+  min-height: 100vh;
+  padding: 170px 6% 80px;
+  display: flex;
+  align-items: center;
+  color: white;
+  background: linear-gradient(135deg, #111, #363636);
+}
+
+.hero-placeholder div {
+  max-width: 850px;
+}
+
+.hero-placeholder p {
+  letter-spacing: 3px;
+  text-transform: uppercase;
+}
+
+.hero-placeholder h1 {
+  margin: 0;
+  font-size: clamp(44px, 6vw, 90px);
+  line-height: 1;
+}

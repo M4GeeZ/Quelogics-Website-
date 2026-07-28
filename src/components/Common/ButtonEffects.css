@@ -1,0 +1,187 @@
+.ql-fx-button {
+  --ql-fx-x: 50%;
+  --ql-fx-y: 50%;
+  --ql-fx-accent: var(--page-accent, var(--ql-green));
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  transform: translateZ(0);
+  will-change: transform, box-shadow;
+}
+
+.ql-fx-button::before,
+.ql-fx-button::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  pointer-events: none;
+}
+
+.ql-fx-primary {
+  box-shadow:
+    0 12px 30px color-mix(in srgb, var(--ql-fx-accent) 26%, transparent),
+    inset 0 1px 0 rgba(255, 255, 255, 0.22);
+  transition:
+    color 0.3s ease,
+    background-color 0.3s ease,
+    border-color 0.3s ease,
+    transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.35s ease !important;
+}
+
+.ql-fx-primary::before {
+  inset: 0;
+  opacity: 0;
+  background:
+    radial-gradient(
+      circle 24px at var(--ql-fx-x) var(--ql-fx-y),
+      rgba(255, 255, 255, 0.96) 0 14%,
+      rgba(255, 255, 255, 0.48) 15% 32%,
+      rgba(255, 255, 255, 0.12) 48%,
+      transparent 72%
+    );
+  transition: opacity 0.22s ease;
+}
+
+.ql-fx-primary::after {
+  top: -85%;
+  bottom: -85%;
+  left: -55%;
+  width: 40%;
+  opacity: 0;
+  background: linear-gradient(
+    100deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.08) 28%,
+    rgba(255, 255, 255, 0.52) 50%,
+    rgba(255, 255, 255, 0.08) 72%,
+    transparent 100%
+  );
+  transform: rotate(13deg) translateX(0);
+}
+
+.ql-fx-primary:hover,
+.ql-fx-primary:focus-visible {
+  transform: translateY(-3px) scale(1.015) !important;
+  box-shadow:
+    0 0 18px color-mix(in srgb, var(--ql-fx-accent) 55%, transparent),
+    0 18px 46px color-mix(in srgb, var(--ql-fx-accent) 38%, transparent),
+    inset 0 1px 0 rgba(255, 255, 255, 0.32) !important;
+}
+
+.ql-fx-primary:hover::before,
+.ql-fx-primary:focus-visible::before {
+  opacity: 1;
+}
+
+.ql-fx-primary:hover::after,
+.ql-fx-primary:focus-visible::after {
+  animation: qlButtonSheen 0.78s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.ql-fx-secondary {
+  color: #fff !important;
+  border-color: color-mix(in srgb, var(--ql-fx-accent) 62%, rgba(255, 255, 255, 0.3)) !important;
+  background: rgba(255, 255, 255, 0.055) !important;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.16),
+    0 12px 34px rgba(1, 8, 23, 0.14);
+  backdrop-filter: blur(14px) saturate(135%);
+  -webkit-backdrop-filter: blur(14px) saturate(135%);
+  transition:
+    color 0.3s ease,
+    border-color 0.3s ease,
+    transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.35s ease !important;
+}
+
+.ql-fx-secondary::before {
+  left: var(--ql-fx-x);
+  top: var(--ql-fx-y);
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--ql-fx-accent);
+  box-shadow: 0 0 30px color-mix(in srgb, var(--ql-fx-accent) 58%, transparent);
+  transform: translate(-50%, -50%) scale(0);
+  transition: transform 0.58s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.ql-fx-secondary::after {
+  inset: 0;
+  opacity: 0;
+  background:
+    radial-gradient(
+      circle 30px at var(--ql-fx-x) var(--ql-fx-y),
+      rgba(255, 255, 255, 0.88) 0 10%,
+      rgba(255, 255, 255, 0.32) 24%,
+      transparent 70%
+    ),
+    linear-gradient(108deg, transparent 34%, rgba(255, 255, 255, 0.28) 49%, transparent 64%);
+  transition: opacity 0.24s ease;
+}
+
+.ql-fx-secondary:hover,
+.ql-fx-secondary:focus-visible {
+  color: var(--ql-navy-deep) !important;
+  border-color: var(--ql-fx-accent) !important;
+  transform: translateY(-3px) scale(1.015) !important;
+  box-shadow:
+    0 0 16px color-mix(in srgb, var(--ql-fx-accent) 46%, transparent),
+    0 18px 44px color-mix(in srgb, var(--ql-fx-accent) 30%, transparent),
+    inset 0 1px 0 rgba(255, 255, 255, 0.25) !important;
+}
+
+.ql-fx-secondary:hover::before,
+.ql-fx-secondary:focus-visible::before {
+  transform: translate(-50%, -50%) scale(34);
+}
+
+.ql-fx-secondary:hover::after,
+.ql-fx-secondary:focus-visible::after {
+  opacity: 1;
+}
+
+.ql-fx-button svg {
+  position: relative;
+  z-index: 1;
+  transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.ql-fx-button:hover svg,
+.ql-fx-button:focus-visible svg {
+  transform: translate(2px, -2px);
+}
+
+@keyframes qlButtonSheen {
+  0% {
+    opacity: 0;
+    transform: rotate(13deg) translateX(0);
+  }
+  18% { opacity: 0.72; }
+  100% {
+    opacity: 0;
+    transform: rotate(13deg) translateX(480%);
+  }
+}
+
+@media (hover: none) {
+  .ql-fx-button::before,
+  .ql-fx-button::after {
+    display: none;
+  }
+
+  .ql-fx-button:active {
+    transform: scale(0.98) !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ql-fx-button,
+  .ql-fx-button::before,
+  .ql-fx-button::after,
+  .ql-fx-button svg {
+    animation: none !important;
+    transition-duration: 0.01ms !important;
+  }
+}

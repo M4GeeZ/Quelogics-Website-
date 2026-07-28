@@ -1,0 +1,8 @@
+.contact-page {
+  --page-accent: var(--ql-green);
+  --page-accent-soft: rgba(44, 184, 96, 0.14);
+}
+
+.contact-page .company-contact-note {
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
