@@ -1,0 +1,197 @@
+.insight-detail-page {
+  --page-accent: #22ce68;
+}
+
+.insight-detail-visual {
+  position: relative;
+  width: min(100%, 470px);
+  aspect-ratio: 1;
+  display: grid;
+  place-items: center;
+  justify-self: end;
+  perspective: 1200px;
+}
+
+.insight-detail-orbit {
+  position: absolute;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 50%;
+}
+
+.insight-detail-orbit--one {
+  inset: 4%;
+  animation: insightOrbit 20s linear infinite;
+}
+
+.insight-detail-orbit--two {
+  inset: 21%;
+  border-style: dashed;
+  animation: insightOrbit 14s linear infinite reverse;
+}
+
+.insight-detail-book {
+  position: relative;
+  z-index: 2;
+  width: 54%;
+  min-height: 240px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 28px;
+  border: 1px solid rgba(34, 206, 104, 0.34);
+  border-radius: 28px;
+  color: #ffffff;
+  background:
+    radial-gradient(circle at 86% 12%, rgba(34, 206, 104, 0.24), transparent 35%),
+    linear-gradient(145deg, rgba(15, 24, 54, 0.96), rgba(3, 8, 33, 0.98));
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.25);
+  transform: rotateY(-8deg) rotateX(4deg);
+  animation: insightBookFloat 5s ease-in-out infinite;
+}
+
+.insight-detail-book svg {
+  width: 35px;
+  height: 35px;
+  margin-bottom: auto;
+  color: #22ce68;
+}
+
+.insight-detail-book small {
+  color: rgba(255, 255, 255, 0.52);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.insight-detail-book strong {
+  margin-top: 8px;
+  font-family: var(--font-display);
+  font-size: 22px;
+  line-height: 1.08;
+}
+
+.insight-detail-signal {
+  position: absolute;
+  z-index: 3;
+  padding: 10px 15px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 999px;
+  color: #ffffff;
+  background: rgba(3, 8, 33, 0.76);
+  box-shadow: 0 14px 35px rgba(0, 0, 0, 0.18);
+  font-size: 11px;
+  font-weight: 800;
+  backdrop-filter: blur(12px);
+}
+
+.insight-detail-signal::before {
+  content: "";
+  width: 7px;
+  height: 7px;
+  display: inline-block;
+  margin-right: 8px;
+  border-radius: 50%;
+  background: #22ce68;
+  box-shadow: 0 0 14px rgba(34, 206, 104, 0.8);
+}
+
+.insight-detail-signal--one {
+  top: 16%;
+  left: 0;
+  animation: insightSignalFloat 4.6s ease-in-out infinite;
+}
+
+.insight-detail-signal--two {
+  top: 26%;
+  right: 0;
+  animation: insightSignalFloat 5.1s -1.5s ease-in-out infinite;
+}
+
+.insight-detail-signal--three {
+  left: 9%;
+  bottom: 15%;
+  animation: insightSignalFloat 4.8s -2.7s ease-in-out infinite;
+}
+
+@keyframes insightOrbit {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes insightBookFloat {
+  0%,
+  100% {
+    transform: translateY(0) rotateY(-8deg) rotateX(4deg);
+  }
+
+  50% {
+    transform: translateY(-12px) rotateY(-3deg) rotateX(1deg);
+  }
+}
+
+@keyframes insightSignalFloat {
+  0%,
+  100% {
+    translate: 0 0;
+  }
+
+  50% {
+    translate: 0 -9px;
+  }
+}
+
+body.insight-detail-page-active .navbar,
+body.insight-detail-page-active .navbar.navbar--dark-page,
+body.insight-detail-page-active .navbar.is-scrolled,
+body.insight-detail-page-active .navbar.navbar--dark-page.is-scrolled {
+  color: #ffffff !important;
+  background: #030821 !important;
+  box-shadow: 0 10px 30px rgba(3, 8, 33, 0.18) !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+body.insight-detail-page-active .navbar .navbar-container {
+  border-bottom-color: rgba(255, 255, 255, 0.14) !important;
+}
+
+body.insight-detail-page-active .navbar .navbar-logo,
+body.insight-detail-page-active .navbar .nav-link:not(.is-current),
+body.insight-detail-page-active .navbar .action-link,
+body.insight-detail-page-active .navbar .contact-link,
+body.insight-detail-page-active .navbar .icon-button,
+body.insight-detail-page-active .navbar .mobile-menu-button {
+  color: #ffffff !important;
+}
+
+body.insight-detail-page-active .navbar .contact-link {
+  border-color: rgba(255, 255, 255, 0.38) !important;
+}
+
+@media (max-width: 980px) {
+  .insight-detail-visual {
+    width: min(100%, 430px);
+    justify-self: center;
+  }
+}
+
+@media (max-width: 720px) {
+  .insight-detail-book {
+    min-height: 210px;
+    padding: 22px;
+  }
+
+  .insight-detail-signal {
+    font-size: 10px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .insight-detail-orbit,
+  .insight-detail-book,
+  .insight-detail-signal {
+    animation: none !important;
+  }
+}

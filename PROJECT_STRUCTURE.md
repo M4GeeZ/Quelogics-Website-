@@ -80,3 +80,12 @@ QueLogics_React_Clean/
 - Page copy/content: `src/data/pageContent.js`
 - Navigation data: `src/data/navigationData.js`
 - Shared styling used by Services, Industries, Solutions, Insights, About, Careers, Contact, and detail routes: `src/pages/Shared/PageStyles.css`
+
+## Detail page routing (separated)
+
+- `src/pages/DetailPage/DetailPage.jsx` handles only `/services/:slug`.
+- `src/pages/IndustryDetailPage/IndustryDetailPage.jsx` handles only `/industries/:slug`.
+- `src/pages/SolutionDetailPage/SolutionDetailPage.jsx` handles only `/solutions/:slug`.
+- `src/pages/InsightDetailPage/InsightDetailPage.jsx` handles only `/insights/:slug`.
+
+Each detail component validates its own section before rendering, so a route can no longer fall through to another category's template.

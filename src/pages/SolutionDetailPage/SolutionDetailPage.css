@@ -1,0 +1,84 @@
+.solution-detail-page {
+  --page-accent: #22ce68;
+}
+
+.solution-detail-signal::before {
+  content: "";
+  position: absolute;
+  inset: 31%;
+  border-radius: 50%;
+  background: rgba(34, 206, 104, 0.12);
+  filter: blur(30px);
+  animation: solutionSignalPulse 3.6s ease-in-out infinite;
+}
+
+.solution-detail-page .detail-signal-node {
+  animation: solutionNodeFloat 4.2s ease-in-out infinite;
+}
+
+.solution-detail-page .detail-signal-node--2 {
+  animation-delay: -1.4s;
+}
+
+.solution-detail-page .detail-signal-node--3 {
+  animation-delay: -2.8s;
+}
+
+@keyframes solutionSignalPulse {
+  0%,
+  100% {
+    opacity: 0.45;
+    transform: scale(0.86);
+  }
+
+  50% {
+    opacity: 1;
+    transform: scale(1.12);
+  }
+}
+
+@keyframes solutionNodeFloat {
+  0%,
+  100% {
+    translate: 0 0;
+  }
+
+  50% {
+    translate: 0 -10px;
+  }
+}
+
+body.solution-detail-page-active .navbar,
+body.solution-detail-page-active .navbar.navbar--dark-page,
+body.solution-detail-page-active .navbar.is-scrolled,
+body.solution-detail-page-active .navbar.navbar--dark-page.is-scrolled {
+  color: #ffffff !important;
+  background: #030821 !important;
+  box-shadow: 0 10px 30px rgba(3, 8, 33, 0.18) !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+body.solution-detail-page-active .navbar .navbar-container {
+  border-bottom-color: rgba(255, 255, 255, 0.14) !important;
+}
+
+body.solution-detail-page-active .navbar .navbar-logo,
+body.solution-detail-page-active .navbar .nav-link:not(.is-current),
+body.solution-detail-page-active .navbar .action-link,
+body.solution-detail-page-active .navbar .contact-link,
+body.solution-detail-page-active .navbar .icon-button,
+body.solution-detail-page-active .navbar .mobile-menu-button {
+  color: #ffffff !important;
+}
+
+body.solution-detail-page-active .navbar .contact-link {
+  border-color: rgba(255, 255, 255, 0.38) !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .solution-detail-page .detail-signal-node,
+  .solution-detail-signal::before {
+    animation: none !important;
+  }
+}

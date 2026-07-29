@@ -111,3 +111,13 @@ export const findDetailContent = (pathname) => {
 
   return null;
 };
+
+
+export const findSectionDetailContent = (sectionKey, pathname) => {
+  const section = exploreContent[sectionKey];
+  const entry = section?.entries?.[pathname];
+
+  if (!section || !entry) return null;
+
+  return { ...entry, sectionKey, section };
+};
