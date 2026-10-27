@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="440" viewBox="0 0 720 440" role="img" aria-label="Automate Manual Operations preview illustration">
+<defs><linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#071627"/><stop offset=".55" stop-color="#102b43"/><stop offset="1" stop-color="#0a172a"/></linearGradient><linearGradient id="pane" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#183d48"/><stop offset="1" stop-color="#0b2832"/></linearGradient><pattern id="grid" width="28" height="28" patternUnits="userSpaceOnUse"><circle cx="3" cy="3" r="1" fill="#89b6c3" opacity=".22"/></pattern></defs>
+<rect width="720" height="440" fill="url(#bg)"/><rect width="720" height="440" fill="url(#grid)"/>
+<circle cx="610" cy="100" r="170" fill="#22ce68" opacity=".055"/><rect x="34" y="34" width="651" height="371" rx="22" stroke="#385568" stroke-opacity=".6" fill="#0e2234" fill-opacity=".68"/>
+<text x="55" y="80" fill="#22ce68" font-size="15" font-weight="700" letter-spacing="2" font-family="Arial,sans-serif">BUSINESS SOLUTION</text>
+<text x="55" y="127" fill="#eff8fb" font-size="25" font-weight="700" font-family="Arial,sans-serif"><tspan x="55" dy="0">Automate Manual</tspan><tspan x="55" dy="25">Operations</tspan></text>
+<rect x="55" y="193" width="280" height="164" rx="13" fill="#173247" stroke="#2e5666"/>
+<rect x="74" y="214" width="164" height="9" rx="4" fill="#64e596" opacity=".85"/>
+<rect x="74" y="238" width="220" height="7" rx="3" fill="#688b9e" opacity=".65"/>
+<rect x="74" y="261" width="176" height="7" rx="3" fill="#688b9e" opacity=".45"/>
+<rect x="74" y="295" width="70" height="42" rx="7" fill="#23545e"/><rect x="155" y="295" width="70" height="42" rx="7" fill="#23545e"/><rect x="236" y="295" width="70" height="42" rx="7" fill="#23545e"/>
+<path d="M86 326v-11l9-10 9 6 12-15 10 3M167 323l8-12 9 6 9-17 18 1M246 318l11-12 9 7 10-18 12-2" stroke="#22ce68" stroke-width="3" fill="none" stroke-linecap="round"/>
+<rect x="378" y="130" width="251" height="222" rx="20" fill="url(#pane)" stroke="#47706c"/>
+<circle cx="503" cy="232" r="86" fill="#22ce68" opacity=".10"/><g transform="translate(443 171)" fill="none" stroke="#22ce68" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="11" width="43" height="28" rx="6"/><rect x="71" y="11" width="43" height="28" rx="6"/><rect x="39" y="82" width="42" height="28" rx="6"/><path d="M27 39v26h33v17M92 39v26H60"/></g>
+<path d="M393 355h224" stroke="#22ce68" stroke-width="3" opacity=".45"/>
+<rect x="55" y="377" width="11" height="11" rx="2" fill="#22ce68"/><text x="75" y="388" fill="#b7d4dc" font-size="12" font-family="Arial,sans-serif" letter-spacing="1">CONNECTED DIGITAL EXPERIENCES</text>
+</svg>

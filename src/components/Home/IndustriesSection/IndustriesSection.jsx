@@ -1,3 +1,4 @@
+import { realPhotos } from "../../../data/realPhotoData";
 import { useLayoutEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -18,7 +19,9 @@ gsap.registerPlugin(ScrollTrigger);
 const industries = [
   {
     title: "Government & Public Sector",
-    shortTitle: "Public Sector",
+    artwork: "/assets/menu-previews/industries-government.svg",
+photo: realPhotos.government,
+        shortTitle: "Public Sector",
     label: "GOVERNMENT",
     icon: Landmark,
     description:
@@ -28,7 +31,9 @@ const industries = [
   },
   {
     title: "Healthcare",
-    shortTitle: "Healthcare",
+    artwork: "/assets/menu-previews/industries-healthcare.svg",
+photo: realPhotos.healthcare,
+        shortTitle: "Healthcare",
     label: "HEALTHCARE",
     icon: HeartPulse,
     description:
@@ -38,7 +43,9 @@ const industries = [
   },
   {
     title: "Finance & Banking",
-    shortTitle: "Finance",
+    artwork: "/assets/menu-previews/industries-finance.svg",
+photo: realPhotos.finance,
+        shortTitle: "Finance",
     label: "FINANCE",
     icon: BarChart3,
     description:
@@ -48,7 +55,9 @@ const industries = [
   },
   {
     title: "Manufacturing",
-    shortTitle: "Manufacturing",
+    artwork: "/assets/menu-previews/industries-manufacturing.svg",
+photo: realPhotos.manufacturing,
+        shortTitle: "Manufacturing",
     label: "MANUFACTURING",
     icon: Factory,
     description:
@@ -58,7 +67,9 @@ const industries = [
   },
   {
     title: "Logistics & Supply Chain",
-    shortTitle: "Logistics",
+    artwork: "/assets/menu-previews/industries-logistics.svg",
+photo: realPhotos.logistics,
+        shortTitle: "Logistics",
     label: "LOGISTICS",
     icon: Truck,
     description:
@@ -68,7 +79,9 @@ const industries = [
   },
   {
     title: "Real Estate",
-    shortTitle: "Real Estate",
+    artwork: "/assets/menu-previews/industries-real-estate.svg",
+photo: realPhotos.realestate,
+        shortTitle: "Real Estate",
     label: "REAL ESTATE",
     icon: Home,
     description:
@@ -78,7 +91,9 @@ const industries = [
   },
   {
     title: "eCommerce & Retail",
-    shortTitle: "eCommerce",
+    artwork: "/assets/menu-previews/industries-ecommerce-retail.svg",
+photo: realPhotos.ecommerce,
+        shortTitle: "eCommerce",
     label: "ECOMMERCE",
     icon: ShoppingBag,
     description:
@@ -161,6 +176,7 @@ const IndustriesSection = () => {
               aria-expanded={isActive}
               key={industry.title}
             >
+              <img className="industry-panel-photo" src={industry.photo} onError={(event) => { event.currentTarget.onerror = null; event.currentTarget.src = industry.artwork; }} alt="" aria-hidden="true" loading="lazy" decoding="async" />
               <div className="industry-panel-grid" aria-hidden="true"></div>
               <div className="industry-panel-shine" aria-hidden="true"></div>
 

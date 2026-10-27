@@ -1,3 +1,4 @@
+import { realPhotos } from "../../../data/realPhotoData";
 import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -28,7 +29,8 @@ const services = [
   {
     title: "Artificial Intelligence (AI)",
     tag: "AI",
-    icon: Cpu,
+photo: realPhotos.ai,
+        icon: Cpu,
     description:
       "We design practical AI systems that fit into your operations, improve decisions, and create measurable business value.",
     features: [
@@ -40,7 +42,8 @@ const services = [
   {
     title: "Generative AI & Agentic AI",
     tag: "AI",
-    icon: Bot,
+photo: realPhotos.agents,
+        icon: Bot,
     description:
       "Autonomous agents and generative systems that research, draft, decide, and act while keeping your team in control.",
     features: [
@@ -52,7 +55,8 @@ const services = [
   {
     title: "Retrieval-Augmented Generation",
     tag: "AI",
-    icon: Layers3,
+photo: realPhotos.rag,
+        icon: Layers3,
     description:
       "Ground your AI in company knowledge so every answer stays accurate, current, and trustworthy.",
     features: [
@@ -64,7 +68,8 @@ const services = [
   {
     title: "Large Language Models (LLMs)",
     tag: "AI",
-    icon: MessageSquare,
+photo: realPhotos.llm,
+        icon: MessageSquare,
     description:
       "The right model, tuned and deployed for your exact use case—not a generic chatbot layered onto your business.",
     features: [
@@ -76,7 +81,8 @@ const services = [
   {
     title: "AI Automation Systems",
     tag: "AI",
-    icon: Workflow,
+photo: realPhotos.automation,
+        icon: Workflow,
     description:
       "Turn repeatable manual work into dependable AI workflows so your team can stop chasing updates and focus on growth.",
     features: [
@@ -88,7 +94,8 @@ const services = [
   {
     title: "Custom Software Development",
     tag: "DEV",
-    icon: Code2,
+photo: realPhotos.software,
+        icon: Code2,
     description:
       "Purpose-built software engineered around the way your business actually works, from first prototype to scale.",
     features: [
@@ -100,7 +107,8 @@ const services = [
   {
     title: "SaaS Development",
     tag: "DEV",
-    icon: LayoutDashboard,
+photo: realPhotos.saas,
+        icon: LayoutDashboard,
     description:
       "Launch reliable SaaS products with thoughtful onboarding, subscriptions, permissions, analytics, and admin tooling.",
     features: [
@@ -112,7 +120,8 @@ const services = [
   {
     title: "Web Development",
     tag: "WEB",
-    icon: MonitorSmartphone,
+photo: realPhotos.web,
+        icon: MonitorSmartphone,
     description:
       "Build a website that converts instead of merely existing, with fast performance, clear journeys, and measurable intent.",
     features: [
@@ -124,7 +133,8 @@ const services = [
   {
     title: "WordPress, Shopify & Webflow",
     tag: "WEB",
-    icon: Globe2,
+photo: realPhotos.commerce,
+        icon: Globe2,
     description:
       "Flexible marketing and commerce experiences your internal team can manage without sacrificing custom design.",
     features: [
@@ -136,7 +146,8 @@ const services = [
   {
     title: "API Integrations & CRM Automation",
     tag: "OPS",
-    icon: Plug,
+photo: realPhotos.crm,
+        icon: Plug,
     description:
       "Make your tools work as one connected system with reliable APIs, clean data movement, and automated CRM actions.",
     features: [
@@ -148,7 +159,8 @@ const services = [
   {
     title: "Performance Marketing",
     tag: "GROWTH",
-    icon: Target,
+photo: realPhotos.performance,
+        icon: Target,
     description:
       "Performance programs built around profitable acquisition, strong creative testing, and decisions backed by clean data.",
     features: [
@@ -160,7 +172,8 @@ const services = [
   {
     title: "Google Ads & Lead Generation",
     tag: "GROWTH",
-    icon: Megaphone,
+photo: realPhotos.ads,
+        icon: Megaphone,
     description:
       "Replace cold-contact chasing with a qualified lead system built around search intent, focused journeys, and disciplined optimization.",
     features: [
@@ -172,7 +185,8 @@ const services = [
   {
     title: "Search Engine Optimization (SEO)",
     tag: "GROWTH",
-    icon: Search,
+photo: realPhotos.seo,
+        icon: Search,
     description:
       "Build durable organic visibility through technical foundations, search-led content, and authority that compounds.",
     features: [
@@ -184,7 +198,8 @@ const services = [
   {
     title: "Conversion Rate Optimization",
     tag: "GROWTH",
-    icon: BarChart3,
+photo: realPhotos.cro,
+        icon: BarChart3,
     description:
       "Turn more of your existing traffic into customers with research-led changes, focused experiments, and clearer journeys.",
     features: [
@@ -196,7 +211,8 @@ const services = [
   {
     title: "Marketing Automation",
     tag: "GROWTH",
-    icon: WandSparkles,
+photo: realPhotos.martech,
+        icon: WandSparkles,
     description:
       "Create timely, personal customer journeys across email, CRM, and sales without adding manual work to your team.",
     features: [
@@ -225,6 +241,15 @@ const ServiceCard = ({ service, depth, isEntering, isTop }) => {
       }}
     >
       <div className="services-explorer-visual">
+        <img
+          className="services-explorer-photo"
+          src={service.photo}
+          alt=""
+          aria-hidden="true"
+          loading={isTop ? "eager" : "lazy"}
+          decoding="async"
+          onError={(event) => { event.currentTarget.style.display = "none"; }}
+        />
         <div className="services-explorer-visual-glow"></div>
         <span className="services-explorer-tag">
           <i></i>
@@ -276,17 +301,6 @@ const ServicesSection = () => {
   const activeIndicatorRef = useRef(null);
   const activeIndex = cardStack[cardStack.length - 1];
 
-  /* Clear only AI's GSAP entrance transform after AI becomes inactive. */
-  useLayoutEffect(() => {
-    const aiButton = navRef.current?.querySelector("#service-tab-0");
-
-    if (!aiButton || activeIndex === 0) {
-      return;
-    }
-
-    gsap.set(aiButton, { clearProps: "transform,opacity" });
-  }, [activeIndex]);
-
   useEffect(() => {
     if (enteringIndex === null) {
       return undefined;
@@ -337,18 +351,8 @@ const ServicesSection = () => {
         },
       });
 
-      gsap.from(".services-explorer-nav-item", {
-        x: -24,
-        opacity: 0,
-        duration: 0.55,
-        stagger: 0.035,
-        ease: "power2.out",
-        scrollTrigger: {
-          trigger: ".services-explorer-nav",
-          start: "top 78%",
-          toggleActions: "play none none reverse",
-        },
-      });
+      // Keep every navigation button at the same x coordinate. The earlier
+      // per-button GSAP x entrance left the first/selected tab offset.
     }, sectionRef);
 
     return () => context.revert();

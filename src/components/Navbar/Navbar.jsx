@@ -48,6 +48,8 @@ import {
 } from "lucide-react";
 
 import { navigationLinks } from "../../data/navigationData";
+import { servicePreviewData } from "../../data/servicePreviewData";
+import { menuPreviewData } from "../../data/menuPreviewData";
 import { marketOptions, useLanguage } from "../../context/LanguageContext";
 import "./Navbar.css";
 
@@ -92,6 +94,7 @@ const NavItem = ({
 
 const Navbar = () => {
   const [activeMenu, setActiveMenu] = useState(null);
+  const [hoveredMenuLink, setHoveredMenuLink] = useState(null);
   const [menuVisible, setMenuVisible] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [mobileSubmenu, setMobileSubmenu] = useState(null);
@@ -162,8 +165,10 @@ const Navbar = () => {
   const activeMenuData = navigationLinks.find(
     (item) => item.title === activeMenu,
   );
+  const activePreview = hoveredMenuLink && (servicePreviewData[hoveredMenuLink] || menuPreviewData[hoveredMenuLink]);
 
   const openMenu = (menuTitle) => {
+    if (activeMenu !== menuTitle) setHoveredMenuLink(null);
     window.clearTimeout(closeTimerRef.current);
     window.clearTimeout(clearMenuTimerRef.current);
     setActiveMenu(menuTitle);
@@ -171,6 +176,7 @@ const Navbar = () => {
   };
 
   const closeMenu = () => {
+    setHoveredMenuLink(null);
     window.clearTimeout(closeTimerRef.current);
     window.clearTimeout(clearMenuTimerRef.current);
     setMenuVisible(false);
@@ -419,18 +425,15 @@ const Navbar = () => {
           onMouseLeave={scheduleCloseMenu}
         >
           <div className="mega-menu-inner">
-            <div className="mega-menu-content" key={activeMenuData.id}>
-              <div className="mega-menu-overview">
-                <span>Explore {activeMenuData.title}</span>
-                <h2>{activeMenuData.menuTitle}</h2>
-                <p>{activeMenuData.description}</p>
-                <Link to={activeMenuData.path} onClick={closeMenu}>
-                  View all {activeMenuData.title}
-                  <ArrowUpRight aria-hidden="true" />
-                </Link>
-              </div>
-
-              <div className="mega-menu-groups">
+            <div
+              className={`mega-menu-content${activeMenuData.groups ? " mega-menu-content--services" : ""}`}
+              key={activeMenuData.id}
+            >
+              <div
+                className="mega-menu-service-list"
+                onMouseLeave={() => setHoveredMenuLink(null)}
+              >
+                <div className="mega-menu-groups">
                 {activeMenuData.groups.map((group) => (
                   <section className="mega-menu-group" data-group={group.title} key={group.title}>
                     <h3>{group.title}</h3>
@@ -486,7 +489,13 @@ const Navbar = () => {
 
                         return (
                           <li key={label}>
-                            <Link to={path} onClick={closeMenu}>
+                            <Link
+                              to={path}
+                              onClick={closeMenu}
+                              onMouseEnter={() => setHoveredMenuLink(path)}
+                              onFocus={() => setHoveredMenuLink(path)}
+                              className={hoveredMenuLink === path ? "is-service-hovered" : undefined}
+                            >
                               <span className="mega-menu-icon" aria-hidden="true">
                                 <MenuIcon size={15} strokeWidth={1.8} />
                               </span>
@@ -498,7 +507,35 @@ const Navbar = () => {
                     </ul>
                   </section>
                 ))}
+                </div>
+                <Link
+                    className="mega-menu-services-all"
+                    to={activeMenuData.path}
+                    onClick={closeMenu}
+                  >
+                    View all {activeMenuData.title}
+                    <ArrowUpRight size={17} aria-hidden="true" />
+                  </Link>
               </div>
+
+              <aside
+                  className={`mega-menu-service-preview${activePreview ? " is-visible" : ""}`}
+                  aria-label={`${activeMenuData.title} preview`}
+                  aria-live="polite"
+                >
+                  {activePreview && (
+                    <div className="mega-menu-preview-content" key={hoveredMenuLink}>
+                      <img
+                        src={activePreview.image}
+                        alt={`${activePreview.title} visual preview`}
+                        width="720"
+                        height="440"
+                      />
+                      <h3>{activePreview.title}</h3>
+                      <p>{activePreview.description}</p>
+                    </div>
+                  )}
+                </aside>
             </div>
           </div>
         </div>

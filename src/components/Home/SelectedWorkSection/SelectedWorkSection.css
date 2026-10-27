@@ -143,3 +143,62 @@
     animation-play-state: paused;
   }
 }
+
+/* Free-floating marquee: no contrasting panel, edge, shadow, or boxed treatment. */
+.selected-work-marquee-section {
+  background: transparent;
+  border: 0;
+  box-shadow: none;
+  min-height: 230px;
+}
+.selected-work-marquee-window { background: transparent; border: 0; box-shadow: none; }
+@media (max-width: 700px) { .selected-work-marquee-section { min-height: 180px; } }
+
+
+/* V3: One seamless #D7DADC background; strip/glass panel removed entirely. */
+.selected-work-marquee-section {
+  min-height: 255px;
+  padding: 0;
+  background: #D7DADC !important;
+  background-image: none !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+.selected-work-marquee-section .selected-work-marquee-topline {
+  top: 18px;
+  padding: 0 !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  background-image: none !important;
+  box-shadow: none !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+.selected-work-marquee-section .selected-work-marquee-window {
+  margin: 28px 0 0;
+  padding: 0;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  backdrop-filter: none !important;
+}
+@media (max-width: 700px) {
+  .selected-work-marquee-section { min-height: 195px; }
+  .selected-work-marquee-section .selected-work-marquee-window { margin-top: 26px; }
+}
+@media (max-width: 380px) {
+  .selected-work-marquee-section { min-height: 160px; }
+}
+
+/* V5 – pure white marquee; no upper meta-line or contrasting frame. */
+.selected-work-marquee-section {
+ background:#FFFFFF !important;background-image:none !important;
+ border:0 !important;box-shadow:none !important;
+ backdrop-filter:none !important;-webkit-backdrop-filter:none !important;
+}
+.selected-work-marquee-section .selected-work-marquee-window { margin-top:0; }

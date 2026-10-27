@@ -543,6 +543,124 @@
   animation: megaContentClose 0.2s ease forwards;
 }
 
+/* Services menu: service groups on the left, contextual hover image on the right.
+   The preview has no initial content and appears only while a service is hovered/focused. */
+.mega-menu-content--services {
+  grid-template-columns: minmax(0, 1fr) minmax(295px, 0.35fr);
+  gap: clamp(28px, 3vw, 48px);
+  padding-top: 34px;
+  padding-bottom: 30px;
+  align-items: start;
+}
+
+.mega-menu-service-list {
+  min-width: 0;
+}
+
+.mega-menu-content--services .mega-menu-groups {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(16px, 2vw, 32px);
+}
+
+.mega-menu-content--services .mega-menu-group h3 {
+  font-size: 12px;
+  margin-bottom: 16px;
+}
+
+.mega-menu-content--services .mega-menu-group a {
+  font-size: clamp(12px, 0.98vw, 15px);
+  min-height: 40px;
+  padding: 7px 6px 7px 0;
+  line-height: 1.3;
+}
+
+.mega-menu-content--services .mega-menu-group a.is-service-hovered {
+  color: #18974b;
+  transform: translate(6px, -1px);
+}
+
+.mega-menu-content--services .mega-menu-group a.is-service-hovered::after {
+  opacity: 1;
+}
+
+.mega-menu-content--services .mega-menu-group a.is-service-hovered .mega-menu-icon {
+  opacity: 1;
+  transform: translateY(-50%) translateX(0) scale(1);
+}
+
+.mega-menu-services-all {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 19px;
+  padding-top: 13px;
+  border-top: 1px solid #dfe8e5;
+  min-width: 175px;
+  color: #102b3b;
+  font-size: 14px;
+  font-weight: 800;
+  text-decoration: none;
+  transition: gap .2s ease, color .2s ease;
+}
+
+.mega-menu-services-all:hover,
+.mega-menu-services-all:focus-visible {
+  gap: 14px;
+  color: #16924a;
+}
+
+.mega-menu-service-preview {
+  min-height: 300px;
+  border-left: 1px solid #e5ebe8;
+  padding-left: clamp(20px, 2.4vw, 34px);
+  align-self: stretch;
+}
+
+.mega-menu-preview-content {
+  animation: qlServiceReveal .25s ease both;
+}
+
+.mega-menu-preview-content img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 18 / 11;
+  object-fit: cover;
+  border-radius: 14px;
+  border: 1px solid rgba(15, 47, 59, .09);
+  box-shadow: 0 12px 30px rgba(8, 32, 44, .12);
+  background: #102638;
+}
+
+.mega-menu-preview-content h3 {
+  margin: 18px 0 8px;
+  color: #122239;
+  font-size: clamp(17px, 1.4vw, 21px);
+  font-weight: 750;
+  line-height: 1.22;
+  letter-spacing: -.025em;
+}
+
+.mega-menu-preview-content p {
+  margin: 0;
+  color: #617081;
+  font-size: 13px;
+  line-height: 1.65;
+  max-width: 390px;
+}
+
+@keyframes qlServiceReveal {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (min-width: 1101px) and (max-width: 1250px) {
+  .mega-menu-content--services { grid-template-columns: minmax(0, 1fr) minmax(250px, .37fr); gap: 20px; }
+  .mega-menu-content--services .mega-menu-groups { gap: 12px; }
+  .mega-menu-content--services .mega-menu-group a { font-size: 12px; }
+  .mega-menu-service-preview { padding-left: 20px; }
+}
+
 .mega-menu-overview > span {
   display: block;
   margin-bottom: 14px;
@@ -1065,4 +1183,13 @@
     animation: none !important;
     transition: none !important;
   }
+}
+/* Contextual hover previews are shared by Services, Industries, Solutions, Insights. */
+.mega-menu-content--services .mega-menu-preview-content { min-width: 0; }
+.mega-menu-content--services .mega-menu-group a.is-service-hovered,
+.mega-menu-content--services .mega-menu-group a:focus-visible { color: #18974b; }
+@media (min-width: 1101px) and (max-width: 1420px) {
+  .mega-menu-content--services { grid-template-columns: minmax(0,1fr) minmax(245px,.35fr); gap: 24px; }
+  .mega-menu-content--services .mega-menu-groups { gap: 12px; }
+  .mega-menu-content--services .mega-menu-group a { font-size: clamp(12px, .95vw, 14px); }
 }

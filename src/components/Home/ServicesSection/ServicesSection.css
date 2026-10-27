@@ -891,7 +891,7 @@
     border-color: #22ce68 !important;
     background: #22ce68 !important;
     box-shadow: 0 8px 22px rgba(34,206,104,.34) !important;
-    transform: translateX(5px) scale(1.015) !important;
+    transform: translateX(5px) scale(1.015);
     transition: transform .5s cubic-bezier(.22,1,.36,1),background-color .3s ease,box-shadow .3s ease !important;
   }
   .services-explorer-detail,
@@ -948,7 +948,7 @@
     padding: 0 4px !important;
     text-align: center;
   }
-  .services-explorer-nav-item.is-active { transform: translateX(4px) scale(1.01) !important; }
+  .services-explorer-nav-item.is-active { transform: translateX(4px) scale(1.01); }
   .services-explorer-nav-item svg { display: none; }
   .services-explorer-nav-item .service-short-label {
     width: 100%;
@@ -963,35 +963,148 @@
   .services-explorer-tag { bottom: 12px; left: 12px; padding: 7px 11px; font-size: 10px; }
 }
 
-
-/* AI TAB FINAL FIX — ONLY SERVICE TAB 0; all other service buttons stay unchanged. */
-@media (max-width: 900px) {
-  #service-tab-0:not(.is-active) {
+/* Desktop service tabs: one perfectly aligned column, including first selected tab. */
+@media (min-width: 901px) {
+  .services-explorer-nav { padding-left: 30px; padding-right: 20px; }
+  .services-explorer-nav-item,
+  .services-explorer-nav-item.is-active {
+    box-sizing: border-box;
     width: 100% !important;
-    min-width: 0 !important;
-    max-width: none !important;
-    align-self: stretch !important;
-    margin: 0 !important;
-    transform: translate3d(0, 0, 0) scale(1) !important;
+    min-width: 0;
+    margin-left: 0;
+    padding-inline: 18px;
+    transform: none;
+  }
+  .services-explorer-nav-item:hover:not(.is-active),
+  .services-explorer-nav-item.is-hovered:not(.is-active) { transform: none; }
+}
+
+/* October alignment correction: identical width/x-position for all 15 tabs.
+   Keep the moving green selection indicator; never shift the selected button. */
+@media (min-width: 901px) {
+  .services-explorer .services-explorer-nav {
+    padding: 24px 22px 24px 30px !important;
+  }
+  .services-explorer .services-explorer-nav-item,
+  .services-explorer .services-explorer-nav-item.is-active,
+  .services-explorer .services-explorer-nav-item.is-hovered {
+    display: flex;
+    box-sizing: border-box;
+    width: 100% !important;
+    max-width: 100%;
+    height: 46px;
+    min-height: 46px;
+    margin: 0 0 6px !important;
+    padding: 0 18px !important;
+    border-radius: 14px !important;
+    transform: none !important;
+    transition: color .24s ease, background-color .24s ease !important;
+    will-change: auto;
+  }
+  .services-explorer .services-explorer-active-indicator {
+    border-radius: 14px !important;
+  }
+}
+@media (max-width: 900px) {
+  .services-explorer .services-explorer-nav-item,
+  .services-explorer .services-explorer-nav-item.is-active,
+  .services-explorer .services-explorer-nav-item.is-hovered {
+    transform: none !important;
   }
 }
 
+
+/* V3 desktop scale: visually close to the old 75% zoom at native 100%.
+   Isolated to services; no browser zoom or global typography changes. */
 @media (min-width: 901px) {
-  /* Keep AI at the normal desktop tab size instead of the oversized active size. */
-  #service-tab-0,
-  #service-tab-0.is-active {
-    width: calc(100% - 28px) !important;
-    height: 46px !important;
-    min-height: 46px !important;
+  .services-explorer { padding: 75px 34px 90px; }
+  .services-explorer-heading { max-width: 1340px; margin-bottom: 36px; }
+  .services-explorer-heading > span { margin-bottom: 12px; font-size: 14px; }
+  .services-explorer-heading h2 { font-size: clamp(44px, 4.9vw, 70px); }
+  .services-explorer-heading p { margin-top: 20px; font-size: clamp(15px, 1.1vw, 18px); }
+  .services-explorer .services-explorer-shell {
+    max-width: 1340px;
+    height: 694px;
+    min-height: 694px;
+    grid-template-columns: minmax(305px, 32%) minmax(0, 1fr);
+    border-radius: 25px;
   }
+  .services-explorer .services-explorer-nav { padding: 20px 19px 20px 23px !important; }
+  .services-explorer .services-explorer-nav-item,
+  .services-explorer .services-explorer-nav-item.is-active,
+  .services-explorer .services-explorer-nav-item.is-hovered {
+    min-height: 37px !important;
+    height: 37px !important;
+    margin: 0 0 5px !important;
+    padding: 0 13px !important;
+    gap: 12px;
+    border-radius: 10px !important;
+    font-size: clamp(11.5px, .91vw, 13px);
+    line-height: 1.16;
+  }
+  .services-explorer .services-explorer-nav-item svg { width: 18px; height: 18px; }
+  .services-explorer .services-explorer-active-indicator { border-radius: 10px !important; }
+  .services-explorer .services-explorer-detail,
+  .services-explorer .services-explorer-card-stack { min-height: 694px; height: 694px; }
+  .services-explorer .services-explorer-stack-card {
+    inset: 28px 26px 20px;
+    padding: 13px 19px 20px;
+    border-radius: 23px;
+  }
+  .services-explorer .services-explorer-visual {
+    aspect-ratio: 2.9 / 1;
+    max-height: 255px;
+    border-radius: 17px;
+  }
+  .services-explorer .services-explorer-tag { bottom: 17px; left: 20px; padding: 7px 12px; font-size: 10px; }
+  .services-explorer .services-explorer-copy { padding-top: 17px; }
+  .services-explorer .services-explorer-copy h3 { font-size: clamp(26px, 2.3vw, 35px); line-height: 1.06; }
+  .services-explorer .services-explorer-copy > p { margin-top: 11px; font-size: 14px; line-height: 1.48; }
+  .services-explorer .services-explorer-copy h4 { margin: 18px 0 11px; font-size: 14px; }
+  .services-explorer .services-explorer-copy li { gap: 9px; margin-bottom: 7px; font-size: 12.5px; line-height: 1.35; }
+  .services-explorer .services-explorer-copy li svg { width: 16px; height: 16px; }
+  .services-explorer .services-explorer-link {
+    min-height: 39px;
+    margin-top: 12px;
+    padding: 0 16px;
+    font-size: 12px;
+  }
+}
+@media (min-width: 901px) and (max-width: 1100px) {
+  .services-explorer .services-explorer-shell { grid-template-columns: minmax(308px, 37%) minmax(0, 1fr); }
+  .services-explorer .services-explorer-stack-card { inset-inline: 18px; padding-inline: 14px; }
+  .services-explorer .services-explorer-nav-item,
+  .services-explorer .services-explorer-nav-item.is-active,
+  .services-explorer .services-explorer-nav-item.is-hovered { font-size: 11.5px; }
+}
 
-  /* AI still receives the selected left-to-right movement. */
-  #service-tab-0.is-active {
-    transform: translateX(5px) !important;
-  }
-
-  /* Remove the large white focus ring visible around only the clicked AI tab. */
-  #service-tab-0:focus-visible {
-    outline: none !important;
-  }
+/* V6: high-quality photo preview inside each technology capability. */
+.services-explorer-visual { isolation:isolate;overflow:hidden; }
+.services-explorer-visual .services-explorer-photo { display:block;position:absolute;inset:0;z-index:0;width:100%;height:100%;object-fit:cover;object-position:center;opacity:.95;filter:saturate(.9) brightness(.8);transition:transform .65s ease,filter .4s ease; }
+.services-explorer-stack-card:hover .services-explorer-photo { transform:scale(1.03); }
+.services-explorer-visual::before { z-index:1!important; background:linear-gradient(90deg,rgba(7,16,47,.42),rgba(7,16,47,.14))!important; }
+.services-explorer-visual-glow { z-index:1;opacity:.24;pointer-events:none; }
+.services-explorer-watermark { z-index:1;opacity:.19; }
+.services-explorer-tag { z-index:3; }
+.services-explorer-spark { z-index:2; }
+@media(min-width:901px) {
+  .services-explorer { padding-block:58px 70px; }
+  .services-explorer .services-explorer-shell { height:636px;min-height:636px; }
+  .services-explorer .services-explorer-nav { padding:14px 18px 14px 21px!important; }
+  .services-explorer .services-explorer-nav-item,
+  .services-explorer .services-explorer-nav-item.is-active,
+  .services-explorer .services-explorer-nav-item.is-hovered { height:34px!important; min-height:34px!important; margin-bottom:4px!important; }
+  .services-explorer .services-explorer-detail,
+  .services-explorer .services-explorer-card-stack { height:636px;min-height:636px; }
+  .services-explorer .services-explorer-stack-card { inset:19px 20px 16px;padding:12px 16px 17px; }
+  .services-explorer .services-explorer-visual { aspect-ratio:3.4/1;max-height:195px; }
+  .services-explorer .services-explorer-copy { padding-top:13px; }
+  .services-explorer .services-explorer-copy h3 { font-size:clamp(24px,2vw,32px); }
+  .services-explorer .services-explorer-copy>p { margin-top:9px;font-size:13px;line-height:1.45; }
+  .services-explorer .services-explorer-copy h4 { margin:14px 0 9px; }
+  .services-explorer .services-explorer-copy li { margin-bottom:6px;font-size:12px; }
+  .services-explorer .services-explorer-link { margin-top:9px; }
+}
+@media(min-width:901px) and (max-width:1100px) {
+  .services-explorer .services-explorer-nav-item { font-size:11px; }
 }

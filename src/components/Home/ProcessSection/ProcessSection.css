@@ -78,3 +78,32 @@
   .process-core-dots{margin-top:14px}
 }
 @media(prefers-reduced-motion:reduce){.process-showcase-nav-item,.process-nav-icon,.process-orbit-progress,.process-orbit-node,.process-core-content{animation:none;transition:none}}
+
+/* V5 – per-step relevant image backdrop; orbit and all content remain intact. */
+.process-orbit-core { isolation:isolate; background:#07102f; }
+.process-orbit-core .process-core-background {
+ position:absolute;inset:-8%;z-index:0;width:116%;height:116%;
+ object-fit:cover;filter:blur(4px) saturate(.92);opacity:.58;
+ animation:processArtFade .5s ease both;pointer-events:none;
+}
+.process-orbit-core .process-core-shade {
+ position:absolute;inset:0;z-index:1;pointer-events:none;
+ background:linear-gradient(125deg,rgba(7,16,47,.85),rgba(7,16,47,.74)),radial-gradient(circle at 75% 18%,rgba(34,206,104,.17),transparent 60%);
+}
+.process-orbit-core .process-core-content { position:relative;z-index:2; }
+@keyframes processArtFade { from {opacity:0;transform:scale(1.06)} to {opacity:.58;transform:scale(1)} }
+@media(prefers-reduced-motion:reduce) { .process-orbit-core .process-core-background { animation:none; } }
+/* Keep the artwork perceptible behind the existing high-contrast white copy. */
+.process-orbit-core .process-core-background {
+  filter:blur(2px) brightness(1.3) saturate(1.05);
+  opacity:.85;
+}
+.process-orbit-core .process-core-shade {
+  background:linear-gradient(145deg,rgba(7,16,47,.66),rgba(7,16,47,.77) 65%,rgba(7,16,47,.68));
+}
+@keyframes processArtFade { from {opacity:0;transform:scale(1.06)} to {opacity:.85;transform:scale(1)} }
+
+/* V6: real step-specific photography, preserving all process text and orbit controls. */
+.process-orbit-core .process-core-background { inset:0;width:100%;height:100%;opacity:.72;object-fit:cover;filter:blur(1.3px) saturate(.9) brightness(.87); }
+.process-orbit-core .process-core-shade { background:linear-gradient(135deg,rgba(7,16,47,.70),rgba(7,16,47,.79) 58%,rgba(7,16,47,.73)); }
+@keyframes processArtFade { from {opacity:0;transform:scale(1.04)} to {opacity:.72;transform:scale(1)} }

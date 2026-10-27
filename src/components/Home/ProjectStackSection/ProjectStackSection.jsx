@@ -1,6 +1,3 @@
-import { useLayoutEffect, useRef } from "react";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ArrowUpRight } from "lucide-react";
 import carshare from "../../../assets/project-images/optimized/carshare.jpg";
 import EagleChat from "../../../assets/project-images/optimized/EagleChat.jpg";
@@ -11,8 +8,6 @@ import Mindora from "../../../assets/project-images/optimized/Mindora.jpg";
 import PizzaMama from "../../../assets/project-images/optimized/PizzaMama.jpg";
 import TMS from "../../../assets/project-images/optimized/TMS.jpg";
 import "./ProjectStackSection.css";
-
-gsap.registerPlugin(ScrollTrigger);
 
 const projects = [
   {
@@ -90,328 +85,49 @@ const projects = [
 ];
 
 const ProjectCard = ({ project }) => (
-  <article
-    className="project-stack-card"
-    style={{ "--project-accent": project.accent }}
-  >
-    <div className="project-stack-card-glow" aria-hidden="true"></div>
-
-    <header className="project-stack-card-header">
-      <span className="project-stack-card-number">{project.number}</span>
-      <div className="project-stack-card-title">
-        <h3>{project.title}</h3>
-        <p>{project.stack}</p>
-      </div>
-      <a href="/case-studies" aria-label={`View ${project.title} project`}>
-        View project
-        <ArrowUpRight aria-hidden="true" />
-      </a>
-    </header>
-
+  <article className="project-stack-card" style={{ "--project-accent": project.accent }}>
     <div className="project-stack-card-media">
+      <img className="project-stack-media-backdrop" src={project.image} alt="" aria-hidden="true" loading="lazy" decoding="async" />
       <img
         src={project.image}
         alt={`${project.title} project preview`}
         loading="lazy"
         decoding="async"
       />
-      <span aria-hidden="true">Quelogics / {project.number}</span>
+      <a
+        className="project-stack-reveal-link"
+        href="/case-studies"
+        aria-label={`View ${project.title} project`}
+      >
+        View project
+        <ArrowUpRight aria-hidden="true" />
+      </a>
     </div>
-
-    <p className="project-stack-card-description">{project.description}</p>
+    <div className="project-stack-card-info">
+      <span className="project-stack-card-number">{project.number}</span>
+      <p className="project-stack-card-category">{project.stack}</p>
+      <h3>{project.title}</h3>
+      <p className="project-stack-card-description">{project.description}</p>
+    </div>
   </article>
 );
 
-const ProjectStackSection = () => {
-  const sectionRef = useRef(null);
-  const stageRef = useRef(null);
-
-  useLayoutEffect(() => {
-    const media = gsap.matchMedia();
-
-    media.add(
-      {
-        desktop: "(min-width: 901px)",
-        mobile: "(max-width: 900px)",
-        reduceMotion: "(prefers-reduced-motion: reduce)",
-      },
-      (context) => {
-        const { desktop, mobile, reduceMotion } = context.conditions;
-        const pairs = gsap.utils.toArray(
-          mobile
-            ? ".project-stack-stage-inner--mobile .project-stack-pair"
-            : ".project-stack-stage-inner--desktop .project-stack-pair",
-          stageRef.current,
-        );
-
-        if (mobile) {
-          if (reduceMotion) {
-            return undefined;
-          }
-
-          const stickyPanel = stageRef.current?.querySelector(
-            ".project-stack-sticky",
-          );
-
-          const getEntryOffset = (pair) => {
-            const viewportHeight =
-              stickyPanel?.getBoundingClientRect().height || window.innerHeight;
-            const pairHeight = pair.getBoundingClientRect().height;
-
-            // Keep each incoming card fully below the sticky viewport until its
-            // own scroll step begins, so only the active stack is visible.
-            return Math.ceil((viewportHeight + pairHeight) / 2 + 28);
-          };
-
-          // Put every mobile card below the sticky viewport before ScrollTrigger
-          // reads the current scroll position. This prevents later cards from
-          // flashing or becoming the starting card during refresh/layout shifts.
-          gsap.set(pairs, {
-            zIndex: (index) => index + 1,
-            y: (index, pair) => getEntryOffset(pair),
-            yPercent: 0,
-            scale: 0.94,
-            opacity: 1,
-            transformOrigin: "center top",
-            force3D: true,
-          });
-
-          const mobileTimeline = gsap.timeline({
-            defaults: { ease: "power2.inOut" },
-            scrollTrigger: {
-              trigger: stageRef.current,
-              start: "top top",
-              end: "bottom bottom",
-              scrub: 0.42,
-              fastScrollEnd: false,
-              invalidateOnRefresh: true,
-              refreshPriority: -10,
-            },
-          });
-
-          pairs.forEach((pair, index) => {
-            const previousPair = pairs[index - 1];
-            const stepLabel = `mobile-card-${index}`;
-
-            mobileTimeline.addLabel(stepLabel);
-
-            if (previousPair) {
-              mobileTimeline.to(
-                previousPair,
-                {
-                  yPercent: -4,
-                  scale: 0.955,
-                  opacity: 0.46,
-                  duration: 0.82,
-                },
-                stepLabel,
-              );
-            }
-
-            mobileTimeline.fromTo(
-              pair,
-              {
-                y: () => getEntryOffset(pair),
-                scale: 0.94,
-                opacity: 1,
-              },
-              {
-                y: 0,
-                scale: 1,
-                opacity: 1,
-                duration: 0.82,
-                immediateRender: false,
-              },
-              stepLabel,
-            );
-
-            // Pause only between cards. Omitting a pause after the final card
-            // makes the sticky section release as soon as card 008 settles.
-            if (index < pairs.length - 1) {
-              mobileTimeline.to({}, { duration: 0.24 });
-            }
-          });
-
-          let refreshFrame = 0;
-          let isActive = true;
-          const queueRefresh = () => {
-            if (!isActive) return;
-            window.cancelAnimationFrame(refreshFrame);
-            refreshFrame = window.requestAnimationFrame(() => {
-              if (isActive) ScrollTrigger.refresh();
-            });
-          };
-
-          // Earlier image/font loading can move this section after its first
-          // measurement. Refreshing after those assets settle keeps progress at
-          // zero when the first card reaches the viewport instead of jumping to
-          // card 003 or another later card.
-          const pendingImages = Array.from(document.images).filter(
-            (image) => !image.complete,
-          );
-          pendingImages.forEach((image) => {
-            image.addEventListener("load", queueRefresh, { once: true });
-            image.addEventListener("error", queueRefresh, { once: true });
-          });
-          window.addEventListener("load", queueRefresh, { once: true });
-          if (document.fonts?.ready) {
-            document.fonts.ready.then(queueRefresh).catch(() => {});
-          }
-
-          const firstRefresh = window.requestAnimationFrame(() => {
-            refreshFrame = window.requestAnimationFrame(queueRefresh);
-          });
-          const settledRefresh = gsap.delayedCall(0.8, queueRefresh);
-
-          return () => {
-            isActive = false;
-            window.cancelAnimationFrame(firstRefresh);
-            window.cancelAnimationFrame(refreshFrame);
-            settledRefresh.kill();
-            window.removeEventListener("load", queueRefresh);
-            pendingImages.forEach((image) => {
-              image.removeEventListener("load", queueRefresh);
-              image.removeEventListener("error", queueRefresh);
-            });
-            mobileTimeline.kill();
-          };
-        }
-
-        if (!desktop || reduceMotion) {
-          return undefined;
-        }
-
-        gsap.set(pairs, {
-          zIndex: (index) => index + 1,
-          transformOrigin: "center center",
-          force3D: true,
-        });
-
-        gsap.set(pairs.slice(1), {
-          yPercent: 118,
-          scale: 0.94,
-          opacity: 1,
-        });
-
-        const timeline = gsap.timeline({
-          defaults: { ease: "power2.inOut" },
-          scrollTrigger: {
-            trigger: stageRef.current,
-            start: "top top",
-            end: "bottom bottom",
-            scrub: 0.85,
-            fastScrollEnd: false,
-            invalidateOnRefresh: true,
-          },
-        });
-
-        pairs.slice(1).forEach((pair, index) => {
-          const previousPair = pairs[index];
-
-          timeline.to(
-            previousPair,
-            {
-              yPercent: -4,
-              scale: 0.955,
-              opacity: 0.46,
-              duration: 0.9,
-            },
-            index,
-          );
-
-          timeline.to(
-            pair,
-            {
-              yPercent: 0,
-              scale: 1,
-              opacity: 1,
-              duration: 0.9,
-            },
-            index,
-          );
-
-          timeline.to({}, { duration: 0.16 });
-        });
-
-        return () => timeline.kill();
-      },
-    );
-
-    const context = gsap.context(() => {
-      gsap.from(".project-stack-heading > *", {
-        y: 45,
-        opacity: 0,
-        filter: "blur(7px)",
-        duration: 0.85,
-        stagger: 0.1,
-        ease: "power3.out",
-        scrollTrigger: {
-          trigger: ".project-stack-heading",
-          start: "top 84%",
-          toggleActions: "play none none reverse",
-        },
-      });
-    }, sectionRef);
-
-    return () => {
-      context.revert();
-      media.revert();
-    };
-  }, []);
-
-  return (
-    <section className="project-stack-section" ref={sectionRef}>
-      <div className="project-stack-heading">
-        <span>
-          <i aria-hidden="true"></i>
-          Systems in the real world
-        </span>
-        <h2>
-          Built to close the <em>gap.</em>
-        </h2>
-        <p>
-          Scroll through products that replaced disconnected tools, manual
-          work, and stalled ideas with connected experiences built for
-          measurable outcomes.
-        </p>
+const ProjectStackSection = () => (
+  <section className="project-stack-section">
+    <div className="project-stack-heading">
+      <span><i aria-hidden="true"></i>Systems in the real world</span>
+      <h2>Built to close the <em>gap.</em></h2>
+      <p>
+        Explore products that replaced disconnected tools, manual work, and
+        stalled ideas with connected experiences built for measurable outcomes.
+      </p>
+    </div>
+    <div className="project-stack-stage">
+      <div className="project-stack-grid">
+        {projects.map((project) => <ProjectCard key={project.number} project={project} />)}
       </div>
-
-      <div
-        className="project-stack-stage"
-        ref={stageRef}
-        style={{ "--project-mobile-scroll-distance": `${projects.length * 64}svh` }}
-      >
-        <div className="project-stack-sticky">
-          <div className="project-stack-aurora aurora-one" aria-hidden="true"></div>
-          <div className="project-stack-aurora aurora-two" aria-hidden="true"></div>
-
-          <div className="project-stack-stage-inner project-stack-stage-inner--desktop">
-            {projects.map((project, projectIndex) => (
-              <div
-                className="project-stack-pair project-stack-pair--single"
-                aria-label={`Project ${projectIndex + 1} of ${projects.length}`}
-                key={`desktop-${project.number}`}
-              >
-                <ProjectCard project={project} />
-              </div>
-            ))}
-          </div>
-
-          <div className="project-stack-stage-inner project-stack-stage-inner--mobile">
-            {projects.map((project, projectIndex) => (
-              <div
-                className="project-stack-pair project-stack-pair--single"
-                aria-label={`Project ${projectIndex + 1} of ${projects.length}`}
-                key={`mobile-${project.number}`}
-              >
-                <ProjectCard project={project} />
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
-    </section>
-  );
-};
+    </div>
+  </section>
+);
 
 export default ProjectStackSection;

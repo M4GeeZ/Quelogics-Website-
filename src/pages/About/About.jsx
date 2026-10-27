@@ -483,7 +483,9 @@ const About = () => {
           <div className="about-container">
             <header className="about-story-heading">
               <p className="about-kicker">How the work moves</p>
-              <h2>From first question to lasting product.</h2>
+              <h2>From first question to </h2> <br />
+              <h2>lasting product.</h2> 
+
             </header>
 
             <div className="about-story-layout">

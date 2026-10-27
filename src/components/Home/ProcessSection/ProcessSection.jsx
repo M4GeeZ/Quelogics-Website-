@@ -1,3 +1,4 @@
+import { realPhotos } from "../../../data/realPhotoData";
 import { useState } from "react";
 import { Code2, PenTool, Search, ShieldCheck, Wrench } from "lucide-react";
 import "./ProcessSection.css";
@@ -6,31 +7,41 @@ const steps = [
   {
     number: "01",
     label: "Discovery",
-    description: "We map your workflows and define the success metrics.",
+    artwork: "/assets/service-previews/website-seo.svg",
+photo: realPhotos.discovery,
+        description: "We map your workflows and define the success metrics.",
     icon: Search,
   },
   {
     number: "02",
     label: "Design",
-    description: "Architecture & wireframes you approve before we build.",
+    artwork: "/assets/service-previews/ui-ux-design.svg",
+photo: realPhotos.design,
+        description: "Architecture & wireframes you approve before we build.",
     icon: PenTool,
   },
   {
     number: "03",
     label: "Build",
-    description: "We engineer, test, and refine your complete digital system.",
+    artwork: "/assets/service-previews/custom-software-development.svg",
+photo: realPhotos.build,
+        description: "We engineer, test, and refine your complete digital system.",
     icon: Code2,
   },
   {
     number: "04",
     label: "Launch & Support",
-    description: "Go-live, training, warranty and dependable post-launch support.",
+    artwork: "/assets/service-previews/workflow-automation.svg",
+photo: realPhotos.launch,
+        description: "Go-live, training, warranty and dependable post-launch support.",
     icon: ShieldCheck,
   },
   {
     number: "05",
     label: "Maintain",
-    description: "Continuous monitoring and improvements that keep your system performing.",
+    artwork: "/assets/service-previews/crm-automation.svg",
+photo: realPhotos.maintain,
+        description: "Continuous monitoring and improvements that keep your system performing.",
     icon: Wrench,
   },
 ];
@@ -97,6 +108,8 @@ const ProcessSection = () => {
           })}
 
           <div className="process-orbit-core">
+            <img className="process-core-background" key={`art-${activeIndex}`} src={activeStep.photo} onError={(event) => { event.currentTarget.onerror = null; event.currentTarget.src = activeStep.artwork; }} alt="" aria-hidden="true" />
+            <div className="process-core-shade" aria-hidden="true" />
             <div className="process-core-content" key={activeStep.label}>
               <span className="process-core-icon"><ActiveIcon aria-hidden="true" /></span>
               <small>Step {activeStep.number} / 05</small>

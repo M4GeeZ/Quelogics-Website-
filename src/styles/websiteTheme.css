@@ -1750,3 +1750,55 @@ body {
   .navbar .mobile-navigation-group > button { min-height: 55px; font-size: 16px; }
   .navbar .mobile-navigation-submenu section a { min-height: 40px; font-size: 14px; }
 }
+
+
+/* V3 local exception: moving Selected Work headline is not a glass card. */
+.home-page .selected-work-marquee-section {
+  background: #D7DADC !important;
+  background-image: none !important;
+  border: 0 !important;
+  box-shadow: none !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+.home-page .selected-work-marquee-section .selected-work-marquee-topline,
+.home-page .selected-work-marquee-section .selected-work-marquee-window {
+  background: transparent !important;
+  background-image: none !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+/* Kill the global section-frame pseudo element on the marquee itself. */
+.home-page > .selected-work-marquee-section::before,
+.home-page > .selected-work-marquee-section::after {
+  content: none !important;
+  display: none !important;
+}
+
+/* V5 exact requested colors: marquee white, entire footer navy, yellow
+   footer social icons with navy icons on hover. No other site colors change. */
+.home-page .selected-work-marquee-section,
+.home-page > .selected-work-marquee-section { background:#FFFFFF !important;background-image:none !important; }
+.site-footer,.site-footer-main,.site-footer-bottom {
+ background:#07102F !important;background-image:none !important;
+ backdrop-filter:none !important;-webkit-backdrop-filter:none !important;
+}
+.site-footer { box-shadow:none !important; }
+.site-footer .site-footer-socials a {
+ color:#FFD447 !important;background:transparent !important;
+ border-color:rgba(255,212,71,.45) !important;
+ box-shadow:none !important;
+ transition:background-color .25s ease,color .25s ease,border-color .25s ease !important;
+ transform:none !important;
+}
+.site-footer .site-footer-socials a:hover,
+.site-footer .site-footer-socials a:focus-visible {
+ color:#07102F !important;background:#FFD447 !important;
+ border-color:#FFD447 !important;
+ box-shadow:none !important;filter:none !important;transform:none !important;
+}
+.site-footer .site-footer-socials a::before { display:none !important; }

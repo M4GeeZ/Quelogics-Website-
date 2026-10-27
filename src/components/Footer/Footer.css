@@ -489,3 +489,15 @@
   text-shadow: 0 0 18px rgba(34, 206, 104, 0.9);
   filter: drop-shadow(0 0 8px rgba(34, 206, 104, 0.6));
 }
+
+/* V6: stop the circular pointer glow and hover bloom on the footer. */
+.site-footer-column::before,
+.site-footer-column:hover::before { display:none!important;opacity:0!important;content:none!important; }
+.site-footer-socials a,
+.site-footer-socials a:hover,
+.site-footer-socials a:focus-visible,
+.site-footer-socials a svg { box-shadow:none!important;text-shadow:none!important;filter:none!important; }
+.site-footer-socials a:hover { color:#07102F!important;background:#FFD447!important; }
+.site-footer-lead>a:hover { text-shadow:none!important; }
+.site-footer-column a:hover { text-shadow:none!important; }
+.site-footer-legal a:hover { text-shadow:none!important; }
