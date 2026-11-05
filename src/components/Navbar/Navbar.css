@@ -1090,7 +1090,7 @@
 .navbar .mega-menu .mega-menu-group a:focus-visible,
 .navbar .mega-menu .mega-menu-group a.is-service-hovered {
   outline: none;
-  background: var(--mm-green-soft);
+  background: transparent;
   color: var(--mm-green);
   text-shadow: none;
   transform: none;
