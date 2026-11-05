@@ -202,3 +202,20 @@
  backdrop-filter:none !important;-webkit-backdrop-filter:none !important;
 }
 .selected-work-marquee-section .selected-work-marquee-window { margin-top:0; }
+
+/* Smaller headline: about 60% of the previous size, with the strip height reduced to match. */
+body .selected-work-marquee-section .selected-work-marquee-copy {
+  font-size: clamp(56px, 6.9vw, 132px);
+}
+
+body .selected-work-marquee-section { min-height: 160px; }
+
+@media (max-width: 700px) {
+  body .selected-work-marquee-section .selected-work-marquee-copy { font-size: clamp(42px, 10vw, 68px); }
+  body .selected-work-marquee-section { min-height: 120px; }
+}
+
+@media (max-width: 380px) {
+  body .selected-work-marquee-section .selected-work-marquee-copy { font-size: 38px; }
+  body .selected-work-marquee-section { min-height: 100px; }
+}

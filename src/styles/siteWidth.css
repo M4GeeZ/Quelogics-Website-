@@ -107,3 +107,21 @@ body .industry-accordion-section .industry-panels {
     margin-inline: auto;
   }
 }
+
+/* ---- No inset rounded "box" behind home sections ---- */
+body .home-page > section::before { content: none; display: none; }
+
+/* ---- One navy for every dark section (same as the footer): #07102F ---- */
+:root { --site-navy: #07102f; }
+
+body .hero-section,
+body .home-page .hero-section,
+body .wc-section,
+body .industry-accordion-section,
+body .industry-accordion-section .industry-panels {
+  background: var(--site-navy) !important;
+  background-image: none !important;
+}
+
+/* drop the faint grid overlay on the industries section so the colour stays flat */
+body .industry-accordion-section::before { content: none; display: none; }

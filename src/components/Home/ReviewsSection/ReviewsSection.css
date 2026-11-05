@@ -1,20 +1,33 @@
-/* Client reviews: intro on the left, two testimonial cards with arrows on the right. */
+/* Success stories: intro on the left, review slider on the right.
+   The slider runs past the column to the screen edge, so one review is fully
+   visible and the next one peeks in half-cut. Arrows slide one review at a time. */
 
 .rv-section {
+  /* distance from the content column to the right edge of the screen */
+  --rv-bleed: calc((100vw - min(100vw - var(--site-gutter, 128px), var(--site-max, 1312px))) / 2);
+  --rv-gap: 24px;
+
   width: 100%;
   padding: clamp(64px, 7vw, 104px) 0;
-  background: #f3f7fb;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 85% 0%, rgba(34, 206, 104, 0.1), transparent 40%),
+    #f3f7fb;
   color: #07102f;
 }
 
 .rv-shell {
+  position: relative;
+  z-index: 1; /* sit above the global section ::before panel */
   width: min(100% - var(--site-gutter, 128px), var(--site-max, 1312px));
   margin: 0 auto;
   display: grid;
-  grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.4fr);
-  gap: clamp(36px, 5vw, 80px);
+  grid-template-columns: minmax(0, 0.78fr) minmax(0, 1.5fr);
+  gap: clamp(36px, 4.5vw, 72px);
   align-items: center;
 }
+
+/* ---- Intro ---- */
 
 .rv-eyebrow {
   display: inline-flex;
@@ -40,16 +53,16 @@
   margin: 0;
   color: #0a2a5e;
   font-family: var(--font-display, inherit);
-  font-size: clamp(34px, 3.4vw, 50px);
+  font-size: clamp(34px, 3.3vw, 50px);
   font-weight: 700;
   line-height: 1.08;
   letter-spacing: -0.035em;
 }
 
-.rv-intro h2 em { color: #17a352; font-style: normal; }
+.rv-intro h2 em { display: block; color: #17a352; font-style: normal; }
 
 .rv-intro > p {
-  max-width: 440px;
+  max-width: 420px;
   margin: 16px 0 0;
   color: #5b6880;
   font-size: 15px;
@@ -94,53 +107,123 @@
 .rv-all:hover,
 .rv-all:focus-visible { gap: 12px; background: #2bdd68; transform: translateY(-2px); }
 
-/* ---- Cards ---- */
+/* ---- Slider ---- */
 
 .rv-slider { min-width: 0; }
 
-.rv-cards {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 20px;
+.rv-viewport {
+  /* extra room on the left and bottom so the active card's shadow is not cut off */
+  --rv-shadow-room: 36px;
+  margin-left: calc(-1 * var(--rv-shadow-room));
+  margin-right: calc(-1 * var(--rv-bleed));
+  padding: 16px 0 60px var(--rv-shadow-room);
+  overflow: hidden;
+  touch-action: pan-y;
 }
 
+.rv-track {
+  display: flex;
+  gap: var(--rv-gap);
+  width: 100%;
+  transition: transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: transform;
+}
+
+/* One full card + gap + half a card fills the visible width. */
 .rv-card {
+  position: relative;
+  flex: 0 0 min(calc((100% - var(--rv-gap)) / 1.5), 560px);
   display: flex;
   flex-direction: column;
-  min-height: 300px;
-  padding: 28px;
+  min-height: 330px;
+  padding: 30px 32px 28px;
+  overflow: hidden;
   border: 1px solid #dde6f0;
-  border-radius: 22px;
+  border-radius: 26px;
   background: #ffffff;
-  box-shadow: 0 18px 40px -28px rgba(10, 42, 94, 0.35);
-  animation: rvIn 0.35s ease both;
+  opacity: 0.55;
+  transform: scale(0.97);
+  transform-origin: left center;
+  transition: opacity 0.6s ease, transform 0.6s ease, box-shadow 0.6s ease, border-color 0.6s ease;
+}
+
+.rv-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 32px;
+  right: 32px;
+  height: 3px;
+  border-radius: 0 0 4px 4px;
+  background: linear-gradient(90deg, #22ce68, #17a352);
+  opacity: 0;
+  transition: opacity 0.6s ease;
+}
+
+.rv-card.is-active {
+  border-color: #cfe9da;
+  opacity: 1;
+  transform: scale(1);
+  box-shadow: 0 24px 44px -26px rgba(10, 42, 94, 0.38);
+}
+
+.rv-card.is-active::before { opacity: 1; }
+
+.rv-card-watermark {
+  position: absolute;
+  right: 20px;
+  bottom: 16px;
+  width: 84px;
+  height: 84px;
+  color: #22ce68;
+  opacity: 0.07;
+  transform: rotate(180deg);
+  pointer-events: none;
 }
 
 .rv-card-top {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 12px;
 }
 
-.rv-quote-mark {
-  width: 34px;
-  height: 34px;
-  color: #22ce68;
-  fill: rgba(34, 206, 104, 0.15);
+.rv-company {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 13px;
+  border-radius: 999px;
+  background: #eef5fb;
+  color: #0a2a5e;
+  font-size: 13px;
+  font-weight: 700;
+  white-space: nowrap;
 }
+
+.rv-company svg { width: 15px; height: 15px; color: #17a352; }
 
 .rv-stars { display: inline-flex; gap: 3px; }
 .rv-stars svg { width: 16px; height: 16px; color: #f5b301; fill: #f5b301; }
 
 .rv-card blockquote {
+  position: relative;
   flex: 1 1 auto;
-  margin: 20px 0 24px;
-  color: #3b4862;
-  font-size: 15.5px;
+  margin: 24px 0 26px;
+  color: #33415c;
+  font-size: clamp(16px, 1.2vw, 18px);
   line-height: 1.7;
 }
 
+.rv-card blockquote mark {
+  padding: 0 2px;
+  background: linear-gradient(transparent 62%, rgba(34, 206, 104, 0.22) 62%);
+  color: #12904a;
+  font-weight: 700;
+}
+
 .rv-card footer {
+  position: relative;
   display: flex;
   align-items: center;
   gap: 14px;
@@ -152,25 +235,26 @@
   flex: none;
   display: grid;
   place-items: center;
-  width: 46px;
-  height: 46px;
+  width: 50px;
+  height: 50px;
   border-radius: 50%;
-  background: linear-gradient(135deg, #22ce68, #12904a);
+  background: linear-gradient(135deg, #22ce68, #0f7a3f);
+  box-shadow: 0 0 0 4px #ecf8f1;
   color: #ffffff;
-  font-size: 14px;
+  font-size: 15px;
   font-weight: 800;
 }
 
-.rv-card footer strong {
+.rv-person strong {
   display: block;
-  color: #17a352;
-  font-size: 16px;
+  color: #0a2a5e;
+  font-size: 16.5px;
   font-weight: 750;
 }
 
-.rv-card footer small {
+.rv-person small {
   display: block;
-  margin-top: 2px;
+  margin-top: 3px;
   color: #66758a;
   font-size: 13px;
 }
@@ -181,37 +265,61 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-top: 24px;
+  gap: 20px;
+  margin-top: -26px;
 }
 
-.rv-dots { display: flex; gap: 6px; }
+.rv-progress {
+  display: flex;
+  flex: 1 1 auto;
+  align-items: center;
+  gap: 16px;
+  max-width: 320px;
+}
 
-.rv-dots i {
-  width: 8px;
-  height: 8px;
+.rv-count {
+  flex: none;
+  color: #8592a6;
+  font-size: 14px;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+
+.rv-count b { color: #0a2a5e; font-size: 18px; }
+
+.rv-bar {
+  position: relative;
+  flex: 1 1 auto;
+  height: 3px;
+  overflow: hidden;
   border-radius: 999px;
-  background: #c9d5e3;
-  transition: width 0.3s ease, background 0.3s ease;
+  background: #d5dfea;
 }
 
-.rv-dots i.is-active { width: 26px; background: #22ce68; }
+.rv-bar i {
+  position: absolute;
+  inset: 0 auto 0 0;
+  border-radius: inherit;
+  background: #22ce68;
+  transition: width 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
 
 .rv-arrows { display: flex; gap: 12px; }
 
 .rv-arrows button {
   display: grid;
   place-items: center;
-  width: 46px;
-  height: 46px;
+  width: 52px;
+  height: 52px;
   border: 1px solid #b9c7d8;
   border-radius: 50%;
   background: #ffffff;
   color: #0a2a5e;
   cursor: pointer;
-  transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+  transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
 }
 
-.rv-arrows button svg { width: 18px; height: 18px; }
+.rv-arrows button svg { width: 19px; height: 19px; }
 
 .rv-arrows button:hover,
 .rv-arrows button:focus-visible {
@@ -219,24 +327,32 @@
   background: #22ce68;
   color: #04190f;
   outline: none;
+  transform: translateY(-2px);
 }
 
-@keyframes rvIn {
-  from { opacity: 0; transform: translateY(10px); }
-  to { opacity: 1; transform: translateY(0); }
-}
+/* ---- Responsive ---- */
 
 @media (max-width: 1100px) {
   .rv-shell { grid-template-columns: minmax(0, 1fr); }
 }
 
 @media (max-width: 720px) {
-  .rv-cards { grid-template-columns: minmax(0, 1fr); }
-  .rv-card--second { display: none; }
-  .rv-card { min-height: 0; padding: 22px; }
-  .rv-card blockquote { font-size: 15px; }
+  .rv-section { --rv-gap: 14px; }
+  .rv-viewport { --rv-shadow-room: 16px; }
+  .rv-card {
+    flex-basis: calc(100% - 48px);
+    min-height: 0;
+    padding: 24px 22px 22px;
+    border-radius: 22px;
+  }
+  .rv-card::before { left: 22px; right: 22px; }
+  .rv-card blockquote { margin: 18px 0 20px; font-size: 15.5px; }
+  .rv-card-watermark { width: 90px; height: 90px; }
+  .rv-arrows button { width: 46px; height: 46px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .rv-card { animation: none; }
+  .rv-track,
+  .rv-card,
+  .rv-bar i { transition: none; }
 }

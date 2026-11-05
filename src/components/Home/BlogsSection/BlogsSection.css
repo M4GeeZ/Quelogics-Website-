@@ -8,6 +8,8 @@
 }
 
 .blogs-shell {
+  position: relative;
+  z-index: 1;
   width: min(100% - var(--site-gutter, 128px), var(--site-max, 1312px));
   margin: 0 auto;
 }

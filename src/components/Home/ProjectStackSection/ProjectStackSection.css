@@ -346,3 +346,71 @@ section.project-stack-section .project-stack-card-media > span { display:none!im
 
 /* Heading card removed: give the project grid its own top spacing. */
 .project-stack-stage { padding-top: clamp(24px, 3vw, 48px); }
+
+/* ---- Two scrolling rows of 10 project cards ---- */
+.project-stack-stage { padding-inline: 0; }
+
+.ps-rows {
+  --ps-card: clamp(270px, 23vw, 340px);
+  --ps-gap: clamp(20px, 2vw, 32px);
+  display: grid;
+  gap: clamp(28px, 3vw, 44px);
+  width: 100%;
+  padding-top: 24px;
+}
+
+.ps-row {
+  overflow: hidden;
+  padding: 6px 0 4px;
+}
+
+.ps-track {
+  display: flex;
+  width: max-content;
+  animation: psLeft 90s linear infinite;
+  will-change: transform;
+}
+
+.ps-row--right .ps-track {
+  animation-name: psRight;
+  animation-duration: 100s;
+}
+
+/* each half ends with a gap, so shifting by exactly 50% loops without a jump */
+.ps-group {
+  display: flex;
+  flex: none;
+  gap: var(--ps-gap);
+  padding-right: var(--ps-gap);
+}
+
+.ps-item {
+  flex: 0 0 var(--ps-card);
+  width: var(--ps-card);
+  min-width: 0;
+}
+
+.ps-row:hover .ps-track,
+.ps-row:focus-within .ps-track { animation-play-state: paused; }
+
+@keyframes psLeft {
+  from { transform: translate3d(0, 0, 0); }
+  to { transform: translate3d(-50%, 0, 0); }
+}
+
+@keyframes psRight {
+  from { transform: translate3d(-50%, 0, 0); }
+  to { transform: translate3d(0, 0, 0); }
+}
+
+@media (max-width: 600px) {
+  .ps-rows { --ps-card: 74vw; }
+  .ps-track { animation-duration: 70s; }
+  .ps-row--right .ps-track { animation-duration: 78s; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ps-row { overflow-x: auto; }
+  .ps-track { animation: none; }
+  .ps-group[aria-hidden="true"] { display: none; }
+}

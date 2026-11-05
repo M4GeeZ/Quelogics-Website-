@@ -2,6 +2,8 @@ import { ArrowUpRight } from "lucide-react";
 import carshare from "../../../assets/project-images/optimized/carshare.jpg";
 import EagleChat from "../../../assets/project-images/optimized/EagleChat.jpg";
 import GMS from "../../../assets/project-images/optimized/GMS.jpg";
+import LMSAPP from "../../../assets/project-images/optimized/LMSAPP.jpg";
+import ttb from "../../../assets/project-images/optimized/ttb.jpg";
 import hmb from "../../../assets/project-images/optimized/hmb.jpg";
 import Jabulani from "../../../assets/project-images/optimized/Jabulani.jpg";
 import Mindora from "../../../assets/project-images/optimized/Mindora.jpg";
@@ -82,9 +84,32 @@ const projects = [
       "A complete workshop workflow for customers, vehicles, jobs, parts, invoicing, and business visibility.",
     accent: "#7ca8ff",
   },
+  {
+    number: "009",
+    title: "TrueTrucker Marketplace",
+    stack: "Marketplace / Transport / Communication",
+    image: ttb,
+    description:
+      "A specialist transport marketplace connecting drivers and operators with relevant opportunities and clear communication.",
+    accent: "#ffb55f",
+  },
+  {
+    number: "010",
+    title: "Learning Management System",
+    stack: "EdTech / Courses / Progress Tracking",
+    image: LMSAPP,
+    description:
+      "A practical learning hub bringing lessons, assignments, progress tracking, and course administration into one clear experience.",
+    accent: "#22ce68",
+  },
 ];
 
-const ProjectCard = ({ project }) => (
+// Top row: projects in order. Bottom row: same 10 projects, starting halfway round,
+// so the two rows never show the same card at the same position.
+const topRow = projects;
+const bottomRow = [...projects.slice(5), ...projects.slice(0, 5)];
+
+const ProjectCard = ({ project, duplicate = false }) => (
   <article className="project-stack-card" style={{ "--project-accent": project.accent }}>
     <div className="project-stack-card-media">
       <img className="project-stack-media-backdrop" src={project.image} alt="" aria-hidden="true" loading="lazy" decoding="async" />
@@ -97,6 +122,7 @@ const ProjectCard = ({ project }) => (
       <a
         className="project-stack-reveal-link"
         href="/case-studies"
+        tabIndex={duplicate ? -1 : undefined}
         aria-label={`View ${project.title} project`}
       >
         View project
@@ -104,7 +130,6 @@ const ProjectCard = ({ project }) => (
       </a>
     </div>
     <div className="project-stack-card-info">
-      <span className="project-stack-card-number">{project.number}</span>
       <p className="project-stack-card-category">{project.stack}</p>
       <h3>{project.title}</h3>
       <p className="project-stack-card-description">{project.description}</p>
@@ -112,11 +137,29 @@ const ProjectCard = ({ project }) => (
   </article>
 );
 
+// One scrolling row. The cards are rendered twice so the loop is seamless.
+const ProjectRow = ({ items, direction, label }) => (
+  <div className={`ps-row ps-row--${direction}`} role="group" aria-label={label}>
+    <div className="ps-track">
+      {[false, true].map((duplicate) => (
+        <div className="ps-group" aria-hidden={duplicate || undefined} key={duplicate ? "copy" : "main"}>
+          {items.map((project) => (
+            <div className="ps-item" key={project.number}>
+              <ProjectCard project={project} duplicate={duplicate} />
+            </div>
+          ))}
+        </div>
+      ))}
+    </div>
+  </div>
+);
+
 const ProjectStackSection = () => (
   <section className="project-stack-section" aria-label="Selected projects">
     <div className="project-stack-stage">
-      <div className="project-stack-grid">
-        {projects.map((project) => <ProjectCard key={project.number} project={project} />)}
+      <div className="ps-rows">
+        <ProjectRow items={topRow} direction="left" label="Projects, moving right to left" />
+        <ProjectRow items={bottomRow} direction="right" label="More projects, moving left to right" />
       </div>
     </div>
   </section>

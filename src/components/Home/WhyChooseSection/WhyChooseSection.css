@@ -1,0 +1,368 @@
+/* Why Choose QueLogics: circuit diagram on the left, reasons accordion on the right.
+   The open reason lights up its node and trace in the diagram. */
+
+/* ---- QueLogics logo (same shapes as the navbar logo, sized in em) ---- */
+
+.ql-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45em;
+  color: #ffffff;
+  font-family: var(--font-company, inherit);
+  font-weight: 700;
+  letter-spacing: -0.035em;
+  line-height: 1;
+  white-space: nowrap;
+  vertical-align: baseline;
+}
+
+.ql-brand-text > span { color: #22ce68; }
+
+.ql-brand-mark {
+  position: relative;
+  display: block;
+  flex: none;
+  width: 1.15em;
+  height: 1.15em;
+  border: 0.14em solid currentColor;
+  border-radius: 50%;
+}
+
+.ql-brand-mark::after {
+  content: "";
+  position: absolute;
+  right: -0.3em;
+  bottom: -0.15em;
+  width: 0.48em;
+  height: 0.19em;
+  border-radius: 0.2em;
+  background: #22ce68;
+  transform: rotate(46deg);
+}
+
+.ql-brand-mark i {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0.28em;
+  height: 0.28em;
+  border-radius: 50%;
+  background: #22ce68;
+  transform: translate(-50%, -50%);
+}
+
+.ql-brand--heading {
+  margin: 0 0.12em 0 0.22em;
+  font-size: 0.92em;
+  transform: translateY(0.06em);
+}
+
+.ql-brand--heading .ql-brand-mark { width: 0.95em; height: 0.95em; }
+
+.ql-brand--core { font-size: 46px; }
+
+/* ---- Section ---- */
+
+.wc-section {
+  width: 100%;
+  padding: clamp(70px, 7.5vw, 112px) 0;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 25% 55%, rgba(34, 206, 104, 0.12), transparent 38%),
+    linear-gradient(180deg, #07102f 0%, #030821 100%);
+  color: #ffffff;
+}
+
+.wc-shell {
+  position: relative;
+  z-index: 1; /* above the global section ::before panel */
+  width: min(100% - var(--site-gutter, 128px), var(--site-max, 1312px));
+  margin: 0 auto;
+}
+
+.wc-head { text-align: center; }
+
+.wc-head h2 {
+  margin: 0;
+  color: #ffffff;
+  font-family: var(--font-display, inherit);
+  font-size: clamp(32px, 3.4vw, 50px);
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.03em;
+}
+
+.wc-head p {
+  margin: 14px 0 0;
+  color: rgba(226, 233, 246, 0.72);
+  font-size: clamp(15px, 1.1vw, 17px);
+}
+
+.wc-body {
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+  gap: clamp(36px, 5vw, 88px);
+  align-items: center;
+  margin-top: clamp(40px, 5vw, 68px);
+}
+
+/* ---- Diagram ---- */
+
+.wc-diagram {
+  position: relative;
+  width: 100%;
+  max-width: 620px;
+  aspect-ratio: 6 / 5;
+  justify-self: center;
+}
+
+.wc-diagram > svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+.wc-trace {
+  fill: none;
+  stroke: rgba(34, 206, 104, 0.4);
+  stroke-width: 1.5;
+  vector-effect: non-scaling-stroke;
+  transition: stroke 0.4s ease;
+}
+
+.wc-trace--faint { stroke: rgba(34, 206, 104, 0.16); }
+
+.wc-pulse {
+  fill: none;
+  stroke: #4ee38a;
+  stroke-width: 2.5;
+  stroke-linecap: round;
+  stroke-dasharray: 7 93;
+  vector-effect: non-scaling-stroke;
+  opacity: 0.45;
+  animation: wcPulse 3.6s linear infinite;
+  filter: drop-shadow(0 0 4px rgba(78, 227, 138, 0.9));
+}
+
+.wc-link.is-active .wc-trace { stroke: rgba(78, 227, 138, 0.95); }
+.wc-link.is-active .wc-pulse { opacity: 1; animation-duration: 2.2s; }
+
+.wc-junction {
+  fill: #22ce68;
+  filter: drop-shadow(0 0 5px rgba(34, 206, 104, 0.8));
+}
+
+@keyframes wcPulse {
+  from { stroke-dashoffset: 100; }
+  to { stroke-dashoffset: 0; }
+}
+
+/* Centre: QueLogics mark in a glowing ring */
+.wc-core {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  display: grid;
+  place-items: center;
+  width: clamp(110px, 21%, 140px);
+  aspect-ratio: 1;
+  border: 1px solid rgba(34, 206, 104, 0.45);
+  border-radius: 50%;
+  background: radial-gradient(circle at 50% 35%, #12305a 0%, #071737 60%, #050f2b 100%);
+  box-shadow:
+    0 0 0 10px rgba(7, 23, 55, 0.85),
+    0 0 0 11px rgba(34, 206, 104, 0.25),
+    0 0 60px rgba(34, 206, 104, 0.35);
+  transform: translate(-50%, -50%);
+}
+
+.wc-core-ring {
+  position: absolute;
+  inset: -22px;
+  border: 1px solid rgba(34, 206, 104, 0.3);
+  border-radius: 50%;
+  animation: wcRing 3.2s ease-out infinite;
+}
+
+@keyframes wcRing {
+  from { opacity: 0.9; transform: scale(0.82); }
+  to { opacity: 0; transform: scale(1.18); }
+}
+
+/* Nodes */
+.wc-node {
+  position: absolute;
+  display: grid;
+  justify-items: center;
+  gap: 8px;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+  transform: translate(-50%, -50%);
+}
+
+.wc-node-dot {
+  display: grid;
+  place-items: center;
+  width: 62px;
+  height: 62px;
+  border: 1px solid rgba(34, 206, 104, 0.3);
+  border-radius: 50%;
+  background: radial-gradient(circle at 50% 30%, #10285a 0%, #081a40 100%);
+  box-shadow: 0 0 26px rgba(16, 52, 110, 0.85);
+  color: #4ee38a;
+  transition: border-color 0.35s ease, box-shadow 0.35s ease, transform 0.35s ease, background 0.35s ease;
+}
+
+.wc-node-dot svg { width: 22px; height: 22px; }
+
+.wc-node-label {
+  color: rgba(226, 233, 246, 0.7);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  transition: color 0.35s ease;
+}
+
+.wc-node:hover .wc-node-dot,
+.wc-node:focus-visible .wc-node-dot { border-color: rgba(78, 227, 138, 0.7); }
+
+.wc-node:focus-visible { outline: none; }
+
+.wc-node.is-active .wc-node-dot {
+  border-color: #4ee38a;
+  background: radial-gradient(circle at 50% 30%, #16b35a 0%, #0d7a3d 100%);
+  box-shadow: 0 0 0 6px rgba(34, 206, 104, 0.14), 0 0 34px rgba(34, 206, 104, 0.65);
+  color: #ffffff;
+  transform: scale(1.08);
+}
+
+.wc-node.is-active .wc-node-label { color: #ffffff; }
+
+/* ---- Accordion ---- */
+
+.wc-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border-top: 1px solid rgba(255, 255, 255, 0.14);
+}
+
+.wc-item { border-bottom: 1px solid rgba(255, 255, 255, 0.14); }
+
+.wc-item-head {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  width: 100%;
+  min-height: 74px;
+  padding: 18px 4px;
+  border: 0;
+  background: none;
+  color: #ffffff;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+
+.wc-item-icon {
+  flex: none;
+  width: 24px;
+  height: 24px;
+  color: #22ce68;
+}
+
+.wc-item-title {
+  flex: 1 1 auto;
+  font-family: var(--font-display, inherit);
+  font-size: clamp(18px, 1.5vw, 22px);
+  font-weight: 700;
+  letter-spacing: -0.015em;
+  transition: color 0.25s ease;
+}
+
+.wc-item-head:hover .wc-item-title,
+.wc-item.is-open .wc-item-title { color: #4ee38a; }
+
+.wc-item-head:focus-visible { outline: 2px solid #22ce68; outline-offset: 2px; }
+
+/* plus that turns into a minus */
+.wc-plus {
+  position: relative;
+  flex: none;
+  width: 30px;
+  height: 30px;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  border-radius: 50%;
+  transition: border-color 0.25s ease, background 0.25s ease;
+}
+
+.wc-plus::before,
+.wc-plus::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 12px;
+  height: 2px;
+  border-radius: 2px;
+  background: #ffffff;
+  transform: translate(-50%, -50%);
+  transition: transform 0.3s ease, background 0.25s ease;
+}
+
+.wc-plus::after { transform: translate(-50%, -50%) rotate(90deg); }
+
+.wc-item.is-open .wc-plus { border-color: #22ce68; background: #22ce68; }
+.wc-item.is-open .wc-plus::before,
+.wc-item.is-open .wc-plus::after { background: #04190f; }
+.wc-item.is-open .wc-plus::after { transform: translate(-50%, -50%) rotate(0deg); }
+
+.wc-item-panel {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.wc-item.is-open .wc-item-panel { grid-template-rows: 1fr; }
+
+.wc-item-panel > div { min-height: 0; overflow: hidden; }
+
+.wc-item-panel p {
+  margin: 0;
+  padding: 0 46px 22px 44px;
+  color: rgba(226, 233, 246, 0.72);
+  font-size: 15px;
+  line-height: 1.65;
+}
+
+/* ---- Responsive ---- */
+
+@media (max-width: 1000px) {
+  .wc-body { grid-template-columns: minmax(0, 1fr); }
+  .wc-diagram { max-width: 560px; }
+}
+
+@media (max-width: 640px) {
+  .ql-brand--core { font-size: 34px; }
+  .wc-core { width: 92px; }
+  .wc-core-ring { inset: -14px; }
+  .wc-node-dot { width: 46px; height: 46px; }
+  .wc-node-dot svg { width: 18px; height: 18px; }
+  .wc-node-label { font-size: 9.5px; letter-spacing: 0.06em; }
+  .wc-item-head { min-height: 64px; gap: 12px; }
+  .wc-item-panel p { padding: 0 8px 18px 40px; font-size: 14.5px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .wc-pulse,
+  .wc-core-ring { animation: none; }
+  .wc-item-panel { transition: none; }
+}

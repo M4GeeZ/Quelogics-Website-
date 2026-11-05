@@ -1,10 +1,11 @@
 import Hero from "../../components/Home/Hero/Hero";
-import ProjectsSection from "../../components/Home/ProjectsSection/ProjectsSection";
 import ServicesSection from "../../components/Home/ServicesSection/ServicesSection";
+import HowWeWorkSection from "../../components/Home/HowWeWorkSection/HowWeWorkSection";
 import IndustriesSection from "../../components/Home/IndustriesSection/IndustriesSection";
-import SelectedWorkSection from "../../components/Home/SelectedWorkSection/SelectedWorkSection";
 import ProjectStackSection from "../../components/Home/ProjectStackSection/ProjectStackSection";
 import ReviewsSection from "../../components/Home/ReviewsSection/ReviewsSection";
+import TechnologiesSection from "../../components/Home/TechnologiesSection/TechnologiesSection";
+import WhyChooseSection from "../../components/Home/WhyChooseSection/WhyChooseSection";
 import BlogsSection from "../../components/Home/BlogsSection/BlogsSection";
 import "./Home.css";
 
@@ -12,12 +13,13 @@ const Home = () => {
   return (
     <main className="home-page">
       <Hero />
-      <ProjectsSection />
       <ServicesSection />
+      <HowWeWorkSection />
       <IndustriesSection />
-      <SelectedWorkSection />
+      <TechnologiesSection />
       <ProjectStackSection />
       <ReviewsSection />
+      <WhyChooseSection />
       <BlogsSection />
     </main>
   );
