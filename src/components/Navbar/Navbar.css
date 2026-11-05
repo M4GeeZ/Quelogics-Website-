@@ -1275,3 +1275,94 @@
   .navbar .mega-menu-preview-content,
   .navbar .mega-menu-feature { animation: none; }
 }
+
+/* =========================
+   MOBILE MENU - compact tabs + 2-column links
+========================= */
+
+@media (max-width: 1100px) {
+  .navbar .mobile-navigation-submenu .mobile-tab-row {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 4px;
+    margin: 4px 12px 8px;
+    padding: 4px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.04);
+  }
+
+  .navbar .mobile-navigation-submenu .mobile-tab {
+    min-width: 0;
+    min-height: 34px;
+    padding: 0 4px;
+    border: 0;
+    border-radius: 999px;
+    background: transparent;
+    color: rgba(235, 240, 250, 0.74);
+    font: inherit;
+    font-size: 12px;
+    font-weight: 700;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    cursor: pointer;
+    transition: background 0.2s ease, color 0.2s ease;
+  }
+
+  .navbar .mobile-navigation-submenu .mobile-tab.is-active {
+    background: #22ce68;
+    color: #04190f;
+  }
+
+  .navbar .mobile-navigation .mobile-navigation-submenu section {
+    gap: 0;
+    padding: 4px 12px 2px;
+  }
+
+  .navbar .mobile-navigation .mobile-navigation-submenu h2 {
+    margin: 4px 0 5px;
+    font-size: 10.5px;
+  }
+
+  .navbar .mobile-navigation-submenu .mobile-link-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 2px 10px;
+  }
+
+  .navbar .mobile-navigation-submenu .mobile-link-grid > a.mobile-link {
+    min-height: 36px;
+    padding: 6px 8px;
+    border-radius: 9px;
+    background: rgba(255, 255, 255, 0.035);
+    color: rgba(235, 240, 250, 0.82);
+    font-size: 12.5px;
+    font-weight: 600;
+    line-height: 1.25;
+    transform: none;
+    text-shadow: none;
+  }
+
+  .navbar .mobile-navigation-submenu .mobile-link-grid > a.mobile-link::before { display: none; }
+
+  .navbar .mobile-navigation-submenu .mobile-link-grid > a.mobile-link:hover,
+  .navbar .mobile-navigation-submenu .mobile-link-grid > a.mobile-link:focus-visible,
+  .navbar .mobile-navigation-submenu .mobile-link-grid > a.mobile-link:active {
+    background: rgba(34, 206, 104, 0.14);
+    color: #4ee38a;
+    transform: none;
+    text-shadow: none;
+  }
+
+  .navbar .mobile-navigation-submenu .mobile-navigation-view-all {
+    min-height: 40px;
+    margin: 8px 14px 12px;
+  }
+
+  .navbar .mobile-navigation > a,
+  .navbar .mobile-navigation-group > button {
+    min-height: 50px;
+    font-size: 16px;
+  }
+}

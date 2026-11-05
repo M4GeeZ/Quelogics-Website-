@@ -165,6 +165,7 @@ const Navbar = () => {
   const [menuVisible, setMenuVisible] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [mobileSubmenu, setMobileSubmenu] = useState(null);
+  const [mobileTab, setMobileTab] = useState("Services");
   const [languageOpen, setLanguageOpen] = useState(false);
   const [scrolledPastHero, setScrolledPastHero] = useState(false);
   const [projectStackActive, setProjectStackActive] = useState(false);
@@ -245,7 +246,11 @@ const Navbar = () => {
       : activeMenu === hireTeamMenu.title
         ? hireTeamMenu
         : null;
-  const mobileItems = [...tabItems, companyMenu, hireTeamMenu];
+  const mobileItems = [
+    { id: "our-services", title: OUR_SERVICES, path: "/services" },
+    companyMenu,
+    hireTeamMenu,
+  ];
   const activePreview = hoveredMenuLink && (servicePreviewData[hoveredMenuLink] || menuPreviewData[hoveredMenuLink]);
   const menuLayout = showTabs
     ? "tabs"
@@ -443,6 +448,10 @@ const Navbar = () => {
 
         {mobileItems.map((item) => {
           const isExpanded = mobileSubmenu === item.title;
+          const isOurServices = item.title === OUR_SERVICES;
+          const mobileActive = isOurServices
+            ? tabItems.find((tab) => tab.title === mobileTab) || tabItems[0]
+            : item;
 
           return (
             <div
@@ -464,22 +473,40 @@ const Navbar = () => {
 
               <div className="mobile-navigation-submenu">
                 <div>
-                  {item.groups.map((group) => (
+                  {isOurServices && (
+                    <div className="mobile-tab-row" role="tablist">
+                      {tabItems.map((tab) => (
+                        <button
+                          type="button"
+                          role="tab"
+                          aria-selected={tab.title === mobileActive.title}
+                          className={`mobile-tab${tab.title === mobileActive.title ? " is-active" : ""}`}
+                          onClick={() => setMobileTab(tab.title)}
+                          key={tab.id}
+                        >
+                          {tab.title}
+                        </button>
+                      ))}
+                    </div>
+                  )}
+                  {mobileActive.groups.map((group) => (
                     <section key={group.title}>
                       <h2>{group.title}</h2>
-                      {group.links.map(([label, path]) => (
-                        <Link to={path} onClick={closeMobileMenu} key={label}>
-                          {label}
-                        </Link>
-                      ))}
+                      <div className="mobile-link-grid">
+                        {group.links.map(([label, path]) => (
+                          <Link className="mobile-link" to={path} onClick={closeMobileMenu} key={label}>
+                            {label}
+                          </Link>
+                        ))}
+                      </div>
                     </section>
                   ))}
                   <Link
                     className="mobile-navigation-view-all"
-                    to={item.path}
+                    to={mobileActive.path}
                     onClick={closeMobileMenu}
                   >
-                    View all {item.title}
+                    View all {mobileActive.title}
                     <ArrowUpRight aria-hidden="true" />
                   </Link>
                 </div>
