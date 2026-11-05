@@ -520,3 +520,70 @@
 .industry-panel.is-active .industry-panel-photo { opacity:.9;filter:blur(1.5px) saturate(.96) brightness(.84); }
 .industry-panel::after { background:linear-gradient(90deg,rgba(4,11,39,.84) 0%,rgba(4,11,39,.62) 55%,rgba(4,11,39,.48) 100%); }
 .industry-panel.is-active::after { background:linear-gradient(90deg,rgba(4,11,39,.86) 0%,rgba(4,11,39,.67) 50%,rgba(4,11,39,.44) 100%); }
+
+/* V7: photos in their original colours - no blur, fade or blue wash.
+   A neutral dark gradient sits only where text needs contrast. */
+.industry-accordion-section .industry-panel .industry-panel-photo {
+  opacity: 1;
+  filter: none;
+  transform: scale(1.02);
+  transition: transform 0.9s cubic-bezier(0.22, 1, 0.36, 1), filter 0.45s ease;
+}
+
+.industry-accordion-section .industry-panel.is-active .industry-panel-photo {
+  opacity: 1;
+  filter: none;
+  transform: scale(1);
+}
+
+/* Collapsed strips: show the photo, darkened evenly so the vertical label reads. */
+.industry-accordion-section .industry-panel::after {
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.35) 0%, rgba(0, 0, 0, 0.55) 100%);
+  transition: background 0.45s ease;
+}
+
+.industry-accordion-section .industry-panel:hover:not(.is-active)::after {
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0.45) 100%);
+}
+
+/* Open panel: clear photo on the right, soft shade behind the copy on the left. */
+.industry-accordion-section .industry-panel.is-active::after {
+  background: linear-gradient(
+    90deg,
+    rgba(0, 0, 0, 0.72) 0%,
+    rgba(0, 0, 0, 0.45) 38%,
+    rgba(0, 0, 0, 0.08) 70%,
+    rgba(0, 0, 0, 0) 100%
+  );
+}
+
+/* Remove the extra grid and tinted panel fills that sat on top of the photos. */
+.industry-accordion-section .industry-panel .industry-panel-grid { display: none; }
+
+.industry-accordion-section .industry-panel,
+.industry-accordion-section .industry-panel.is-active {
+  background: #0b0f17 !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+.industry-accordion-section .industry-panel .industry-expanded-content h3,
+.industry-accordion-section .industry-panel .industry-expanded-content p,
+.industry-accordion-section .industry-panel .industry-vertical-title {
+  text-shadow: 0 2px 14px rgba(0, 0, 0, 0.45);
+}
+
+/* Collapsed strips: a little more shade so labels and icons read on bright photos. */
+.industry-accordion-section .industry-panel:not(.is-active)::after {
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.35) 45%, rgba(0, 0, 0, 0.7) 100%);
+}
+
+.industry-accordion-section .industry-panel:not(.is-active):hover::after {
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.38) 0%, rgba(0, 0, 0, 0.22) 45%, rgba(0, 0, 0, 0.6) 100%);
+}
+
+.industry-accordion-section .industry-collapsed-icon {
+  background: rgba(0, 0, 0, 0.45);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+}

@@ -20,6 +20,7 @@ import { Navigate, Route, Routes } from "react-router-dom";
 import "./styles/variables.css";
 import "./styles/websiteTheme.css";
 import "./pages/Shared/PageStyles.css";
+import "./styles/siteWidth.css";
 
 function App() {
   return (

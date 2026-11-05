@@ -1,5 +1,5 @@
-import { realPhotos } from "../../../data/realPhotoData";
-import { useEffect, useLayoutEffect, useRef, useState } from "react";
+import { useLayoutEffect, useRef, useState } from "react";
+import { Link } from "react-router-dom";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import {
@@ -21,7 +21,9 @@ import {
   WandSparkles,
   Workflow,
 } from "lucide-react";
+import { serviceTech, serviceLinks } from "./servicesTech";
 import "./ServicesSection.css";
+import "./ServicesExplorer.css";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -29,7 +31,6 @@ const services = [
   {
     title: "Artificial Intelligence (AI)",
     tag: "AI",
-photo: realPhotos.ai,
         icon: Cpu,
     description:
       "We design practical AI systems that fit into your operations, improve decisions, and create measurable business value.",
@@ -42,7 +43,6 @@ photo: realPhotos.ai,
   {
     title: "Generative AI & Agentic AI",
     tag: "AI",
-photo: realPhotos.agents,
         icon: Bot,
     description:
       "Autonomous agents and generative systems that research, draft, decide, and act while keeping your team in control.",
@@ -55,7 +55,6 @@ photo: realPhotos.agents,
   {
     title: "Retrieval-Augmented Generation",
     tag: "AI",
-photo: realPhotos.rag,
         icon: Layers3,
     description:
       "Ground your AI in company knowledge so every answer stays accurate, current, and trustworthy.",
@@ -68,7 +67,6 @@ photo: realPhotos.rag,
   {
     title: "Large Language Models (LLMs)",
     tag: "AI",
-photo: realPhotos.llm,
         icon: MessageSquare,
     description:
       "The right model, tuned and deployed for your exact use case—not a generic chatbot layered onto your business.",
@@ -81,7 +79,6 @@ photo: realPhotos.llm,
   {
     title: "AI Automation Systems",
     tag: "AI",
-photo: realPhotos.automation,
         icon: Workflow,
     description:
       "Turn repeatable manual work into dependable AI workflows so your team can stop chasing updates and focus on growth.",
@@ -94,7 +91,6 @@ photo: realPhotos.automation,
   {
     title: "Custom Software Development",
     tag: "DEV",
-photo: realPhotos.software,
         icon: Code2,
     description:
       "Purpose-built software engineered around the way your business actually works, from first prototype to scale.",
@@ -107,7 +103,6 @@ photo: realPhotos.software,
   {
     title: "SaaS Development",
     tag: "DEV",
-photo: realPhotos.saas,
         icon: LayoutDashboard,
     description:
       "Launch reliable SaaS products with thoughtful onboarding, subscriptions, permissions, analytics, and admin tooling.",
@@ -120,7 +115,6 @@ photo: realPhotos.saas,
   {
     title: "Web Development",
     tag: "WEB",
-photo: realPhotos.web,
         icon: MonitorSmartphone,
     description:
       "Build a website that converts instead of merely existing, with fast performance, clear journeys, and measurable intent.",
@@ -133,7 +127,6 @@ photo: realPhotos.web,
   {
     title: "WordPress, Shopify & Webflow",
     tag: "WEB",
-photo: realPhotos.commerce,
         icon: Globe2,
     description:
       "Flexible marketing and commerce experiences your internal team can manage without sacrificing custom design.",
@@ -146,7 +139,6 @@ photo: realPhotos.commerce,
   {
     title: "API Integrations & CRM Automation",
     tag: "OPS",
-photo: realPhotos.crm,
         icon: Plug,
     description:
       "Make your tools work as one connected system with reliable APIs, clean data movement, and automated CRM actions.",
@@ -159,7 +151,6 @@ photo: realPhotos.crm,
   {
     title: "Performance Marketing",
     tag: "GROWTH",
-photo: realPhotos.performance,
         icon: Target,
     description:
       "Performance programs built around profitable acquisition, strong creative testing, and decisions backed by clean data.",
@@ -172,7 +163,6 @@ photo: realPhotos.performance,
   {
     title: "Google Ads & Lead Generation",
     tag: "GROWTH",
-photo: realPhotos.ads,
         icon: Megaphone,
     description:
       "Replace cold-contact chasing with a qualified lead system built around search intent, focused journeys, and disciplined optimization.",
@@ -185,7 +175,6 @@ photo: realPhotos.ads,
   {
     title: "Search Engine Optimization (SEO)",
     tag: "GROWTH",
-photo: realPhotos.seo,
         icon: Search,
     description:
       "Build durable organic visibility through technical foundations, search-led content, and authority that compounds.",
@@ -198,7 +187,6 @@ photo: realPhotos.seo,
   {
     title: "Conversion Rate Optimization",
     tag: "GROWTH",
-photo: realPhotos.cro,
         icon: BarChart3,
     description:
       "Turn more of your existing traffic into customers with research-led changes, focused experiments, and clearer journeys.",
@@ -211,7 +199,6 @@ photo: realPhotos.cro,
   {
     title: "Marketing Automation",
     tag: "GROWTH",
-photo: realPhotos.martech,
         icon: WandSparkles,
     description:
       "Create timely, personal customer journeys across email, CRM, and sales without adding manual work to your team.",
@@ -223,108 +210,13 @@ photo: realPhotos.martech,
   },
 ];
 
-const mobileServiceLabels = [
-  "AI", "Agents", "RAG", "LLMs", "AI Auto", "Software", "SaaS", "Web",
-  "Commerce", "API / CRM", "Marketing", "Google Ads", "SEO", "CRO", "MarTech",
-];
-
-const ServiceCard = ({ service, depth, isEntering, isTop }) => {
-  const ServiceIcon = service.icon;
-
-  return (
-    <article
-      className={`services-explorer-stack-card${isEntering ? " is-entering" : ""}`}
-      aria-hidden={isTop ? undefined : "true"}
-      style={{
-        "--stack-depth": depth,
-        zIndex: depth === 0 ? 20 : 20 - depth,
-      }}
-    >
-      <div className="services-explorer-visual">
-        <img
-          className="services-explorer-photo"
-          src={service.photo}
-          alt=""
-          aria-hidden="true"
-          loading={isTop ? "eager" : "lazy"}
-          decoding="async"
-          onError={(event) => { event.currentTarget.style.display = "none"; }}
-        />
-        <div className="services-explorer-visual-glow"></div>
-        <span className="services-explorer-tag">
-          <i></i>
-          {service.tag}
-        </span>
-        <ServiceIcon
-          className="services-explorer-watermark"
-          aria-hidden="true"
-        />
-        <span className="services-explorer-spark spark-one"></span>
-        <span className="services-explorer-spark spark-two"></span>
-      </div>
-
-      <div className="services-explorer-copy">
-        <h3>{service.title}</h3>
-        <p>{service.description}</p>
-
-        <h4>What changes for your team</h4>
-        <ul>
-          {service.features.map(([title, detail]) => (
-            <li key={title}>
-              <Check aria-hidden="true" />
-              <span>
-                <strong>{title}:</strong> {detail}
-              </span>
-            </li>
-          ))}
-        </ul>
-
-        <a
-          href="/services"
-          className="services-explorer-link"
-          tabIndex={isTop ? 0 : -1}
-        >
-          Explore this capability
-          <ArrowUpRight aria-hidden="true" />
-        </a>
-      </div>
-    </article>
-  );
-};
-
 const ServicesSection = () => {
-  const [cardStack, setCardStack] = useState([0]);
-  const [enteringIndex, setEnteringIndex] = useState(null);
-  const [hoveredIndex, setHoveredIndex] = useState(null);
+  const [activeIndex, setActiveIndex] = useState(0);
   const sectionRef = useRef(null);
-  const navRef = useRef(null);
-  const activeIndicatorRef = useRef(null);
-  const activeIndex = cardStack[cardStack.length - 1];
-
-  useEffect(() => {
-    if (enteringIndex === null) {
-      return undefined;
-    }
-
-    const timeout = window.setTimeout(() => setEnteringIndex(null), 720);
-    return () => window.clearTimeout(timeout);
-  }, [enteringIndex]);
-
-  const selectService = (index) => {
-    if (index === activeIndex) {
-      return;
-    }
-
-    setEnteringIndex(index);
-    setCardStack((currentStack) => [
-      ...currentStack.filter((serviceIndex) => serviceIndex !== index),
-      index,
-    ]);
-  };
 
   useLayoutEffect(() => {
     const context = gsap.context(() => {
-      gsap.from(".services-explorer-heading > *", {
+      gsap.from(".services-explorer-heading > :not(.sx-see-all)", {
         y: 60,
         opacity: 0,
         filter: "blur(8px)",
@@ -338,64 +230,24 @@ const ServicesSection = () => {
         },
       });
 
-      gsap.from(".services-explorer-shell", {
-        y: 90,
+      gsap.from(".sx-shell", {
+        y: 70,
         opacity: 0,
-        scale: 0.985,
-        duration: 1,
+        duration: 0.9,
         ease: "power3.out",
         scrollTrigger: {
-          trigger: ".services-explorer-shell",
-          start: "top 82%",
+          trigger: ".sx-shell",
+          start: "top 85%",
           toggleActions: "play none none reverse",
         },
       });
-
-      // Keep every navigation button at the same x coordinate. The earlier
-      // per-button GSAP x entrance left the first/selected tab offset.
     }, sectionRef);
 
     return () => context.revert();
   }, []);
 
-  useLayoutEffect(() => {
-    const nav = navRef.current;
-    const indicator = activeIndicatorRef.current;
-    const activeButton = nav?.querySelector(`#service-tab-${activeIndex}`);
-
-    if (!nav || !indicator || !activeButton) {
-      return undefined;
-    }
-
-    const moveIndicator = () => {
-      if (window.matchMedia("(max-width: 900px)").matches) {
-        gsap.set(indicator, { autoAlpha: 0 });
-        return;
-      }
-
-      const navRect = nav.getBoundingClientRect();
-      const buttonRect = activeButton.getBoundingClientRect();
-
-      gsap.to(indicator, {
-        x: buttonRect.left - navRect.left,
-        y: buttonRect.top - navRect.top,
-        width: buttonRect.width,
-        height: buttonRect.height,
-        autoAlpha: 1,
-        duration: 0.56,
-        ease: "power3.out",
-        overwrite: "auto",
-      });
-    };
-
-    moveIndicator();
-    window.addEventListener("resize", moveIndicator);
-
-    return () => {
-      window.removeEventListener("resize", moveIndicator);
-      gsap.killTweensOf(indicator);
-    };
-  }, [activeIndex]);
+  const active = services[activeIndex];
+  const tech = serviceTech[activeIndex] || [];
 
   return (
     <section className="services-explorer" ref={sectionRef}>
@@ -407,69 +259,84 @@ const ServicesSection = () => {
           reports, and missed follow-ups with one connected system designed
           around how your business actually works.
         </p>
+        <Link to="/services" className="sx-see-all">
+          See All Services
+        </Link>
       </div>
 
-      <div className="services-explorer-shell">
-        <p className="services-explorer-swipe-hint" aria-hidden="true">
-          Slide to view more <span>→</span>
-        </p>
-        <div
-          className="services-explorer-nav"
-          ref={navRef}
-          role="tablist"
-          aria-label="Explore our services"
-          aria-orientation="vertical"
-        >
+      <div className="sx-shell">
+        <div className="sx-cards" role="tablist" aria-label="Explore our services">
           {services.map((service, index) => {
             const Icon = service.icon;
             const isActive = index === activeIndex;
-            const isHovered = index === hoveredIndex;
 
             return (
               <button
-                className={`services-explorer-nav-item${isActive ? " is-active" : ""}${isHovered ? " is-hovered" : ""}`}
+                className={`sx-card${isActive ? " is-active" : ""}`}
                 id={`service-tab-${index}`}
                 type="button"
                 role="tab"
                 aria-controls="service-detail-panel"
                 aria-selected={isActive}
-                onClick={() => selectService(index)}
-                onMouseEnter={() => setHoveredIndex(index)}
-                onMouseLeave={() => setHoveredIndex(null)}
-                onFocus={() => setHoveredIndex(index)}
-                onBlur={() => setHoveredIndex(null)}
+                onClick={() => {
+                  setActiveIndex(index);
+                  // On stacked (mobile/tablet) layouts the details sit below the cards.
+                  if (window.matchMedia("(max-width: 1100px)").matches) {
+                    document
+                      .getElementById("service-detail-panel")
+                      ?.scrollIntoView({ behavior: "smooth", block: "start" });
+                  }
+                }}
+                onMouseEnter={() => setActiveIndex(index)}
+                onFocus={() => setActiveIndex(index)}
                 key={service.title}
               >
-                <Icon aria-hidden="true" />
-                <span className="service-full-label">{service.title}</span>
-                <span className="service-short-label">{mobileServiceLabels[index]}</span>
+                <span className="sx-card-icon" aria-hidden="true">
+                  <Icon />
+                </span>
+                <span className="sx-card-title">{service.title}</span>
               </button>
             );
           })}
-          <span
-            className="services-explorer-active-indicator"
-            ref={activeIndicatorRef}
-            aria-hidden="true"
-          ></span>
         </div>
 
         <div
-          className="services-explorer-detail"
+          className="sx-detail"
           id="service-detail-panel"
           role="tabpanel"
           aria-labelledby={`service-tab-${activeIndex}`}
           aria-live="polite"
         >
-          <div className="services-explorer-card-stack">
-            {cardStack.map((serviceIndex, stackPosition) => (
-              <ServiceCard
-                key={services[serviceIndex].title}
-                service={services[serviceIndex]}
-                depth={Math.min(cardStack.length - 1 - stackPosition, 6)}
-                isEntering={serviceIndex === enteringIndex}
-                isTop={stackPosition === cardStack.length - 1}
-              />
-            ))}
+          <div className="sx-detail-inner" key={activeIndex}>
+            <span className="sx-detail-tag">{active.tag}</span>
+            <h3>{active.title}</h3>
+            <p className="sx-detail-lead">{active.description}</p>
+
+            <ul className="sx-features">
+              {active.features.map(([title, detail]) => (
+                <li key={title}>
+                  <Check aria-hidden="true" />
+                  <span>
+                    <strong>{title}:</strong> {detail}
+                  </span>
+                </li>
+              ))}
+            </ul>
+
+            <h4>Technologies we use</h4>
+            <ul className="sx-chips">
+              {tech.map(({ label, Icon, color }) => (
+                <li key={label}>
+                  <Icon aria-hidden="true" style={{ color }} />
+                  {label}
+                </li>
+              ))}
+            </ul>
+
+            <Link to={serviceLinks[activeIndex]} className="sx-learn">
+              Learn More
+              <ArrowUpRight aria-hidden="true" />
+            </Link>
           </div>
         </div>
       </div>

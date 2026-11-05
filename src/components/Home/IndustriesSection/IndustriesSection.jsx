@@ -176,7 +176,7 @@ const IndustriesSection = () => {
               aria-expanded={isActive}
               key={industry.title}
             >
-              <img className="industry-panel-photo" src={industry.photo} onError={(event) => { event.currentTarget.onerror = null; event.currentTarget.src = industry.artwork; }} alt="" aria-hidden="true" loading="lazy" decoding="async" />
+              <img className="industry-panel-photo" src={industry.photo} onError={(event) => { event.currentTarget.onerror = null; event.currentTarget.src = industry.artwork; }} alt="" aria-hidden="true" loading="eager" decoding="async" />
               <div className="industry-panel-grid" aria-hidden="true"></div>
               <div className="industry-panel-shine" aria-hidden="true"></div>
 

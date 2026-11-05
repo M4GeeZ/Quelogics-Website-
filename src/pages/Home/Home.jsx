@@ -5,7 +5,7 @@ import IndustriesSection from "../../components/Home/IndustriesSection/Industrie
 import SelectedWorkSection from "../../components/Home/SelectedWorkSection/SelectedWorkSection";
 import ProjectStackSection from "../../components/Home/ProjectStackSection/ProjectStackSection";
 import ReviewsSection from "../../components/Home/ReviewsSection/ReviewsSection";
-import ProcessSection from "../../components/Home/ProcessSection/ProcessSection";
+import BlogsSection from "../../components/Home/BlogsSection/BlogsSection";
 import "./Home.css";
 
 const Home = () => {
@@ -18,7 +18,7 @@ const Home = () => {
       <SelectedWorkSection />
       <ProjectStackSection />
       <ReviewsSection />
-      <ProcessSection />
+      <BlogsSection />
     </main>
   );
 };

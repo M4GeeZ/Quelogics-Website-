@@ -688,7 +688,7 @@
   width: max-content;
   display: flex;
   gap: 20px;
-  padding: 0 max(40px, calc((100vw - 1440px) / 2 + 40px));
+  padding: 0 max(var(--site-pad, 64px), calc((100vw - var(--site-max, 1312px)) / 2));
   will-change: transform;
 }
 

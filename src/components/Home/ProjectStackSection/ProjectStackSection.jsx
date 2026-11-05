@@ -113,15 +113,7 @@ const ProjectCard = ({ project }) => (
 );
 
 const ProjectStackSection = () => (
-  <section className="project-stack-section">
-    <div className="project-stack-heading">
-      <span><i aria-hidden="true"></i>Systems in the real world</span>
-      <h2>Built to close the <em>gap.</em></h2>
-      <p>
-        Explore products that replaced disconnected tools, manual work, and
-        stalled ideas with connected experiences built for measurable outcomes.
-      </p>
-    </div>
+  <section className="project-stack-section" aria-label="Selected projects">
     <div className="project-stack-stage">
       <div className="project-stack-grid">
         {projects.map((project) => <ProjectCard key={project.number} project={project} />)}

@@ -26,7 +26,7 @@
 }
 
 .insight-topic-container {
-  width: min(calc(100% - 80px), 1480px);
+  width: min(calc(100% - 80px), 1440px);
   margin-inline: auto;
 }
 

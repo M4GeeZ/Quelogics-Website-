@@ -1,0 +1,109 @@
+/* ==========================================================================
+   Site-wide content width.
+   Every section's content sits in the same centred 1440px column, with an
+   equal gutter on the left and right. Full-bleed backgrounds, marquees and
+   image strips still run edge to edge; only their content is aligned.
+   Loaded last so it wins over the per-section widths.
+   ========================================================================== */
+
+:root {
+  /* Sections are 1440px wide with 64px of inner space on each side,
+     so the content column itself is 1312px. */
+  --site-section: 1440px;
+  --site-pad: 64px;
+  --site-max: calc(var(--site-section) - 2 * var(--site-pad));
+  --site-gutter: calc(2 * var(--site-pad)); /* total (left + right) */
+}
+
+@media (max-width: 1100px) {
+  :root { --site-gutter: 48px; }
+}
+
+@media (max-width: 640px) {
+  :root { --site-gutter: 40px; }
+}
+
+/* ---- Footer ---- */
+body .site-footer-main,
+body .site-footer-bottom { padding-inline: 0; }
+
+body .site-footer-lead,
+body .site-footer-columns,
+body .site-footer-bottom-inner {
+  width: min(100% - var(--site-gutter), var(--site-max));
+}
+
+/* ---- Home: sections that padded their own sides ---- */
+body .services-explorer,
+body .process-showcase-section,
+body .n2x-section,
+body .client-reviews-section,
+body .project-stack-stage { padding-inline: 0; }
+
+/* ---- Home: content columns ---- */
+body .services-explorer .services-explorer-heading,
+body .services-explorer .sx-shell,
+body .process-showcase-shell,
+body .n2x-section .n2x-title,
+body .n2x-section .top-cards,
+body .project-story-inner,
+body .project-stack-heading,
+body .project-stack-grid,
+body .client-reviews-shell,
+body .client-logo-label {
+  width: min(100% - var(--site-gutter), var(--site-max));
+  max-width: none;
+  margin-inline: auto;
+}
+
+body .project-story-inner { padding-inline: 0; }
+
+/* Selected-work marquee: align its label row with the same column. */
+body .selected-work-marquee-topline {
+  left: calc((100% - min(100% - var(--site-gutter), var(--site-max))) / 2);
+  right: calc((100% - min(100% - var(--site-gutter), var(--site-max))) / 2);
+}
+
+/* ---- Navbar + hero share the same column ---- */
+body .navbar .navbar-container,
+body .home-page .hero-content {
+  width: min(100% - var(--site-gutter), var(--site-max));
+  max-width: none;
+}
+
+/* ---- Home industries: image accordion sits in the column instead of edge to edge ---- */
+body .industry-accordion-section { padding-bottom: clamp(56px, 6vw, 96px); }
+
+body .industry-accordion-section .industry-panels {
+  width: min(100% - var(--site-gutter), var(--site-max));
+  margin-inline: auto;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 24px;
+}
+
+/* ---- Inner pages: every page container uses the same column on desktop.
+   Tablet and mobile keep each page's own responsive widths. ---- */
+@media (min-width: 1101px) {
+  body .about-container,
+  body .about-horizontal-hint,
+  body .careers-hero-grid,
+  body .careers-section-shell,
+  body .contact-hero-grid,
+  body .contact-section-shell,
+  body .explore-container,
+  body .industries-container,
+  body .industry-detail-container,
+  body .insight-explore-container,
+  body .insight-resource-container,
+  body .insight-topic-container,
+  body .insights-container,
+  body .service-detail-container,
+  body .services-page-container,
+  body .solution-container,
+  body .solutions-container,
+  body .navbar .mega-menu-layout {
+    width: min(100% - var(--site-gutter), var(--site-max));
+    max-width: none;
+    margin-inline: auto;
+  }
+}

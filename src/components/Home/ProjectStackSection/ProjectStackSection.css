@@ -343,3 +343,6 @@ section.project-stack-section .project-stack-card:hover .project-stack-card-medi
 
 /* V6: top-left QueLogics/00 media label removed; project index below stays. */
 section.project-stack-section .project-stack-card-media > span { display:none!important; }
+
+/* Heading card removed: give the project grid its own top spacing. */
+.project-stack-stage { padding-top: clamp(24px, 3vw, 48px); }

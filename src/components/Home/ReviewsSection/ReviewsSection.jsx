@@ -1,298 +1,137 @@
-import { useEffect, useLayoutEffect, useRef, useState } from "react";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { ArrowRight, CalendarDays, UserRound } from "lucide-react";
+import { useState } from "react";
+import { Link } from "react-router-dom";
+import { ArrowLeft, ArrowRight, ArrowUpRight, Quote, Star } from "lucide-react";
 import "./ReviewsSection.css";
-
-gsap.registerPlugin(ScrollTrigger);
-
-const AUTO_PLAY_DELAY = 3800;
 
 const reviews = [
   {
-    id: "bilal-ahmed",
-    tileIndex: 17,
-    initials: "BA",
-    variant: "initials",
-    before: "Cost per lead down ",
-    highlight: "42%",
-    after: " with the new campaigns.",
-    name: "Bilal Ahmed",
-    role: "Growth Lead, NorthBridge",
-    country: "UK",
-    position: { x: 12, y: 34 },
-  },
-  {
-    id: "sara-khalid",
-    tileIndex: 2,
-    initials: "SK",
-    variant: "avatar",
-    before: "Working prototype ",
-    highlight: "in weeks, not slides.",
-    after: " Paid for itself in five months.",
-    name: "Sara Khalid",
-    role: "Head of Digital, Najm Logistics",
-    country: "KSA",
-    position: { x: 38, y: 2 },
-  },
-  {
-    id: "daniel-roth",
-    tileIndex: 8,
-    initials: "DR",
-    variant: "avatar",
-    before: "From spreadsheet chaos to one system. ",
-    highlight: "No vendor lock-in,",
-    after: " as promised.",
-    name: "Daniel Roth",
-    role: "Managing Director, Roth Estates",
-    country: "Czechia",
-    position: { x: 14, y: 11 },
-  },
-  {
     id: "hiba-patel",
-    tileIndex: 14,
     initials: "HP",
-    variant: "initials",
-    before: "Our release cycle is now ",
-    highlight: "3× faster",
-    after: " without compromising quality.",
+    quote:
+      "Our release cycle is now 3× faster without compromising quality. The team understood our product quickly and kept us informed at every step.",
     name: "Hiba Patel",
     role: "Product Director, Atlas Health",
     country: "UAE",
-    position: { x: 31, y: 18 },
+  },
+  {
+    id: "bilal-ahmed",
+    initials: "BA",
+    quote:
+      "Cost per lead is down 42% with the new campaigns. Reporting is finally clear, so we know exactly which channels are driving revenue.",
+    name: "Bilal Ahmed",
+    role: "Growth Lead, NorthBridge",
+    country: "UK",
+  },
+  {
+    id: "sara-khalid",
+    initials: "SK",
+    quote:
+      "We had a working prototype in weeks, not slides. The platform paid for itself in five months and our operations team actually enjoys using it.",
+    name: "Sara Khalid",
+    role: "Head of Digital, Najm Logistics",
+    country: "KSA",
+  },
+  {
+    id: "daniel-roth",
+    initials: "DR",
+    quote:
+      "We moved from spreadsheet chaos to one connected system. No vendor lock-in, exactly as promised, and a handover our team could own.",
+    name: "Daniel Roth",
+    role: "Managing Director, Roth Estates",
+    country: "Czechia",
   },
   {
     id: "chris-morgan",
-    tileIndex: 15,
     initials: "CM",
-    variant: "initials",
-    before: "One connected team helped us move from idea to ",
-    highlight: "market leader.",
-    after: "",
+    quote:
+      "One connected team helped us move from idea to market leader. Strategy, design, and engineering all spoke the same language.",
     name: "Chris Morgan",
     role: "Founder, Meridian Commerce",
     country: "USA",
-    position: { x: 18, y: 33 },
   },
 ];
 
-const decorativeAvatars = new Set([0, 4, 6, 10, 12, 23, 27]);
-const decorativeInitials = new Map([
-  [18, "BA"],
-  [20, "BA"],
-  [21, "BA"],
-  [24, "BA"],
-  [26, "BA"],
-  [29, "BA"],
-]);
-
-const ReviewTile = ({ index, activeIndex, onSelect }) => {
-  const reviewIndex = reviews.findIndex((review) => review.tileIndex === index);
-  const review = reviewIndex >= 0 ? reviews[reviewIndex] : null;
-  const decorativeInitial = decorativeInitials.get(index);
-  const isAvatar = review?.variant === "avatar" || decorativeAvatars.has(index);
-  const isInitials = review?.variant === "initials" || Boolean(decorativeInitial);
-  const isActive = reviewIndex === activeIndex;
-
-  const content = isInitials ? (
-    <span className="client-review-tile-initials">
-      {review?.initials || decorativeInitial}
-    </span>
-  ) : isAvatar ? (
-    <span className="client-review-avatar" aria-hidden="true">
-      <i></i>
-      <b></b>
-    </span>
-  ) : (
-    <UserRound aria-hidden="true" />
-  );
-
-  if (review) {
-    return (
-      <button
-        className={`client-review-tile is-review is-${review.variant}${isActive ? " is-active" : ""}`}
-        type="button"
-        aria-label={`Show review from ${review.name}`}
-        aria-pressed={isActive}
-        onClick={() => onSelect(reviewIndex)}
-      >
-        {content}
-      </button>
-    );
-  }
-
-  return (
-    <div
-      className={`client-review-tile${isAvatar ? " is-avatar" : ""}${isInitials ? " is-initials" : " is-placeholder"}`}
-      aria-hidden="true"
-    >
-      {content}
-    </div>
-  );
-};
+const highlights = [
+  ["Clear communication", "Weekly updates and one point of contact."],
+  ["Measurable outcomes", "Every project tied to a business goal."],
+  ["Long-term partnership", "Support that continues after launch."],
+];
 
 const ReviewsSection = () => {
-  const [activeIndex, setActiveIndex] = useState(0);
-  const [isPaused, setIsPaused] = useState(false);
-  const sectionRef = useRef(null);
-  const activeReview = reviews[activeIndex];
+  const [start, setStart] = useState(0);
+  const total = reviews.length;
+  const go = (step) => setStart((current) => (current + step + total) % total);
 
-  useEffect(() => {
-    if (isPaused) {
-      return undefined;
-    }
-
-    const timer = window.setInterval(() => {
-      setActiveIndex((current) => (current + 1) % reviews.length);
-    }, AUTO_PLAY_DELAY);
-
-    return () => window.clearInterval(timer);
-  }, [activeIndex, isPaused]);
-
-  useLayoutEffect(() => {
-    const context = gsap.context(() => {
-      gsap.from(".client-reviews-copy > *", {
-        y: 42,
-        opacity: 0,
-        duration: 0.8,
-        stagger: 0.08,
-        ease: "power3.out",
-        scrollTrigger: {
-          trigger: ".client-reviews-section",
-          start: "top 78%",
-          toggleActions: "play none none reverse",
-        },
-      });
-
-      gsap.from(".client-review-tile", {
-        y: 28,
-        opacity: 0,
-        scale: 0.88,
-        duration: 0.65,
-        stagger: {
-          amount: 0.7,
-          grid: "auto",
-          from: "random",
-        },
-        ease: "power3.out",
-        scrollTrigger: {
-          trigger: ".client-reviews-visual",
-          start: "top 80%",
-          toggleActions: "play none none reverse",
-        },
-      });
-
-      gsap.from(".client-review-floating-card", {
-        opacity: 0,
-        duration: 0.85,
-        delay: 0.25,
-        ease: "power3.out",
-        scrollTrigger: {
-          trigger: ".client-reviews-visual",
-          start: "top 80%",
-          toggleActions: "play none none reverse",
-        },
-      });
-    }, sectionRef);
-
-    return () => context.revert();
-  }, []);
-
-  const selectReview = (index) => {
-    setActiveIndex(index);
-  };
+  // Two cards are visible on desktop; the CSS hides the second one on small screens.
+  const visible = [reviews[start], reviews[(start + 1) % total]];
 
   return (
-    <section className="client-reviews-section" id="client-reviews" ref={sectionRef}>
-      <div className="client-reviews-shell">
-        <div className="client-reviews-copy">
-          <span className="client-reviews-eyebrow">After Quelogics</span>
-          <h2>
-            Less busywork. More room for <em>growth.</em>
+    <section className="rv-section" aria-labelledby="rv-heading">
+      <div className="rv-shell">
+        <div className="rv-intro">
+          <span className="rv-eyebrow">Client reviews</span>
+          <h2 id="rv-heading">
+            Reviews that <em>speak volumes.</em>
           </h2>
-          <p className="client-reviews-intro">
-            Before Quelogics: disconnected tools, slow approvals, and reports
-            rebuilt by hand. After Quelogics: one connected system that gives
-            teams back the time to sell, serve, and scale.
+          <p>
+            Here is what founders, product leaders, and operators say about
+            working with QueLogics.
           </p>
 
-          <div className="client-reviews-actions">
-            <div className="client-reviews-action-row">
-              <div>
-                <h3>Show us the bottleneck</h3>
-                <p>
-                  Tell us the painful manual task your team repeats every week.
-                  We&apos;ll show you how to eliminate it.
-                </p>
-              </div>
-              <a href="/contact">
-                Let&apos;s talk
-                <CalendarDays aria-hidden="true" />
-              </a>
-            </div>
+          <ul className="rv-highlights">
+            {highlights.map(([title, detail]) => (
+              <li key={title}>
+                <strong>{title}</strong>
+                <span>{detail}</span>
+              </li>
+            ))}
+          </ul>
 
-            <div className="client-reviews-action-row">
-              <div>
-                <h3>See systems in production</h3>
-                <p>Real products replacing busywork with measurable momentum.</p>
-              </div>
-              <a href="/case-studies">
-                View work
-                <ArrowRight aria-hidden="true" />
-              </a>
-            </div>
-          </div>
+          <Link to="/client-reviews" className="rv-all">
+            Read all reviews
+            <ArrowUpRight aria-hidden="true" />
+          </Link>
         </div>
 
-        <div
-          className="client-reviews-visual"
-          onMouseEnter={() => setIsPaused(true)}
-          onMouseLeave={() => setIsPaused(false)}
-        >
-          <div className="client-reviews-grid">
-            {Array.from({ length: 32 }, (_, index) => (
-              <ReviewTile
-                index={index}
-                activeIndex={activeIndex}
-                onSelect={selectReview}
-                key={index}
-              />
+        <div className="rv-slider">
+          <div className="rv-cards" aria-live="polite">
+            {visible.map((review, index) => (
+              <article className={`rv-card${index === 1 ? " rv-card--second" : ""}`} key={review.id}>
+                <div className="rv-card-top">
+                  <Quote className="rv-quote-mark" aria-hidden="true" />
+                  <span className="rv-stars" aria-label="Rated 5 out of 5">
+                    {Array.from({ length: 5 }, (_, i) => (
+                      <Star key={i} aria-hidden="true" />
+                    ))}
+                  </span>
+                </div>
+                <blockquote>&ldquo;{review.quote}&rdquo;</blockquote>
+                <footer>
+                  <span className="rv-avatar" aria-hidden="true">{review.initials}</span>
+                  <span>
+                    <strong>{review.name}</strong>
+                    <small>{review.role} · {review.country}</small>
+                  </span>
+                </footer>
+              </article>
             ))}
           </div>
 
-          <article
-            className="client-review-floating-card"
-            style={{
-              "--review-card-x": `${activeReview.position.x}%`,
-              "--review-card-y": `${activeReview.position.y}%`,
-            }}
-            aria-live="polite"
-          >
-            <div className="client-review-floating-inner" key={activeReview.id}>
-              <div className="client-review-card-topline">
-                <span aria-hidden="true">“</span>
-                <div aria-label="5 out of 5 stars">★★★★★</div>
-              </div>
-
-              <blockquote>
-                “{activeReview.before}
-                <strong>{activeReview.highlight}</strong>
-                {activeReview.after}”
-              </blockquote>
-
-              <footer>
-                <span className="client-review-author-avatar">
-                  {activeReview.initials}
-                </span>
-                <span>
-                  <strong>{activeReview.name}</strong>
-                  <small>
-                    {activeReview.role} · {activeReview.country}
-                  </small>
-                </span>
-              </footer>
+          <div className="rv-controls">
+            <div className="rv-dots" aria-hidden="true">
+              {reviews.map((review, index) => (
+                <i className={index === start ? "is-active" : ""} key={review.id} />
+              ))}
             </div>
-          </article>
+            <div className="rv-arrows">
+              <button type="button" onClick={() => go(-1)} aria-label="Previous review">
+                <ArrowLeft aria-hidden="true" />
+              </button>
+              <button type="button" onClick={() => go(1)} aria-label="Next review">
+                <ArrowRight aria-hidden="true" />
+              </button>
+            </div>
+          </div>
         </div>
       </div>
     </section>

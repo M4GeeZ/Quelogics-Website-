@@ -9,7 +9,7 @@ export const realPhotos = {
   government: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1120&q=80",
   healthcare: "https://images.unsplash.com/photo-1538108149393-fbbd81895907?auto=format&fit=crop&w=1120&q=80",
   finance: "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?auto=format&fit=crop&w=1120&q=80",
-  manufacturing: "https://images.unsplash.com/photo-1565514020179-026b92b84bb6?auto=format&fit=crop&w=1120&q=80",
+  manufacturing: "https://images.unsplash.com/photo-1513828583688-c52646db42da?auto=format&fit=crop&w=1120&q=80",
   logistics: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=1120&q=80",
   realestate: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1120&q=80",
   ecommerce: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&w=1120&q=80",
