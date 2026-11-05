@@ -45,22 +45,88 @@ import {
   FolderKanban,
   BookOpenCheck,
   Headset,
+  Info,
+  Users,
+  Mail,
 } from "lucide-react";
 
-import { navigationLinks } from "../../data/navigationData";
+import { navigationLinks, companyMenu, hireTeamMenu } from "../../data/navigationData";
 import { servicePreviewData } from "../../data/servicePreviewData";
 import { menuPreviewData } from "../../data/menuPreviewData";
 import { marketOptions, useLanguage } from "../../context/LanguageContext";
 import "./Navbar.css";
 
+const OUR_SERVICES = "Our Services";
+
+const TAB_ICONS = {
+  Services: Layers3,
+  Industries: Building2,
+  Solutions: Rocket,
+  Insights: BookOpen,
+};
+
+const getMenuIcon = (value) => {
+  if (value.includes("about")) return Info;
+  if (value.includes("career")) return Users;
+  if (value.includes("contact")) return Mail;
+  if (value.includes("cto") || value.includes("product manager")) return BriefcaseBusiness;
+  // Exact menu-item icons requested for Industries, Solutions and Insights.
+  if (value.includes("health care") || value.includes("healthcare")) return HeartPulse;
+  if (value.includes("finance and banking") || value.includes("finance") || value.includes("banking")) return Landmark;
+  if (value.includes("professional services")) return Briefcase;
+  if (value.includes("ecom&retail") || value.includes("ecom & retail") || value.includes("ecommerce & retail") || value.includes("e-commerce & retail")) return Store;
+  if (value.includes("automotive")) return CarFront;
+  if (value.includes("startups and scaleups") || value.includes("startups & scaleups") || value.includes("startup") || value.includes("scaleup")) return TrendingUp;
+
+  if (value.includes("connect disconnected tools")) return Unplug;
+  if (value.includes("quality assurance and testing") || value.includes("quality assurance") || value.includes("testing")) return ShieldCheck;
+  if (value === "webflow" || value.includes("webflow development")) return PanelsTopLeft;
+
+  if (value.includes("case study")) return FileSearch2;
+  if (value.includes("our work") || value.includes("portfolio")) return FolderKanban;
+  if (value.includes("automation guides")) return BookOpenCheck;
+  if (value.includes("talk to an expert")) return Headset;
+
+  if (value.includes("ios") || value.includes("android") || value.includes("native")) return Smartphone;
+  if (value.includes("aws") || value.includes("azure") || value.includes("gcp")) return Cloud;
+  if (value.includes("ai") || value.includes("agent") || value.includes("chatbot") || value.includes("llm") || value.includes("generative")) return Bot;
+  if (value.includes("retrieval") || value.includes("search") || value.includes("seo") || value.includes("aeo")) return SearchCode;
+  if (value.includes("software") || value.includes("custom") || value.includes("code") || value.includes("development")) return Code2;
+  if (value.includes("developer") || value.includes("engineer")) return Code2;
+  if (value.includes("website") || value.includes("web") || value.includes("wordpress") || value.includes("webflow")) return Monitor;
+  if (value.includes("mobile") || value.includes("app")) return Smartphone;
+  if (value.includes("saas") || value.includes("cloud")) return Cloud;
+  if (value.includes("ui") || value.includes("ux") || value.includes("design")) return Palette;
+  if (value.includes("automation") || value.includes("workflow") || value.includes("automate")) return Settings2;
+  if (value.includes("crm")) return ContactRound;
+  if (value.includes("api") || value.includes("integration")) return PlugZap;
+  if (value.includes("ads") || value.includes("marketing") || value.includes("performance")) return Megaphone;
+  if (value.includes("google")) return BadgeDollarSign;
+  if (value.includes("conversion") || value.includes("analytics")) return ChartNoAxesCombined;
+  if (value.includes("ecommerce") || value.includes("shopify")) return ShoppingCart;
+  if (value.includes("real estate") || value.includes("real-estate")) return Building2;
+  if (value.includes("restaurant") || value.includes("hospitality")) return UtensilsCrossed;
+  if (value.includes("logistics") || value.includes("truck") || value.includes("supply")) return Truck;
+  if (value.includes("manufacturing") || value.includes("factory")) return Factory;
+  if (value.includes("launch") || value.includes("mvp") || value.includes("rocket")) return Rocket;
+  if (value.includes("blog") || value.includes("article")) return FileText;
+  if (value.includes("guide") || value.includes("playbook")) return BookOpen;
+  if (value.includes("case") || value.includes("portfolio")) return BriefcaseBusiness;
+  if (value.includes("review") || value.includes("testimonial")) return MessagesSquare;
+  return Layers3;
+};
+
 const NavItem = ({
   item,
   openMenu,
+  closeMenu,
   isActive,
 }) => {
   const handleMouseEnter = () => {
     if (item.hasDropdown) {
       openMenu(item.title);
+    } else {
+      closeMenu();
     }
   };
 
@@ -74,7 +140,7 @@ const NavItem = ({
       <NavLink
         to={item.path}
         className={({ isActive: isRouteActive }) =>
-          `nav-link${item.title === "About" ? " nav-about-link" : ""}${isRouteActive ? " is-current" : ""}`
+          `nav-link${item.title === "About" ? " nav-about-link" : ""}${isRouteActive && item.matchRoute !== false ? " is-current" : ""}`
         }
         onFocus={handleMouseEnter}
       >
@@ -94,6 +160,7 @@ const NavItem = ({
 
 const Navbar = () => {
   const [activeMenu, setActiveMenu] = useState(null);
+  const [activeTab, setActiveTab] = useState("Services");
   const [hoveredMenuLink, setHoveredMenuLink] = useState(null);
   const [menuVisible, setMenuVisible] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -162,13 +229,43 @@ const Navbar = () => {
     };
   }, [isHomePage, pathname]);
 
-  const activeMenuData = navigationLinks.find(
-    (item) => item.title === activeMenu,
-  );
+  const tabItems = navigationLinks.filter((item) => item.hasDropdown);
+  const desktopNavItems = [
+    { id: "our-services", title: OUR_SERVICES, path: "/services", hasDropdown: true },
+    { id: companyMenu.id, title: companyMenu.title, path: companyMenu.path, hasDropdown: true },
+    // Hire Team shares /contact with the Contact button, so it should not light up as the current page.
+    { id: hireTeamMenu.id, title: hireTeamMenu.title, path: hireTeamMenu.path, hasDropdown: true, matchRoute: false },
+    { id: "reviews", title: "Reviews", path: "/client-reviews", hasDropdown: false },
+  ];
+  const showTabs = activeMenu === OUR_SERVICES;
+  const activeMenuData = showTabs
+    ? tabItems.find((item) => item.title === activeTab) || tabItems[0]
+    : activeMenu === companyMenu.title
+      ? companyMenu
+      : activeMenu === hireTeamMenu.title
+        ? hireTeamMenu
+        : null;
+  const mobileItems = [...tabItems, companyMenu, hireTeamMenu];
   const activePreview = hoveredMenuLink && (servicePreviewData[hoveredMenuLink] || menuPreviewData[hoveredMenuLink]);
+  const menuLayout = showTabs
+    ? "tabs"
+    : activeMenu === companyMenu.title
+      ? "company"
+      : "hire";
+  const footerCopy = {
+    tabs: {
+      text: "Not sure what you need?",
+      cta: `View all ${activeMenuData?.title.toLowerCase() || "services"}`,
+    },
+    company: { text: "Have a project in mind?", cta: "More about QueLogics" },
+    hire: { text: "Need a full team, not just one role?", cta: "Build your team" },
+  }[menuLayout];
 
   const openMenu = (menuTitle) => {
-    if (activeMenu !== menuTitle) setHoveredMenuLink(null);
+    if (activeMenu !== menuTitle) {
+      setHoveredMenuLink(null);
+      setActiveTab("Services");
+    }
     window.clearTimeout(closeTimerRef.current);
     window.clearTimeout(clearMenuTimerRef.current);
     setActiveMenu(menuTitle);
@@ -227,11 +324,12 @@ const Navbar = () => {
                 {t("Home")}
               </NavLink>
             </li>
-            {navigationLinks.map((item) => (
+            {desktopNavItems.map((item) => (
               <NavItem
                 key={item.id}
                 item={item}
                 openMenu={openMenu}
+                closeMenu={closeMenu}
                 isActive={
                   activeMenu === item.title && menuVisible
                 }
@@ -241,10 +339,6 @@ const Navbar = () => {
         </nav>
 
         <div className="navbar-actions">
-          <Link to="/careers" className="action-link">
-            Careers
-          </Link>
-
           <Link to="/contact" className="contact-link">
             <span>Contact</span>
             <ArrowUpRight size={16} />
@@ -347,21 +441,7 @@ const Navbar = () => {
           <ArrowUpRight aria-hidden="true" />
         </NavLink>
 
-        {navigationLinks.map((item) => {
-          if (!item.hasDropdown) {
-            return (
-              <NavLink
-                className={({ isActive }) => `mobile-navigation-link${item.title === "About" ? " mobile-about-link" : ""}${isActive ? " is-current" : ""}`}
-                to={item.path}
-                onClick={closeMobileMenu}
-                key={item.id}
-              >
-                <span>{item.title}</span>
-                <ArrowUpRight aria-hidden="true" />
-              </NavLink>
-            );
-          }
-
+        {mobileItems.map((item) => {
           const isExpanded = mobileSubmenu === item.title;
 
           return (
@@ -407,8 +487,17 @@ const Navbar = () => {
             </div>
           );
         })}
+        <NavLink
+          className={({ isActive }) =>
+            `mobile-navigation-link${isActive ? " is-current" : ""}`
+          }
+          to="/client-reviews"
+          onClick={closeMobileMenu}
+        >
+          <span>Reviews</span>
+          <ArrowUpRight aria-hidden="true" />
+        </NavLink>
         <div className="mobile-navigation-actions">
-          <Link to="/careers" onClick={closeMobileMenu}>Careers</Link>
           <Link className="mobile-contact-link" to="/contact" onClick={closeMobileMenu}>
             <span>Contact us</span>
             <ArrowUpRight aria-hidden="true" />
@@ -426,104 +515,87 @@ const Navbar = () => {
         >
           <div className="mega-menu-inner">
             <div
-              className={`mega-menu-content${activeMenuData.groups ? " mega-menu-content--services" : ""}`}
-              key={activeMenuData.id}
+              className={`mega-menu-content mega-menu-layout mega-menu-layout--${menuLayout}`}
+              key={activeMenu}
             >
+              {showTabs && (
+                <div className="mega-menu-tabs" role="tablist" aria-orientation="vertical">
+                  {tabItems.map((tab) => {
+                    const TabIcon = TAB_ICONS[tab.title] || Layers3;
+                    const isTabActive = tab.title === activeMenuData.title;
+                    const selectTab = () => {
+                      setActiveTab(tab.title);
+                      setHoveredMenuLink(null);
+                    };
+
+                    return (
+                      <button
+                        type="button"
+                        role="tab"
+                        aria-selected={isTabActive}
+                        className={`mega-menu-tab${isTabActive ? " is-active" : ""}`}
+                        onMouseEnter={selectTab}
+                        onFocus={selectTab}
+                        onClick={selectTab}
+                        key={tab.id}
+                      >
+                        <span className="mega-menu-tab-icon" aria-hidden="true">
+                          <TabIcon size={16} strokeWidth={1.9} />
+                        </span>
+                        <span className="mega-menu-tab-label">{tab.title}</span>
+                        <ChevronDown className="mega-menu-tab-arrow" size={15} aria-hidden="true" />
+                      </button>
+                    );
+                  })}
+                </div>
+              )}
+
               <div
-                className="mega-menu-service-list"
+                className="mega-menu-tab-panel"
+                key={activeMenuData.id}
                 onMouseLeave={() => setHoveredMenuLink(null)}
               >
-                <div className="mega-menu-groups">
-                {activeMenuData.groups.map((group) => (
-                  <section className="mega-menu-group" data-group={group.title} key={group.title}>
-                    <h3>{group.title}</h3>
-                    <ul>
-                      {group.links.map(([label, path]) => {
-                        const key = label.toLowerCase();
+                <div
+                  className="mega-menu-groups"
+                  style={{ "--menu-cols": activeMenuData.groups.length }}
+                >
+                  {activeMenuData.groups.map((group) => (
+                    <section className="mega-menu-group" data-group={group.title} key={group.title}>
+                      <h3>{group.title}</h3>
+                      <ul>
+                        {group.links.map(([label, path]) => {
+                          const MenuIcon = getMenuIcon(label.toLowerCase());
 
-                        const getMenuIcon = (value) => {
-                          // Exact menu-item icons requested for Industries, Solutions and Insights.
-                          if (value.includes("health care") || value.includes("healthcare")) return HeartPulse;
-                          if (value.includes("finance and banking") || value.includes("finance") || value.includes("banking")) return Landmark;
-                          if (value.includes("professional services")) return Briefcase;
-                          if (value.includes("ecom&retail") || value.includes("ecom & retail") || value.includes("ecommerce & retail") || value.includes("e-commerce & retail")) return Store;
-                          if (value.includes("automotive")) return CarFront;
-                          if (value.includes("startups and scaleups") || value.includes("startups & scaleups") || value.includes("startup") || value.includes("scaleup")) return TrendingUp;
-
-                          if (value.includes("connect disconnected tools")) return Unplug;
-                          if (value.includes("quality assurance and testing") || value.includes("quality assurance") || value.includes("testing")) return ShieldCheck;
-                          if (value === "webflow" || value.includes("webflow development")) return PanelsTopLeft;
-
-                          if (value.includes("case study")) return FileSearch2;
-                          if (value.includes("our work") || value.includes("portfolio")) return FolderKanban;
-                          if (value.includes("automation guides")) return BookOpenCheck;
-                          if (value.includes("talk to an expert")) return Headset;
-
-                          if (value.includes("ai") || value.includes("agent") || value.includes("chatbot") || value.includes("llm") || value.includes("generative")) return Bot;
-                          if (value.includes("retrieval") || value.includes("search") || value.includes("seo") || value.includes("aeo")) return SearchCode;
-                          if (value.includes("software") || value.includes("custom") || value.includes("code") || value.includes("development")) return Code2;
-                          if (value.includes("website") || value.includes("web") || value.includes("wordpress") || value.includes("webflow")) return Monitor;
-                          if (value.includes("mobile") || value.includes("app")) return Smartphone;
-                          if (value.includes("saas") || value.includes("cloud")) return Cloud;
-                          if (value.includes("ui") || value.includes("ux") || value.includes("design")) return Palette;
-                          if (value.includes("automation") || value.includes("workflow") || value.includes("automate")) return Settings2;
-                          if (value.includes("crm")) return ContactRound;
-                          if (value.includes("api") || value.includes("integration")) return PlugZap;
-                          if (value.includes("ads") || value.includes("marketing") || value.includes("performance")) return Megaphone;
-                          if (value.includes("google")) return BadgeDollarSign;
-                          if (value.includes("conversion") || value.includes("analytics")) return ChartNoAxesCombined;
-                          if (value.includes("ecommerce") || value.includes("shopify")) return ShoppingCart;
-                          if (value.includes("real estate") || value.includes("real-estate")) return Building2;
-                          if (value.includes("restaurant") || value.includes("hospitality")) return UtensilsCrossed;
-                          if (value.includes("logistics") || value.includes("truck") || value.includes("supply")) return Truck;
-                          if (value.includes("manufacturing") || value.includes("factory")) return Factory;
-                          if (value.includes("launch") || value.includes("mvp") || value.includes("rocket")) return Rocket;
-                          if (value.includes("blog") || value.includes("article")) return FileText;
-                          if (value.includes("guide") || value.includes("playbook")) return BookOpen;
-                          if (value.includes("case") || value.includes("portfolio")) return BriefcaseBusiness;
-                          if (value.includes("review") || value.includes("testimonial")) return MessagesSquare;
-                          return Layers3;
-                        };
-
-                        const MenuIcon = getMenuIcon(key);
-
-                        return (
-                          <li key={label}>
-                            <Link
-                              to={path}
-                              onClick={closeMenu}
-                              onMouseEnter={() => setHoveredMenuLink(path)}
-                              onFocus={() => setHoveredMenuLink(path)}
-                              className={hoveredMenuLink === path ? "is-service-hovered" : undefined}
-                            >
-                              <span className="mega-menu-icon" aria-hidden="true">
-                                <MenuIcon size={15} strokeWidth={1.8} />
-                              </span>
-                              <span className="mega-menu-label">{label}</span>
-                            </Link>
-                          </li>
-                        );
-                      })}
-                    </ul>
-                  </section>
-                ))}
+                          return (
+                            <li key={label}>
+                              <Link
+                                to={path}
+                                onClick={closeMenu}
+                                onMouseEnter={() => setHoveredMenuLink(path)}
+                                onFocus={() => setHoveredMenuLink(path)}
+                                className={hoveredMenuLink === path ? "is-service-hovered" : undefined}
+                              >
+                                <span className="mega-menu-icon" aria-hidden="true">
+                                  <MenuIcon size={15} strokeWidth={1.8} />
+                                </span>
+                                <span className="mega-menu-label">{label}</span>
+                              </Link>
+                            </li>
+                          );
+                        })}
+                      </ul>
+                    </section>
+                  ))}
                 </div>
-                <Link
-                    className="mega-menu-services-all"
-                    to={activeMenuData.path}
-                    onClick={closeMenu}
-                  >
-                    View all {activeMenuData.title}
-                    <ArrowUpRight size={17} aria-hidden="true" />
-                  </Link>
               </div>
 
-              <aside
-                  className={`mega-menu-service-preview${activePreview ? " is-visible" : ""}`}
+              {showTabs && (
+                <aside
+                  className="mega-menu-service-preview"
                   aria-label={`${activeMenuData.title} preview`}
                   aria-live="polite"
                 >
-                  {activePreview && (
+                  {activePreview ? (
                     <div className="mega-menu-preview-content" key={hoveredMenuLink}>
                       <img
                         src={activePreview.image}
@@ -534,8 +606,49 @@ const Navbar = () => {
                       <h3>{activePreview.title}</h3>
                       <p>{activePreview.description}</p>
                     </div>
+                  ) : (
+                    <div className="mega-menu-feature" key={activeMenuData.id}>
+                      <span className="mega-menu-feature-eyebrow">{activeMenuData.title}</span>
+                      <h3>{activeMenuData.menuTitle}</h3>
+                      <p>{activeMenuData.description}</p>
+                      <Link to={activeMenuData.path} onClick={closeMenu}>
+                        Explore {activeMenuData.title.toLowerCase()}
+                        <ArrowUpRight size={15} aria-hidden="true" />
+                      </Link>
+                    </div>
                   )}
                 </aside>
+              )}
+
+              {menuLayout === "company" && (
+                <aside className="mega-menu-feature mega-menu-feature--promo">
+                  <span className="mega-menu-feature-eyebrow">Work with QueLogics</span>
+                  <h3>Let&apos;s build something useful together.</h3>
+                  <p>
+                    Tell us where your business is stuck. We&apos;ll start with the
+                    problem and shape the right team around it.
+                  </p>
+                  <Link to="/contact" onClick={closeMenu}>
+                    Start a project
+                    <ArrowUpRight size={15} aria-hidden="true" />
+                  </Link>
+                </aside>
+              )}
+
+              <div className="mega-menu-footer">
+                <p>
+                  <span>{footerCopy.text}</span>
+                  <Link to="/contact" onClick={closeMenu}>Talk to an expert</Link>
+                </p>
+                <Link
+                  className="mega-menu-services-all"
+                  to={activeMenuData.path}
+                  onClick={closeMenu}
+                >
+                  {footerCopy.cta}
+                  <ArrowUpRight size={16} aria-hidden="true" />
+                </Link>
+              </div>
             </div>
           </div>
         </div>

@@ -257,6 +257,9 @@ const genericUrduLong = [
 
 const LanguageContext = createContext(null);
 const originals = new WeakMap();
+// Last value the translator itself wrote into each text node, so app-driven
+// text changes (React re-renders) can be told apart from our own writes.
+const lastWritten = new WeakMap();
 
 const stableIndex = (value, length) => {
   let hash = 0;
@@ -289,13 +292,15 @@ const translateTextNode = (node, language) => {
   const current = node.nodeValue;
   if (!current?.trim()) return;
 
-  if (!originals.has(node)) originals.set(node, current.trim());
+  const changedByApp = lastWritten.has(node) && current !== lastWritten.get(node);
+  if (!originals.has(node) || changedByApp) originals.set(node, current.trim());
   const original = originals.get(node);
   const translated = translateText(original, language);
   const leading = current.match(/^\s*/)?.[0] || "";
   const trailing = current.match(/\s*$/)?.[0] || "";
   const next = `${leading}${translated}${trailing}`;
   if (current !== next) node.nodeValue = next;
+  lastWritten.set(node, next);
 };
 
 const translateTree = (root, language) => {

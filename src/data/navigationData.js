@@ -154,10 +154,168 @@ export const navigationLinks = [
       },
     ],
   },
-  {
-    id: 5,
-    title: "About",
-    path: "/about",
-    hasDropdown: false,
-  },
 ];
+
+export const companyMenu = {
+  id: "company",
+  title: "Company",
+  path: "/about",
+  hasDropdown: true,
+  groups: [
+    {
+      title: "Get Us to Know",
+      links: [
+        ["About Us", "/about"],
+        ["Careers", "/careers"],
+        ["Contact Us", "/contact"],
+      ],
+    },
+    {
+      title: "Work With Us",
+      links: [
+        ["Portfolio", "/portfolio"],
+        ["Case Studies", "/case-studies"],
+        ["Client Reviews", "/client-reviews"],
+      ],
+    },
+    {
+      title: "Insights",
+      links: [["Blogs", "/insights"]],
+    },
+  ],
+};
+
+export const hireTeamMenu = {
+  "id": "hire-team",
+  "title": "Hire Team",
+  "path": "/contact",
+  "hasDropdown": true,
+  "groups": [
+    {
+      "title": "Backend Technologies",
+      "links": [
+        [
+          "Nodejs Developer",
+          "/contact?role=nodejs-developer"
+        ],
+        [
+          "Python Developer",
+          "/contact?role=python-developer"
+        ],
+        [
+          "Django Developer",
+          "/contact?role=django-developer"
+        ],
+        [
+          "AI/ML Developer",
+          "/contact?role=ai-ml-developer"
+        ],
+        [
+          "Java Developer",
+          "/contact?role=java-developer"
+        ],
+        [
+          "Data Engineer",
+          "/contact?role=data-engineer"
+        ],
+        [
+          "DevOps Engineer",
+          "/contact?role=devops-engineer"
+        ]
+      ]
+    },
+    {
+      "title": "Frontend Technologies",
+      "links": [
+        [
+          "JavaScript Developer",
+          "/contact?role=javascript-developer"
+        ],
+        [
+          "ReactJS Developer",
+          "/contact?role=reactjs-developer"
+        ],
+        [
+          "VueJS Developer",
+          "/contact?role=vuejs-developer"
+        ],
+        [
+          "Typescript Developer",
+          "/contact?role=typescript-developer"
+        ],
+        [
+          "UI/UX Designer",
+          "/contact?role=ui-ux-designer"
+        ]
+      ]
+    },
+    {
+      "title": "Mobile Technologies",
+      "links": [
+        [
+          "React Native Developer",
+          "/contact?role=react-native-developer"
+        ],
+        [
+          "iOS Developers",
+          "/contact?role=ios-developers"
+        ],
+        [
+          "Android Developers",
+          "/contact?role=android-developers"
+        ]
+      ]
+    },
+    {
+      "title": "Cloud Developer",
+      "links": [
+        [
+          "AWS/GCP",
+          "/contact?role=aws-gcp"
+        ],
+        [
+          "Azure",
+          "/contact?role=azure"
+        ]
+      ]
+    },
+    {
+      "title": "CMS Developers",
+      "links": [
+        [
+          "WordPress Developer",
+          "/contact?role=wordpress-developer"
+        ],
+        [
+          "Shopify Developer",
+          "/contact?role=shopify-developer"
+        ]
+      ]
+    },
+    {
+      "title": "Hire by Role",
+      "links": [
+        [
+          "CTO",
+          "/contact?role=cto"
+        ],
+        [
+          "Product Manager",
+          "/contact?role=product-manager"
+        ],
+        [
+          "Saas Developer",
+          "/contact?role=saas-developer"
+        ],
+        [
+          "MERN Stack Developers",
+          "/contact?role=mern-stack-developers"
+        ],
+        [
+          "QA Testers",
+          "/contact?role=qa-testers"
+        ]
+      ]
+    }
+  ]
+};
