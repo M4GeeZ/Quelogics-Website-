@@ -48,11 +48,24 @@ import {
   Info,
   Users,
   Mail,
+  Banknote,
+  RefreshCw,
+  LayoutDashboard,
+  BookMarked,
+  Workflow,
+  BrainCircuit,
+  Zap,
+  UserCog,
+  ClipboardList,
+  Star,
+  House,
+  Target,
 } from "lucide-react";
 
 import { navigationLinks, companyMenu, hireTeamMenu } from "../../data/navigationData";
 import { servicePreviewData } from "../../data/servicePreviewData";
 import { menuPreviewData } from "../../data/menuPreviewData";
+import { brandIcons, accentColors } from "./brandIcons";
 import { marketOptions, useLanguage } from "../../context/LanguageContext";
 import "./Navbar.css";
 
@@ -65,7 +78,73 @@ const TAB_ICONS = {
   Insights: BookOpen,
 };
 
+// One distinct, meaningful icon per menu label (checked before the keyword fallback below).
+const labelIcons = {
+  // Services
+  "custom software development": Code2,
+  "website development": Globe,
+  "mobile app development": Smartphone,
+  "saas product development": Cloud,
+  "ui / ux design": Palette,
+  "ai chatbots & agents": Bot,
+  "workflow automation": Workflow,
+  "crm automation": ContactRound,
+  "api & third-party integrations": PlugZap,
+  "ai strategy consulting": BrainCircuit,
+  "performance marketing": Megaphone,
+  "google ads & lead generation": Target,
+  "seo & aeo": SearchCode,
+  "conversion optimization": ChartNoAxesCombined,
+  "marketing automation": Zap,
+  // Industries
+  "government & public sector": Landmark,
+  healthcare: HeartPulse,
+  "finance & banking": Banknote,
+  "professional services": Briefcase,
+  "ecommerce & retail": Store,
+  "real estate": House,
+  "restaurants & hospitality": UtensilsCrossed,
+  automotive: CarFront,
+  manufacturing: Factory,
+  "logistics & supply chain": Truck,
+  "saas & technology": Cloud,
+  "startups & scaleups": TrendingUp,
+  // Company
+  "about us": Info,
+  careers: Users,
+  "contact us": Mail,
+  portfolio: FolderKanban,
+  "case studies": FileSearch2,
+  "client reviews": Star,
+  blogs: FileText,
+  // Solutions
+  "automate manual operations": Workflow,
+  "generate qualified leads": Target,
+  "improve website conversion": ChartNoAxesCombined,
+  "connect disconnected tools": Unplug,
+  "launch an mvp": Rocket,
+  "modernize legacy software": RefreshCw,
+  "build a customer portal": LayoutDashboard,
+  "quality assurance & testing": ShieldCheck,
+  // Insights
+  "blog & insights": FileText,
+  "our work & portfolio": FolderKanban,
+  "ai & automation": Bot,
+  "software & product": Code2,
+  "seo, aeo & growth": TrendingUp,
+  "ui / ux & conversion": Palette,
+  "automation guides": BookOpenCheck,
+  "growth playbooks": BookOpen,
+  "development guides": BookMarked,
+  "talk to an expert": Headset,
+  // Hire by role
+  cto: UserCog,
+  "product manager": ClipboardList,
+  "saas developer": Cloud,
+};
+
 const getMenuIcon = (value) => {
+  if (labelIcons[value]) return labelIcons[value];
   if (value.includes("about")) return Info;
   if (value.includes("career")) return Users;
   if (value.includes("contact")) return Mail;
@@ -591,7 +670,10 @@ const Navbar = () => {
                       <h3>{group.title}</h3>
                       <ul>
                         {group.links.map(([label, path]) => {
-                          const MenuIcon = getMenuIcon(label.toLowerCase());
+                          const labelKey = label.toLowerCase();
+                          const brand = brandIcons[labelKey];
+                          const accent = brand ? brand.color : (accentColors[labelKey] || "#17924A");
+                          const MenuIcon = brand ? brand.Icon : getMenuIcon(label.toLowerCase());
 
                           return (
                             <li key={label}>
@@ -602,8 +684,14 @@ const Navbar = () => {
                                 onFocus={() => setHoveredMenuLink(path)}
                                 className={hoveredMenuLink === path ? "is-service-hovered" : undefined}
                               >
-                                <span className="mega-menu-icon" aria-hidden="true">
-                                  <MenuIcon size={15} strokeWidth={1.8} />
+                                <span
+                                  className={`mega-menu-icon is-colored${brand ? " is-brand" : ""}`}
+                                  style={{ "--ic": accent, color: accent }}
+                                  aria-hidden="true"
+                                >
+                                  {brand
+                                    ? <MenuIcon size={16} />
+                                    : <MenuIcon size={15} strokeWidth={1.8} />}
                                 </span>
                                 <span className="mega-menu-label">{label}</span>
                               </Link>

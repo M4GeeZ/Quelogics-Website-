@@ -1064,6 +1064,25 @@
 }
 
 .navbar .mega-menu .mega-menu-icon svg { width: 15px; height: 15px; }
+/* Coloured icons: each icon uses its own accent (--ic); brand logos sit on a white tile. */
+.navbar .mega-menu .mega-menu-icon.is-colored {
+  border-color: color-mix(in srgb, var(--ic) 28%, #fff);
+  background: color-mix(in srgb, var(--ic) 11%, #fff);
+}
+.navbar .mega-menu .mega-menu-icon.is-colored svg { width: 16px; height: 16px; }
+.navbar .mega-menu .mega-menu-icon.is-brand { background: #fff; border-color: #e2e8e5; }
+.navbar .mega-menu .mega-menu-icon.is-brand svg { width: 17px; height: 17px; }
+
+.navbar .mega-menu .mega-menu-group a:hover .mega-menu-icon.is-colored,
+.navbar .mega-menu .mega-menu-group a:focus-visible .mega-menu-icon.is-colored,
+.navbar .mega-menu .mega-menu-group a.is-service-hovered .mega-menu-icon.is-colored {
+  border-color: var(--ic);
+  background: color-mix(in srgb, var(--ic) 16%, #fff);
+  color: var(--ic);
+}
+.navbar .mega-menu .mega-menu-group a:hover .mega-menu-icon.is-brand,
+.navbar .mega-menu .mega-menu-group a:focus-visible .mega-menu-icon.is-brand,
+.navbar .mega-menu .mega-menu-group a.is-service-hovered .mega-menu-icon.is-brand { background: #fff; }
 
 .navbar .mega-menu-label { min-width: 0; flex: 1 1 auto; }
 
