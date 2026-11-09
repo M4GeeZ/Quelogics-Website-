@@ -9,7 +9,7 @@ import {
   Layers3,
   MoveDown,
   ShieldCheck,
-  Sparkles,
+
   Users,
   Workflow,
 } from "lucide-react";
@@ -267,7 +267,7 @@ const IndustryDetailContent = ({ page, pathname }) => {
     const context = gsap.context(() => {
       const intro = gsap.timeline({ defaults: { ease: "power3.out" } });
       intro
-        .from(".industry-detail-back, .industry-detail-kicker", {
+        .from(".industry-detail-back", {
           autoAlpha: 0,
           y: 18,
           duration: 0.55,
@@ -692,7 +692,7 @@ const IndustryDetailContent = ({ page, pathname }) => {
           <Link className="industry-detail-back" to="/industries">
             <ArrowLeft /> All industries
           </Link>
-          <p className="industry-detail-kicker"><Sparkles /> Industry expertise</p>
+          
           <h1 aria-label={page.title}>
             {page.title.split(" ").map((word, index) => (
               <span className="industry-detail-title-mask" key={`${word}-${index}`}>
@@ -723,7 +723,7 @@ const IndustryDetailContent = ({ page, pathname }) => {
 
       <section className="industry-context-section" id="industry-context">
         <div className="industry-detail-container industry-context-heading">
-          <p className="industry-detail-kicker">The operating reality</p>
+          
           <h2>Good technology begins with the context around the work.</h2>
           <p>
             We look beyond the interface to understand the people, constraints, handoffs,
@@ -761,7 +761,7 @@ const IndustryDetailContent = ({ page, pathname }) => {
       <section className="industry-capability-section" id="industry-capabilities">
         <div className="industry-capability-stage">
           <div className="industry-detail-container industry-capability-heading">
-            <p className="industry-detail-kicker">Built for this environment</p>
+            
             <h2>Four connected moves. One industry-aware system.</h2>
           </div>
 
@@ -810,7 +810,7 @@ const IndustryDetailContent = ({ page, pathname }) => {
 
       <section className="industry-outcome-section">
         <div className="industry-detail-container industry-outcome-inner">
-          <p className="industry-detail-kicker">The industry outcome</p>
+          
           <h2>{page.outcome}</h2>
           <p>{meta.outcomeSupport}</p>
           <div className="industry-outcome-signals" aria-label="Delivery focus">
@@ -824,7 +824,7 @@ const IndustryDetailContent = ({ page, pathname }) => {
       <section className="industry-process-section">
         <div className="industry-detail-container">
           <div className="industry-process-heading">
-            <p className="industry-detail-kicker">How we move</p>
+            
             <h2>Understand the environment. Modernize without losing control.</h2>
           </div>
           <div className="industry-process-track" aria-hidden="true">
@@ -851,7 +851,7 @@ const IndustryDetailContent = ({ page, pathname }) => {
         <div className="industry-detail-container">
           <div className="industry-related-heading">
             <div>
-              <p className="industry-detail-kicker">More operating contexts</p>
+              
               <h2>Explore related industries.</h2>
             </div>
             <Link to="/industries">View all industries <ArrowRight /></Link>
@@ -874,7 +874,7 @@ const IndustryDetailContent = ({ page, pathname }) => {
       <section className="industry-cta-section">
         <div className="industry-detail-container industry-cta-inner">
           <div>
-            <p className="industry-detail-kicker">Bring us the real environment</p>
+            
             <h2>Let’s design the right system around it.</h2>
           </div>
           <Link className="industry-detail-button industry-detail-button--primary" to="/contact">

@@ -318,3 +318,59 @@ body .home-page > .hero-section .client-logo-marquee {
     background-position: 67% center !important;
   }
 }
+
+/* ==============================================================
+   Hero navbar: readable action controls over bright hero imagery.
+   Only affects the Contact/Search/Language controls before scroll.
+   Existing logos, hero, interactions and scrolled-navbar theme stay.
+   ============================================================== */
+.navbar:not(.is-scrolled) .navbar-actions {
+  gap: 12px;
+}
+
+.navbar:not(.is-scrolled) .navbar-actions .contact-link {
+  color: #FFFFFF;
+  background-color: rgba(4, 33, 58, .90);
+  border: 1px solid rgba(255, 255, 255, .45);
+  box-shadow: 0 5px 18px rgba(0, 16, 30, .22);
+  opacity: 1;
+}
+
+.navbar:not(.is-scrolled) .navbar-actions > .icon-button,
+.navbar:not(.is-scrolled) .navbar-actions .language-trigger {
+  flex: 0 0 auto;
+  width: 40px;
+  height: 40px;
+  min-width: 40px;
+  min-height: 40px;
+  padding: 0;
+  border: 1px solid rgba(255, 255, 255, .42);
+  border-radius: 50%;
+  background-color: rgba(4, 33, 58, .90);
+  box-shadow: 0 5px 18px rgba(0, 16, 30, .22);
+  color: #FFFFFF;
+  opacity: 1;
+}
+
+.navbar:not(.is-scrolled) .navbar-actions > .icon-button:hover,
+.navbar:not(.is-scrolled) .navbar-actions > .icon-button:focus-visible,
+.navbar:not(.is-scrolled) .navbar-actions .language-trigger:hover,
+.navbar:not(.is-scrolled) .navbar-actions .language-trigger:focus-visible {
+  color: #FFFFFF;
+  border-color: #10AC4F;
+  background-color: #04213A;
+  box-shadow: 0 5px 18px rgba(0, 16, 30, .28);
+  opacity: 1;
+}
+
+.navbar:not(.is-scrolled) .language-selector.is-open .language-trigger {
+  border-color: #10AC4F;
+  color: #FFFFFF;
+}
+
+/* Preserve the existing contact CTA's sliding-green hover animation. */
+.navbar:not(.is-scrolled) .navbar-actions .contact-link:hover,
+.navbar:not(.is-scrolled) .navbar-actions .contact-link:focus-visible {
+  border-color: #10AC4F;
+  color: #04213A;
+}

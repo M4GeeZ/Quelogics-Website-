@@ -142,10 +142,7 @@ const IndustriesSection = () => {
   return (
     <section className="industry-accordion-section" ref={sectionRef}>
       <div className="industry-accordion-heading">
-        <span className="industry-eyebrow">
-          <i aria-hidden="true"></i>
-          Built for real operations
-        </span>
+        
         <h2>
           Smarter systems for every <em>sector.</em>
         </h2>

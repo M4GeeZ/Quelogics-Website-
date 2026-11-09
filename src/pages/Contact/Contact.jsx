@@ -7,7 +7,7 @@ import {
   Check,
   MessageSquareText,
   Send,
-  Sparkles,
+
   Workflow,
 } from "lucide-react";
 import "./Contact.css";
@@ -70,11 +70,6 @@ const Contact = () => {
       });
 
       heroTimeline
-        .from(".contact-hero-kicker", {
-          y: 16,
-          autoAlpha: 0,
-          duration: 0.5,
-        })
         .from(
           ".contact-title-line > span",
           {
@@ -203,10 +198,7 @@ const Contact = () => {
       <section className="contact-hero">
         <div className="contact-hero-grid">
           <div className="contact-hero-copy">
-            <span className="contact-hero-kicker">
-              <Sparkles aria-hidden="true" />
-              Start a conversation
-            </span>
+            
 
             <h1 className="contact-hero-title">
               <span className="contact-title-line">
@@ -357,7 +349,7 @@ const Contact = () => {
       <section className="contact-intro contact-reveal">
         <div className="contact-section-shell contact-intro-grid">
           <div>
-            <span className="contact-eyebrow">A better first conversation</span>
+            
             <h2>Clear context creates better decisions.</h2>
           </div>
 
@@ -382,7 +374,7 @@ const Contact = () => {
       <section ref={processRef} className="contact-process">
         <div className="contact-section-shell">
           <div className="contact-process-heading contact-reveal">
-            <span className="contact-eyebrow">What happens next</span>
+            
             <h2>A straightforward path from message to momentum.</h2>
           </div>
 
@@ -408,7 +400,7 @@ const Contact = () => {
             <Workflow />
           </div>
           <div>
-            <span className="contact-eyebrow">Prefer a direct email?</span>
+            
             <h2>hello@quelogics.com</h2>
           </div>
           <a href="mailto:hello@quelogics.com">

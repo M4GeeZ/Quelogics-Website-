@@ -740,7 +740,7 @@ const Navbar = () => {
                     </div>
                   ) : (
                     <div className="mega-menu-feature" key={activeMenuData.id}>
-                      <span className="mega-menu-feature-eyebrow">{activeMenuData.title}</span>
+                      
                       <h3>{activeMenuData.menuTitle}</h3>
                       <p>{activeMenuData.description}</p>
                       <Link to={activeMenuData.path} onClick={closeMenu}>
@@ -754,7 +754,7 @@ const Navbar = () => {
 
               {menuLayout === "company" && (
                 <aside className="mega-menu-feature mega-menu-feature--promo">
-                  <span className="mega-menu-feature-eyebrow">Work with QueLogics</span>
+                  
                   <h3>Let&apos;s build something useful together.</h3>
                   <p>
                     Tell us where your business is stuck. We&apos;ll start with the

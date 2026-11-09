@@ -4,7 +4,7 @@ import {
   ArrowRight,
   ArrowUpRight,
   Check,
-  CircleDot,
+
   DatabaseZap,
   Gauge,
   Layers3,
@@ -93,7 +93,7 @@ const SolutionDetailContent = ({ page, pathname, profile }) => {
       const heroTimeline = gsap.timeline({ defaults: { ease: "power3.out" } });
 
       heroTimeline
-        .from("[data-solution-back], [data-solution-kicker]", {
+        .from("[data-solution-back]", {
           autoAlpha: 0,
           y: 16,
           duration: 0.5,
@@ -263,9 +263,7 @@ const SolutionDetailContent = ({ page, pathname, profile }) => {
               <ArrowLeft /> All solutions
             </Link>
 
-            <p data-solution-kicker className="solution-kicker">
-              <CircleDot /> {profile.group} / {profile.eyebrow}
-            </p>
+            
 
             <h1 data-solution-title aria-label={page.title}>
               {page.title.split(" ").map((word, index) => (
@@ -335,7 +333,7 @@ const SolutionDetailContent = ({ page, pathname, profile }) => {
       <section id="solution-approach" className="solution-approach">
         <div className="solution-container solution-approach-layout">
           <div className="solution-approach-copy solution-reveal">
-            <p className="solution-kicker">The business gap</p>
+            
             <h2>Move from disconnected effort to one designed outcome.</h2>
             <div className="solution-approach-text">
               <div>
@@ -368,7 +366,7 @@ const SolutionDetailContent = ({ page, pathname, profile }) => {
       <section className="solution-process">
         <div className="solution-container">
           <div className="solution-section-heading solution-reveal">
-            <p className="solution-kicker">How delivery moves</p>
+            
             <h2>Four clear decisions. One visible path forward.</h2>
             <p>Every stage stays tied to the outcome, so progress is easier to understand and delivery is easier to trust.</p>
           </div>
@@ -396,7 +394,7 @@ const SolutionDetailContent = ({ page, pathname, profile }) => {
             <span>Q+</span>
           </div>
           <div className="solution-outcome-copy">
-            <p className="solution-kicker">The result</p>
+            
             <h2>{page.outcome}</h2>
             <p>Success measures are agreed early, trade-offs stay visible, and every workstream remains connected to the business change it is meant to create.</p>
           </div>
@@ -414,7 +412,7 @@ const SolutionDetailContent = ({ page, pathname, profile }) => {
         <div className="solution-container">
           <div className="solution-related-heading solution-reveal">
             <div>
-              <p className="solution-kicker">Keep exploring</p>
+              
               <h2>Related solutions</h2>
             </div>
             <Link to="/solutions">View all solutions <ArrowRight /></Link>
@@ -437,7 +435,7 @@ const SolutionDetailContent = ({ page, pathname, profile }) => {
       <section className="solution-cta">
         <div className="solution-container solution-cta-card solution-reveal">
           <div>
-            <p className="solution-kicker">Your next move</p>
+            
             <h2>Ready to make this outcome real?</h2>
           </div>
           <Link className="solution-button solution-button--primary" to="/contact">

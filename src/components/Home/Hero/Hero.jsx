@@ -42,7 +42,7 @@ const Hero = () => {
           {/* The client logos now replace the old hero footnote. They are
               part of the hero grid, not an independent section underneath. */}
           <div className="client-logo-marquee" aria-label="Trusted client logos">
-            <p className="client-logo-label">Trusted by teams building what&apos;s next</p>
+            
             <div className="client-logo-track">
               {[0, 1].map((copyIndex) => (
                 <div

@@ -14,7 +14,7 @@ import {
   Layers3,
   MessagesSquare,
   ShieldCheck,
-  Sparkles,
+
   UsersRound,
   Workflow,
 } from "lucide-react";
@@ -148,11 +148,6 @@ const About = () => {
         });
 
         heroTimeline
-          .from(".about-hero-kicker", {
-            y: 18,
-            autoAlpha: 0,
-            duration: 0.55,
-          })
           .from(
             ".about-hero-title-line > span",
             {
@@ -390,9 +385,7 @@ const About = () => {
 
         <div className="about-container about-hero-layout">
           <div className="about-hero-copy">
-            <p className="about-hero-kicker">
-              <Sparkles aria-hidden="true" /> About QueLogics
-            </p>
+            
             <h1>
               <span className="about-hero-title-line">
                 <span>We build digital</span>
@@ -460,7 +453,7 @@ const About = () => {
       <section className="about-intro">
         <div className="about-container about-intro-layout">
           <div className="about-reveal">
-            <p className="about-kicker">Built around progress</p>
+            
             <h2>A practical digital partner for work that cannot afford to stall.</h2>
           </div>
           <div className="about-intro-copy about-reveal">
@@ -482,7 +475,7 @@ const About = () => {
         <div className="about-story-pin" ref={storyPinRef}>
           <div className="about-container">
             <header className="about-story-heading">
-              <p className="about-kicker">How the work moves</p>
+              
               <h2>From first question to </h2> <br />
               <h2>lasting product.</h2> 
 
@@ -496,7 +489,7 @@ const About = () => {
                 {storySteps.map((step) => (
                   <article className="about-story-copy" key={step.number}>
                     <span className="about-story-step-number">{step.number}</span>
-                    <p className="about-story-step-kicker">{step.kicker}</p>
+                    
                     <h3>{step.title}</h3>
                     <p className="about-story-step-body">{step.body}</p>
                     <p className="about-story-step-detail">{step.detail}</p>
@@ -529,7 +522,7 @@ const About = () => {
                 <article className="about-story-mobile-step about-reveal" key={step.number}>
                   <div className="about-story-mobile-copy">
                     <span className="about-story-step-number">{step.number}</span>
-                    <p className="about-story-step-kicker">{step.kicker}</p>
+                    
                     <h3>{step.title}</h3>
                     <p className="about-story-step-body">{step.body}</p>
                     <p className="about-story-step-detail">{step.detail}</p>
@@ -547,7 +540,7 @@ const About = () => {
       <section className="about-principles">
         <div className="about-container">
           <header className="about-principles-heading about-reveal">
-            <p className="about-kicker">How we show up</p>
+            
             <h2>Good work feels clear while it is happening.</h2>
           </header>
           <div className="about-principles-list">
@@ -565,7 +558,7 @@ const About = () => {
       <section className="about-horizontal" ref={horizontalSectionRef}>
         <div className="about-horizontal-pin" ref={horizontalPinRef}>
           <div className="about-container about-horizontal-heading">
-            <p className="about-kicker">The partnership</p>
+            
             <h2>What working together should feel like.</h2>
             <p>
               Scroll through the qualities we protect across every engagement.
@@ -597,7 +590,7 @@ const About = () => {
       <section className="about-proof">
         <div className="about-container">
           <header className="about-proof-heading about-reveal">
-            <p className="about-kicker">A focused model</p>
+            
             <h2>Enough structure to be dependable. Enough flexibility to stay useful.</h2>
           </header>
           <dl className="about-proof-list">
@@ -625,7 +618,7 @@ const About = () => {
         <div className="about-cta-grid" aria-hidden="true" />
         <div className="about-container about-cta-layout">
           <div className="about-reveal">
-            <p className="about-kicker">Let&apos;s make progress</p>
+            
             <h2>Bring us the challenge that keeps getting pushed to tomorrow.</h2>
           </div>
           <div className="about-cta-action about-reveal">

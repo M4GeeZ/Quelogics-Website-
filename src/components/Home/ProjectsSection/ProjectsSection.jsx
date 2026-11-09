@@ -278,7 +278,7 @@ const ProjectsSection = () => {
               </span>
               <div className="featured-card-shade" aria-hidden="true" />
               <div className="featured-card-info">
-                <span className="featured-card-kicker">Featured project</span>
+                
                 <h3>{card.title}</h3>
                 <p>{card.desc}</p>
                 <a

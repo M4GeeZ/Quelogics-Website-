@@ -3,7 +3,7 @@ import {
   ArrowRight,
   ArrowUpRight,
   Check,
-  CircleDot,
+
   MoveDown,
 } from "lucide-react";
 import { Link } from "react-router-dom";
@@ -36,9 +36,7 @@ const CaseStudies = () => {
             <Link className="detail-back" to="/insights">
               <ArrowLeft aria-hidden="true" /> All insights
             </Link>
-            <p className="explore-kicker">
-              <CircleDot aria-hidden="true" /> {section.detailEyebrow}
-            </p>
+            
             <h1>{page.title}</h1>
             <p className="detail-statement">{page.statement}</p>
             <div className="explore-actions">
@@ -92,7 +90,7 @@ const CaseStudies = () => {
       >
         <div className="explore-container detail-capabilities-layout">
           <Reveal className="detail-capabilities-intro">
-            <p className="explore-kicker">Designed end to end</p>
+            
             <h2>What you&apos;ll be able to explore</h2>
             <p>
               Useful frameworks, clear explanations, and perspectives grounded
@@ -121,7 +119,7 @@ const CaseStudies = () => {
       <section className="detail-outcome">
         <div className="explore-container detail-outcome-card">
           <Reveal className="detail-outcome-label">
-            <p className="explore-kicker">Why it matters</p>
+            
             <span className="detail-outcome-index">
               Q<span>+</span>
             </span>
@@ -139,7 +137,7 @@ const CaseStudies = () => {
       <section className="detail-process">
         <div className="explore-container">
           <Reveal className="explore-section-heading">
-            <p className="explore-kicker">A clear path forward</p>
+            
             <h2>Momentum without the mystery.</h2>
           </Reveal>
           <div className="detail-process-grid">
@@ -165,7 +163,7 @@ const CaseStudies = () => {
         <div className="explore-container">
           <Reveal className="detail-related-heading">
             <div>
-              <p className="explore-kicker">Keep exploring</p>
+              
               <h2>Related insights</h2>
             </div>
             <Link to="/insights">
@@ -190,7 +188,7 @@ const CaseStudies = () => {
       <section className="explore-cta">
         <div className="explore-container explore-cta-card">
           <div>
-            <p className="explore-kicker">Your next move</p>
+            
             <h2>Ready to make this real?</h2>
           </div>
           <Link

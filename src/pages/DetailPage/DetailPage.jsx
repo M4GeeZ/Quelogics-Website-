@@ -5,7 +5,7 @@ import {
   ArrowUpRight,
   CheckCircle2,
   MoveDown,
-  Sparkles,
+
 } from "lucide-react";
 import { Link, Navigate, useLocation } from "react-router-dom";
 import gsap from "gsap";
@@ -305,7 +305,7 @@ const ServiceDetailPage = ({ page, pathname }) => {
     const context = gsap.context(() => {
       const intro = gsap.timeline({ defaults: { ease: "power3.out" } });
       intro
-        .from(".service-detail-back, .service-detail-kicker", {
+        .from(".service-detail-back", {
           opacity: 0,
           y: 16,
           duration: 0.55,
@@ -781,9 +781,7 @@ const ServiceDetailPage = ({ page, pathname }) => {
             <Link className="service-detail-back" to="/services">
               <ArrowLeft /> All services
             </Link>
-            <p className="service-detail-kicker">
-              <Sparkles /> {meta.category}
-            </p>
+            
             <h1 aria-label={page.title}>
               {page.title.split(" ").map((word, index) => (
                 <span className="service-detail-title-mask" key={`${word}-${index}`}>
@@ -844,7 +842,7 @@ const ServiceDetailPage = ({ page, pathname }) => {
       <section className="service-detail-frictions">
         <div className="service-detail-container service-detail-frictions-layout">
           <div className="service-detail-section-intro">
-            <p className="service-detail-kicker">Why this work matters</p>
+            
             <h2>Remove the friction before it becomes the way you work.</h2>
             <p>
               We begin with the real operating problem, then connect the right strategy,
@@ -866,7 +864,7 @@ const ServiceDetailPage = ({ page, pathname }) => {
       <section className="service-detail-capabilities" id="service-capabilities">
         <div className="service-detail-container service-detail-capabilities-layout">
           <div className="service-detail-capabilities-sticky">
-            <p className="service-detail-kicker">What is included</p>
+            
             <h2>A complete path from decision to dependable delivery.</h2>
             <p>
               Each workstream stays connected to the same outcome, so strategy does not
@@ -896,7 +894,7 @@ const ServiceDetailPage = ({ page, pathname }) => {
       <section className="service-detail-outcome">
         <div className="service-detail-container service-detail-outcome-panel">
           <div>
-            <p className="service-detail-kicker">The outcome</p>
+            
             <span className="service-detail-outcome-mark">Q<span>+</span></span>
           </div>
           <div>
@@ -912,7 +910,7 @@ const ServiceDetailPage = ({ page, pathname }) => {
       <section className="service-detail-process">
         <div className="service-detail-container">
           <div className="service-detail-process-heading">
-            <p className="service-detail-kicker">How we move</p>
+            
             <h2>Structured enough to stay clear. Flexible enough to learn.</h2>
           </div>
           <div className="service-detail-process-track" aria-hidden="true">
@@ -939,7 +937,7 @@ const ServiceDetailPage = ({ page, pathname }) => {
         <div className="service-detail-container">
           <div className="service-detail-related-heading">
             <div>
-              <p className="service-detail-kicker">Related capabilities</p>
+              
               <h2>Keep the whole system connected.</h2>
             </div>
             <Link to="/services">View all services <ArrowRight /></Link>
@@ -962,7 +960,7 @@ const ServiceDetailPage = ({ page, pathname }) => {
       <section className="service-detail-cta">
         <div className="service-detail-container service-detail-cta-inner">
           <div>
-            <p className="service-detail-kicker">Start with the real challenge</p>
+            
             <h2>Let’s make the next move clear.</h2>
           </div>
           <Link className="service-detail-button service-detail-button--primary" to="/contact">

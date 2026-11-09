@@ -4,11 +4,11 @@ import {
   ArrowRight,
   ArrowUpRight,
   CheckCircle2,
-  CircleDot,
+
   Lightbulb,
   MoveDown,
   Orbit,
-  Sparkles,
+
 } from "lucide-react";
 import { Link, Navigate, useLocation } from "react-router-dom";
 import gsap from "gsap";
@@ -73,11 +73,6 @@ const TopicContent = ({ page, pathname }) => {
           x: -22,
           duration: 0.5,
         })
-        .from(
-          ".insight-topic-kicker",
-          { autoAlpha: 0, y: 18, duration: 0.5 },
-          "-=0.25",
-        )
         .from(
           ".insight-topic-title-line",
           {
@@ -325,9 +320,7 @@ const TopicContent = ({ page, pathname }) => {
               <ArrowLeft /> All insights
             </Link>
 
-            <p className="insight-topic-kicker">
-              <Sparkles /> Topic insight
-            </p>
+            
 
             <h1 aria-label={page.title}>
               {page.title.split(" ").map((word, index) => (
@@ -419,9 +412,7 @@ const TopicContent = ({ page, pathname }) => {
         <div className="insight-topic-chapter-stage">
           <div className="insight-topic-container">
             <div className="insight-topic-chapter-heading">
-              <p className="insight-topic-kicker">
-                <CircleDot /> Four useful lenses
-              </p>
+              
               <h2>
                 Read the pattern.
                 <span> Make the next decision clearer.</span>
@@ -487,9 +478,7 @@ const TopicContent = ({ page, pathname }) => {
         <div className="insight-topic-lab-grid" aria-hidden="true" />
         <div className="insight-topic-container insight-topic-lab-layout">
           <div className="insight-topic-lab-copy">
-            <p className="insight-topic-kicker">
-              <Sparkles /> Evidence lab
-            </p>
+            
             <h2>{page.outcome}</h2>
             <p>
               Useful insight does more than describe a trend. It helps a team
@@ -524,7 +513,7 @@ const TopicContent = ({ page, pathname }) => {
         <div className="insight-topic-container">
           <div className="insight-topic-related-heading">
             <div>
-              <p className="insight-topic-kicker">Keep exploring</p>
+              
               <h2>Related insight topics</h2>
             </div>
             <Link to="/insights">

@@ -48,7 +48,7 @@ const AISolutionDetailPage = () => {
           </nav>
           <div className="ai-detail-hero-grid">
             <div>
-              <span className="ai-detail-eyebrow"><Icon size={17} aria-hidden="true" /> AI &amp; Emerging Technologies</span>
+              
               <h1 id="ai-detail-heading">{solution.title}<span> Solutions.</span></h1>
               <p className="ai-detail-lead">{solution.tagline}</p>
               <p className="ai-detail-description">{solution.description}</p>
@@ -70,7 +70,7 @@ const AISolutionDetailPage = () => {
 
       <section className="ai-detail-capabilities" aria-labelledby="ai-detail-capabilities-title">
         <div className="ai-detail-container">
-          <span className="ai-detail-section-kicker">What we build</span>
+          
           <h2 id="ai-detail-capabilities-title">Capabilities shaped around <em>real work.</em></h2>
           <div className="ai-detail-capability-grid">
             {solution.capabilities.map(([title, description]) => (
@@ -87,7 +87,7 @@ const AISolutionDetailPage = () => {
       <section className="ai-detail-uses" aria-labelledby="ai-detail-uses-title">
         <div className="ai-detail-container ai-detail-uses-grid">
           <div>
-            <span className="ai-detail-section-kicker">Practical applications</span>
+            
             <h2 id="ai-detail-uses-title">Designed for business impact.</h2>
             <p>Start with a real operational problem, choose the right technology and measure what improves.</p>
           </div>
@@ -106,7 +106,7 @@ const AISolutionDetailPage = () => {
       <section className="ai-detail-outcome">
         <div className="ai-detail-container ai-detail-outcome-grid">
           <div>
-            <span className="ai-detail-section-kicker">The outcome</span>
+            
             <h2>Built to make a difference.</h2>
             <p>{solution.outcome}</p>
           </div>
@@ -119,7 +119,7 @@ const AISolutionDetailPage = () => {
       <section className="ai-detail-related" aria-labelledby="ai-detail-related-title">
         <div className="ai-detail-container">
           <div className="ai-detail-related-header">
-            <div><span className="ai-detail-section-kicker">Explore further</span><h2 id="ai-detail-related-title">More AI capabilities</h2></div>
+            <div><h2 id="ai-detail-related-title">More AI capabilities</h2></div>
             <Link to="/"><ArrowLeft size={16} aria-hidden="true" /> Back to home</Link>
           </div>
           <div className="ai-detail-related-grid">

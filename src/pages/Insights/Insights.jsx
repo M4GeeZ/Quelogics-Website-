@@ -13,7 +13,7 @@ import {
   Layers3,
   MousePointerClick,
   Search,
-  Sparkles,
+
   Workflow,
 } from "lucide-react";
 import "./Insights.css";
@@ -157,11 +157,6 @@ const Insights = () => {
       });
 
       heroTimeline
-        .from(".insights-hero-kicker", {
-          y: 18,
-          autoAlpha: 0,
-          duration: 0.5,
-        })
         .from(
           ".insights-title-line > span",
           {
@@ -347,10 +342,7 @@ const Insights = () => {
       <section className="insights-hero">
         <div className="insights-container insights-hero-grid">
           <div className="insights-hero-copy">
-            <p className="insights-hero-kicker">
-              <Sparkles aria-hidden="true" />
-              Ideas you can put to work
-            </p>
+            
 
             <h1 className="insights-hero-title">
               <span className="insights-title-line">
@@ -445,7 +437,7 @@ const Insights = () => {
         <div className="insights-container">
           <header className="insights-section-heading insights-reveal">
             <div>
-              <p className="insights-kicker">Featured thinking</p>
+              
               <h2>Useful ideas, without the theatre.</h2>
             </div>
             <p>
@@ -507,7 +499,7 @@ const Insights = () => {
         <div className="insights-container insights-topics-grid">
           <div className="insights-topics-intro insights-reveal">
             <div className="insights-topics-sticky">
-              <p className="insights-kicker is-light">Explore by topic</p>
+              
               <h2>Follow the question that matters now.</h2>
               <p>
                 Each topic combines strategic framing with practical guidance,
@@ -565,7 +557,7 @@ const Insights = () => {
         <div className="insights-container">
           <header className="insights-section-heading insights-reveal">
             <div>
-              <p className="insights-kicker">Practical resources</p>
+              
               <h2>Move from reading to doing.</h2>
             </div>
             <p>
@@ -602,7 +594,7 @@ const Insights = () => {
       <section className="insights-cta">
         <div className="insights-container insights-cta-inner insights-reveal">
           <div>
-            <p className="insights-kicker">A decision in front of you?</p>
+            
             <h2>Turn the question into a clear next move.</h2>
           </div>
           <Link className="insights-button insights-button-dark" to="/contact">

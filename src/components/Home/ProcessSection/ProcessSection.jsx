@@ -55,7 +55,7 @@ const ProcessSection = () => {
     <section className="process-showcase-section">
       <div className="process-showcase-shell">
         <div className="process-showcase-copy">
-          <span className="process-showcase-eyebrow"><i /> How we work</span>
+          
           <h2>Our process, start to finish</h2>
           <p>
             A clear, predictable path from your first call to long after launch

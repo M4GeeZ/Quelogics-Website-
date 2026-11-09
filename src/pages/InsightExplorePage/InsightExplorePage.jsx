@@ -4,11 +4,11 @@ import {
   ArrowRight,
   ArrowUpRight,
   CheckCircle2,
-  CircleDot,
+
   Layers3,
   MoveDown,
   Quote,
-  Sparkles,
+
 } from "lucide-react";
 import { Link, Navigate, useLocation } from "react-router-dom";
 import gsap from "gsap";
@@ -97,11 +97,6 @@ const ExploreContent = ({ page, pathname }) => {
           x: -22,
           duration: 0.5,
         })
-        .from(
-          ".insight-explore-kicker",
-          { autoAlpha: 0, y: 18, duration: 0.5 },
-          "-=0.25",
-        )
         .from(
           ".insight-explore-title-line",
           {
@@ -348,9 +343,7 @@ const ExploreContent = ({ page, pathname }) => {
               <ArrowLeft /> All insights
             </Link>
 
-            <p className="insight-explore-kicker">
-              <Sparkles /> {meta.eyebrow}
-            </p>
+            
 
             <h1 aria-label={page.title}>
               {page.title.split(" ").map((word, index) => (
@@ -435,9 +428,7 @@ const ExploreContent = ({ page, pathname }) => {
         <div className="insight-explore-story-stage">
           <div className="insight-explore-container">
             <div className="insight-explore-story-heading">
-              <p className="insight-explore-kicker">
-                <CircleDot /> {meta.stageLabel}
-              </p>
+              
               <h2>
                 {meta.sectionTitle}
                 <span> {meta.sectionAccent}</span>
@@ -500,9 +491,7 @@ const ExploreContent = ({ page, pathname }) => {
         <div className="insight-explore-result-grid" aria-hidden="true" />
         <div className="insight-explore-container insight-explore-result-layout">
           <div className="insight-explore-result-copy">
-            <p className="insight-explore-kicker">
-              <Sparkles /> What becomes visible
-            </p>
+            
             <h2>{page.outcome}</h2>
             <p>
               The value is not only in seeing the finished result. It is in
@@ -532,7 +521,7 @@ const ExploreContent = ({ page, pathname }) => {
         <div className="insight-explore-container">
           <div className="insight-explore-related-heading">
             <div>
-              <p className="insight-explore-kicker">Continue exploring</p>
+              
               <h2>More from the Explore collection</h2>
             </div>
             <Link to="/insights">

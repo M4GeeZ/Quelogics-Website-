@@ -87,7 +87,7 @@ const HowWeWorkSection = () => {
     <section className="hww-section" aria-labelledby="hww-heading">
       <div className="hww-shell">
         <div className="hww-intro">
-          <span className="hww-eyebrow">How we work</span>
+          
           <h2 id="hww-heading">
             How <em>we work</em>
           </h2>

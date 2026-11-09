@@ -3,13 +3,13 @@ import {
   ArrowLeft,
   ArrowRight,
   ArrowUpRight,
-  BookOpenCheck,
+
   CheckCircle2,
-  CircleDot,
+
   FileCheck2,
   Layers3,
   MoveDown,
-  Workflow,
+
 } from "lucide-react";
 import { Link, Navigate, useLocation } from "react-router-dom";
 import gsap from "gsap";
@@ -73,11 +73,6 @@ const ResourceContent = ({ page, pathname }) => {
           x: -22,
           duration: 0.5,
         })
-        .from(
-          ".insight-resource-kicker",
-          { autoAlpha: 0, y: 18, duration: 0.5 },
-          "-=0.25",
-        )
         .from(
           ".insight-resource-title-line",
           {
@@ -338,9 +333,7 @@ const ResourceContent = ({ page, pathname }) => {
               <ArrowLeft /> All insights
             </Link>
 
-            <p className="insight-resource-kicker">
-              <BookOpenCheck /> Practical resource
-            </p>
+            
 
             <h1 aria-label={page.title}>
               {page.title.split(" ").map((word, index) => (
@@ -427,9 +420,7 @@ const ResourceContent = ({ page, pathname }) => {
         <div className="insight-resource-module-stage">
           <div className="insight-resource-container">
             <div className="insight-resource-module-heading">
-              <p className="insight-resource-kicker">
-                <CircleDot /> Four practical modules
-              </p>
+              
               <h2>
                 Move from reading
                 <span> to a usable plan.</span>
@@ -505,9 +496,7 @@ const ResourceContent = ({ page, pathname }) => {
         <div className="insight-resource-checklist-grid" aria-hidden="true" />
         <div className="insight-resource-container insight-resource-checklist-layout">
           <div className="insight-resource-checklist-copy">
-            <p className="insight-resource-kicker">
-              <Workflow /> Put it to work
-            </p>
+            
             <h2>{page.outcome}</h2>
             <p>
               Use the framework as a working session, not a document that sits
@@ -543,7 +532,7 @@ const ResourceContent = ({ page, pathname }) => {
         <div className="insight-resource-container">
           <div className="insight-resource-related-heading">
             <div>
-              <p className="insight-resource-kicker">More resources</p>
+              
               <h2>Continue with another playbook</h2>
             </div>
             <Link to="/insights">

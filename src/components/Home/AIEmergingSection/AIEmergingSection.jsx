@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
-import { ArrowLeft, ArrowRight, ArrowUpRight, BadgeCheck } from "lucide-react";
+import { ArrowLeft, ArrowRight, ArrowUpRight } from "lucide-react";
 import { serviceShowcaseSlides } from "../../../data/serviceShowcaseSlides";
 import "./AIEmergingSection.css";
 
@@ -45,10 +45,7 @@ const AIEmergingSection = () => {
             aria-live="polite"
             aria-atomic="true"
           >
-            <span className="ai-emerging-kicker">
-              <BadgeCheck size={13} strokeWidth={2} aria-hidden="true" />
-              {slide.kicker}
-            </span>
+            
             <h2 id="ai-emerging-title">
               {slide.headline.map((line, index) => (
                 <span key={`${slide.id}-${index}`}>

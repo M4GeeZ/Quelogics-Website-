@@ -39,7 +39,7 @@ const BlogsSection = () => (
     <div className="blogs-shell">
       <div className="blogs-head">
         <div>
-          <span className="blogs-eyebrow">Insights</span>
+          
           <h2 id="blogs-heading">Blogs</h2>
           <p>
             Stay up to date with practical thinking on AI, software, product

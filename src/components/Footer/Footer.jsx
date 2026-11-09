@@ -128,7 +128,7 @@ const Footer = () => {
       <div className="site-footer-main">
         <div className="site-footer-lead">
           <div>
-            <span>Start a conversation</span>
+            
             <h2>Build the system your next stage needs.</h2>
           </div>
           <Link to="/contact">

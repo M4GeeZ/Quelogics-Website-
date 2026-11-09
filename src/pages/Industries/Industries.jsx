@@ -11,7 +11,7 @@ import {
   Factory,
   HeartPulse,
   Landmark,
-  Layers3,
+
   Rocket,
   ShieldCheck,
   Store,
@@ -209,11 +209,6 @@ const Industries = () => {
       });
 
       heroTimeline
-        .from(".industries-hero-kicker", {
-          y: 18,
-          autoAlpha: 0,
-          duration: 0.55,
-        })
         .from(
           ".industries-hero-title-line > span",
           {
@@ -363,10 +358,7 @@ const Industries = () => {
       <section className="industries-hero" aria-labelledby="industries-title">
         <div className="industries-container industries-hero-grid">
           <div className="industries-hero-copy">
-            <p className="industries-hero-kicker">
-              <Layers3 aria-hidden="true" />
-              Industry intelligence
-            </p>
+            
 
             <h1 id="industries-title" className="industries-hero-title">
               <span className="industries-hero-title-line">
@@ -454,7 +446,7 @@ const Industries = () => {
         <div className="industries-container">
           <header className="industries-section-heading industries-reveal">
             <div>
-              <p className="industries-kicker">Sector directory</p>
+              
               <h2>Twelve sectors. One principle: context before code.</h2>
             </div>
             <p>
@@ -499,7 +491,7 @@ const Industries = () => {
       <section className="industries-lens" ref={lensSectionRef}>
         <div className="industries-container industries-lens-grid">
           <div className="industries-lens-intro industries-reveal">
-            <p className="industries-kicker">The industry lens</p>
+            
             <h2>The same technology behaves differently in every sector.</h2>
             <p>
               Our role is to understand what changes the decision—not simply to
@@ -535,7 +527,7 @@ const Industries = () => {
         <div className="industries-container">
           <header className="industries-section-heading industries-reveal">
             <div>
-              <p className="industries-kicker">Cross-industry capability</p>
+              
               <h2>Sector-aware. Capability-complete.</h2>
             </div>
             <p>
@@ -580,7 +572,7 @@ const Industries = () => {
       <section className="industries-cta">
         <div className="industries-container industries-cta-inner industries-reveal">
           <div>
-            <p className="industries-kicker">Your sector, understood</p>
+            
             <h2>Bring us the workflow that is hardest to simplify.</h2>
           </div>
           <Link className="industries-button industries-button-primary" to="/contact">

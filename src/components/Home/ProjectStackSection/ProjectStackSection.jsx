@@ -157,7 +157,7 @@ const ProjectRow = ({ items, direction, label }) => (
 const ProjectStackSection = () => (
   <section className="project-stack-section" aria-labelledby="project-stack-title">
     <div className="project-stack-intro">
-      <span className="project-stack-intro-eyebrow">Selected work</span>
+      
       <h2 id="project-stack-title">Proof, not <em>promises.</em></h2>
       <p>Real products, practical solutions, and work built to make a difference.</p>
     </div>

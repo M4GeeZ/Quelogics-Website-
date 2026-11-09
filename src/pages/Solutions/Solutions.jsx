@@ -207,11 +207,6 @@ const Solutions = () => {
       });
 
       heroTimeline
-        .from(".solutions-hero-kicker", {
-          y: 18,
-          autoAlpha: 0,
-          duration: 0.55,
-        })
         .from(
           ".solutions-title-line > span",
           {
@@ -469,10 +464,7 @@ const Solutions = () => {
         <div className="solutions-hero-grid" aria-hidden="true" />
         <div className="solutions-container solutions-hero-inner">
           <div className="solutions-hero-content">
-            <p className="solutions-hero-kicker">
-              <Sparkles aria-hidden="true" />
-              Solutions built around the outcome
-            </p>
+            
 
             <h1>
               <span className="solutions-title-line">
@@ -567,7 +559,7 @@ const Solutions = () => {
 
       <section className="solutions-outcomes-intro" id="solution-outcomes">
         <div className="solutions-container solutions-outcomes-heading solutions-reveal">
-          <p className="solutions-kicker">Choose the gap in front of you</p>
+          
           <h2>Four common outcomes. One connected way to deliver them.</h2>
           <p>
             Scroll through the paths below. Each one combines the disciplines
@@ -670,7 +662,7 @@ const Solutions = () => {
       <section className="solutions-families">
         <div className="solutions-container">
           <div className="solutions-section-heading solutions-reveal">
-            <p className="solutions-kicker">More ways to move forward</p>
+            
             <h2>From first release to platform scale.</h2>
             <p>
               Pick a specific solution, or let us combine the right paths around
@@ -708,7 +700,7 @@ const Solutions = () => {
       <section className="solutions-process" ref={processRef}>
         <div className="solutions-container solutions-process-layout">
           <div className="solutions-process-intro solutions-reveal">
-            <p className="solutions-kicker">How we shape the solution</p>
+            
             <h2>Enough structure to move fast. Enough learning to stay right.</h2>
             <p>
               The plan gets clearer as evidence improves. Decisions stay visible,
@@ -740,7 +732,7 @@ const Solutions = () => {
       <section className="solutions-cta">
         <div className="solutions-container solutions-cta-inner solutions-reveal">
           <div>
-            <p className="solutions-kicker">Have a business gap to close?</p>
+            
             <h2>Bring us the problem. We will shape the clearest path forward.</h2>
           </div>
           <Link className="solutions-button solutions-button-primary" to="/contact">

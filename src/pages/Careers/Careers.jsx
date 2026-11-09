@@ -11,7 +11,7 @@ import {
   Compass,
   Palette,
   ShieldCheck,
-  Sparkles,
+
   UsersRound,
   Workflow,
 } from "lucide-react";
@@ -117,11 +117,6 @@ const Careers = () => {
       });
 
       heroTimeline
-        .from(".careers-hero-kicker", {
-          y: 16,
-          autoAlpha: 0,
-          duration: 0.5,
-        })
         .from(
           ".careers-title-line > span",
           {
@@ -223,10 +218,7 @@ const Careers = () => {
       <section className="careers-hero hero-section">
         <div className="careers-hero-grid">
           <div className="careers-hero-copy">
-            <span className="careers-hero-kicker">
-              <Sparkles aria-hidden="true" />
-              Careers at QueLogics
-            </span>
+            
 
             <h1 className="careers-hero-title">
               <span className="careers-title-line">
@@ -361,7 +353,7 @@ const Careers = () => {
       <section id="opportunities" className="careers-opportunities">
         <div className="careers-section-shell careers-opportunity-grid">
           <div className="careers-opportunity-intro careers-reveal">
-            <span className="careers-eyebrow">Where you can contribute</span>
+            
             <h2>Bring depth in your craft and curiosity beyond it.</h2>
             <p>
               These are the talent areas we regularly build teams around. Share
@@ -405,7 +397,7 @@ const Careers = () => {
       <section ref={processRef} className="careers-process">
         <div className="careers-section-shell careers-process-grid">
           <div className="careers-process-intro careers-reveal">
-            <span className="careers-eyebrow">The hiring experience</span>
+            
             <h2>A clear process, with useful conversations at every step.</h2>
             <p>
               No unnecessary rounds, hidden expectations, or abstract puzzles.

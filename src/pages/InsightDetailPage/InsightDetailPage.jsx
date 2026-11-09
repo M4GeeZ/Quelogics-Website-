@@ -5,7 +5,7 @@ import {
   ArrowUpRight,
   BookOpen,
   Check,
-  CircleDot,
+
   MoveDown,
 } from "lucide-react";
 import { Link, Navigate, useLocation } from "react-router-dom";
@@ -45,7 +45,7 @@ const InsightDetailContent = ({ page, pathname }) => {
     const context = gsap.context(() => {
       const intro = gsap.timeline({ defaults: { ease: "power3.out" } });
       intro
-        .from(".insight-detail-page .detail-back, .insight-detail-page .explore-kicker", {
+        .from(".insight-detail-page .detail-back", {
           autoAlpha: 0,
           y: 18,
           duration: 0.5,
@@ -179,7 +179,7 @@ const InsightDetailContent = ({ page, pathname }) => {
             <Link className="detail-back" to="/insights">
               <ArrowLeft /> All insights
             </Link>
-            <p className="explore-kicker"><CircleDot /> {page.section.detailEyebrow}</p>
+            
             <h1>{page.title}</h1>
             <p className="detail-statement">{page.statement}</p>
             <div className="explore-actions">
@@ -216,7 +216,7 @@ const InsightDetailContent = ({ page, pathname }) => {
       <section className="detail-capabilities" id="insight-topics">
         <div className="explore-container detail-capabilities-layout">
           <div className="detail-capabilities-intro">
-            <p className="explore-kicker">Inside this topic</p>
+            
             <h2>Useful perspectives you can turn into better decisions.</h2>
             <p>
               The focus stays practical: understand the pattern, see the tradeoffs,
@@ -238,7 +238,7 @@ const InsightDetailContent = ({ page, pathname }) => {
       <section className="detail-outcome">
         <div className="explore-container detail-outcome-card">
           <div className="detail-outcome-label">
-            <p className="explore-kicker">Why it matters</p>
+            
             <span className="detail-outcome-index">Q<span>+</span></span>
           </div>
           <div className="detail-outcome-copy">
@@ -254,7 +254,7 @@ const InsightDetailContent = ({ page, pathname }) => {
       <section className="detail-process">
         <div className="explore-container">
           <div className="explore-section-heading">
-            <p className="explore-kicker">Put the idea to work</p>
+            
             <h2>Move from reading to a useful next step.</h2>
           </div>
           <div className="detail-process-grid">
@@ -274,7 +274,7 @@ const InsightDetailContent = ({ page, pathname }) => {
         <div className="explore-container">
           <div className="detail-related-heading">
             <div>
-              <p className="explore-kicker">Keep exploring</p>
+              
               <h2>Related insights</h2>
             </div>
             <Link to="/insights">View all <ArrowRight /></Link>
@@ -295,7 +295,7 @@ const InsightDetailContent = ({ page, pathname }) => {
       <section className="explore-cta">
         <div className="explore-container explore-cta-card">
           <div>
-            <p className="explore-kicker">Need a practical view?</p>
+            
             <h2>Bring us the real decision in front of you.</h2>
           </div>
           <Link className="explore-button explore-button--primary" to="/contact">

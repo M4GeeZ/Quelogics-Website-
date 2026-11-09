@@ -128,7 +128,7 @@ const ReviewsSection = () => {
     <section className="rv-section" aria-labelledby="rv-heading">
       <div className="rv-shell">
         <div className="rv-intro">
-          <span className="rv-eyebrow">Client reviews</span>
+          
           <h2 id="rv-heading">
             Highlighting Our <em>Success Stories</em>
           </h2>

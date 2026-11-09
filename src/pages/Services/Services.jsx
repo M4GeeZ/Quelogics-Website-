@@ -18,7 +18,7 @@ import {
   Search,
   ShieldCheck,
   Smartphone,
-  Sparkles,
+
   Target,
   Workflow,
 } from "lucide-react";
@@ -196,11 +196,6 @@ const Services = () => {
         });
 
         heroTimeline
-          .from(".services-page-hero-kicker", {
-            y: 18,
-            autoAlpha: 0,
-            duration: 0.5,
-          })
           .from(
             ".services-page-title-line > span",
             {
@@ -414,9 +409,7 @@ const Services = () => {
 
         <div className="services-page-container services-page-hero-layout">
           <div className="services-page-hero-copy">
-            <p className="services-page-hero-kicker">
-              <Sparkles aria-hidden="true" /> QueLogics services
-            </p>
+            
             <h1>
               <span className="services-page-title-line">
                 <span>Strategy, craft,</span>
@@ -511,7 +504,7 @@ const Services = () => {
       <section className="services-page-intro">
         <div className="services-page-container services-page-intro-layout">
           <div className="services-page-reveal">
-            <p className="services-page-kicker">Start with the business gap</p>
+            
             <h2>The right service is rarely a single isolated deliverable.</h2>
           </div>
           <div className="services-page-intro-copy services-page-reveal">
@@ -535,7 +528,7 @@ const Services = () => {
       >
         <div className="services-page-container">
           <header className="services-page-capabilities-heading services-page-reveal">
-            <p className="services-page-kicker">Three connected capability areas</p>
+            
             <h2>Choose where the next move begins.</h2>
             <p>
               Each chapter can stand alone or combine with the others around a
@@ -601,7 +594,7 @@ const Services = () => {
       <section className="services-page-outcomes">
         <div className="services-page-container services-page-outcomes-layout">
           <header className="services-page-outcomes-heading services-page-reveal">
-            <p className="services-page-kicker">What stays consistent</p>
+            
             <h2>Every capability is connected by the same standards.</h2>
           </header>
           <div className="services-page-outcome-list">
@@ -630,7 +623,7 @@ const Services = () => {
       <section className="services-page-process" ref={processRef}>
         <div className="services-page-container services-page-process-layout">
           <header className="services-page-process-heading services-page-reveal">
-            <p className="services-page-kicker">A simple delivery rhythm</p>
+            
             <h2>Enough structure to move fast without creating noise.</h2>
             <p>
               The exact activities change with the work, but the logic stays
@@ -662,7 +655,7 @@ const Services = () => {
         <div className="services-page-cta-grid" aria-hidden="true" />
         <div className="services-page-container services-page-cta-layout">
           <div className="services-page-reveal">
-            <p className="services-page-kicker">Have a challenge in mind?</p>
+            
             <h2>Let’s find the clearest path from problem to progress.</h2>
           </div>
           <Link className="services-page-button services-page-button--primary" to="/contact">
