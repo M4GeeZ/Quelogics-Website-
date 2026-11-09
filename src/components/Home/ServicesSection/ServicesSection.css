@@ -1,9 +1,9 @@
 .services-explorer {
   --services-navy: #070f32;
-  --services-green: #2bdd68;
+  --services-green: #10AC4F;
   --services-hover: #c13f6b;
   --services-selected: var(--services-green);
-  --services-text: #07102f;
+  --services-text: #04213A;
 
   width: 100%;
   padding: 125px 40px 145px;
@@ -51,7 +51,7 @@
   display: grid;
   grid-template-columns: minmax(310px, 31%) minmax(0, 1fr);
   overflow: hidden;
-  border: 1px solid #e4e7eb;
+  border: 1px solid #B7C1CB;
   border-radius: 34px;
   background: #ffffff;
   box-shadow: 0 34px 80px rgba(8, 18, 49, 0.13);
@@ -138,7 +138,7 @@
 }
 
 .services-explorer-nav-item.is-hovered:not(.is-active) {
-  color: #07102f;
+  color: #04213A;
   background: var(--services-hover);
   box-shadow:
     0 12px 28px rgba(193, 63, 107, 0.25),
@@ -196,7 +196,7 @@
     linear-gradient(145deg, rgba(255, 255, 255, 0.88), rgba(242, 247, 246, 0.72)),
     rgba(255, 255, 255, 0.72);
   box-shadow:
-    0 30px 65px rgba(7, 16, 47, 0.16),
+    0 30px 65px rgba(4, 33, 58, 0.16),
     inset 0 1px 0 rgba(255, 255, 255, 0.95);
   backdrop-filter: blur(22px) saturate(135%);
   transform:
@@ -339,7 +339,7 @@
 .services-explorer-copy > p {
   max-width: 950px;
   margin: 22px 0 0;
-  color: #697386;
+  color: #5E6B78;
   font-size: 17px;
   line-height: 1.65;
 }
@@ -361,7 +361,7 @@
   align-items: flex-start;
   gap: 13px;
   margin-bottom: 14px;
-  color: #697386;
+  color: #5E6B78;
   font-size: 16px;
   line-height: 1.45;
 }
@@ -721,9 +721,9 @@
 
 /* Exact QueLogics service explorer — protected from the global glass layer. */
 .services-explorer {
-  --services-green: #22ce68 !important;
-  --services-navy: #07102f !important;
-  --services-text: #07102f !important;
+  --services-green: #10AC4F !important;
+  --services-navy: #04213A !important;
+  --services-text: #04213A !important;
   font-family: var(--font-ui) !important;
   background: #ffffff !important;
   backdrop-filter: none !important;
@@ -740,14 +740,14 @@
 .services-explorer-heading h2,
 .services-explorer-copy h3 { font-family: var(--font-display) !important; }
 .services-explorer-shell {
-  border: 1px solid #e4e7eb !important;
+  border: 1px solid #B7C1CB !important;
   background: #ffffff !important;
-  box-shadow: 0 28px 65px rgba(7,16,47,.12) !important;
+  box-shadow: 0 28px 65px rgba(4,33,58,.12) !important;
   backdrop-filter: none !important;
   -webkit-backdrop-filter: none !important;
 }
 .services-explorer-nav {
-  background: linear-gradient(180deg,#07102f 0%,#030821 100%) !important;
+  background: linear-gradient(180deg,#04213A 0%,#04213A 100%) !important;
   backdrop-filter: none !important;
   -webkit-backdrop-filter: none !important;
 }
@@ -765,12 +765,12 @@
 }
 .services-explorer-nav-item.is-hovered:not(.is-active)::after { display: none !important; }
 .services-explorer-nav-item.is-active {
-  color: #030821 !important;
+  color: #04213A !important;
   background: transparent !important;
 }
 .services-explorer-active-indicator {
-  background: #22ce68 !important;
-  box-shadow: 0 12px 28px rgba(34,206,104,.25) !important;
+  background: #10AC4F !important;
+  box-shadow: 0 12px 28px rgba(16,172,79,.25) !important;
 }
 .services-explorer-detail {
   border: 0 !important;
@@ -793,8 +793,8 @@
 }
 .services-explorer-stack-card::before { display: none !important; }
 .services-explorer-stack-card {
-  border: 1px solid #e4e7eb !important;
-  box-shadow: 0 20px 48px rgba(7,16,47,.12) !important;
+  border: 1px solid #B7C1CB !important;
+  box-shadow: 0 20px 48px rgba(4,33,58,.12) !important;
   backface-visibility: hidden;
   transform-origin: center top !important;
   will-change: transform, opacity;
@@ -803,23 +803,23 @@
   animation: serviceCardRise .92s cubic-bezier(.22,1,.36,1) both !important;
 }
 .services-explorer-visual {
-  background: linear-gradient(115deg,#07102f 0%,#07102f 58%,#0c493b 100%) !important;
+  background: linear-gradient(115deg,#04213A 0%,#04213A 58%,#0c493b 100%) !important;
   box-shadow: none !important;
   backdrop-filter: none !important;
 }
 .services-explorer-visual-glow {
   opacity: .42 !important;
-  background: #22ce68 !important;
+  background: #10AC4F !important;
 }
 .services-explorer-copy h3,
 .services-explorer-copy h4,
-.services-explorer-copy li strong { color: #07102f !important; }
+.services-explorer-copy li strong { color: #04213A !important; }
 .services-explorer-copy > p,
-.services-explorer-copy li { color: #697386 !important; opacity: 1 !important; }
+.services-explorer-copy li { color: #5E6B78 !important; opacity: 1 !important; }
 .services-explorer-link {
-  color: #030821 !important;
-  background: #22ce68 !important;
-  box-shadow: 0 12px 26px rgba(34,206,104,.22) !important;
+  color: #04213A !important;
+  background: #10AC4F !important;
+  box-shadow: 0 12px 26px rgba(16,172,79,.22) !important;
 }
 
 /* Desktop service navigation: compact at rest, full-width when selected. */
@@ -887,10 +887,10 @@
   .services-explorer-nav-item.is-hovered:not(.is-active) { transform: translateY(-2px) !important; }
   .services-explorer-nav-item.is-active {
     z-index: 4;
-    color: #030821 !important;
-    border-color: #22ce68 !important;
-    background: #22ce68 !important;
-    box-shadow: 0 8px 22px rgba(34,206,104,.34) !important;
+    color: #04213A !important;
+    border-color: #10AC4F !important;
+    background: #10AC4F !important;
+    box-shadow: 0 8px 22px rgba(16,172,79,.34) !important;
     transform: translateX(5px) scale(1.015);
     transition: transform .5s cubic-bezier(.22,1,.36,1),background-color .3s ease,box-shadow .3s ease !important;
   }
@@ -1082,7 +1082,7 @@
 .services-explorer-visual { isolation:isolate;overflow:hidden; }
 .services-explorer-visual .services-explorer-photo { display:block;position:absolute;inset:0;z-index:0;width:100%;height:100%;object-fit:cover;object-position:center;opacity:.95;filter:saturate(.9) brightness(.8);transition:transform .65s ease,filter .4s ease; }
 .services-explorer-stack-card:hover .services-explorer-photo { transform:scale(1.03); }
-.services-explorer-visual::before { z-index:1!important; background:linear-gradient(90deg,rgba(7,16,47,.42),rgba(7,16,47,.14))!important; }
+.services-explorer-visual::before { z-index:1!important; background:linear-gradient(90deg,rgba(4,33,58,.42),rgba(4,33,58,.14))!important; }
 .services-explorer-visual-glow { z-index:1;opacity:.24;pointer-events:none; }
 .services-explorer-watermark { z-index:1;opacity:.19; }
 .services-explorer-tag { z-index:3; }

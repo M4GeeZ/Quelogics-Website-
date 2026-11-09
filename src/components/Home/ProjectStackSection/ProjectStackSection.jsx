@@ -19,7 +19,7 @@ const projects = [
     image: carshare,
     description:
       "A connected operations platform for bookings, drivers, payments, live rides, and fleet performance.",
-    accent: "#22ce68",
+    accent: "#10AC4F",
   },
   {
     number: "002",
@@ -28,7 +28,7 @@ const projects = [
     image: EagleChat,
     description:
       "A social play-and-earn experience combining mini-games, live community features, rewards, and wallets.",
-    accent: "#7ca8ff",
+    accent: "#10AC4F",
   },
   {
     number: "003",
@@ -37,7 +37,7 @@ const projects = [
     image: PizzaMama,
     description:
       "A conversion-focused restaurant experience that makes discovery, ordering, and repeat purchases effortless.",
-    accent: "#ff6d8f",
+    accent: "#10AC4F",
   },
   {
     number: "004",
@@ -46,7 +46,7 @@ const projects = [
     image: Mindora,
     description:
       "A calm digital health product shaped around accessible care journeys, clear guidance, and daily engagement.",
-    accent: "#a685ff",
+    accent: "#10AC4F",
   },
   {
     number: "005",
@@ -55,7 +55,7 @@ const projects = [
     image: TMS,
     description:
       "One operational view for dispatch, fleet status, delivery progress, exceptions, and performance reporting.",
-    accent: "#22ce68",
+    accent: "#10AC4F",
   },
   {
     number: "006",
@@ -64,7 +64,7 @@ const projects = [
     image: hmb,
     description:
       "A reliable restaurant operating system connecting orders, stock, staff, reporting, and branch performance.",
-    accent: "#ffb55f",
+    accent: "#10AC4F",
   },
   {
     number: "007",
@@ -73,7 +73,7 @@ const projects = [
     image: Jabulani,
     description:
       "A bold, responsive digital experience combining a distinctive visual system with fast, intuitive journeys.",
-    accent: "#48d9d2",
+    accent: "#10AC4F",
   },
   {
     number: "008",
@@ -82,7 +82,7 @@ const projects = [
     image: GMS,
     description:
       "A complete workshop workflow for customers, vehicles, jobs, parts, invoicing, and business visibility.",
-    accent: "#7ca8ff",
+    accent: "#10AC4F",
   },
   {
     number: "009",
@@ -91,7 +91,7 @@ const projects = [
     image: ttb,
     description:
       "A specialist transport marketplace connecting drivers and operators with relevant opportunities and clear communication.",
-    accent: "#ffb55f",
+    accent: "#10AC4F",
   },
   {
     number: "010",
@@ -100,7 +100,7 @@ const projects = [
     image: LMSAPP,
     description:
       "A practical learning hub bringing lessons, assignments, progress tracking, and course administration into one clear experience.",
-    accent: "#22ce68",
+    accent: "#10AC4F",
   },
 ];
 

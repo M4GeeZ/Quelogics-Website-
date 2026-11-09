@@ -4,7 +4,7 @@
   width: 100%;
   padding: clamp(64px, 7vw, 104px) 0;
   background: #ffffff;
-  color: #07102f;
+  color: #04213A;
 }
 
 .blogs-shell {
@@ -27,7 +27,7 @@
   align-items: center;
   gap: 8px;
   margin-bottom: 12px;
-  color: #17a352;
+  color: #10AC4F;
   font-size: 12px;
   font-weight: 800;
   letter-spacing: 0.14em;
@@ -39,7 +39,7 @@
   width: 7px;
   height: 7px;
   border-radius: 50%;
-  background: #22ce68;
+  background: #10AC4F;
 }
 
 .blogs-head h2 {
@@ -68,7 +68,7 @@
   min-height: 46px;
   padding: 0 26px;
   border-radius: 12px;
-  background: #22ce68;
+  background: #10AC4F;
   color: #04190f;
   font-size: 14.5px;
   font-weight: 750;
@@ -78,7 +78,7 @@
 
 .blogs-more svg { width: 17px; height: 17px; }
 .blogs-more:hover,
-.blogs-more:focus-visible { gap: 12px; background: #2bdd68; transform: translateY(-2px); }
+.blogs-more:focus-visible { gap: 12px; background: #10AC4F; transform: translateY(-2px); }
 
 .blogs-grid {
   display: grid;
@@ -158,7 +158,7 @@
 }
 
 .blog-card h3 a:hover,
-.blog-card h3 a:focus-visible { color: #17a352; }
+.blog-card h3 a:focus-visible { color: #10AC4F; }
 
 .blog-card p {
   flex: 1 1 auto;
@@ -174,7 +174,7 @@
   align-items: center;
   gap: 6px;
   margin-top: 16px;
-  color: #17a352;
+  color: #10AC4F;
   font-size: 13.5px;
   font-weight: 800;
   letter-spacing: 0.04em;

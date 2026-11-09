@@ -1,10 +1,10 @@
 /* QueLogics projects: static 4-column portfolio, no pinned/stacked scrolling. */
 .project-stack-section {
-  --project-green: #22ce68;
+  --project-green: #10AC4F;
   width: 100%;
   overflow: hidden;
   color: #fff;
-  background: #020615;
+  background: #04213A;
 }
 .project-stack-heading {
   width: min(calc(100% - 64px), 1600px);
@@ -27,7 +27,7 @@
   height: 8px;
   border-radius: 50%;
   background: var(--project-green);
-  box-shadow: 0 0 16px rgba(34,206,104,.85);
+  box-shadow: 0 0 16px rgba(16,172,79,.85);
 }
 .project-stack-heading h2 {
   max-width: 1200px;
@@ -52,7 +52,7 @@
   min-height: 0;
   padding: 0 clamp(20px,3vw,60px) 110px;
   overflow: visible;
-  background: #f7faf9;
+  background: #F4F6F8;
 }
 .project-stack-grid {
   display: grid;
@@ -64,7 +64,7 @@
   align-items: start;
 }
 .project-stack-card {
-  --project-accent: #22ce68;
+  --project-accent: #10AC4F;
   position: relative;
   display: flex;
   flex-direction: column;
@@ -82,16 +82,16 @@
   width: 100%;
   min-height: 0;
   overflow: hidden;
-  border: 1px solid rgba(3,8,33,.13);
+  border: 1px solid rgba(4,33,58,.13);
   border-radius: 19px;
-  background: #07102f;
+  background: #04213A;
   isolation: isolate;
 }
 .project-stack-card-media::after {
   content: "";
   position: absolute;
   inset: 50% 0 0;
-  background: linear-gradient(to top,rgba(3,8,33,.36),transparent);
+  background: linear-gradient(to top,rgba(4,33,58,.36),transparent);
   pointer-events: none;
 }
 .project-stack-card-media img {
@@ -131,8 +131,8 @@
   padding: 10px 16px;
   border: 1px solid transparent;
   border-radius: 6px;
-  color: #030821;
-  background: #22ce68;
+  color: #04213A;
+  background: #10AC4F;
   font-size: 13px;
   font-weight: 800;
   text-decoration: none;
@@ -144,8 +144,8 @@
 .project-stack-card:hover .project-stack-reveal-link,
 .project-stack-card:focus-within .project-stack-reveal-link { opacity: 1; transform: translateY(0); }
 .project-stack-reveal-link:hover,
-.project-stack-reveal-link:focus-visible { background: #07102f; color: #22ce68; border-color: #22ce68; }
-.project-stack-card-info { padding: 18px 3px 9px; color: #07102f; }
+.project-stack-reveal-link:focus-visible { background: #04213A; color: #10AC4F; border-color: #10AC4F; }
+.project-stack-card-info { padding: 18px 3px 9px; color: #04213A; }
 .project-stack-card-number {
   display: inline-block;
   margin-right: 12px;
@@ -158,13 +158,13 @@
 .project-stack-card-category {
   display: inline;
   margin: 0;
-  color: #697386;
+  color: #5E6B78;
   font-size: 11px;
   line-height: 1.5;
 }
 .project-stack-card-info h3 {
   margin: 12px 0 10px;
-  color: #07102f;
+  color: #04213A;
   font-family: var(--font-display);
   font-size: clamp(19px,1.65vw,27px);
   font-weight: 800;
@@ -173,7 +173,7 @@
 }
 .project-stack-card-description {
   margin: 0;
-  color: #697386;
+  color: #5E6B78;
   font-size: 13px;
   line-height: 1.6;
 }
@@ -200,7 +200,7 @@
    card skin that made titles illegible and tinted the image corners. */
 section.project-stack-section,
 section.project-stack-section .project-stack-stage {
-  color: #07102f !important;
+  color: #04213A !important;
   background: #ffffff !important;
   background-image: none !important;
 }
@@ -217,7 +217,7 @@ section.project-stack-section .project-stack-card {
   border-radius: 0 !important;
   background: transparent !important;
   background-image: none !important;
-  color: #07102f !important;
+  color: #04213A !important;
   box-shadow: none !important;
   backdrop-filter: none !important;
   -webkit-backdrop-filter: none !important;
@@ -255,7 +255,7 @@ section.project-stack-section .project-stack-card-media > span {
   padding: 7px 9px;
   border-radius: 5px;
   color: #ffffff;
-  background: rgba(3,8,33,.84);
+  background: rgba(4,33,58,.84);
   font-size: 10px;
   letter-spacing: .065em;
   text-shadow: none;
@@ -265,10 +265,10 @@ section.project-stack-section .project-stack-reveal-link {
   bottom: 12px;
   left: 12px;
   min-height: 46px;
-  border: 1px solid #22ce68;
+  border: 1px solid #10AC4F;
   border-radius: 5px;
-  color: #030821;
-  background: #22ce68;
+  color: #04213A;
+  background: #10AC4F;
   font-size: 13px;
   opacity: 0;
   transform: translateY(calc(100% + 17px));
@@ -280,25 +280,25 @@ section.project-stack-section .project-stack-card:focus-within .project-stack-re
 }
 section.project-stack-section .project-stack-reveal-link:hover,
 section.project-stack-section .project-stack-reveal-link:focus-visible {
-  color: #22ce68;
-  border-color: #07102f;
-  background: #07102f;
+  color: #10AC4F;
+  border-color: #04213A;
+  background: #04213A;
 }
 section.project-stack-section .project-stack-card-info {
   flex: 1;
   padding: 16px 2px 14px;
   border: 0;
   background: #ffffff !important;
-  color: #07102f !important;
+  color: #04213A !important;
 }
 section.project-stack-section .project-stack-card-number { color: #159e52; }
 section.project-stack-section .project-stack-card-category {
-  color: #697386;
+  color: #5E6B78;
   font-size: 11px;
 }
 section.project-stack-section .project-stack-card-info h3 {
   margin: 11px 0 8px;
-  color: #07102f !important;
+  color: #04213A !important;
   font-size: clamp(19px, 1.55vw, 25px);
   line-height: 1.22;
 }
@@ -420,13 +420,13 @@ section.project-stack-section .project-stack-card-media > span { display:none!im
   width: 100%;
   padding: clamp(72px, 7vw, 110px) 24px clamp(12px, 2vw, 28px);
   text-align: center;
-  color: #07102f;
-  background: #f7faf9;
+  color: #04213A;
+  background: #F4F6F8;
 }
 .project-stack-intro-eyebrow {
   display: inline-block;
   margin-bottom: 16px;
-  color: #17924a;
+  color: #10AC4F;
   font-size: 12px;
   font-weight: 800;
   letter-spacing: 0.16em;
@@ -440,11 +440,136 @@ section.project-stack-section .project-stack-card-media > span { display:none!im
   letter-spacing: -0.052em;
   line-height: 1.08;
 }
-.project-stack-intro h2 em { color: #17924a; font-style: normal; }
+.project-stack-intro h2 em { color: #10AC4F; font-style: normal; }
 .project-stack-intro p {
   max-width: 650px;
   margin: 18px auto 0;
   color: #5b6880;
   font-size: clamp(15px, 1.1vw, 18px);
   line-height: 1.65;
+}
+
+/* Project CTA: subtle upward reveal on hover, centered in the image.
+   Touch-only devices keep it visible so the link is still discoverable. */
+section.project-stack-section .project-stack-reveal-link {
+  left: 50%;
+  right: auto;
+  bottom: 14px;
+  width: max-content;
+  max-width: calc(100% - 28px);
+  min-height: 40px;
+  padding: 0 17px;
+  gap: 9px;
+  border-radius: 5px;
+  font-size: 12.5px;
+  letter-spacing: 0.01em;
+  opacity: 0;
+  pointer-events: none;
+  transform: translate3d(-50%, 15px, 0);
+  box-shadow: 0 7px 16px rgba(0, 0, 0, 0.16);
+  transition: opacity 240ms ease,
+    transform 340ms cubic-bezier(.22, 1, .36, 1),
+    background-color 200ms ease,
+    color 200ms ease,
+    border-color 200ms ease;
+}
+section.project-stack-section .project-stack-reveal-link svg {
+  width: 15px;
+  height: 15px;
+}
+section.project-stack-section .project-stack-card:hover .project-stack-reveal-link,
+section.project-stack-section .project-stack-card:focus-within .project-stack-reveal-link {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translate3d(-50%, 0, 0);
+}
+@media (hover: none) {
+  section.project-stack-section .project-stack-reveal-link {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+@media (max-width: 600px) {
+  section.project-stack-section .project-stack-reveal-link {
+    min-height: 38px;
+    padding-inline: 14px;
+    font-size: 12px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  section.project-stack-section .project-stack-reveal-link {
+    transition: none;
+  }
+  section.project-stack-section .project-stack-card:hover .project-stack-reveal-link,
+  section.project-stack-section .project-stack-card:focus-within .project-stack-reveal-link {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+
+/* V11 — Keep both continuously scrolling portfolio rows within a centered
+   maximum 1440px canvas, with real left/right page gutters. The marquee
+   animation and existing View Project buttons remain unchanged. */
+.home-page .project-stack-section .project-stack-stage {
+  width: 100%;
+  max-width: none;
+  padding-inline: 0;
+}
+.home-page .project-stack-section .ps-rows {
+  width: min(calc(100% - 80px), 1440px);
+  max-width: 1440px;
+  margin-inline: auto;
+  padding-inline: 0;
+  overflow: hidden;
+}
+.home-page .project-stack-section .project-stack-intro {
+  width: min(calc(100% - 80px), 1440px);
+  max-width: 1440px;
+  margin-inline: auto;
+}
+@media (max-width: 800px) {
+  .home-page .project-stack-section .ps-rows,
+  .home-page .project-stack-section .project-stack-intro {
+    width: calc(100% - 40px);
+  }
+}
+@media (max-width: 560px) {
+  .home-page .project-stack-section .ps-rows,
+  .home-page .project-stack-section .project-stack-intro {
+    width: calc(100% - 28px);
+  }
+}
+
+
+/* V12 — Align the *visible scrolling viewport* to the exact same centered
+   content column as Navbar, Hero and Industries. Site uses a 1440px section
+   canvas with 64px gutters: 1312px usable content width on desktop.
+   Previous 1440px rule used only 40px margins at 1520px and looked full-bleed. */
+body .home-page .project-stack-section .ps-rows,
+body .home-page .project-stack-section .project-stack-intro {
+  width: min(calc(100% - var(--site-gutter, 128px)), var(--site-max, 1312px));
+  max-width: var(--site-max, 1312px);
+  margin-left: auto;
+  margin-right: auto;
+}
+body .home-page .project-stack-section .ps-rows {
+  box-sizing: border-box;
+  min-width: 0;
+  overflow: hidden;
+  border-radius: 0;
+  padding-inline: 0;
+}
+body .home-page .project-stack-section .ps-row {
+  width: 100%;
+  min-width: 0;
+  overflow: hidden;
+}
+/* Keep mobile gutters identical to the global site width instead of
+   the older 28px custom rule. */
+@media (max-width: 1100px) {
+  body .home-page .project-stack-section .ps-rows,
+  body .home-page .project-stack-section .project-stack-intro {
+    width: calc(100% - var(--site-gutter, 48px));
+  }
 }

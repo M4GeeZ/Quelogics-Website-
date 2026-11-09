@@ -9,8 +9,7 @@ const clientLogos = Array.from(
 
 const Hero = () => {
   return (
-    <>
-      <section className="hero-section">
+    <section className="hero-section">
         <div className="hero-content">
           <div className="hero-copy">
             <h1 className="hero-heading">
@@ -40,32 +39,28 @@ const Hero = () => {
             <span className="hero-visual-label hero-visual-label-three">Operations</span>
           </div>
 
-          <div className="hero-footnote">
-            <span>Independent technology partner</span>
-            <a href="/case-studies">Explore our work <ArrowRight aria-hidden="true" /></a>
-          </div>
-        </div>
-      </section>
-
-      <section className="client-logo-marquee" aria-label="Our clients">
-        <p className="client-logo-label">Trusted by teams building what&apos;s next</p>
-        <div className="client-logo-track">
-          {[0, 1].map((copyIndex) => (
-            <div
-              className="client-logo-group"
-              aria-hidden="true"
-              key={copyIndex}
-            >
-              {clientLogos.map((logo) => (
-                <div className="client-logo-item" key={`${copyIndex}-${logo}`}>
-                  <img src={logo} alt="" draggable="false" />
+          {/* The client logos now replace the old hero footnote. They are
+              part of the hero grid, not an independent section underneath. */}
+          <div className="client-logo-marquee" aria-label="Trusted client logos">
+            <p className="client-logo-label">Trusted by teams building what&apos;s next</p>
+            <div className="client-logo-track">
+              {[0, 1].map((copyIndex) => (
+                <div
+                  className="client-logo-group"
+                  aria-hidden="true"
+                  key={copyIndex}
+                >
+                  {clientLogos.map((logo) => (
+                    <div className="client-logo-item" key={`${copyIndex}-${logo}`}>
+                      <img src={logo} alt="" draggable="false" />
+                    </div>
+                  ))}
                 </div>
               ))}
             </div>
-          ))}
+          </div>
         </div>
-      </section>
-    </>
+    </section>
   );
 };
 

@@ -1,10 +1,10 @@
 .site-footer {
-  --footer-navy: #07102f;
-  --footer-green: #22ce68;
+  --footer-navy: #04213A;
+  --footer-green: #10AC4F;
   width: 100%;
   overflow: hidden;
   color: #fff;
-  background: #030821;
+  background: #04213A;
 }
 .site-footer-main {
   padding: 0 40px 72px;
@@ -51,7 +51,7 @@
   padding: 0 24px;
   border: 1px solid var(--footer-green);
   border-radius: 4px;
-  color: #030821;
+  color: #04213A;
   background: var(--footer-green);
   font-size: 14px;
   font-weight: 800;
@@ -62,7 +62,7 @@
 }
 .site-footer-lead > a:hover {
   transform: translateY(-3px);
-  box-shadow: 0 0 34px rgba(34, 206, 104, 0.38);
+  box-shadow: 0 0 34px rgba(16, 172, 79, 0.38);
 }
 .site-footer-lead > a svg {
   width: 18px;
@@ -93,8 +93,8 @@
   pointer-events: none;
   background: radial-gradient(
     220px circle at var(--glow-x) var(--glow-y),
-    rgba(34, 206, 104, 0.2),
-    rgba(34, 206, 104, 0.055) 35%,
+    rgba(16, 172, 79, 0.2),
+    rgba(16, 172, 79, 0.055) 35%,
     transparent 72%
   );
   transition: opacity 0.35s ease;
@@ -167,7 +167,7 @@
 .site-footer-column a:hover,
 .site-footer-column a:focus-visible {
   color: #fff;
-  text-shadow: 0 0 18px rgba(34, 206, 104, 0.75);
+  text-shadow: 0 0 18px rgba(16, 172, 79, 0.75);
   transform: translateX(8px);
 }
 .site-footer-column a:hover::before,
@@ -260,10 +260,10 @@
   transition: all 0.25s ease;
 }
 .site-footer-socials a:hover {
-  color: #030821;
+  color: #04213A;
   border-color: var(--footer-green);
   background: var(--footer-green);
-  box-shadow: 0 0 25px rgba(34, 206, 104, 0.48);
+  box-shadow: 0 0 25px rgba(16, 172, 79, 0.48);
   transform: translateY(-3px);
 }
 .site-footer-socials span {
@@ -286,7 +286,7 @@
 }
 .site-footer-legal a:hover {
   color: var(--footer-green);
-  text-shadow: 0 0 15px rgba(34, 206, 104, 0.7);
+  text-shadow: 0 0 15px rgba(16, 172, 79, 0.7);
 }
 @media (max-width: 1150px) {
   .site-footer-columns {
@@ -426,7 +426,7 @@
   left: 0;
   height: 1px;
   background: var(--footer-green);
-  box-shadow: 0 0 8px rgba(34, 206, 104, 0.55);
+  box-shadow: 0 0 8px rgba(16, 172, 79, 0.55);
   transform: scaleX(0.38);
   transform-origin: right;
   transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
@@ -434,7 +434,7 @@
 .site-footer-lead > a:hover {
   transform: translateX(5px);
   box-shadow: none;
-  text-shadow: 0 0 22px rgba(34, 206, 104, 0.78);
+  text-shadow: 0 0 22px rgba(16, 172, 79, 0.78);
 }
 .site-footer-lead > a:hover::after {
   transform: scaleX(1);
@@ -469,7 +469,7 @@
   inset: -28px;
   background: radial-gradient(
     180px circle at var(--glow-x) var(--glow-y),
-    rgba(34, 206, 104, 0.14),
+    rgba(16, 172, 79, 0.14),
     transparent 72%
   );
 }
@@ -486,8 +486,8 @@
   border: 0;
   background: transparent;
   box-shadow: none;
-  text-shadow: 0 0 18px rgba(34, 206, 104, 0.9);
-  filter: drop-shadow(0 0 8px rgba(34, 206, 104, 0.6));
+  text-shadow: 0 0 18px rgba(16, 172, 79, 0.9);
+  filter: drop-shadow(0 0 8px rgba(16, 172, 79, 0.6));
 }
 
 /* V6: stop the circular pointer glow and hover bloom on the footer. */
@@ -497,7 +497,7 @@
 .site-footer-socials a:hover,
 .site-footer-socials a:focus-visible,
 .site-footer-socials a svg { box-shadow:none!important;text-shadow:none!important;filter:none!important; }
-.site-footer-socials a:hover { color:#07102F!important;background:#FFD447!important; }
+.site-footer-socials a:hover { color:#04213A!important;background:#CFEEDC!important; }
 .site-footer-lead>a:hover { text-shadow:none!important; }
 .site-footer-column a:hover { text-shadow:none!important; }
 .site-footer-legal a:hover { text-shadow:none!important; }

@@ -4,7 +4,7 @@
   width: 100%;
   padding: clamp(60px, 6.5vw, 96px) 0;
   background: #f0f7ff;
-  color: #07102f;
+  color: #04213A;
 }
 
 .tech-shell {
@@ -26,7 +26,7 @@
   letter-spacing: -0.03em;
 }
 
-.tech-head h2 em { color: #17a352; font-style: normal; }
+.tech-head h2 em { color: #10AC4F; font-style: normal; }
 
 .tech-head p {
   max-width: 760px;
@@ -67,15 +67,15 @@
   bottom: -1px;
   left: 0;
   height: 2px;
-  background: #22ce68;
+  background: #10AC4F;
   transform: scaleX(0);
   transition: transform 0.3s ease;
 }
 
-.tech-tab:hover { color: #17a352; }
-.tech-tab:focus-visible { outline: 2px solid #22ce68; outline-offset: 2px; border-radius: 4px; }
+.tech-tab:hover { color: #10AC4F; }
+.tech-tab:focus-visible { outline: 2px solid #10AC4F; outline-offset: 2px; border-radius: 4px; }
 
-.tech-tab.is-active { color: #17a352; font-weight: 700; }
+.tech-tab.is-active { color: #10AC4F; font-weight: 700; }
 .tech-tab.is-active::after { transform: scaleX(1); }
 
 /* ---- Logo grid ---- */
@@ -117,7 +117,7 @@
 .tech-icon svg { width: 32px; height: 32px; }
 
 .tech-item:hover .tech-icon {
-  border-color: #22ce68;
+  border-color: #10AC4F;
   box-shadow: 0 16px 28px -16px rgba(10, 42, 94, 0.55);
   transform: translateY(-4px);
 }

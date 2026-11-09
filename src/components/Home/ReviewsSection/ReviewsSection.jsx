@@ -1,12 +1,18 @@
 import { useLayoutEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { ArrowLeft, ArrowRight, ArrowUpRight, Building2, Quote, Star } from "lucide-react";
+import avatarHiba from "../../../assets/client-avatars/hiba-patel.webp";
+import avatarBilal from "../../../assets/client-avatars/bilal-ahmed.webp";
+import avatarSara from "../../../assets/client-avatars/sara-khalid.webp";
+import avatarDaniel from "../../../assets/client-avatars/daniel-roth.webp";
+import avatarChris from "../../../assets/client-avatars/chris-morgan.webp";
 import "./ReviewsSection.css";
 
 // `quote` is [before, highlighted result, after]; the middle part is shown in green.
 const reviews = [
   {
     id: "hiba-patel",
+    avatar: avatarHiba, // Demo portrait; replace with approved client photo when available.
     initials: "HP",
     quote: [
       "Our release cycle is now ",
@@ -20,6 +26,7 @@ const reviews = [
   },
   {
     id: "bilal-ahmed",
+    avatar: avatarBilal, // Demo portrait; replace with approved client photo when available.
     initials: "BA",
     quote: [
       "Cost per lead is ",
@@ -33,6 +40,7 @@ const reviews = [
   },
   {
     id: "sara-khalid",
+    avatar: avatarSara, // Demo portrait; replace with approved client photo when available.
     initials: "SK",
     quote: [
       "We had a working prototype ",
@@ -46,6 +54,7 @@ const reviews = [
   },
   {
     id: "daniel-roth",
+    avatar: avatarDaniel, // Demo portrait; replace with approved client photo when available.
     initials: "DR",
     quote: [
       "We moved from spreadsheet chaos to one connected system. ",
@@ -59,6 +68,7 @@ const reviews = [
   },
   {
     id: "chris-morgan",
+    avatar: avatarChris, // Demo portrait; replace with approved client photo when available.
     initials: "CM",
     quote: [
       "One connected team helped us move from idea to ",
@@ -188,7 +198,18 @@ const ReviewsSection = () => {
                     </blockquote>
 
                     <footer>
-                      <span className="rv-avatar" aria-hidden="true">{review.initials}</span>
+                      <span className="rv-avatar" aria-hidden="true">
+                        {review.initials}
+                        <img
+                          src={review.avatar}
+                          alt=""
+                          title="Illustrative portrait — replace with the client’s approved photo"
+                          width="260"
+                          height="260"
+                          loading="lazy"
+                          decoding="async"
+                        />
+                      </span>
                       <span className="rv-person">
                         <strong>{review.name}</strong>
                         <small>{review.role}, {review.company} · {review.country}</small>

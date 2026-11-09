@@ -395,8 +395,14 @@ const Navbar = () => {
     >
       <div className="navbar-container">
         <Link to="/" className="navbar-logo" aria-label="QueLogics home">
-          <span className="navbar-logo-mark"><i /></span>
-          <span>Que<span>Logics</span></span>
+          <span className="ql-navbar-brand-assets ql-brand-for-dark" aria-hidden="true">
+            <img className="ql-brand-qmark" src="/assets/brand/quelogics-qmark-reversed.png" alt="" width="35" height="35" />
+            <img className="ql-brand-wordmark" src="/assets/brand/quelogics-wordmark-reversed.png" alt="" width="136" height="35" />
+          </span>
+          <span className="ql-navbar-brand-assets ql-brand-for-light" aria-hidden="true">
+            <img className="ql-brand-qmark" src="/assets/brand/quelogics-qmark.png" alt="" width="35" height="35" />
+            <img className="ql-brand-wordmark" src="/assets/brand/quelogics-wordmark.png" alt="" width="136" height="35" />
+          </span>
         </Link>
 
         <nav className="desktop-navigation">
@@ -682,8 +688,8 @@ const Navbar = () => {
                           // Match only these 3 Hire-by-Role tiles; preserve all
                           // actual technology logos and every other Hire Team colour.
                           const accent = isHireTeam
-                            ? (UNIFORM_HIRE_ROLE_ICONS.has(labelKey) ? "#17924A" : (brand ? brand.color : (accentColors[labelKey] || "#17924A")))
-                            : "#17924A";
+                            ? (UNIFORM_HIRE_ROLE_ICONS.has(labelKey) ? "#10AC4F" : (brand ? brand.color : (accentColors[labelKey] || "#10AC4F")))
+                            : "#10AC4F";
                           const MenuIcon = brand ? brand.Icon : getMenuIcon(labelKey);
 
                           return (

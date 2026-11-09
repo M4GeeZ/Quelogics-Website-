@@ -1,5 +1,5 @@
 .selected-work-marquee-section {
-  --selected-work-blue: #22ce68;
+  --selected-work-blue: #10AC4F;
 
   position: relative;
   width: 100%;
@@ -40,11 +40,11 @@
   height: 6px;
   border-radius: 50%;
   background: var(--selected-work-blue);
-  box-shadow: 0 0 13px rgba(34, 206, 104, 0.82);
+  box-shadow: 0 0 13px rgba(16, 172, 79, 0.82);
 }
 
 .selected-work-marquee-note {
-  color: rgba(7, 16, 47, 0.48);
+  color: rgba(4, 33, 58, 0.48);
   letter-spacing: 0.08em;
   text-transform: none;
 }

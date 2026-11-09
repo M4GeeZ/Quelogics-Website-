@@ -22,6 +22,7 @@ import "./styles/variables.css";
 import "./styles/websiteTheme.css";
 import "./pages/Shared/PageStyles.css";
 import "./styles/siteWidth.css";
+import "./styles/brandGuidelines.css";
 
 function App() {
   return (

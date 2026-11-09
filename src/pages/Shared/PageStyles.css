@@ -1,6 +1,6 @@
 .explore-page {
   --page-accent: var(--ql-green);
-  --page-accent-soft: rgba(44, 184, 96, 0.14);
+  --page-accent-soft: rgba(16, 172, 79, 0.14);
   overflow: hidden;
   color: var(--ql-navy);
   background: #f4f5f5;
@@ -22,7 +22,7 @@
   overflow: hidden;
   color: var(--ql-white);
   background:
-    radial-gradient(circle at 78% 20%, rgba(44, 184, 96, 0.2), transparent 32%),
+    radial-gradient(circle at 78% 20%, rgba(16, 172, 79, 0.2), transparent 32%),
     linear-gradient(116deg, #070d20 0%, #121d35 58%, #12392f 100%);
 }
 
@@ -633,7 +633,7 @@
   overflow: hidden;
   color: #fff;
   background:
-    radial-gradient(circle at 78% 25%, rgba(44, 184, 96, 0.2), transparent 30%),
+    radial-gradient(circle at 78% 25%, rgba(16, 172, 79, 0.2), transparent 30%),
     linear-gradient(120deg, #070d20, #142037 62%, #12382f);
 }
 

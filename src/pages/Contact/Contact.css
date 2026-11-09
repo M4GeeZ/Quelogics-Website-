@@ -1,9 +1,9 @@
 .contact-page {
-  --contact-navy: #07102f;
-  --contact-deep: #030821;
-  --contact-green: #22ce68;
+  --contact-navy: #04213A;
+  --contact-deep: #04213A;
+  --contact-green: #10AC4F;
   --contact-green-dark: #0d9c4c;
-  --contact-text: #07102f;
+  --contact-text: #04213A;
   --contact-muted: #5d687c;
   --contact-soft: #f4f7f8;
   --contact-line: #dfe5e9;
@@ -35,8 +35,8 @@
   padding: 132px 0 96px;
   overflow: hidden;
   background:
-    radial-gradient(circle at 88% 8%, rgba(34, 206, 104, 0.12), transparent 25%),
-    radial-gradient(circle at 52% 100%, rgba(7, 16, 47, 0.035), transparent 34%),
+    radial-gradient(circle at 88% 8%, rgba(16, 172, 79, 0.12), transparent 25%),
+    radial-gradient(circle at 52% 100%, rgba(4, 33, 58, 0.035), transparent 34%),
     linear-gradient(180deg, #ffffff 0%, #fbfdfc 100%);
 }
 
@@ -48,8 +48,8 @@
   opacity: 0.34;
   pointer-events: none;
   background-image:
-    linear-gradient(rgba(7, 16, 47, 0.035) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(7, 16, 47, 0.035) 1px, transparent 1px);
+    linear-gradient(rgba(4, 33, 58, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(4, 33, 58, 0.035) 1px, transparent 1px);
   background-size: 72px 72px;
   mask-image: linear-gradient(to right, #000 0%, #000 35%, transparent 82%);
 }
@@ -62,11 +62,11 @@
   right: -9%;
   width: min(48vw, 720px);
   aspect-ratio: 1;
-  border: 1px solid rgba(34, 206, 104, 0.11);
+  border: 1px solid rgba(16, 172, 79, 0.11);
   border-radius: 50%;
   box-shadow:
-    0 0 0 72px rgba(34, 206, 104, 0.035),
-    0 0 0 144px rgba(34, 206, 104, 0.022);
+    0 0 0 72px rgba(16, 172, 79, 0.035),
+    0 0 0 144px rgba(16, 172, 79, 0.022);
   pointer-events: none;
 }
 
@@ -148,14 +148,14 @@
   margin-top: 6px;
   border-radius: 50%;
   background: var(--contact-green);
-  box-shadow: 0 0 0 6px rgba(34, 206, 104, 0.12);
+  box-shadow: 0 0 0 6px rgba(16, 172, 79, 0.12);
 }
 
 .contact-availability-dot::after {
   content: "";
   position: absolute;
   inset: -7px;
-  border: 1px solid rgba(34, 206, 104, 0.38);
+  border: 1px solid rgba(16, 172, 79, 0.38);
   border-radius: 50%;
   animation: contactAvailabilityPulse 2.2s ease-out infinite;
 }
@@ -202,7 +202,7 @@
   z-index: -1;
   border-radius: 14px;
   opacity: 0;
-  background: linear-gradient(90deg, rgba(34, 206, 104, 0.1), transparent 78%);
+  background: linear-gradient(90deg, rgba(16, 172, 79, 0.1), transparent 78%);
   transform: scaleX(0.96);
   transform-origin: left center;
   transition: opacity 0.25s ease, transform 0.25s ease;
@@ -260,10 +260,10 @@
   border-radius: 30px;
   color: #ffffff;
   background:
-    radial-gradient(circle at 94% 4%, rgba(34, 206, 104, 0.19), transparent 29%),
-    linear-gradient(150deg, #09153b 0%, #030821 66%, #07372c 125%);
+    radial-gradient(circle at 94% 4%, rgba(16, 172, 79, 0.19), transparent 29%),
+    linear-gradient(150deg, #09153b 0%, #04213A 66%, #07372c 125%);
   box-shadow:
-    0 30px 72px rgba(3, 8, 33, 0.18),
+    0 30px 72px rgba(4, 33, 58, 0.18),
     inset 0 1px 0 rgba(255, 255, 255, 0.08);
   transform: translateZ(0);
 }
@@ -290,7 +290,7 @@
   height: 300px;
   border-radius: 50%;
   opacity: 0.56;
-  background: rgba(34, 206, 104, 0.16);
+  background: rgba(16, 172, 79, 0.16);
   filter: blur(70px);
   animation: contactPanelGlow 6s ease-in-out infinite alternate;
 }
@@ -333,10 +333,10 @@
   align-items: center;
   gap: 7px;
   padding: 8px 11px;
-  border: 1px solid rgba(34, 206, 104, 0.32);
+  border: 1px solid rgba(16, 172, 79, 0.32);
   border-radius: 999px;
   color: #55e58d;
-  background: rgba(34, 206, 104, 0.1);
+  background: rgba(16, 172, 79, 0.1);
   font-size: 10px;
   font-weight: 800;
   letter-spacing: 0.08em;
@@ -348,7 +348,7 @@
   height: 6px;
   border-radius: 50%;
   background: var(--contact-green);
-  box-shadow: 0 0 12px rgba(34, 206, 104, 0.9);
+  box-shadow: 0 0 12px rgba(16, 172, 79, 0.9);
 }
 
 .contact-form {
@@ -432,9 +432,9 @@
 .contact-form input:focus,
 .contact-form select:focus,
 .contact-form textarea:focus {
-  border-color: rgba(34, 206, 104, 0.9);
+  border-color: rgba(16, 172, 79, 0.9);
   background: rgba(255, 255, 255, 0.1);
-  box-shadow: 0 0 0 4px rgba(34, 206, 104, 0.11);
+  box-shadow: 0 0 0 4px rgba(16, 172, 79, 0.11);
   transform: translateY(-1px);
 }
 
@@ -478,7 +478,7 @@
   border-radius: 999px;
   color: var(--contact-deep);
   background: var(--contact-green);
-  box-shadow: 0 16px 34px rgba(34, 206, 104, 0.22);
+  box-shadow: 0 16px 34px rgba(16, 172, 79, 0.22);
   cursor: pointer;
   font-family: var(--font-ui);
   font-size: 13px;
@@ -498,7 +498,7 @@
 .contact-form-footer button:hover,
 .contact-form-footer button:focus-visible {
   transform: translateY(-3px);
-  box-shadow: 0 22px 44px rgba(34, 206, 104, 0.34);
+  box-shadow: 0 22px 44px rgba(16, 172, 79, 0.34);
 }
 
 .contact-form-footer button:hover::before,
@@ -537,7 +537,7 @@
 .contact-form-orbit {
   position: absolute;
   inset: 0;
-  border: 1px solid rgba(34, 206, 104, 0.18);
+  border: 1px solid rgba(16, 172, 79, 0.18);
   border-radius: 50%;
 }
 
@@ -557,7 +557,7 @@
   height: 8px;
   border-radius: 50%;
   background: var(--contact-green);
-  box-shadow: 0 0 22px rgba(34, 206, 104, 0.9);
+  box-shadow: 0 0 22px rgba(16, 172, 79, 0.9);
   transform-origin: 12px 133px;
   animation: contactOrbit 7s linear infinite;
 }
@@ -625,8 +625,8 @@
   padding: 120px 0 128px;
   color: #ffffff;
   background:
-    radial-gradient(circle at 88% 20%, rgba(34, 206, 104, 0.12), transparent 27%),
-    linear-gradient(145deg, #07102f, #030821 74%);
+    radial-gradient(circle at 88% 20%, rgba(16, 172, 79, 0.12), transparent 27%),
+    linear-gradient(145deg, #04213A, #04213A 74%);
 }
 
 .contact-process-heading {
@@ -716,7 +716,7 @@
   border-radius: 50%;
   color: var(--contact-deep);
   background: var(--contact-green);
-  box-shadow: 0 16px 34px rgba(34, 206, 104, 0.22);
+  box-shadow: 0 16px 34px rgba(16, 172, 79, 0.22);
 }
 
 .contact-final-icon svg {
@@ -740,7 +740,7 @@
   border-radius: 999px;
   color: #ffffff;
   background: var(--contact-deep);
-  box-shadow: 0 14px 30px rgba(3, 8, 33, 0.16);
+  box-shadow: 0 14px 30px rgba(4, 33, 58, 0.16);
   text-decoration: none;
   font-size: 13px;
   font-weight: 800;
@@ -751,7 +751,7 @@
 .contact-final > .contact-section-shell > a:focus-visible {
   transform: translateY(-3px);
   background: var(--contact-navy);
-  box-shadow: 0 20px 38px rgba(3, 8, 33, 0.22);
+  box-shadow: 0 20px 38px rgba(4, 33, 58, 0.22);
 }
 
 .contact-final > .contact-section-shell > a svg {
@@ -793,8 +793,8 @@ body.contact-page-active .navbar.navbar--dark-page,
 body.contact-page-active .navbar.is-scrolled,
 body.contact-page-active .navbar.navbar--dark-page.is-scrolled {
   color: #ffffff !important;
-  background: #030821 !important;
-  box-shadow: 0 10px 30px rgba(3, 8, 33, 0.18) !important;
+  background: #04213A !important;
+  box-shadow: 0 10px 30px rgba(4, 33, 58, 0.18) !important;
   backdrop-filter: none !important;
   -webkit-backdrop-filter: none !important;
 }
@@ -823,8 +823,8 @@ body.contact-page-active .navbar.is-scrolled .mobile-menu-button {
 body.contact-page-active .navbar .contact-link,
 body.contact-page-active .navbar.is-scrolled .contact-link,
 body.contact-page-active .navbar.navbar--dark-page.is-scrolled .contact-link {
-  border-color: rgba(34, 206, 104, 0.72) !important;
-  background: rgba(34, 206, 104, 0.12) !important;
+  border-color: rgba(16, 172, 79, 0.72) !important;
+  background: rgba(16, 172, 79, 0.12) !important;
 }
 
 /* ------------------------------ Responsive ------------------------------ */
@@ -1058,7 +1058,7 @@ body.contact-page-active .navbar.navbar--dark-page.is-scrolled .contact-link {
   width: 3px;
   height: 72px;
   border-radius: 999px;
-  background: linear-gradient(180deg, var(--contact-green), rgba(34, 206, 104, 0));
+  background: linear-gradient(180deg, var(--contact-green), rgba(16, 172, 79, 0));
 }
 
 .contact-form-panel {
@@ -1068,14 +1068,14 @@ body.contact-page-active .navbar.navbar--dark-page.is-scrolled .contact-link {
 .contact-form-panel:hover {
   transform: translateY(-4px);
   box-shadow:
-    0 38px 86px rgba(3, 8, 33, 0.21),
+    0 38px 86px rgba(4, 33, 58, 0.21),
     inset 0 1px 0 rgba(255, 255, 255, 0.09);
 }
 
 .contact-channel-list > a:focus-visible,
 .contact-form-footer button:focus-visible,
 .contact-final > .contact-section-shell > a:focus-visible {
-  outline: 3px solid rgba(34, 206, 104, 0.36);
+  outline: 3px solid rgba(16, 172, 79, 0.36);
   outline-offset: 4px;
 }
 
@@ -1089,7 +1089,7 @@ body.contact-page-active .navbar.navbar--dark-page.is-scrolled .contact-link {
   .contact-form-panel:hover {
     transform: none;
     box-shadow:
-      0 30px 72px rgba(3, 8, 33, 0.18),
+      0 30px 72px rgba(4, 33, 58, 0.18),
       inset 0 1px 0 rgba(255, 255, 255, 0.08);
   }
 }

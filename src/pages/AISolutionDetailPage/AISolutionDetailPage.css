@@ -1,6 +1,6 @@
 .ai-detail-page {
-  --aid-navy: #030821;
-  --aid-green: #22ce68;
+  --aid-navy: #04213A;
+  --aid-green: #10AC4F;
   --aid-ink: #0b1735;
   color: var(--aid-ink);
   font-family: var(--font-ui, Inter, sans-serif);
@@ -11,7 +11,7 @@
   padding: 132px 0 92px;
   color: #fff;
   background: radial-gradient(circle at 82% 37%, rgba(25, 133, 116, .28), transparent 31%),
-              linear-gradient(135deg, #030821, #06132e 65%, #030821);
+              linear-gradient(135deg, #04213A, #06132e 65%, #04213A);
 }
 .ai-detail-breadcrumb {
   display: flex;
@@ -61,11 +61,11 @@
   aspect-ratio: 1;
   margin-inline: auto;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(34, 206, 104, .17), rgba(11, 28, 52, .35) 46%, transparent 71%);
+  background: radial-gradient(circle, rgba(16, 172, 79, .17), rgba(11, 28, 52, .35) 46%, transparent 71%);
   display: grid; place-items: center;
 }
-.ai-detail-visual-inner { display: grid; place-items: center; width: 58%; aspect-ratio: 1; color: var(--aid-green); border: 1px solid rgba(34,206,104,.45); border-radius: 50%; background: rgba(34, 206, 104, .05); box-shadow: 0 0 70px rgba(34,206,104,.13); }
-.ai-detail-orbit { position: absolute; border: 1px solid rgba(34,206,104,.21); border-radius: 50%; inset: 3%; }
+.ai-detail-visual-inner { display: grid; place-items: center; width: 58%; aspect-ratio: 1; color: var(--aid-green); border: 1px solid rgba(16,172,79,.45); border-radius: 50%; background: rgba(16, 172, 79, .05); box-shadow: 0 0 70px rgba(16,172,79,.13); }
+.ai-detail-orbit { position: absolute; border: 1px solid rgba(16,172,79,.21); border-radius: 50%; inset: 3%; }
 .ai-detail-orbit--two { inset: 15%; border-style: dashed; opacity: .72; }
 .ai-detail-capabilities { padding: 96px 0 103px; background: #fff; }
 .ai-detail-capabilities h2, .ai-detail-uses h2, .ai-detail-outcome h2, .ai-detail-related h2 { margin: 14px 0 30px; max-width: 720px; font-family: var(--font-display, sans-serif); font-size: clamp(30px, 3.2vw, 47px); letter-spacing: -.044em; line-height: 1.12; }
@@ -84,7 +84,7 @@
 .ai-detail-use span { color: #11a65a; font: 700 12px var(--font-ui, sans-serif); }
 .ai-detail-use strong { flex: 1; font-size: 15px; }
 .ai-detail-use svg { color: #11a65a; }
-.ai-detail-outcome { padding: 76px 0; color: #fff; background: #07102f; }
+.ai-detail-outcome { padding: 76px 0; color: #fff; background: #04213A; }
 .ai-detail-outcome-grid { display: flex; align-items: center; justify-content: space-between; gap: 30px; }
 .ai-detail-outcome h2 { margin-bottom: 15px; color: #fff; }
 .ai-detail-outcome p { max-width: 750px; color: #c4d0df; font-size: 16px; line-height: 1.75; }
@@ -95,13 +95,13 @@
 .ai-detail-related-header > a { display: flex; align-items: center; gap: 8px; color: #0c7750; font-size: 13px; font-weight: 700; text-decoration: none; }
 .ai-detail-related-grid { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 16px; }
 .ai-detail-related-card { display: block; padding: 28px; border: 1px solid #dfe8ee; border-radius: 13px; color: #0b1735; text-decoration: none; transition: border-color .2s ease, transform .2s ease; }
-.ai-detail-related-card:hover { transform: translateY(-3px); border-color: #22ce68; }
+.ai-detail-related-card:hover { transform: translateY(-3px); border-color: #10AC4F; }
 .ai-detail-related-card > svg { color: #14b765; }
 .ai-detail-related-card h3 { margin: 20px 0 9px; font-size: 19px; }
 .ai-detail-related-card p { color: #6c7789; font-size: 13px; line-height: 1.65; min-height: 62px; }
 .ai-detail-related-card > span { display: inline-flex; align-items: center; gap: 8px; color: #149b50; font-weight: 750; font-size: 12px; }
-.ai-detail-not-found { min-height: 75vh; padding: 190px 24px 90px; text-align: center; color: #fff; background: #030821; }
-.ai-detail-not-found a { color: #22ce68; text-decoration: none; }
+.ai-detail-not-found { min-height: 75vh; padding: 190px 24px 90px; text-align: center; color: #fff; background: #04213A; }
+.ai-detail-not-found a { color: #10AC4F; text-decoration: none; }
 .ai-detail-not-found a svg { vertical-align: middle; }
 @media (max-width: 920px) {
   .ai-detail-hero-grid { grid-template-columns: 1fr; }

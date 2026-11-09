@@ -2,7 +2,7 @@
    optimized image derived from the user-provided screenshot and contains NO
    text or interactive controls. All links are real accessible HTML elements. */
 .ai-emerging-section {
-  --ai-green: #22ce68;
+  --ai-green: #10AC4F;
   position: relative;
   isolation: isolate;
   width: 100%;
@@ -40,7 +40,7 @@
   align-items: center;
   gap: 7px;
   padding: 5px 10px;
-  border: 1px solid rgba(34, 206, 104, .3);
+  border: 1px solid rgba(16, 172, 79, .3);
   border-radius: 100px;
   color: #fff;
   background: rgba(0, 7, 16, .72);
@@ -89,13 +89,21 @@
   color: #020817;
   transform: translateY(-1px);
 }
+.ai-emerging-side {
+  position: relative;
+  z-index: 1;
+  flex: 0 0 186px;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
 .ai-emerging-links {
   position: relative;
   z-index: 1;
   display: grid;
   gap: 4px;
-  flex: 0 0 176px;
-  margin-right: 2px;
+  min-width: 0;
 }
 .ai-emerging-link {
   display: flex;
@@ -104,7 +112,7 @@
   width: 100%;
   min-height: 34px;
   padding: 6px 10px;
-  border: 1px solid rgba(34, 206, 104, .2);
+  border: 1px solid rgba(16, 172, 79, .2);
   border-radius: 3px;
   background: #020d19;
   color: #fff;
@@ -129,7 +137,7 @@
   .ai-emerging-copy { flex-basis: 430px; }
   .ai-emerging-copy h2 { font-size: clamp(30px, 4vw, 40px); }
   .ai-emerging-section { background-position: 55% center; }
-  .ai-emerging-links { flex-basis: 178px; }
+  .ai-emerging-side { flex-basis: 178px; }
 }
 @media (max-width: 610px) {
   .ai-emerging-section { background-position: 56% top; }
@@ -145,14 +153,129 @@
   .ai-emerging-copy h2 { font-size: clamp(32px, 8vw, 44px); }
   .ai-emerging-copy h2 br { display: none; }
   .ai-emerging-copy p { font-size: 13px; }
+  .ai-emerging-side {
+    width: 100%;
+    margin-top: 28px;
+    align-items: stretch;
+  }
   .ai-emerging-links {
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    margin-top: 28px;
-    margin-right: 0;
   }
   .ai-emerging-link { min-height: 46px; padding: 8px 9px; font-size: 11px; }
 }
 @media (max-width: 365px) { .ai-emerging-links { grid-template-columns: 1fr; } }
 @media (prefers-reduced-motion: reduce) {
   .ai-emerging-link, .ai-emerging-cta { transition: none; transform: none !important; }
+}
+
+/* Lightweight content-only slider: robot background never moves or reloads. */
+.ai-emerging-switchable {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 250ms ease, transform 250ms ease;
+  will-change: auto;
+}
+.ai-emerging-switchable.is-changing {
+  opacity: 0;
+  transform: translateY(8px);
+  transition-duration: 175ms;
+  pointer-events: none;
+}
+.ai-emerging-controls {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  align-self: flex-start;
+  justify-content: flex-start;
+  margin-top: 14px;
+}
+.ai-emerging-arrow {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  padding: 0;
+  border: 1px solid #d6e1ee;
+  border-radius: 50%;
+  background: #fff;
+  color: #21406f;
+  cursor: pointer;
+  transition: color 160ms ease, background-color 160ms ease,
+    border-color 160ms ease, transform 160ms ease;
+}
+.ai-emerging-arrow:hover:not(:disabled) {
+  color: #fff;
+  border-color: var(--ai-green);
+  background-color: #0d7541;
+  transform: translateY(-2px);
+}
+.ai-emerging-arrow:focus-visible {
+  outline: 2px solid var(--ai-green);
+  outline-offset: 4px;
+}
+.ai-emerging-arrow:disabled { cursor: default; }
+
+/* Allow the content and arrows to breathe without altering the hero artwork. */
+.ai-emerging-section,
+.ai-emerging-inner { min-height: 500px; }
+.ai-emerging-copy { flex-basis: 500px; }
+.ai-emerging-copy h2 { font-size: clamp(32px, 3.1vw, 44px); }
+.ai-emerging-side { flex-basis: 186px; }
+
+@media (max-width: 800px) {
+  .ai-emerging-copy { flex-basis: 440px; }
+  .ai-emerging-side { flex-basis: 172px; }
+  .ai-emerging-arrow { width: 36px; height: 36px; }
+}
+@media (max-width: 610px) {
+  .ai-emerging-section { min-height: unset; }
+  .ai-emerging-inner { min-height: unset; }
+  .ai-emerging-controls { margin-top: 14px; align-self: flex-start; }
+  .ai-emerging-arrow { width: 36px; height: 36px; }
+  .ai-emerging-copy h2 { font-size: clamp(30px, 8vw, 42px); }
+  .ai-emerging-side { margin-top: 26px; }
+  .ai-emerging-links { margin-top: 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .ai-emerging-switchable,
+  .ai-emerging-arrow { transition: none !important; transform: none !important; }
+}
+
+/* Slider controls: below service links, offset slightly left as requested. */
+.ai-emerging-controls { margin-top: 24px; margin-left: -26px; }
+@media (max-width: 800px) and (min-width: 611px) {
+  .ai-emerging-controls { margin-left: -16px; margin-top: 20px; }
+}
+@media (max-width: 610px) {
+  .ai-emerging-controls { margin-left: 0; margin-top: 22px; justify-content: flex-start; }
+}
+
+
+/* Service carousel controls: aligned with the links and positioned farther
+   down, in the marked area, without moving the background or link grid. */
+.home-page .ai-emerging-section .ai-emerging-controls {
+  margin-top: 34px;
+  margin-left: 0;
+  gap: 18px;
+  transform: translateY(62px);
+}
+@media (max-width: 800px) and (min-width: 611px) {
+  .home-page .ai-emerging-section .ai-emerging-controls {
+    margin-top: 28px;
+    margin-left: 0;
+    gap: 18px;
+    transform: translateY(32px);
+  }
+}
+@media (max-width: 610px) {
+  .home-page .ai-emerging-section .ai-emerging-controls {
+    margin-top: 34px;
+    margin-left: 0;
+    gap: 18px;
+    justify-content: flex-start;
+    transform: none;
+  }
 }

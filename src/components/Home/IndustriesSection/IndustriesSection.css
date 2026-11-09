@@ -9,7 +9,7 @@
   color: #ffffff;
   background:
     radial-gradient(circle at 50% -10%, rgba(24, 73, 92, 0.38), transparent 38%),
-    linear-gradient(180deg, #07102f 0%, #030821 100%);
+    linear-gradient(180deg, #04213A 0%, #04213A 100%);
   isolation: isolate;
 }
 
@@ -646,34 +646,98 @@
   .industry-accordion-section .industry-panel.is-active .industry-panel-photo { transform: none; }
 }
 
-/* V9 - low-end-device performance: keep the visual design, avoid reflowing seven
-   panels over 40+ animation frames on every hover. The panel selection changes
-   immediately; content still fades. Images stay sharp under existing overlays. */
+/* V10 – smooth, low-overhead hover/tap accordion.
+   Animate only flex-grow (flex-basis is already zero in both states), so the
+   original sliding panels return without animating width, filters or images.
+   The fixed-size photos and panel paint containment above prevent continuous
+   image resampling/repainting while the panels are opening. */
 .industry-accordion-section .industry-panel,
 .industry-accordion-section .industry-panel.is-active {
-  transition: none;
+  transition: flex-grow 0.58s cubic-bezier(0.22, 1, 0.36, 1);
   will-change: auto;
 }
+
+/* Crossfade labels and let the open panel's copy glide in after it has room.
+   Only opacity and transform animate; avoid costly blur and background effects. */
+.industry-accordion-section .industry-expanded-content {
+  opacity: 0;
+  transform: translate3d(18px, 0, 0);
+  transition:
+    opacity 0.2s ease,
+    transform 0.42s cubic-bezier(0.22, 1, 0.36, 1);
+  transition-delay: 0s;
+}
+.industry-accordion-section .industry-panel.is-active .industry-expanded-content {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+  transition-delay: 0.16s;
+}
+.industry-accordion-section .industry-collapsed-content {
+  transition: opacity 0.16s ease 0.14s;
+}
+.industry-accordion-section .industry-panel.is-active .industry-collapsed-content {
+  transition-delay: 0s;
+}
+
+/* Keep the photos sharp and the expensive full-panel overlay static. */
 .industry-accordion-section .industry-panel .industry-panel-photo,
 .industry-accordion-section .industry-panel.is-active .industry-panel-photo {
   filter: none;
   -webkit-filter: none;
   transition: none;
 }
-.industry-accordion-section .industry-expanded-content {
-  transition: opacity 0.2s ease;
-  transform: none;
+.industry-accordion-section .industry-panel::after {
+  transition: none;
 }
-.industry-accordion-section .industry-panel.is-active .industry-expanded-content {
-  transform: none;
-  transition-delay: 0s;
-}
-.industry-accordion-section .industry-collapsed-content {
-  transition: opacity 0.14s ease;
-}
+
+/* At tablet/mobile widths the panels stack, so animate their heights rather
+   than flex-grow. Tap/click selection remains exactly as before. */
 @media (max-width: 820px) {
   .industry-accordion-section .industry-panel,
   .industry-accordion-section .industry-panel.is-active {
+    transition: height 0.48s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+}
+
+/* Respect users who explicitly request reduced motion, without removing the
+   smooth transition for everyone else. */
+@media (prefers-reduced-motion: reduce) {
+  .industry-accordion-section .industry-panel,
+  .industry-accordion-section .industry-panel.is-active,
+  .industry-accordion-section .industry-collapsed-content,
+  .industry-accordion-section .industry-expanded-content,
+  .industry-accordion-section .industry-panel.is-active .industry-expanded-content {
     transition: none;
+    transition-delay: 0s;
+  }
+}
+
+/* 2026 smooth-hover polish: animate the PANEL growth and text only.
+   Photos remain stationary (no blur/filter re-render on every mouse move),
+   and reduced-motion users retain the non-animated version. */
+@media (min-width: 821px) and (prefers-reduced-motion: no-preference) {
+  .industry-accordion-section .industry-panel,
+  .industry-accordion-section .industry-panel.is-active {
+    transition: flex-grow 0.72s cubic-bezier(0.2, 0.82, 0.22, 1);
+  }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .industry-accordion-section .industry-panel .industry-panel-photo,
+  .industry-accordion-section .industry-panel.is-active .industry-panel-photo {
+    transition: opacity 0.36s ease;
+  }
+  .industry-accordion-section .industry-expanded-content {
+    transition: opacity 0.30s ease, transform 0.55s cubic-bezier(0.2, 0.8, 0.2, 1);
+  }
+  .industry-accordion-section .industry-panel.is-active .industry-expanded-content {
+    transition-delay: 0.2s;
+  }
+  .industry-accordion-section .industry-collapsed-content { transition: opacity 0.22s ease 0.13s; }
+  .industry-accordion-section .industry-panel.is-active .industry-collapsed-content { transition-delay: 0s; }
+}
+@media (max-width: 820px) and (prefers-reduced-motion: no-preference) {
+  .industry-accordion-section .industry-panel,
+  .industry-accordion-section .industry-panel.is-active {
+    transition: height 0.64s cubic-bezier(0.2, 0.82, 0.22, 1);
   }
 }

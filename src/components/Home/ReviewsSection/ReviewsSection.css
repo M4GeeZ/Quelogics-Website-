@@ -11,9 +11,9 @@
   padding: clamp(64px, 7vw, 104px) 0;
   overflow: hidden;
   background:
-    radial-gradient(circle at 85% 0%, rgba(34, 206, 104, 0.1), transparent 40%),
+    radial-gradient(circle at 85% 0%, rgba(16, 172, 79, 0.1), transparent 40%),
     #f3f7fb;
-  color: #07102f;
+  color: #04213A;
 }
 
 .rv-shell {
@@ -34,7 +34,7 @@
   align-items: center;
   gap: 8px;
   margin-bottom: 14px;
-  color: #17a352;
+  color: #10AC4F;
   font-size: 12px;
   font-weight: 800;
   letter-spacing: 0.14em;
@@ -46,7 +46,7 @@
   width: 7px;
   height: 7px;
   border-radius: 50%;
-  background: #22ce68;
+  background: #10AC4F;
 }
 
 .rv-intro h2 {
@@ -59,7 +59,7 @@
   letter-spacing: -0.035em;
 }
 
-.rv-intro h2 em { display: block; color: #17a352; font-style: normal; }
+.rv-intro h2 em { display: block; color: #10AC4F; font-style: normal; }
 
 .rv-intro > p {
   max-width: 420px;
@@ -81,7 +81,7 @@
   display: grid;
   gap: 2px;
   padding-left: 16px;
-  border-left: 2px solid #22ce68;
+  border-left: 2px solid #10AC4F;
 }
 
 .rv-highlights strong { color: #0a2a5e; font-size: 15px; font-weight: 700; }
@@ -95,7 +95,7 @@
   min-height: 46px;
   padding: 0 24px;
   border-radius: 999px;
-  background: #22ce68;
+  background: #10AC4F;
   color: #04190f;
   font-size: 14.5px;
   font-weight: 750;
@@ -105,7 +105,7 @@
 
 .rv-all svg { width: 17px; height: 17px; }
 .rv-all:hover,
-.rv-all:focus-visible { gap: 12px; background: #2bdd68; transform: translateY(-2px); }
+.rv-all:focus-visible { gap: 12px; background: #10AC4F; transform: translateY(-2px); }
 
 /* ---- Slider ---- */
 
@@ -155,7 +155,7 @@
   right: 32px;
   height: 3px;
   border-radius: 0 0 4px 4px;
-  background: linear-gradient(90deg, #22ce68, #17a352);
+  background: linear-gradient(90deg, #10AC4F, #10AC4F);
   opacity: 0;
   transition: opacity 0.6s ease;
 }
@@ -175,7 +175,7 @@
   bottom: 16px;
   width: 84px;
   height: 84px;
-  color: #22ce68;
+  color: #10AC4F;
   opacity: 0.07;
   transform: rotate(180deg);
   pointer-events: none;
@@ -201,7 +201,7 @@
   white-space: nowrap;
 }
 
-.rv-company svg { width: 15px; height: 15px; color: #17a352; }
+.rv-company svg { width: 15px; height: 15px; color: #10AC4F; }
 
 .rv-stars { display: inline-flex; gap: 3px; }
 .rv-stars svg { width: 16px; height: 16px; color: #f5b301; fill: #f5b301; }
@@ -217,7 +217,7 @@
 
 .rv-card blockquote mark {
   padding: 0 2px;
-  background: linear-gradient(transparent 62%, rgba(34, 206, 104, 0.22) 62%);
+  background: linear-gradient(transparent 62%, rgba(16, 172, 79, 0.22) 62%);
   color: #12904a;
   font-weight: 700;
 }
@@ -238,7 +238,7 @@
   width: 50px;
   height: 50px;
   border-radius: 50%;
-  background: linear-gradient(135deg, #22ce68, #0f7a3f);
+  background: linear-gradient(135deg, #10AC4F, #0f7a3f);
   box-shadow: 0 0 0 4px #ecf8f1;
   color: #ffffff;
   font-size: 15px;
@@ -288,8 +288,8 @@
 
 .rv-arrows button:hover,
 .rv-arrows button:focus-visible {
-  border-color: #22ce68;
-  background: #22ce68;
+  border-color: #10AC4F;
+  background: #10AC4F;
   color: #04190f;
   outline: none;
   transform: translateY(-2px);
@@ -319,4 +319,307 @@
 @media (prefers-reduced-motion: reduce) {
   .rv-track,
   .rv-card { transition: none; }
+}
+
+/* Professional editorial review cards: light borders, measured spacing,
+   restrained shadows and compact navigation (no index/progress strip). */
+.rv-section {
+  background: linear-gradient(110deg, #f5f9fd 0%, #eaf4fc 76%, #edf9f4 100%);
+}
+.rv-card {
+  min-height: 348px;
+  padding: 30px 33px 27px;
+  border: 1px solid #d2e1ed;
+  border-radius: 12px;
+  background: linear-gradient(180deg, #ffffff 0%, #fbfdff 100%);
+  opacity: 0.66;
+  transform: scale(0.985);
+  box-shadow: none;
+  transition: opacity 450ms ease, transform 450ms cubic-bezier(.22,1,.36,1),
+    border-color 450ms ease, box-shadow 450ms ease;
+}
+.rv-card::before {
+  left: 0;
+  right: 0;
+  height: 3px;
+  border-radius: 11px 11px 0 0;
+  opacity: 1;
+  background: linear-gradient(90deg, #1da85c 0%, #7ec5a3 60%, transparent 100%);
+}
+.rv-card.is-active {
+  border-color: #bcd9d2;
+  opacity: 1;
+  transform: scale(1);
+  box-shadow: 0 14px 38px rgba(26, 58, 83, 0.1);
+}
+.rv-card.is-active::before { opacity: 1; }
+.rv-company {
+  padding: 0;
+  border-radius: 0;
+  background: transparent;
+  color: #25436b;
+  font-size: 13px;
+  letter-spacing: 0.01em;
+}
+.rv-company svg { width: 17px; height: 17px; }
+.rv-stars svg { width: 14px; height: 14px; fill: #e7b845; color: #e7b845; }
+.rv-card blockquote {
+  margin: 27px 0 30px;
+  color: #43546c;
+  font-size: clamp(16px, 1.3vw, 19px);
+  line-height: 1.7;
+  letter-spacing: -0.01em;
+}
+.rv-card blockquote mark {
+  padding: 0;
+  color: #159851;
+  background: none;
+  font-weight: 750;
+}
+.rv-card footer { padding-top: 19px; border-top: 1px solid #e4edf3; }
+.rv-avatar {
+  width: 42px;
+  height: 42px;
+  color: #129752;
+  background: #e8f7ee;
+  border: 1px solid #bee3cd;
+  box-shadow: none;
+  font-size: 13px;
+}
+.rv-person strong { color: #139955; font-size: 16px; }
+.rv-person small { color: #738399; font-size: 12.5px; }
+.rv-card-watermark { width: 74px; height: 74px; opacity: 0.055; }
+.rv-controls { justify-content: flex-end; margin-top: -30px; gap: 18px; }
+.rv-controls::before {
+  content: "";
+  display: block;
+  height: 1px;
+  flex: 1 1 auto;
+  background: linear-gradient(90deg, transparent, #c7d6e3);
+}
+.rv-arrows { gap: 10px; }
+.rv-arrows button {
+  width: 42px;
+  height: 42px;
+  border: 1px solid #b1c4d5;
+  border-radius: 50%;
+  background: #ffffff;
+  color: #2b4567;
+  box-shadow: none;
+  transition: background-color 180ms ease, border-color 180ms ease,
+    color 180ms ease, transform 180ms ease;
+}
+.rv-arrows button svg { width: 18px; height: 18px; }
+.rv-arrows button:hover,
+.rv-arrows button:focus-visible {
+  background: #071e36;
+  border-color: #071e36;
+  color: #ffffff;
+  transform: translateY(-1px);
+}
+.rv-arrows button:focus-visible { outline: 2px solid #10AC4F; outline-offset: 3px; }
+@media (max-width: 720px) {
+  .rv-card { min-height: 328px; padding: 26px 23px 24px; }
+  .rv-card blockquote { font-size: 16px; }
+  .rv-arrows button { width: 40px; height: 40px; }
+  .rv-controls { margin-top: -20px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .rv-card, .rv-arrows button { transition: none; transform: none !important; }
+}
+
+
+/* V11 — Reference-inspired editorial testimonials: clean pale canvas,
+   thin top/bottom dividers, no boxed cards/shadows, restrained arrow controls.
+   Review copy and existing slider behavior are preserved unchanged. */
+.home-page .rv-section {
+  background: #edf5ff;
+  background-image: none;
+}
+.home-page .rv-viewport {
+  --rv-shadow-room: 0px;
+  padding: 16px 0 36px;
+  margin-left: 0;
+}
+.home-page .rv-card {
+  min-height: 416px;
+  padding: 32px 26px 28px;
+  border: 0;
+  border-top: 1px solid #77a4d5;
+  border-bottom: 1px solid #77a4d5;
+  border-radius: 0;
+  background: transparent;
+  background-image: none;
+  box-shadow: none;
+  opacity: .72;
+  transform: none;
+  transition: opacity .45s ease;
+}
+.home-page .rv-card.is-active {
+  opacity: 1;
+  transform: none;
+  border-color: #77a4d5;
+  box-shadow: none;
+}
+.home-page .rv-card::before { display: none; }
+.home-page .rv-card::after {
+  content: "";
+  position: absolute;
+  width: 1px;
+  top: 52px;
+  bottom: 50px;
+  right: 0;
+  background: #7ba6d3;
+  pointer-events: none;
+}
+.home-page .rv-card-watermark,
+.home-page .rv-stars { display: none; }
+.home-page .rv-company {
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  color: #0b2541;
+  font-size: 20px;
+  font-weight: 760;
+  letter-spacing: -.035em;
+}
+.home-page .rv-company svg {
+  width: 23px;
+  height: 23px;
+  color: #1da868;
+}
+.home-page .rv-card blockquote {
+  flex: 1 1 auto;
+  margin: 50px 0 40px;
+  font-size: clamp(16px, 1.16vw, 19px);
+  line-height: 1.65;
+  color: #546984;
+  font-weight: 400;
+  letter-spacing: -.005em;
+}
+.home-page .rv-card blockquote mark {
+  color: inherit;
+  font-weight: inherit;
+  background: transparent;
+}
+.home-page .rv-card footer {
+  align-items: center;
+  gap: 13px;
+  margin-top: auto;
+  padding: 0;
+  border: 0;
+}
+.home-page .rv-avatar {
+  width: 46px;
+  height: 46px;
+  flex: 0 0 46px;
+  color: #0c6b47;
+  background: #d2e9e1;
+  border: 1px solid #bcdad1;
+  border-radius: 50%;
+  box-shadow: none;
+  font-size: 13px;
+}
+.home-page .rv-person strong {
+  font-size: 17px;
+  color: #11a369;
+  font-weight: 780;
+}
+.home-page .rv-person small {
+  margin-top: 7px;
+  color: #59718b;
+  font-size: 13px;
+  line-height: 1.35;
+}
+.home-page .rv-controls {
+  justify-content: flex-end;
+  gap: 0;
+  margin-top: 4px;
+}
+.home-page .rv-controls::before { display: none; }
+.home-page .rv-arrows { gap: 14px; }
+.home-page .rv-arrows button {
+  width: 44px;
+  height: 44px;
+  border: 1px solid #839cb3;
+  border-radius: 50%;
+  background: transparent;
+  color: #2a4360;
+  box-shadow: none;
+  transition: border-color .2s ease, background .2s ease, color .2s ease;
+}
+.home-page .rv-arrows button svg { width: 20px; height: 20px; }
+.home-page .rv-arrows button:hover,
+.home-page .rv-arrows button:focus-visible {
+  border-color: #0d8462;
+  color: #fff;
+  background: #0d8462;
+  transform: none;
+}
+@media (max-width: 720px) {
+  .home-page .rv-card {
+    min-height: 370px;
+    padding: 24px 18px;
+  }
+  .home-page .rv-card blockquote {
+    margin: 32px 0;
+    font-size: 15px;
+    line-height: 1.63;
+  }
+  .home-page .rv-company { font-size: 18px; }
+  .home-page .rv-arrows button { width: 41px; height: 41px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .home-page .rv-card, .home-page .rv-arrows button { transition: none; }
+}
+
+
+/* V12: Realistic, locally bundled demo portraits. Larger photos ensure the
+   client profile is legible without changing the testimonial card design. */
+.home-page .rv-card footer {
+  gap: 17px;
+  min-height: 78px;
+}
+.home-page .rv-avatar {
+  position: relative;
+  display: grid;
+  place-items: center;
+  isolation: isolate;
+  overflow: hidden;
+  width: 76px;
+  height: 76px;
+  flex: 0 0 76px;
+  border: 2px solid #ffffff;
+  border-radius: 50%;
+  box-shadow: 0 0 0 1px #b5d5df;
+  background: #d6eae5;
+  color: #0c6b47;
+  font-size: 17px;
+}
+.home-page .rv-avatar img {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: center 38%;
+}
+.home-page .rv-person {
+  min-width: 0;
+}
+.home-page .rv-person strong {
+  font-size: clamp(17px, 1.23vw, 19px);
+  line-height: 1.2;
+}
+.home-page .rv-person small {
+  font-size: 13.5px;
+  line-height: 1.5;
+}
+@media (max-width: 720px) {
+  .home-page .rv-card footer { gap: 13px; min-height: 66px; }
+  .home-page .rv-avatar { width: 64px; height: 64px; flex-basis: 64px; }
+  .home-page .rv-person small { font-size: 12.5px; }
 }

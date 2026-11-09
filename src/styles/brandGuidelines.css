@@ -1,0 +1,153 @@
+/* QueLogics 2026 Brand Guidelines V2.0 – website implementation. */
+:root {
+  --brand-navy: #04213A;
+  --brand-navy-80: #364D61;
+  --brand-green: #10AC4F;
+  --brand-green-deep: #0B7837;
+  --brand-spark: #22C55E;
+  --brand-ink: #1E2C39;
+  --brand-mist: #F4F6F8;
+  --brand-cloud: #E8ECF0;
+  --brand-silver: #B7C1CB;
+  --brand-slate: #5E6B78;
+  --font-display: "Montserrat", Arial, sans-serif;
+  --font-company: "Montserrat", Arial, sans-serif;
+  --font-ui: "Inter", Arial, sans-serif;
+  --ql-green: var(--brand-green);
+  --ql-green-dark: var(--brand-green-deep);
+  --ql-navy: var(--brand-navy);
+  --ql-navy-soft: var(--brand-navy-80);
+  --ql-navy-deep: var(--brand-navy);
+  --ql-muted: var(--brand-slate);
+  --ql-surface-alt: var(--brand-mist);
+  --ql-border: var(--brand-silver);
+  --footer-navy: var(--brand-navy);
+  --footer-green: var(--brand-green);
+  color-scheme: light;
+}
+html { text-rendering: optimizeLegibility; }
+body { font-family: var(--font-ui); color: var(--brand-ink); }
+:where(h1,h2,h3,h4,h5,h6) { font-family: var(--font-display); }
+:where(button,input,textarea,select,nav) { font-family: var(--font-ui); }
+:where(.hero-kicker,.hero-badge,.project-stack-intro-eyebrow,.industry-eyebrow,.site-footer-lead > div > span) {
+  font-family: var(--font-display);
+  letter-spacing: .14em;
+}
+/* Avoid green text that fails contrast on light panels. Decorative graphics retain Logic Green. */
+:where(.project-stack-intro-eyebrow,.site-footer-column-toggle) { color: var(--brand-green-deep); }
+/* Official logo, never restyled with shadow, gradient or fake strokes. */
+.navbar .navbar-logo,
+.site-footer .site-footer-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  min-width: 0;
+  line-height: 1;
+  text-decoration: none;
+  filter: none;
+  text-shadow: none;
+  box-shadow: none;
+}
+.navbar .ql-brand-qmark,
+.site-footer .ql-brand-footer-qmark {
+  display: block;
+  flex: 0 0 auto;
+  width: 35px;
+  height: 35px;
+  object-fit: contain;
+  filter: none;
+}
+.navbar .ql-brand-wordmark {
+  display: block;
+  width: 136px;
+  max-width: 100%;
+  height: auto;
+  object-fit: contain;
+  filter: none;
+}
+.site-footer .ql-brand-footer-qmark { width: 39px; height: 39px; }
+.site-footer .ql-brand-footer-wordmark {
+  display: flex;
+  align-items: baseline;
+  gap: 0;
+  white-space: nowrap;
+  font-family: "Montserrat",sans-serif;
+  font-size: 24px;
+  font-weight: 750;
+  letter-spacing: -.045em;
+  color: white;
+}
+.site-footer .ql-brand-footer-wordmark span:last-child { color: var(--brand-green); }
+.navbar .navbar-logo-mark,
+.site-footer .site-footer-brand-mark { display: none; }
+/* Navigation: official navy/green design language. */
+.navbar { font-family: var(--font-ui); }
+.navbar .navbar-container { border-color: rgba(255,255,255,.13); }
+.navbar .nav-link.is-current,
+.navbar .nav-item-active .nav-link,
+.navbar .nav-home-link.is-current {
+  color: var(--brand-navy);
+  background: var(--brand-green);
+  border-color: var(--brand-green);
+}
+.navbar .mega-menu-tab.is-active .mega-menu-tab-icon,
+.navbar .mega-menu-tab.is-active,
+.navbar .mega-menu-tab:hover { --ql-menu-accent: var(--brand-green); }
+/* Brand primary buttons: clean solid fills, not decorative multicolour gradients. */
+.hero-primary-button,
+.site-footer-lead > a,
+.project-stack-reveal-link,
+.industry-copy a,
+.contact-link { font-family: var(--font-ui); font-weight: 600; }
+.site-footer, .site-footer-bottom { --footer-green: var(--brand-green); }
+.site-footer { background-color: var(--brand-navy); }
+.site-footer .site-footer-lead h2 { font-family: var(--font-display); }
+.site-footer .site-footer-socials a:hover,
+.site-footer .site-footer-socials a:focus-visible {
+  background-color: #CFEEDC !important;
+  color: var(--brand-navy) !important;
+  box-shadow: none !important;
+}
+/* CTA width: +~22px, retaining the existing image-centred hover reveal. */
+section.project-stack-section .project-stack-reveal-link {
+  min-width: 156px;
+  min-height: 42px;
+  padding-inline: 24px;
+  justify-content: center;
+  gap: 10px;
+  white-space: nowrap;
+  font-weight: 700;
+  border-radius: 5px;
+}
+@media (max-width: 640px) {
+  .navbar .ql-brand-qmark { width: 31px; height: 31px; }
+  .navbar .ql-brand-wordmark { width: 114px; }
+  section.project-stack-section .project-stack-reveal-link {
+    min-width: 141px;
+    min-height: 39px;
+    padding-inline: 16px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .navbar .nav-link,
+  .site-footer .site-footer-socials a { transition-duration: .01ms; }
+}
+
+/* Use reversed logo on dark hero / dark inner pages, standard artwork on light scroll header. */
+.navbar .ql-navbar-brand-assets {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  min-width: 0;
+}
+.navbar .ql-brand-for-light { display: none; }
+.navbar.is-scrolled:not(.navbar--dark-page) .ql-brand-for-light { display: inline-flex; }
+.navbar.is-scrolled:not(.navbar--dark-page) .ql-brand-for-dark { display: none; }
+.site-footer .ql-brand-footer-image {
+  width: 160px;
+  height: auto;
+  object-fit: contain;
+  filter: none;
+  box-shadow: none;
+}
+@media (max-width: 640px) { .site-footer .ql-brand-footer-image { width: 132px; } }

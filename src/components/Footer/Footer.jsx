@@ -94,8 +94,8 @@ const SocialIcon = ({ name }) => {
 
 const FooterBrand = () => (
   <Link className="site-footer-brand" to="/" aria-label="QueLogics home">
-    <span className="site-footer-brand-mark"><i /></span>
-    <span>Que<span>Logics</span></span>
+    <img className="ql-brand-footer-qmark" src="/assets/brand/quelogics-qmark-reversed.png" alt="" width="42" height="42" />
+    <img className="ql-brand-footer-image" src="/assets/brand/quelogics-wordmark-reversed.png" alt="" width="173" height="35" />
   </Link>
 );
 
