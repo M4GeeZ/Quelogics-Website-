@@ -78,8 +78,6 @@ const highlights = [
   ["Long-term partnership", "Support that continues after launch."],
 ];
 
-const pad = (value) => String(value).padStart(2, "0");
-
 const ReviewsSection = () => {
   const [index, setIndex] = useState(0);
   const [step, setStep] = useState(0);
@@ -203,14 +201,6 @@ const ReviewsSection = () => {
           </div>
 
           <div className="rv-controls">
-            <div className="rv-progress">
-              <span className="rv-count">
-                <b>{pad(index + 1)}</b> / {pad(total)}
-              </span>
-              <span className="rv-bar" aria-hidden="true">
-                <i style={{ width: `${((index + 1) / total) * 100}%` }} />
-              </span>
-            </div>
             <div className="rv-arrows">
               <button type="button" onClick={() => go(-1)} aria-label="Previous review">
                 <ArrowLeft aria-hidden="true" />

@@ -121,7 +121,7 @@ export const menuPreviewData = {
     image: "/assets/menu-previews/solutions-crm-api-integrations.svg",
   },
   "/insights": {
-    title: "Blog & Insights",
+    title: "Products",
     description: "Explore practical perspectives on AI, digital products, automation, design, and business growth.",
     image: "/assets/menu-previews/insights.svg",
   },

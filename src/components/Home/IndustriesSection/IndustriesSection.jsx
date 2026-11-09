@@ -112,7 +112,6 @@ const IndustriesSection = () => {
       gsap.from(".industry-accordion-heading > *", {
         y: 54,
         opacity: 0,
-        filter: "blur(8px)",
         duration: 0.9,
         stagger: 0.11,
         ease: "power3.out",

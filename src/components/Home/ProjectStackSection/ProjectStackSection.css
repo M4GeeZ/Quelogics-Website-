@@ -414,3 +414,37 @@ section.project-stack-section .project-stack-card-media > span { display:none!im
   .ps-track { animation: none; }
   .ps-group[aria-hidden="true"] { display: none; }
 }
+
+/* Title for the actual live, horizontally moving project cards. */
+.project-stack-intro {
+  width: 100%;
+  padding: clamp(72px, 7vw, 110px) 24px clamp(12px, 2vw, 28px);
+  text-align: center;
+  color: #07102f;
+  background: #f7faf9;
+}
+.project-stack-intro-eyebrow {
+  display: inline-block;
+  margin-bottom: 16px;
+  color: #17924a;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+.project-stack-intro h2 {
+  margin: 0;
+  font-family: var(--font-display, inherit);
+  font-size: clamp(38px, 5.6vw, 76px);
+  font-weight: 700;
+  letter-spacing: -0.052em;
+  line-height: 1.08;
+}
+.project-stack-intro h2 em { color: #17924a; font-style: normal; }
+.project-stack-intro p {
+  max-width: 650px;
+  margin: 18px auto 0;
+  color: #5b6880;
+  font-size: clamp(15px, 1.1vw, 18px);
+  line-height: 1.65;
+}

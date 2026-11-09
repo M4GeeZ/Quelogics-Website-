@@ -80,7 +80,7 @@ export const exploreContent = {
     },
   },
   insights: {
-    label: "Insights",
+    label: "Products",
     eyebrow: "Ideas you can apply",
     title: "Practical thinking for better digital decisions.",
     intro: "Explore field-tested perspectives on product, automation, experience, and growth—written to help teams turn an interesting idea into useful action.",

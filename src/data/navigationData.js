@@ -118,7 +118,7 @@ export const navigationLinks = [
   },
   {
     id: 4,
-    title: "Insights",
+    title: "Products",
     path: "/insights",
     hasDropdown: true,
     menuTitle: "Ideas you can put to work",
@@ -128,7 +128,7 @@ export const navigationLinks = [
       {
         title: "Explore",
         links: [
-          ["Blog & Insights", "/insights"],
+          ["Products", "/insights"],
           ["Case Studies", "/case-studies"],
           ["Client Reviews", "/client-reviews"],
           ["Our Work & Portfolio", "/portfolio"],
@@ -179,8 +179,8 @@ export const companyMenu = {
       ],
     },
     {
-      title: "Insights",
-      links: [["Blogs", "/insights"]],
+      title: "Products",
+      links: [["Products", "/insights"]],
     },
   ],
 };

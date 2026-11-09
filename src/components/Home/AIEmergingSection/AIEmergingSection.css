@@ -1,0 +1,158 @@
+/* Reference-matched AI / Emerging Technologies banner. The backdrop is an
+   optimized image derived from the user-provided screenshot and contains NO
+   text or interactive controls. All links are real accessible HTML elements. */
+.ai-emerging-section {
+  --ai-green: #22ce68;
+  position: relative;
+  isolation: isolate;
+  width: 100%;
+  min-height: 455px;
+  color: #fff;
+  background: #020813 url("/assets/ai/ai-robot-reference-clean.webp") center / cover no-repeat;
+  overflow: hidden;
+}
+.ai-emerging-section::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(90deg, rgba(1, 7, 16, .45), transparent 46%, rgba(2, 8, 19, .12) 75%, rgba(2, 8, 19, .32));
+}
+.ai-emerging-inner {
+  position: relative;
+  width: min(calc(100% - 68px), 1056px);
+  margin-inline: auto;
+  min-height: 455px;
+  padding-block: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 48px;
+}
+.ai-emerging-copy {
+  position: relative;
+  z-index: 1;
+  flex: 0 1 458px;
+}
+.ai-emerging-kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 5px 10px;
+  border: 1px solid rgba(34, 206, 104, .3);
+  border-radius: 100px;
+  color: #fff;
+  background: rgba(0, 7, 16, .72);
+  font-family: var(--font-ui, Arial, sans-serif);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  line-height: 1.4;
+}
+.ai-emerging-kicker svg { color: var(--ai-green); }
+.ai-emerging-copy h2 {
+  margin: 18px 0 14px;
+  color: #fff;
+  font-family: var(--font-display, sans-serif);
+  font-size: clamp(33px, 3.1vw, 44px);
+  font-weight: 750;
+  letter-spacing: -.047em;
+  line-height: 1.08;
+  text-wrap: balance;
+}
+.ai-emerging-copy p {
+  width: min(100%, 450px);
+  margin: 0 0 20px;
+  color: #c7d2df;
+  font: 400 13px/1.62 var(--font-ui, Arial, sans-serif);
+}
+.ai-emerging-cta {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  gap: 18px;
+  min-height: 44px;
+  padding: 0 27px;
+  border: 1px solid var(--ai-green);
+  border-radius: 1px;
+  background: rgba(0, 10, 18, .56);
+  color: var(--ai-green);
+  text-decoration: none;
+  font: 700 12px/1 var(--font-ui, Arial, sans-serif);
+  transition: background-color .2s ease, color .2s ease, transform .2s ease;
+}
+.ai-emerging-cta:hover,
+.ai-emerging-cta:focus-visible {
+  background: var(--ai-green);
+  color: #020817;
+  transform: translateY(-1px);
+}
+.ai-emerging-links {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  gap: 4px;
+  flex: 0 0 176px;
+  margin-right: 2px;
+}
+.ai-emerging-link {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  width: 100%;
+  min-height: 34px;
+  padding: 6px 10px;
+  border: 1px solid rgba(34, 206, 104, .2);
+  border-radius: 3px;
+  background: #020d19;
+  color: #fff;
+  text-decoration: none;
+  font: 700 12px/1.25 var(--font-ui, Arial, sans-serif);
+  transition: border-color .18s ease, background-color .18s ease, transform .18s ease;
+}
+.ai-emerging-link svg { flex-shrink: 0; color: var(--ai-green); }
+.ai-emerging-link:hover,
+.ai-emerging-link:focus-visible {
+  background: #05251b;
+  border-color: var(--ai-green);
+  transform: translateX(3px);
+}
+.ai-emerging-link:focus-visible,
+.ai-emerging-cta:focus-visible {
+  outline: 2px solid var(--ai-green);
+  outline-offset: 3px;
+}
+@media (max-width: 800px) {
+  .ai-emerging-inner { width: min(calc(100% - 46px), 730px); gap: 22px; }
+  .ai-emerging-copy { flex-basis: 430px; }
+  .ai-emerging-copy h2 { font-size: clamp(30px, 4vw, 40px); }
+  .ai-emerging-section { background-position: 55% center; }
+  .ai-emerging-links { flex-basis: 178px; }
+}
+@media (max-width: 610px) {
+  .ai-emerging-section { background-position: 56% top; }
+  .ai-emerging-section::before {
+    background: linear-gradient(90deg, rgba(1, 7, 16, .93), rgba(1, 7, 16, .63));
+  }
+  .ai-emerging-inner {
+    min-height: unset;
+    width: min(calc(100% - 36px), 450px);
+    display: block;
+    padding-block: 68px 48px;
+  }
+  .ai-emerging-copy h2 { font-size: clamp(32px, 8vw, 44px); }
+  .ai-emerging-copy h2 br { display: none; }
+  .ai-emerging-copy p { font-size: 13px; }
+  .ai-emerging-links {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    margin-top: 28px;
+    margin-right: 0;
+  }
+  .ai-emerging-link { min-height: 46px; padding: 8px 9px; font-size: 11px; }
+}
+@media (max-width: 365px) { .ai-emerging-links { grid-template-columns: 1fr; } }
+@media (prefers-reduced-motion: reduce) {
+  .ai-emerging-link, .ai-emerging-cta { transition: none; transform: none !important; }
+}

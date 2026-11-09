@@ -119,6 +119,7 @@ export const accentColors = {
   "contact us": "#EF4444",
   portfolio: "#EC4899",
   blogs: "#3B82F6",
+  products: "#3B82F6",
 
   cto: "#6366F1",
   "product manager": "#F59E0B",

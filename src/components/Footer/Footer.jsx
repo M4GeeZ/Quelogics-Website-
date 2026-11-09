@@ -66,7 +66,7 @@ const footerColumns = [
       ["Our Work & Portfolio", "/portfolio"],
       ["Case Studies", "/case-studies"],
       ["Client Reviews", "/client-reviews"],
-      ["Blog & Insights", "/insights"],
+      ["Products", "/insights"],
       ["Industries We Serve", "/industries"],
       ["Careers", "/careers"],
       ["Contact Us", "/contact"],

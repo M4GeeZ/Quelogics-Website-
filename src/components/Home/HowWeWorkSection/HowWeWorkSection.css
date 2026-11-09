@@ -140,7 +140,8 @@
   font-weight: 700;
   line-height: 1;
   letter-spacing: -0.04em;
-  transition: color 0.5s ease, text-shadow 0.5s ease, transform 0.5s ease;
+  text-shadow: none;
+  transition: color 0.5s ease, transform 0.5s ease;
 }
 
 .hww-copy { padding-top: 6px; }
@@ -173,7 +174,7 @@
 
 .hww-step.is-reached .hww-number {
   color: #07102f;
-  text-shadow: 0 0 16px rgba(7, 16, 47, 0.4), 0 0 36px rgba(7, 16, 47, 0.22);
+  text-shadow: none;
   transform: translateX(4px);
 }
 

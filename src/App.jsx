@@ -3,6 +3,7 @@ import Footer from "./components/Footer/Footer";
 import ScrollToTop from "./components/Common/ScrollToTop";
 import ButtonEffects from "./components/Common/ButtonEffects";
 import Home from "./pages/Home/Home";
+import AISolutionDetailPage from "./pages/AISolutionDetailPage/AISolutionDetailPage";
 import Services from "./pages/Services/Services";
 import Industries from "./pages/Industries/Industries";
 import Solutions from "./pages/Solutions/Solutions";
@@ -31,6 +32,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/services" element={<Services />} />
+        <Route path="/ai/:slug" element={<AISolutionDetailPage />} />
         <Route path="/industries" element={<Industries />} />
         <Route path="/solutions" element={<Solutions />} />
         <Route path="/insights" element={<Insights />} />

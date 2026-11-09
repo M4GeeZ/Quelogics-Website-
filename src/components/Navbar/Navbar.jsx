@@ -60,6 +60,7 @@ import {
   Star,
   House,
   Target,
+  Package,
 } from "lucide-react";
 
 import { navigationLinks, companyMenu, hireTeamMenu } from "../../data/navigationData";
@@ -70,12 +71,13 @@ import { marketOptions, useLanguage } from "../../context/LanguageContext";
 import "./Navbar.css";
 
 const OUR_SERVICES = "Our Services";
+const UNIFORM_HIRE_ROLE_ICONS = new Set(["cto", "product manager", "saas developer"]);
 
 const TAB_ICONS = {
   Services: Layers3,
   Industries: Building2,
   Solutions: Rocket,
-  Insights: BookOpen,
+  Products: Package,
 };
 
 // One distinct, meaningful icon per menu label (checked before the keyword fallback below).
@@ -117,6 +119,7 @@ const labelIcons = {
   "case studies": FileSearch2,
   "client reviews": Star,
   blogs: FileText,
+  "products overview": FolderKanban,
   // Solutions
   "automate manual operations": Workflow,
   "generate qualified leads": Target,
@@ -127,6 +130,7 @@ const labelIcons = {
   "build a customer portal": LayoutDashboard,
   "quality assurance & testing": ShieldCheck,
   // Insights
+  products: Package,
   "blog & insights": FileText,
   "our work & portfolio": FolderKanban,
   "ai & automation": Bot,
@@ -672,8 +676,15 @@ const Navbar = () => {
                         {group.links.map(([label, path]) => {
                           const labelKey = label.toLowerCase();
                           const brand = brandIcons[labelKey];
-                          const accent = brand ? brand.color : (accentColors[labelKey] || "#17924A");
-                          const MenuIcon = brand ? brand.Icon : getMenuIcon(label.toLowerCase());
+                          // Keep Hire Team's original technology logos and brand colours intact.
+                          // All other mega-menu icons use the single QueLogics green.
+                          const isHireTeam = menuLayout === "hire";
+                          // Match only these 3 Hire-by-Role tiles; preserve all
+                          // actual technology logos and every other Hire Team colour.
+                          const accent = isHireTeam
+                            ? (UNIFORM_HIRE_ROLE_ICONS.has(labelKey) ? "#17924A" : (brand ? brand.color : (accentColors[labelKey] || "#17924A")))
+                            : "#17924A";
+                          const MenuIcon = brand ? brand.Icon : getMenuIcon(labelKey);
 
                           return (
                             <li key={label}>
@@ -685,7 +696,7 @@ const Navbar = () => {
                                 className={hoveredMenuLink === path ? "is-service-hovered" : undefined}
                               >
                                 <span
-                                  className={`mega-menu-icon is-colored${brand ? " is-brand" : ""}`}
+                                  className={`mega-menu-icon is-colored${brand && isHireTeam ? " is-brand" : ""}`}
                                   style={{ "--ic": accent, color: accent }}
                                   aria-hidden="true"
                                 >
