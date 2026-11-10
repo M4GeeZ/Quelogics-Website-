@@ -366,3 +366,24 @@
   .wc-core-ring { animation: none; }
   .wc-item-panel { transition: none; }
 }
+
+
+/* Authentic 2026 Q-mark and wordmark, identical to header assets. */
+.wc-section .ql-brand--official { display:inline-flex; align-items:center; gap:.08em; font-size:inherit; line-height:1; vertical-align:middle; }
+.wc-section .ql-brand--official .ql-official-mark { display:block; width:.90em; height:.90em; min-width:.90em; object-fit:contain; }
+.wc-section .ql-brand--official .ql-official-wordmark { display:block; width:2.65em; max-width:none; height:.70em; object-fit:contain; }
+.wc-section .ql-brand--heading { margin:0 .03em; transform:translateY(-.06em); font-size:inherit; }
+.wc-section .ql-brand--core { font-size:72px; }
+.wc-section .ql-brand--core .ql-official-mark { width:.80em; height:.80em; }
+@media (max-width: 650px) { .wc-section .ql-brand--core { font-size:50px; } }
+
+/* Real original Q-Mark and wordmark from the supplied brand artwork. */
+.wc-section .ql-brand--official { display:inline-flex; align-items:center; vertical-align:middle; line-height:1; }
+.wc-section .ql-brand--official .ql-official-lockup {
+  display:block; width:3.92em; max-width:none; height:auto; object-fit:contain;
+}
+.wc-section .ql-brand--official .ql-official-mark {
+  display:block; width:.91em; height:auto; min-width:0; object-fit:contain;
+}
+.wc-section .ql-brand--heading { transform:translateY(-.02em); margin:0 .06em; }
+.wc-section .ql-brand--core .ql-official-mark { width:.85em; height:auto; }

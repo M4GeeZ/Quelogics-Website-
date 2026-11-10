@@ -26,8 +26,8 @@ photo: realPhotos.government,
     icon: Landmark,
     description:
       "Secure digital platforms that make public services faster, clearer, and easier for every citizen to access.",
-    accent: "#2ee56f",
-    surface: "linear-gradient(135deg, #071d36 0%, #0b3a45 52%, #12633f 100%)",
+    accent: "#10AC4F",
+    surface: "linear-gradient(135deg, #04213A 0%, #0B3D3D 55%, #0B7837 100%)",
   },
   {
     title: "Healthcare",
@@ -38,8 +38,8 @@ photo: realPhotos.healthcare,
     icon: HeartPulse,
     description:
       "Connected care experiences, clinical workflows, and intelligent systems designed around patients and teams.",
-    accent: "#ff5a9a",
-    surface: "linear-gradient(135deg, #25133d 0%, #79204f 52%, #d7467e 100%)",
+    accent: "#10AC4F",
+    surface: "linear-gradient(135deg, #04213A 0%, #0B3D3D 55%, #0B7837 100%)",
   },
   {
     title: "Finance & Banking",
@@ -50,8 +50,8 @@ photo: realPhotos.finance,
     icon: BarChart3,
     description:
       "Reliable fintech products and automated operations built for trust, speed, compliance, and sustainable growth.",
-    accent: "#f26cb0",
-    surface: "linear-gradient(135deg, #24143d 0%, #641d55 48%, #bd3b7c 100%)",
+    accent: "#10AC4F",
+    surface: "linear-gradient(135deg, #04213A 0%, #0B3D3D 55%, #0B7837 100%)",
   },
   {
     title: "Manufacturing",
@@ -62,8 +62,8 @@ photo: realPhotos.manufacturing,
     icon: Factory,
     description:
       "Smart factory software that connects planning, production, quality, and reporting in one dependable flow.",
-    accent: "#4ce997",
-    surface: "linear-gradient(135deg, #0b2031 0%, #174b4a 52%, #238061 100%)",
+    accent: "#10AC4F",
+    surface: "linear-gradient(135deg, #04213A 0%, #0B3D3D 55%, #0B7837 100%)",
   },
   {
     title: "Logistics & Supply Chain",
@@ -74,8 +74,8 @@ photo: realPhotos.logistics,
     icon: Truck,
     description:
       "Real-time tools for fleet, inventory, routing, and delivery teams that keep complex operations moving.",
-    accent: "#ff6ca4",
-    surface: "linear-gradient(135deg, #22153d 0%, #70234d 50%, #c74471 100%)",
+    accent: "#10AC4F",
+    surface: "linear-gradient(135deg, #04213A 0%, #0B3D3D 55%, #0B7837 100%)",
   },
   {
     title: "Real Estate",
@@ -86,8 +86,8 @@ photo: realPhotos.realestate,
     icon: Home,
     description:
       "Modern property platforms that simplify discovery, sales, leasing, management, and customer communication.",
-    accent: "#bc7bff",
-    surface: "linear-gradient(135deg, #171a3e 0%, #4c285e 52%, #92507a 100%)",
+    accent: "#10AC4F",
+    surface: "linear-gradient(135deg, #04213A 0%, #0B3D3D 55%, #0B7837 100%)",
   },
   {
     title: "eCommerce & Retail",
@@ -98,8 +98,8 @@ photo: realPhotos.ecommerce,
     icon: ShoppingBag,
     description:
       "High-converting commerce experiences and connected retail systems that turn attention into loyal customers.",
-    accent: "#ff799f",
-    surface: "linear-gradient(135deg, #2c143b 0%, #7d1f50 50%, #d54a75 100%)",
+    accent: "#10AC4F",
+    surface: "linear-gradient(135deg, #04213A 0%, #0B3D3D 55%, #0B7837 100%)",
   },
 ];
 

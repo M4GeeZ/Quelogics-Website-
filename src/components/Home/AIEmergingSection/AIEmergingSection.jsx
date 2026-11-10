@@ -38,6 +38,15 @@ const AIEmergingSection = () => {
       className="ai-emerging-section"
       aria-label="Explore QueLogics services"
     >
+      <div className="ai-emerging-backdrops" aria-hidden="true">
+        {serviceShowcaseSlides.map((item, index) => (
+          <div
+            className={`ai-emerging-backdrop${index === activeIndex ? " is-visible" : ""}`}
+            key={item.id}
+            style={{ backgroundImage: `url(${item.background})` }}
+          />
+        ))}
+      </div>
       <div className="ai-emerging-inner">
         <div className="ai-emerging-copy">
           <div

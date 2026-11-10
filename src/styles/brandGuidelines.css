@@ -374,3 +374,101 @@ body .home-page > .hero-section .client-logo-marquee {
   border-color: #10AC4F;
   color: #04213A;
 }
+
+
+/* Sitewide 2026 rhythm – keep local component layout while standardising type. */
+:root { --ql-section-space:clamp(74px,7.5vw,116px); --ql-heading-size:clamp(36px,3.7vw,58px); --ql-body-leading:1.65; }
+body .home-page .services-explorer-heading h2,
+body .home-page .tech-head h2,
+body .home-page .wc-head h2,
+body .home-page .rv-intro h2 {
+  font-family:var(--font-display);
+  font-weight:700;
+  letter-spacing:-.035em;
+  line-height:1.15;
+}
+body .home-page .services-explorer-heading p,
+body .home-page .tech-head p,
+body .home-page .wc-head p,
+body .home-page .rv-intro > p { font-family:var(--font-ui); line-height:1.65; }
+body .home-page .services-explorer,
+body .home-page .tech-section,
+body .home-page .rv-section { color:var(--brand-navy); }
+body .home-page .services-explorer { background:#FFFFFF; }
+
+/* Key homepage type hierarchy follows the manual's Montserrat/Inter pairing. */
+body .home-page .hero-heading {
+  font:700 clamp(52px,5.1vw,78px)/1.06 var(--font-display);
+  letter-spacing:-.043em;
+}
+body .home-page .hero-description { font:400 clamp(16px,1.2vw,19px)/1.64 var(--font-ui); }
+body .home-page .project-stack-heading h2 {
+  font:700 clamp(48px,5.2vw,80px)/1.1 var(--font-display);
+  letter-spacing:-.04em;
+}
+body .home-page .blogs-head h2,
+body .home-page .tech-head h2,
+body .home-page .rv-intro h2,
+body .home-page .wc-head h2 {
+  font:700 clamp(35px,3.45vw,52px)/1.14 var(--font-display);
+  letter-spacing:-.035em;
+}
+body .home-page .blogs-head p,
+body .home-page .project-stack-heading p { font-family:var(--font-ui); line-height:1.65; }
+@media(max-width:820px) {
+  body .home-page .hero-heading { font-size:clamp(43px,8vw,64px); }
+  body .home-page .project-stack-heading h2 { font-size:clamp(42px,7vw,64px); }
+}
+@media(max-width:560px) {
+  body .home-page .hero-heading { font-size:clamp(38px,10vw,54px); }
+}
+
+/* ======================================================================
+   Shared QueLogics CTA arrow motion
+   Normal: arrow faces upper-right (NE). Hover/focus: smoothly faces right (E).
+   Only interactive CTA / text-link arrows are changed. Carousel previous/next
+   controls keep their actual directions and existing interaction behaviour.
+   ====================================================================== */
+:where(a, button):not([aria-label*="previous" i]):not([aria-label*="next" i])
+  :is(svg.lucide-arrow-up-right, svg.lucide-arrow-right) {
+  display: inline-block;
+  flex: 0 0 auto;
+  transform-box: fill-box;
+  transform-origin: 50% 50%;
+  opacity: 1 !important;
+  transition: transform 420ms cubic-bezier(0.22, 1, 0.36, 1),
+              opacity 250ms ease !important;
+  will-change: auto;
+}
+
+/* Lucide ArrowUpRight naturally faces NE, so no rotation is needed. */
+:where(a, button):not([aria-label*="previous" i]):not([aria-label*="next" i])
+  svg.lucide-arrow-up-right {
+  transform: rotate(0deg) !important;
+}
+
+/* Lucide ArrowRight naturally faces E; rotate -45deg to point NE. */
+:where(a, button):not([aria-label*="previous" i]):not([aria-label*="next" i])
+  svg.lucide-arrow-right {
+  transform: rotate(-45deg) !important;
+}
+
+/* Hover or keyboard focus: turn both icon variants horizontally right. */
+:where(a, button):not([aria-label*="previous" i]):not([aria-label*="next" i]):is(:hover, :focus-visible)
+  svg.lucide-arrow-up-right {
+  transform: translateX(3px) rotate(45deg) !important;
+  opacity: 1 !important;
+}
+
+:where(a, button):not([aria-label*="previous" i]):not([aria-label*="next" i]):is(:hover, :focus-visible)
+  svg.lucide-arrow-right {
+  transform: translateX(3px) rotate(0deg) !important;
+  opacity: 1 !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :where(a, button):not([aria-label*="previous" i]):not([aria-label*="next" i])
+    :is(svg.lucide-arrow-up-right, svg.lucide-arrow-right) {
+    transition-duration: 0.01ms !important;
+  }
+}

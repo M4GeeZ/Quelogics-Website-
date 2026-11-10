@@ -31,7 +31,7 @@ const Hero = () => {
             <div className="hero-orbit hero-orbit-two" />
             <div className="hero-orbit hero-orbit-three" />
             <div className="hero-signal-core">
-              <span className="hero-signal-mark"><i /></span>
+              <img className="hero-signal-mark ql-original-signal-mark" src="/assets/brand/quelogics-original-qmark-white.png" alt="" />
               <small>QUELOGICS</small>
             </div>
             <span className="hero-visual-label hero-visual-label-one">Products</span>

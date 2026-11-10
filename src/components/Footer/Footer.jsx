@@ -1,101 +1,99 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { ArrowUpRight, ChevronDown } from "lucide-react";
+import { ArrowUpRight, ChevronDown, Code2, Globe2, Smartphone, Palette, PlugZap, Cloud, Bot, Workflow, Search, TrendingUp, Store, Layers3, Building2, Megaphone, Target, Mail, Video, PenTool, BarChart3, ContactRound, Users, FileText, Gauge, MapPin, Link2, BookOpen, BriefcaseBusiness, MessageSquare, Sparkles, Rocket, Share2, GitBranch } from "lucide-react";
+import { FaLinkedinIn, FaFacebookF, FaWhatsapp } from "react-icons/fa";
 import "./Footer.css";
 
+// Keep all existing destination URLs unchanged. Icons are vector glyphs from
+// the installed Lucide and Font Awesome icon libraries, not generated artwork.
 const footerColumns = [
   {
-    title: "Services",
+    title: "Development",
+    Icon: Code2,
     links: [
-      ["Custom Software Development", "/services/custom-software-development"],
-      ["Custom Website Development", "/services/custom-website-development"],
-      ["Webflow Development", "/services/webflow-development"],
-      ["WordPress Development", "/services/wordpress-development"],
-      ["Shopify Development", "/services/shopify-development"],
-      ["Mobile App Development", "/services/mobile-app-development"],
-      ["UI / UX Design", "/services/ui-ux-design"],
-      ["API & Third-Party Integrations", "/services/api-integrations"],
-      ["SaaS Product Development", "/services/saas-development"],
+      ["Custom Software Development", "/services/custom-software-development", Code2],
+      ["Custom Website Development", "/services/custom-website-development", Globe2],
+      ["Webflow Development", "/services/webflow-development", Layers3],
+      ["WordPress Development", "/services/wordpress-development", Globe2],
+      ["Shopify Development", "/services/shopify-development", Store],
+      ["Mobile App Development", "/services/mobile-app-development", Smartphone],
+      ["UI / UX Design", "/services/ui-ux-design", Palette],
+      ["API & Third-Party Integrations", "/services/api-integrations", PlugZap],
+      ["SaaS Product Development", "/services/saas-development", Cloud],
     ],
   },
   {
     title: "Marketing",
+    Icon: Megaphone,
     links: [
-      ["Meta Ads Management", "/services/meta-ads"],
-      ["Google Ads Management", "/services/google-ads"],
-      ["CRM Setup & Automation", "/services/crm-automation"],
-      ["Sales Funnel Development", "/services/sales-funnels"],
-      ["Email Marketing", "/services/email-marketing"],
-      ["Social Media Management", "/services/social-media"],
-      ["Video Editing & Reels", "/services/video-editing"],
-      ["Graphic Design", "/services/graphic-design"],
-      ["Brand Strategy", "/services/brand-strategy"],
-      ["Performance Reporting", "/services/performance-reporting"],
+      ["Meta Ads Management", "/services/meta-ads", Target],
+      ["Google Ads Management", "/services/google-ads", TrendingUp],
+      ["CRM Setup & Automation", "/services/crm-automation", ContactRound],
+      ["Sales Funnel Development", "/services/sales-funnels", GitBranch],
+      ["Email Marketing", "/services/email-marketing", Mail],
+      ["Social Media Management", "/services/social-media", Share2],
+      ["Video Editing & Reels", "/services/video-editing", Video],
+      ["Graphic Design", "/services/graphic-design", PenTool],
+      ["Brand Strategy", "/services/brand-strategy", Sparkles],
+      ["Performance Reporting", "/services/performance-reporting", BarChart3],
     ],
   },
   {
     title: "AI & Automation",
+    Icon: Bot,
     links: [
-      ["AI Chatbots & Agents", "/services/ai-chatbots-agents"],
-      ["Workflow Automation", "/services/workflow-automation"],
-      ["CRM Automation", "/services/crm-automation"],
-      ["Lead Qualification Automation", "/services/lead-qualification"],
-      ["OpenAI & Claude Integration", "/services/ai-integrations"],
-      ["Make & Zapier Workflows", "/services/make-zapier"],
-      ["AI Strategy Consulting", "/services/ai-strategy"],
+      ["AI Chatbots & Agents", "/services/ai-chatbots-agents", Bot],
+      ["Workflow Automation", "/services/workflow-automation", Workflow],
+      ["CRM Automation", "/services/crm-automation", ContactRound],
+      ["Lead Qualification Automation", "/services/lead-qualification", Target],
+      ["OpenAI & Claude Integration", "/services/ai-integrations", Sparkles],
+      ["Make & Zapier Workflows", "/services/make-zapier", PlugZap],
+      ["AI Strategy Consulting", "/services/ai-strategy", Rocket],
     ],
   },
   {
-    title: "SEO, AEO & Visibility",
+    title: "SEO & Visibility",
+    Icon: Search,
     links: [
-      ["Website SEO", "/services/website-seo"],
-      ["Local SEO", "/services/local-seo"],
-      ["Ecommerce SEO", "/services/ecommerce-seo"],
-      ["AI Search Optimization (AEO)", "/services/aeo"],
-      ["Content Strategy & Writing", "/services/content-strategy"],
-      ["Technical SEO Audit", "/services/technical-seo"],
-      ["Link Building", "/services/link-building"],
-      ["Conversion Optimization", "/services/conversion-optimization"],
-      ["SEO Strategy Consulting", "/services/seo-consulting"],
+      ["Website SEO", "/services/website-seo", Search],
+      ["Local SEO", "/services/local-seo", MapPin],
+      ["Ecommerce SEO", "/services/ecommerce-seo", Store],
+      ["AI Search Optimization (AEO)", "/services/aeo", Sparkles],
+      ["Content Strategy & Writing", "/services/content-strategy", FileText],
+      ["Technical SEO Audit", "/services/technical-seo", Gauge],
+      ["Link Building", "/services/link-building", Link2],
+      ["Conversion Optimization", "/services/conversion-optimization", TrendingUp],
+      ["SEO Strategy Consulting", "/services/seo-consulting", Target],
     ],
   },
   {
     title: "Company",
+    Icon: Building2,
     links: [
-      ["About QueLogics", "/about"],
-      ["Our Work & Portfolio", "/portfolio"],
-      ["Case Studies", "/case-studies"],
-      ["Client Reviews", "/client-reviews"],
-      ["Products", "/insights"],
-      ["Industries We Serve", "/industries"],
-      ["Careers", "/careers"],
-      ["Contact Us", "/contact"],
+      ["About QueLogics", "/about", Building2],
+      ["Our Work & Portfolio", "/portfolio", BriefcaseBusiness],
+      ["Case Studies", "/case-studies", BookOpen],
+      ["Client Reviews", "/client-reviews", MessageSquare],
+      ["Industries We Serve", "/industries", Layers3],
+      ["Careers", "/careers", Users],
+      ["Contact Us", "/contact", Mail],
     ],
   },
 ];
 
 const socialLinks = [
-  { label: "LinkedIn", href: "https://www.linkedin.com/company/quelogics/", icon: "linkedin" },
-  { label: "WhatsApp", href: "https://www.whatsapp.com/", icon: "whatsapp" },
-  { label: "Facebook", href: "https://www.facebook.com/quelogics", icon: "facebook" },
+  { label: "LinkedIn", href: "https://www.linkedin.com/company/quelogics/", Icon: FaLinkedinIn },
+  { label: "WhatsApp", href: "https://www.whatsapp.com/", Icon: FaWhatsapp },
+  { label: "Facebook", href: "https://www.facebook.com/quelogics", Icon: FaFacebookF },
 ];
 
-const SocialIcon = ({ name }) => {
-  if (name === "linkedin") {
-    return <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.45 8.31H3.17V18.8h3.28V8.31ZM4.81 3.2a1.9 1.9 0 1 0 0 3.8 1.9 1.9 0 0 0 0-3.8ZM18.83 12.78c0-3.16-1.69-4.63-3.94-4.63a3.4 3.4 0 0 0-3.08 1.69V8.31H8.53V18.8h3.28v-5.19c0-1.37.26-2.7 1.96-2.7 1.67 0 1.69 1.56 1.69 2.79v5.1h3.28l.09-6.02Z" /></svg>;
-  }
-
-  if (name === "whatsapp") {
-    return <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12.04 2a9.84 9.84 0 0 0-8.49 14.8L2 22l5.32-1.51A9.96 9.96 0 1 0 12.04 2Zm0 17.95a8.02 8.02 0 0 1-4.08-1.12l-.29-.17-3.15.9.91-3.07-.19-.31A7.97 7.97 0 1 1 12.04 19.95Zm4.39-5.98c-.24-.12-1.42-.7-1.64-.78-.22-.08-.38-.12-.54.12-.16.24-.62.78-.76.94-.14.16-.28.18-.52.06-.24-.12-1.01-.37-1.93-1.19a7.22 7.22 0 0 1-1.33-1.65c-.14-.24-.01-.37.11-.49.11-.11.24-.28.36-.42.12-.14.16-.24.24-.4.08-.16.04-.3-.02-.42-.06-.12-.54-1.3-.74-1.78-.19-.47-.39-.4-.54-.41h-.46a.88.88 0 0 0-.64.3c-.22.24-.84.82-.84 2s.86 2.32.98 2.48c.12.16 1.69 2.58 4.1 3.62.57.25 1.02.39 1.37.5.58.18 1.1.16 1.51.1.46-.07 1.42-.58 1.62-1.14.2-.56.2-1.04.14-1.14-.06-.1-.22-.16-.46-.28Z" /></svg>;
-  }
-
-  return <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13.72 21v-8.2h2.75l.41-3.2h-3.16V7.56c0-.93.26-1.56 1.59-1.56H17V3.14A22.4 22.4 0 0 0 14.54 3c-2.44 0-4.11 1.49-4.11 4.22V9.6H7.67v3.2h2.76V21h3.29Z" /></svg>;
-};
-
 const FooterBrand = () => (
-  <Link className="site-footer-brand" to="/" aria-label="QueLogics home">
-    <img className="ql-brand-footer-qmark" src="/assets/brand/quelogics-qmark-reversed.png" alt="" width="42" height="42" />
-    <img className="ql-brand-footer-image" src="/assets/brand/quelogics-wordmark-reversed.png" alt="" width="173" height="35" />
+  <Link className="ql-footer-large-logo" to="/" aria-label="QueLogics home">
+    <img
+      src="/assets/brand/quelogics-original-white.png"
+      alt="QueLogics — Innovate • Build • Deliver"
+      width="798" height="185" loading="lazy"
+    />
   </Link>
 );
 
@@ -106,94 +104,76 @@ const Footer = () => {
   const toggleColumn = (title) => {
     setOpenColumns((current) => {
       const next = new Set(current);
-
-      if (next.has(title)) {
-        next.delete(title);
-      } else {
-        next.add(title);
-      }
-
+      if (next.has(title)) next.delete(title);
+      else next.add(title);
       return next;
     });
   };
 
-  const moveGlow = (event) => {
-    const bounds = event.currentTarget.getBoundingClientRect();
-    event.currentTarget.style.setProperty("--glow-x", `${event.clientX - bounds.left}px`);
-    event.currentTarget.style.setProperty("--glow-y", `${event.clientY - bounds.top}px`);
-  };
-
   return (
-    <footer className="site-footer">
-      <div className="site-footer-main">
-        <div className="site-footer-lead">
-          <div>
-            
-            <h2>Build the system your next stage needs.</h2>
+    <footer className="site-footer ql-footer">
+      <div className="ql-footer-container">
+        <div className="ql-footer-lead">
+          <div className="ql-footer-lead-copy">
+            <h2>Build what comes next.</h2>
+            <p>From the first idea to launch and beyond, we build the software, automation, and digital experiences that help businesses move forward.</p>
           </div>
-          <Link to="/contact">
-            Discuss your project
-            <ArrowUpRight aria-hidden="true" />
+          <Link className="ql-footer-main-cta" to="/contact">
+            <span>Discuss your project</span>
+            <ArrowUpRight size={20} aria-hidden="true" />
           </Link>
         </div>
-        <div className="site-footer-columns">
-          {footerColumns.map((column) => {
-            const isOpen = openColumns.has(column.title);
-            const linksId = `footer-links-${column.title
-              .toLowerCase()
-              .replace(/[^a-z0-9]+/g, "-")}`;
 
+        <div className="ql-footer-directory" aria-label="Explore QueLogics services and company">
+          {footerColumns.map(({ title, Icon, links }) => {
+            const isOpen = openColumns.has(title);
+            const linksId = `ql-footer-${title.toLowerCase().replace(/[^a-z0-9]+/g, "-")}`;
             return (
-            <nav className={`site-footer-column${isOpen ? " is-open" : ""}`} aria-label={column.title} onPointerMove={moveGlow} key={column.title}>
-              <button
-                className="site-footer-column-toggle"
-                type="button"
-                aria-expanded={isOpen}
-                aria-controls={linksId}
-                onClick={() => toggleColumn(column.title)}
-              >
-                <span>{column.title}</span>
-                <ChevronDown aria-hidden="true" />
-              </button>
-              <div className="site-footer-column-links" id={linksId}>
-              <ul>
-                {column.links.map(([label, href]) => (
-                  <li key={`${column.title}-${label}`}>
-                    <Link to={href}>{label}</Link>
-                  </li>
-                ))}
-              </ul>
-              </div>
-            </nav>
+              <nav className={`ql-footer-column${isOpen ? " is-open" : ""}`} aria-label={title} key={title}>
+                <button
+                  className="ql-footer-column-title" type="button"
+                  aria-expanded={isOpen} aria-controls={linksId}
+                  onClick={() => toggleColumn(title)}
+                >
+                  <span className="ql-footer-column-label">
+                    <Icon size={18} strokeWidth={1.75} aria-hidden="true" />
+                    <span>{title}</span>
+                  </span>
+                  <ChevronDown className="ql-footer-chevron" size={18} aria-hidden="true" />
+                </button>
+                <div className="ql-footer-links" id={linksId}>
+                  <ul>
+                    {links.map(([label, href, LinkIcon]) => (
+                      <li key={`${label}-${href}`}>
+                        <Link to={href}>
+                          <LinkIcon className="ql-footer-link-icon" size={15} strokeWidth={1.8} aria-hidden="true" />
+                          <span>{label}</span>
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </nav>
             );
           })}
         </div>
-      </div>
 
-      <div className="site-footer-bottom">
-        <div className="site-footer-bottom-inner">
-          <div className="site-footer-identity">
-            <FooterBrand />
-            <p>
-              © 2019 – {currentYear} <span>QueLogics™</span> Driven by Your
-              Success. Since 2019. All rights reserved.
-            </p>
-          </div>
+        <div className="ql-footer-logo-stage"><FooterBrand /></div>
 
-          <div className="site-footer-meta">
-            <div className="site-footer-socials" aria-label="QueLogics social media">
-              {socialLinks.map(({ label, href, icon }) => (
-                <a href={href} target="_blank" rel="noreferrer" aria-label={label} key={label}>
-                  <SocialIcon name={icon} />
-                </a>
-              ))}
-            </div>
-            <nav className="site-footer-legal" aria-label="Legal">
-              <Link to="/privacy-policy">Privacy Policy</Link>
-              <Link to="/terms-of-service">Terms of Service</Link>
-              <Link to="/cookie-policy">Cookie Policy</Link>
-              <Link to="/sitemap">Sitemap</Link>
-            </nav>
+        <div className="ql-footer-meta">
+          <p className="ql-footer-copyright">© {currentYear} QueLogics. All rights reserved.</p>
+          <nav className="ql-footer-legal" aria-label="Legal">
+            <Link to="/privacy-policy">Privacy Policy</Link>
+            <Link to="/terms-of-service">Terms of Service</Link>
+            <Link to="/cookie-policy">Cookie Policy</Link>
+            <Link to="/sitemap">Sitemap</Link>
+          </nav>
+          <div className="ql-footer-socials" aria-label="QueLogics social media">
+            {socialLinks.map(({ label, href, Icon }) => (
+              <a href={href} target="_blank" rel="noopener noreferrer" aria-label={label} key={label}>
+                <Icon size={18} aria-hidden="true" />
+              </a>
+            ))}
           </div>
         </div>
       </div>

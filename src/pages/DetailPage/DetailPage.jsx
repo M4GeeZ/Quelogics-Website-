@@ -769,10 +769,12 @@ const ServiceDetailPage = ({ page, pathname }) => {
 
         <div className="service-detail-brand-echo" aria-hidden="true">
           <div className="service-detail-brand-lockup">
-            <span className="service-detail-brand-mark"><i /></span>
-            <span className="service-detail-brand-word">
-              Que<span>Logics</span>
-            </span>
+            <img
+              className="service-detail-official-logo"
+              src="/assets/brand/quelogics-original-lockup-navy.png"
+              alt=""
+              aria-hidden="true"
+            />
           </div>
         </div>
 

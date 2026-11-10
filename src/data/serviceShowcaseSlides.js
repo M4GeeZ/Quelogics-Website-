@@ -44,6 +44,7 @@ const link = (title, path, icon) => ({ title, path, icon });
 export const serviceShowcaseSlides = [
   {
     id: "ai",
+    background: "/assets/ai/ai-robot-reference-clean.webp",
     kicker: "AI & Emerging Technologies",
     headline: ["Practical AI", "Solutions for Real", "Business Impact"],
     description:
@@ -56,6 +57,7 @@ export const serviceShowcaseSlides = [
   },
   {
     id: "software",
+    background: "/assets/service-showcase/software.webp",
     kicker: "Software Development",
     headline: ["Custom Software", "Built Around Your", "Business Goals"],
     description:
@@ -74,6 +76,7 @@ export const serviceShowcaseSlides = [
   },
   {
     id: "web",
+    background: "/assets/service-showcase/web.webp",
     kicker: "Web & eCommerce Development",
     headline: ["Fast Websites", "Built to Convert", "and Scale"],
     description:
@@ -92,6 +95,7 @@ export const serviceShowcaseSlides = [
   },
   {
     id: "mobile",
+    background: "/assets/service-showcase/mobile.webp",
     kicker: "Apps, Products & SaaS",
     headline: ["Digital Products", "Made for Real", "Users"],
     description:
@@ -109,6 +113,7 @@ export const serviceShowcaseSlides = [
   },
   {
     id: "seo",
+    background: "/assets/service-showcase/seo.webp",
     kicker: "SEO, AEO & AI Search",
     headline: ["Be Found Where", "Your Customers", "Search"],
     description:
@@ -127,6 +132,7 @@ export const serviceShowcaseSlides = [
   },
   {
     id: "marketing",
+    background: "/assets/service-showcase/marketing.webp",
     kicker: "Digital & Performance Marketing",
     headline: ["Smarter Campaigns", "Better Leads", "Real Growth"],
     description:
@@ -145,6 +151,7 @@ export const serviceShowcaseSlides = [
   },
   {
     id: "creative",
+    background: "/assets/service-showcase/creative.webp",
     kicker: "Video Editing & Creative Services",
     headline: ["Creative Content", "That Makes Brands", "Stand Out"],
     description:
@@ -162,6 +169,7 @@ export const serviceShowcaseSlides = [
   },
   {
     id: "automation",
+    background: "/assets/service-showcase/automation.webp",
     kicker: "Automation & Connected Systems",
     headline: ["Less Manual Work", "More Room for", "Growth"],
     description:
@@ -180,6 +188,7 @@ export const serviceShowcaseSlides = [
   },
   {
     id: "design",
+    background: "/assets/service-showcase/design.webp",
     kicker: "UI / UX & Brand Experiences",
     headline: ["Thoughtful Design", "Built Around", "Your Users"],
     description:

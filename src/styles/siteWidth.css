@@ -64,6 +64,21 @@ body .selected-work-marquee-topline {
   right: calc((100% - min(100% - var(--site-gutter), var(--site-max))) / 2);
 }
 
+/* ---- A single horizontal alignment from hero through footer ----
+   All of these are layout containers, not their full-bleed section backgrounds.
+   Keep the same 1440px outer grid / 64px inner gutters as the navbar. */
+body .home-page .ai-emerging-inner,
+body .home-page .industry-accordion-heading,
+body .home-page .hww-shell,
+body .home-page .tech-shell,
+body .home-page .rv-shell,
+body .home-page .wc-shell,
+body .home-page .blogs-shell {
+  width: min(100% - var(--site-gutter), var(--site-max));
+  max-width: none;
+  margin-inline: auto;
+}
+
 /* ---- Navbar + hero share the same column ---- */
 body .navbar .navbar-container,
 body .home-page .hero-content {

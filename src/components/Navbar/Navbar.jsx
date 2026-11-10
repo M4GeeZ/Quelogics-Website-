@@ -77,7 +77,6 @@ const TAB_ICONS = {
   Services: Layers3,
   Industries: Building2,
   Solutions: Rocket,
-  Products: Package,
 };
 
 // One distinct, meaningful icon per menu label (checked before the keyword fallback below).
@@ -281,7 +280,6 @@ const Navbar = () => {
 
   useEffect(() => {
     const updateNavbarTheme = () => {
-      const hero = document.querySelector(".hero-section");
       const projectStackStage = isHomePage
         ? document.querySelector(".project-stack-stage")
         : null;
@@ -289,9 +287,9 @@ const Navbar = () => {
         .querySelector(".navbar-container")
         ?.getBoundingClientRect().height || 82;
 
-      setScrolledPastHero(hero
-        ? hero.getBoundingClientRect().bottom <= 82
-        : window.scrollY > 24);
+      // Switch to a solid, high-contrast navigation as soon as the user scrolls.
+      // Waiting until the end of a tall hero left the image visible behind nav controls.
+      setScrolledPastHero(window.scrollY > 18);
 
       if (!projectStackStage) {
         setProjectStackActive(false);
@@ -395,14 +393,19 @@ const Navbar = () => {
     >
       <div className="navbar-container">
         <Link to="/" className="navbar-logo" aria-label="QueLogics home">
-          <span className="ql-navbar-brand-assets ql-brand-for-dark" aria-hidden="true">
-            <img className="ql-brand-qmark" src="/assets/brand/quelogics-qmark-reversed.png" alt="" width="35" height="35" />
-            <img className="ql-brand-wordmark" src="/assets/brand/quelogics-wordmark-reversed.png" alt="" width="136" height="35" />
-          </span>
-          <span className="ql-navbar-brand-assets ql-brand-for-light" aria-hidden="true">
-            <img className="ql-brand-qmark" src="/assets/brand/quelogics-qmark.png" alt="" width="35" height="35" />
-            <img className="ql-brand-wordmark" src="/assets/brand/quelogics-wordmark.png" alt="" width="136" height="35" />
-          </span>
+          <img
+            className="ql-original-navbar-logo ql-brand-for-dark"
+            src="/assets/brand/quelogics-original-white.png"
+            alt="QueLogics — Innovate, Build, Deliver"
+            width="798" height="185"
+          />
+          <img
+            className="ql-original-navbar-logo ql-brand-for-light"
+            src="/assets/brand/quelogics-original-navy.png"
+            alt=""
+            aria-hidden="true"
+            width="798" height="185"
+          />
         </Link>
 
         <nav className="desktop-navigation">

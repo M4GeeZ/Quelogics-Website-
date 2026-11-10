@@ -1,0 +1,318 @@
+/*
+  QueLogics Brand Guidelines V2.0 – Site-wide typography and colour audit.
+  Applied after the original theme; deliberately does not change page structure,
+  image backgrounds, hover interactions, marquees, route logic, logo artwork,
+  or CTA arrow direction.  Brand specification: PDF pages 19–27.
+  This is a small, reversible override layer rather than destructive rewrites.
+*/
+:root {
+  --ql-brand-navy: #04213A;
+  --ql-brand-green: #10AC4F;
+  --ql-brand-ink: #1E2C39;
+  --ql-brand-white: #FFFFFF;
+  --ql-brand-green-text: #0B7837; /* text-safe on light surfaces */
+  --ql-brand-muted: #5E6B78;
+  --ql-brand-mist: #F4F6F8;
+  --ql-brand-cloud: #E8ECF0;
+  --ql-brand-border: #B7C1CB;
+  --ql-font-heading: "Montserrat", Arial, sans-serif;
+  --ql-font-body: "Inter", Arial, sans-serif;
+  --ql-type-display: clamp(38px, 4.1vw, 56px);
+  --ql-type-section: clamp(30px, 3vw, 44px);
+  --ql-type-subheading: clamp(23px, 2.1vw, 28px);
+  --ql-type-body: 16px;
+  --ql-type-interface: 14px;
+  --ql-type-caption: 12px;
+  --ql-line-body: 1.625;
+  /* Normalize older section palette variables without touching brand marks. */
+  --ql-navy: var(--ql-brand-navy);
+  --ql-navy-deep: var(--ql-brand-navy);
+  --ql-green: var(--ql-brand-green);
+  --ql-green-dark: var(--ql-brand-green-text);
+  --ql-muted: var(--ql-brand-muted);
+  --ql-surface: var(--ql-brand-white);
+  --ql-surface-alt: var(--ql-brand-mist);
+  --ql-border: var(--ql-brand-border);
+}
+
+html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+body { font-family: var(--ql-font-body); color: var(--ql-brand-ink); }
+:where(h1,h2,h3,h4,h5,h6) { font-family: var(--ql-font-heading); }
+:where(p, li, dd, dt) { font-family: inherit; }
+:where(button,input,textarea,select) { font-family: var(--ql-font-body); }
+/* Headline typography: Montserrat bold 56/60 (desktop) in the manual. */
+:is(
+  .home-page .hero-heading,
+  .industries-hero-title,
+  .careers-hero-title,
+  .contact-hero-title,
+  .services-page-hero h1,
+  .solutions-hero-content h1,
+  .about-hero h1,
+  .insights-hero-title,
+  .company-hero h1,
+  .explore-hero h1,
+  .detail-hero h1,
+  .service-detail-copy h1,
+  .industry-detail-hero-copy h1,
+  .solution-hero-copy h1,
+  .insight-explore-copy h1,
+  .insight-topic-copy h1,
+  .insight-resource-copy h1,
+  .ai-detail-hero h1
+) {
+  font-family: var(--ql-font-heading) !important;
+  font-size: var(--ql-type-display) !important;
+  line-height: 1.0715 !important;
+  letter-spacing: -.02em !important;
+  font-weight: 700 !important;
+  text-wrap: balance;
+}
+/* Section titles use one coherent step between display and subheading. */
+:is(
+  .services-explorer-heading h2,
+  .services-explorer .services-explorer-heading h2,
+  .tech-head h2,
+  .wc-head h2,
+  .rv-intro h2,
+  .blogs-head h2,
+  .industry-accordion-heading h2,
+  .project-stack-intro h2,
+  .project-stack-heading h2,
+  .hww-intro h2,
+  .process-showcase-copy h2,
+  .n2x-title,
+  .project-story-content h2,
+  .contact-intro h2,
+  .contact-process-heading h2,
+  .contact-final h2,
+  .careers-section-heading h2,
+  .careers-section-heading-light h2,
+  .careers-opportunity-intro h2,
+  .careers-process-intro h2,
+  .careers-closing h2,
+  .industries-section-heading h2,
+  .industries-lens-intro h2,
+  .industries-cta h2,
+  .services-page-outcomes-heading h2,
+  .services-page-process-heading h2,
+  .services-page-cta h2,
+  .about-story-heading h2,
+  .about-horizontal-heading h2,
+  .about-intro h2,
+  .about-principles-heading h2,
+  .insights-section-heading h2,
+  .insights-topics-sticky h2,
+  .insights-cta h2,
+  .solutions-outcomes-heading h2,
+  .solutions-section-heading h2,
+  .solutions-process-intro h2,
+  .solutions-cta h2,
+  .solution-approach-copy h2,
+  .solution-section-heading h2,
+  .solution-related-heading h2,
+  .solution-outcome-copy h2,
+  .industry-outcome-inner h2,
+  .industry-related-heading h2,
+  .industry-capability-heading h2,
+  .service-detail-outcome-panel h2,
+  .explore-section-heading h2,
+  .detail-outcome-copy h2,
+  .insight-explore-story-heading h2,
+  .insight-explore-result-copy h2,
+  .insight-explore-related-heading h2,
+  .insight-resource-module-heading h2,
+  .insight-resource-checklist-copy h2,
+  .insight-resource-related-heading h2,
+  .insight-topic-chapter-heading h2,
+  .insight-topic-lab-copy h2,
+  .insight-topic-related-heading h2,
+  .ai-detail-capabilities h2,
+  .ai-detail-uses h2,
+  .ai-detail-outcome h2,
+  .ai-detail-related h2
+) {
+  font-family: var(--ql-font-heading) !important;
+  font-size: var(--ql-type-section) !important;
+  line-height: 1.18 !important;
+  letter-spacing: -.02em !important;
+  font-weight: 700 !important;
+  text-wrap: balance;
+}
+/* Subheadings: Montserrat semi-bold, 28 / 36 from the brand guide. */
+:is(
+  .industry-copy h3,
+  .services-explorer-copy h3,
+  .sx-detail h3,
+  .service-explorer .sx-detail h3,
+  .industry-context-card h3,
+  .industry-capability-card h3,
+  .solution-capability-card h3,
+  .solution-related-card h3,
+  .insights-featured-lead h3,
+  .insights-topic-copy h3,
+  .insights-resource-card h3,
+  .about-story-copy h3,
+  .about-story-mobile-copy h3,
+  .about-principle h3,
+  .about-partnership-card h3,
+  .industries-lens-item h3,
+  .industries-capability-row h3,
+  .services-page-chapter h3,
+  .service-detail-capability h3,
+  .service-detail-related-item h3,
+  .insight-explore-story-card h3,
+  .insight-explore-related-card h3,
+  .insight-topic-chapter-card h3,
+  .insight-topic-related-card h3,
+  .insight-resource-module-card h3,
+  .insight-resource-related-card h3,
+  .solutions-outcome-copy h3,
+  .solutions-family h3,
+  .solutions-process-step h3,
+  .contact-process-step h3,
+  .careers-principle h3,
+  .careers-role-copy h3,
+  .project-stack-card-info h3,
+  .process-core-content h3
+) {
+  font-family: var(--ql-font-heading) !important;
+  font-size: var(--ql-type-subheading) !important;
+  line-height: 1.2857 !important;
+  letter-spacing: 0 !important;
+  font-weight: 600 !important;
+}
+/* Body copy: Inter regular, 16 / 26 from the brand guide. */
+:is(
+  .hero-description,
+  .services-explorer-heading p,
+  .services-explorer-copy > p,
+  .services-explorer-copy li,
+  .industry-accordion-heading p,
+  .industry-copy p,
+  .hww-intro p,
+  .tech-head p,
+  .wc-head p,
+  .rv-intro > p,
+  .project-stack-heading > p,
+  .project-stack-intro p,
+  .project-stack-card-description,
+  .blogs-head p,
+  .blog-card > p,
+  .service-detail-copy > p,
+  .explore-hero-copy > p,
+  .detail-hero-copy > p,
+  .industry-detail-hero-copy > p,
+  .solution-hero-copy > p,
+  .industries-section-heading > p,
+  .careers-hero-copy > p,
+  .insights-section-heading > p,
+  .services-page-capabilities-heading > p:last-child,
+  .contact-hero-copy > p,
+  .insight-explore-story-heading > p:last-child,
+  .insight-topic-chapter-heading > p:last-child,
+  .insight-resource-module-heading > p:last-child,
+  .about-horizontal-heading > p:last-child
+) {
+  font-family: var(--ql-font-body) !important;
+  font-size: var(--ql-type-body) !important;
+  line-height: var(--ql-line-body) !important;
+  font-weight: 400;
+  letter-spacing: 0;
+}
+/* Small functional copy is not forced to large body sizes. */
+:is(
+  .navbar .nav-link,
+  .navbar .mega-menu-group-link,
+  .ql-footer-column a,
+  .sx-card-title,
+  .services-explorer .sx-card-title,
+  .tech-name,
+  .project-stack-card-category,
+  .service-detail-capability > span,
+  .insight-explore-tile > span
+) {
+  font-family: var(--ql-font-body) !important;
+  font-size: var(--ql-type-interface);
+  line-height: 1.45;
+  font-weight: 600;
+  letter-spacing: 0;
+}
+
+/* Keep secondary copy neutral. Avoid low-contrast Logic Green body text on white. */
+:where(.services-explorer,.tech-section,.rv-section,.blogs-section,.project-stack-section)
+  :is(p,.project-stack-card-description,.project-stack-card-category) {
+  font-family: var(--ql-font-body);
+}
+:where(.services-explorer,.tech-section,.rv-section,.blogs-section,.project-stack-section)
+  :is(.services-explorer-heading p,.tech-head p,.rv-intro > p,.project-stack-card-description,.project-stack-card-category) {
+  color: var(--ql-brand-muted);
+}
+/* The green selected/active states remain Logic Green; small text on light pages
+   uses Deep Green (#0B7837), per PDF contrast guidance. */
+:where(.services-explorer,.tech-section,.rv-section,.blogs-section,.project-stack-section)
+  :is(.services-explorer-heading > span,.project-stack-intro-eyebrow,.blog-card-link) {
+  color: var(--ql-brand-green-text);
+}
+:where(.navbar,.ql-footer,.site-footer) :is(a,button) {
+  font-family: var(--ql-font-body);
+}
+
+/* Large image-overlaid headings are part of the hero hierarchy, not tiny labels. */
+.industry-accordion-section .industry-copy h3 {
+  font-size: clamp(34px, 3.8vw, 56px) !important;
+  line-height: 1.10 !important;
+  font-weight: 700 !important;
+  letter-spacing: -.025em !important;
+}
+/* Footer main CTA retains its display role without exceeding the H1 scale. */
+.ql-footer .ql-footer-cta h2,
+.site-footer .site-footer-lead h2 {
+  font-family: var(--ql-font-heading);
+  font-size: clamp(32px, 3.1vw, 44px);
+  line-height: 1.18;
+  font-weight: 700;
+  letter-spacing: -.02em;
+}
+
+/* Width, background photos, original logo, card layout and motion untouched. */
+@media (max-width: 768px) {
+  :root {
+    --ql-type-display: clamp(35px, 7.8vw, 48px);
+    --ql-type-section: clamp(28px, 6vw, 38px);
+    --ql-type-subheading: clamp(21px, 4.3vw, 26px);
+  }
+  .industry-accordion-section .industry-copy h3 {
+    font-size: clamp(30px, 7vw, 42px) !important;
+  }
+}
+@media (max-width: 420px) {
+  :root {
+    --ql-type-display: clamp(32px, 8.6vw, 39px);
+    --ql-type-section: clamp(26px, 7vw, 33px);
+    --ql-type-subheading: 21px;
+  }
+}
+
+/* Three resource/index pages previously used a teal accent absent from the
+   official colour system. Keep their accents consistent with QueLogics green. */
+.case-studies-page,
+.portfolio-page,
+.client-reviews-page {
+  --page-accent: var(--ql-brand-green);
+  --page-accent-soft: rgba(16, 172, 79, .14);
+}
+
+/* Selective legacy heading/label colours that were off-palette on light UI. */
+:where(.tech-section,.rv-section,.blogs-section) :is(
+  .tech-head h2, .tech-name,
+  .rv-intro h2, .rv-highlights strong,
+  .blogs-head h2, .blog-card h3
+) {
+  color: var(--ql-brand-navy);
+}
+:where(.tech-section,.rv-section,.blogs-section) :is(
+  .tech-head p, .rv-intro > p, .rv-highlights span, .blogs-head p
+) {
+  color: var(--ql-brand-muted);
+}

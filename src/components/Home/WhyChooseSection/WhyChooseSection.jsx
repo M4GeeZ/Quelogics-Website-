@@ -2,15 +2,17 @@ import { useState } from "react";
 import { Bot, Cloud, Handshake, Layers3, Target } from "lucide-react";
 import "./WhyChooseSection.css";
 
-// Same logo as the navbar: ring + green handle + green dot, "Que" + green "Logics".
+// Render the same supplied, unmodified brand artwork used in the navbar.
 export const QueLogicsLogo = ({ withText = true, className = "" }) => (
-  <span className={`ql-brand${className ? ` ${className}` : ""}`} aria-label="QueLogics">
-    <span className="ql-brand-mark" aria-hidden="true"><i /></span>
-    {withText && (
-      <span className="ql-brand-text" aria-hidden="true">
-        Que<span>Logics</span>
-      </span>
-    )}
+  <span className={`ql-brand ql-brand--official${className ? ` ${className}` : ""}`} aria-label="QueLogics">
+    <img
+      className={withText ? "ql-official-lockup" : "ql-official-mark"}
+      src={withText
+        ? "/assets/brand/quelogics-original-lockup-white.png"
+        : "/assets/brand/quelogics-original-qmark-white.png"}
+      alt=""
+      aria-hidden="true"
+    />
   </span>
 );
 

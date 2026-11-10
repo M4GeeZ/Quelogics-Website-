@@ -268,3 +268,10 @@
   .home-page .hero-section .client-logo-marquee { padding-bottom: 19px; }
   .home-page .hero-section .hero-visual { bottom: 130px; }
 }
+
+/* Original Q-mark replaces the circular CSS stand-in; orbit animation stays intact. */
+.hero-signal-core .hero-signal-mark.ql-original-signal-mark {
+  display:block; width:39px; height:41px; border:0; border-radius:0;
+  background:none; object-fit:contain; filter:none;
+}
+.hero-signal-core .ql-original-signal-mark::after { content:none; }

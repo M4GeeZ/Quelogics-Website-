@@ -1389,3 +1389,79 @@
 /* Seamless desktop header -> mega-menu attachment; the header is 82px high.
    Percentage follows the real navbar height at different viewport widths. */
 .navbar .mega-menu { top: 100%; margin-top: 0; }
+
+
+/* QueLogics refinement: HOME behaves like a simple navigation label, never a pill. */
+.navbar .nav-home-item .nav-home-link,
+.navbar .nav-home-item .nav-home-link.is-current,
+.navbar .nav-home-item .nav-home-link:hover,
+.navbar .nav-home-item .nav-home-link:focus-visible,
+.navbar.is-scrolled .nav-home-item .nav-home-link,
+.navbar.is-scrolled .nav-home-item .nav-home-link.is-current {
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  transform: none !important;
+  min-height: 40px;
+  padding-inline: 14px;
+  font-weight: 600;
+  text-shadow: none;
+}
+.navbar:not(.is-scrolled) .nav-home-item .nav-home-link.is-current { color: #FFFFFF !important; }
+.navbar.is-scrolled:not(.navbar--dark-page) .nav-home-item .nav-home-link.is-current { color: #04213A !important; }
+.navbar.navbar--dark-page.is-scrolled .nav-home-item .nav-home-link.is-current { color: #FFFFFF !important; }
+.navbar .nav-home-item .nav-home-link::after {
+  content: "";
+  position: absolute;
+  bottom: 6px;
+  left: 14px;
+  right: 14px;
+  height: 2px;
+  background: #10AC4F;
+  opacity: 0;
+  transform: scaleX(.55);
+  transition: opacity .2s ease,transform .2s ease;
+}
+.navbar .nav-home-item .nav-home-link:is(.is-current,:hover,:focus-visible)::after {
+  opacity: 1;
+  transform: scaleX(1);
+}
+/* Scroll state uses a fully opaque surface so the AI hero image never shines
+   through the sticky navigation, even on narrow screens. */
+.navbar.is-scrolled:not(.navbar--dark-page) {
+  background: #FFFFFF !important;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  box-shadow: 0 1px 0 rgba(4,33,58,.12), 0 8px 26px rgba(4,33,58,.08);
+}
+.navbar.navbar--dark-page.is-scrolled {
+  background: #04213A !important;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+}
+
+/* Mobile Home link follows the same unfilled active treatment. */
+@media (max-width: 1100px) {
+  .navbar .mobile-navigation > .mobile-home-link,
+  .navbar .mobile-navigation > .mobile-home-link.is-current {
+    border: 0;
+    border-radius: 0;
+    border-bottom: 1px solid rgba(255,255,255,.16);
+    background: transparent;
+    box-shadow: none;
+    color: #FFFFFF;
+  }
+  .navbar .mobile-navigation > .mobile-home-link.is-current svg { color: #10AC4F; }
+}
+
+/* Official uploaded QueLogics lockup; no constructed or substitute logo. */
+.navbar .navbar-logo { display:inline-flex; align-items:center; flex:0 0 auto; min-width:0; line-height:0; }
+.navbar .ql-original-navbar-logo {
+  display:block; flex:none; width:clamp(148px,13.5vw,201px); height:auto;
+  max-height:51px; object-fit:contain; filter:none; box-shadow:none;
+}
+.navbar .ql-original-navbar-logo.ql-brand-for-light { display:none; }
+.navbar.is-scrolled:not(.navbar--dark-page) .ql-original-navbar-logo.ql-brand-for-light { display:block; }
+.navbar.is-scrolled:not(.navbar--dark-page) .ql-original-navbar-logo.ql-brand-for-dark { display:none; }
+@media(max-width:750px){ .navbar .ql-original-navbar-logo { width:clamp(140px,37vw,178px); } }

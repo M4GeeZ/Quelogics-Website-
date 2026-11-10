@@ -116,44 +116,7 @@ export const navigationLinks = [
       },
     ],
   },
-  {
-    id: 4,
-    title: "Products",
-    path: "/insights",
-    hasDropdown: true,
-    menuTitle: "Ideas you can put to work",
-    description:
-      "Practical thinking on AI, software, product design, and growth—backed by the systems we build every day.",
-    groups: [
-      {
-        title: "Explore",
-        links: [
-          ["Products", "/insights"],
-          ["Case Studies", "/case-studies"],
-          ["Client Reviews", "/client-reviews"],
-          ["Our Work & Portfolio", "/portfolio"],
-        ],
-      },
-      {
-        title: "Topics",
-        links: [
-          ["AI & Automation", "/insights/ai-automation"],
-          ["Software & Product", "/insights/software-product"],
-          ["SEO, AEO & Growth", "/insights/seo-growth"],
-          ["UI / UX & Conversion", "/insights/design-conversion"],
-        ],
-      },
-      {
-        title: "Resources",
-        links: [
-          ["Automation Guides", "/insights/automation-guides"],
-          ["Growth Playbooks", "/insights/growth-playbooks"],
-          ["Development Guides", "/insights/development-guides"],
-          ["Talk to an Expert", "/contact"],
-        ],
-      },
-    ],
-  },
+
 ];
 
 export const companyMenu = {
@@ -177,10 +140,6 @@ export const companyMenu = {
         ["Case Studies", "/case-studies"],
         ["Client Reviews", "/client-reviews"],
       ],
-    },
-    {
-      title: "Products",
-      links: [["Products", "/insights"]],
     },
   ],
 };

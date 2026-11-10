@@ -23,6 +23,7 @@ import "./styles/websiteTheme.css";
 import "./pages/Shared/PageStyles.css";
 import "./styles/siteWidth.css";
 import "./styles/brandGuidelines.css";
+import "./styles/brandConsistency.css";
 
 function App() {
   return (

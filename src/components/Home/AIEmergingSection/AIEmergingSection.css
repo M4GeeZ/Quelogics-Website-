@@ -279,3 +279,59 @@
     transform: none;
   }
 }
+
+
+/* Each category has its own image; only the image opacity changes on slide.
+   The overlay keeps Montserrat/Inter copy readable and never darkens to black. */
+.ai-emerging-section { background:#04213A; }
+.ai-emerging-backdrops { position:absolute;inset:0;z-index:-2;overflow:hidden;pointer-events:none; }
+.ai-emerging-backdrop { position:absolute;inset:0;opacity:0;background-position:center;background-size:cover;background-repeat:no-repeat;transition:opacity .46s ease; }
+.ai-emerging-backdrop.is-visible { opacity:1; }
+.ai-emerging-section::before { z-index:-1; background:linear-gradient(90deg,rgba(4,33,58,.60) 0%,rgba(4,33,58,.21) 53%,rgba(4,33,58,.12) 100%); }
+.ai-emerging-copy h2 { font-family:var(--font-display);font-weight:700;letter-spacing:-.036em;line-height:1.13;font-size:clamp(34px,3.4vw,50px); }
+.ai-emerging-copy p { font-size:15px;line-height:1.65;color:#E6E9EB; }
+.ai-emerging-link { font-family:var(--font-ui);font-weight:600;font-size:13px;line-height:1.35; }
+.ai-emerging-side { flex-basis:220px; }
+.ai-emerging-controls { gap:18px; }
+@media(max-width:800px) { .ai-emerging-side { flex-basis:200px; } }
+@media(max-width:610px) {
+  .ai-emerging-section::before { background:linear-gradient(90deg,rgba(4,33,58,.90),rgba(4,33,58,.50)); }
+  .ai-emerging-copy h2 { font-size:clamp(32px,8vw,44px); }
+  .ai-emerging-copy p { font-size:14px; }
+  .ai-emerging-side { width:100%; }
+}
+@media(prefers-reduced-motion:reduce){ .ai-emerging-backdrop { transition:none; } }
+
+
+/* Unified sharp service visuals – QueLogics palette #04213A.
+   Each category now has its own wide 2400x800 artwork: avoid image transforms
+   and blur filters, retain the existing content-only transitions. */
+.ai-emerging-section {
+  background-color: #04213A;
+  background-image: none;
+}
+.ai-emerging-backdrops {
+  background: #04213A;
+}
+.ai-emerging-backdrop {
+  background-position: 50% 50%;
+  background-size: cover;
+  image-rendering: auto;
+  filter: none;
+  transform: none;
+  transition: opacity 420ms ease-in-out;
+}
+.ai-emerging-section::before {
+  background: linear-gradient(90deg, rgba(4,33,58,.19) 0%, rgba(4,33,58,.11) 48%, rgba(4,33,58,.07) 100%);
+}
+@media (max-width:610px) {
+  .ai-emerging-backdrop {
+    background-position: 62% center;
+  }
+  .ai-emerging-section::before {
+    background: linear-gradient(90deg, rgba(4,33,58,.83), rgba(4,33,58,.55));
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .ai-emerging-backdrop { transition: none; }
+}
