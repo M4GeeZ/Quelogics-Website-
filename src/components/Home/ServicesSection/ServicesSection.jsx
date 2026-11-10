@@ -368,10 +368,53 @@ const serviceGroups = [
   },
 ];
 
+// The same service information is used by the desktop detail panel and the
+// mobile/tablet accordion. Desktop presentation and behavior stay untouched.
+const ServiceDetailBody = ({ group, entry, direction, animationKey }) => (
+  <div
+    className={`sx-detail-inner sx-detail-inner--${direction}`}
+    key={animationKey}
+  >
+    <p className="sx-detail-context">{group.title}</p>
+    <h3>{entry.title}</h3>
+    <p className="sx-detail-lead">{entry.description}</p>
+
+    <ul className="sx-features">
+      {entry.features.map(([title, detail]) => (
+        <li key={title}>
+          <Check aria-hidden="true" />
+          <span><strong>{title}:</strong> {detail}</span>
+        </li>
+      ))}
+    </ul>
+
+    {entry.tech?.length > 0 && (
+      <>
+        <h4>Technologies we use</h4>
+        <ul className="sx-chips">
+          {entry.tech.map(({ label, Icon, color }) => (
+            <li key={label}>
+              <Icon aria-hidden="true" style={{ color }} />
+              {label}
+            </li>
+          ))}
+        </ul>
+      </>
+    )}
+
+    <Link to={entry.href} className="sx-learn">
+      Learn More <ArrowUpRight aria-hidden="true" />
+    </Link>
+  </div>
+);
+
 const ServicesSection = () => {
   const [activeGroupIndex, setActiveGroupIndex] = useState(0);
   const [activeSlideIndex, setActiveSlideIndex] = useState(0);
   const [slideDirection, setSlideDirection] = useState("next");
+  // Mobile starts with six compact cards. Opening one reveals its details
+  // INSIDE that same card; there is no separate panel beneath the grid.
+  const [expandedMobileIndex, setExpandedMobileIndex] = useState(null);
   const sectionRef = useRef(null);
 
   useLayoutEffect(() => {
@@ -406,18 +449,24 @@ const ServicesSection = () => {
   const activeGroup = serviceGroups[activeGroupIndex];
   const active = activeGroup.slides[activeSlideIndex];
 
-  const selectGroup = (index, scrollToDetail = false) => {
+  const selectGroup = (index) => {
     if (index !== activeGroupIndex) {
       setActiveGroupIndex(index);
       setActiveSlideIndex(0);
       setSlideDirection("next");
     }
-    if (scrollToDetail && window.matchMedia("(max-width: 1100px)").matches) {
-      document.getElementById("service-detail-panel")?.scrollIntoView({
-        behavior: "smooth",
-        block: "start",
-      });
+  };
+
+  const selectMobileGroup = (index) => {
+    // Tapping an already open card collapses it again.
+    if (expandedMobileIndex === index) {
+      setExpandedMobileIndex(null);
+      return;
     }
+    setActiveGroupIndex(index);
+    setActiveSlideIndex(0);
+    setSlideDirection("next");
+    setExpandedMobileIndex(index);
   };
 
   const changeSlide = (delta) => {
@@ -440,6 +489,7 @@ const ServicesSection = () => {
       </div>
 
       <div className="sx-shell">
+        {/* Desktop: same six cards + right-hand detail panel as before. */}
         <div className="sx-cards" role="tablist" aria-label="Explore QueLogics service categories">
           {serviceGroups.map((group, index) => {
             const Icon = group.icon;
@@ -453,7 +503,7 @@ const ServicesSection = () => {
                 aria-selected={selected}
                 aria-controls="service-detail-panel"
                 className={`sx-card${selected ? " is-active" : ""}`}
-                onClick={() => selectGroup(index, true)}
+                onClick={() => selectGroup(index)}
               >
                 <span className="sx-card-icon" aria-hidden="true"><Icon /></span>
                 <span className="sx-card-title">{group.title}</span>
@@ -478,41 +528,12 @@ const ServicesSection = () => {
             <ChevronLeft aria-hidden="true" />
           </button>
 
-          <div
-            className={`sx-detail-inner sx-detail-inner--${slideDirection}`}
-            key={`${activeGroupIndex}-${activeSlideIndex}`}
-          >
-            <p className="sx-detail-context">{activeGroup.title}</p>
-            <h3>{active.title}</h3>
-            <p className="sx-detail-lead">{active.description}</p>
-
-            <ul className="sx-features">
-              {active.features.map(([title, detail]) => (
-                <li key={title}>
-                  <Check aria-hidden="true" />
-                  <span><strong>{title}:</strong> {detail}</span>
-                </li>
-              ))}
-            </ul>
-
-            {active.tech?.length > 0 && (
-              <>
-                <h4>Technologies we use</h4>
-                <ul className="sx-chips">
-                  {active.tech.map(({ label, Icon, color }) => (
-                    <li key={label}>
-                      <Icon aria-hidden="true" style={{ color }} />
-                      {label}
-                    </li>
-                  ))}
-                </ul>
-              </>
-            )}
-
-            <Link to={active.href} className="sx-learn">
-              Learn More <ArrowUpRight aria-hidden="true" />
-            </Link>
-          </div>
+          <ServiceDetailBody
+            group={activeGroup}
+            entry={active}
+            direction={slideDirection}
+            animationKey={`desktop-${activeGroupIndex}-${activeSlideIndex}`}
+          />
 
           <button
             type="button"
@@ -522,6 +543,72 @@ const ServicesSection = () => {
           >
             <ChevronRight aria-hidden="true" />
           </button>
+        </div>
+
+        {/* Tablet/iPhone/mobile: the selected card itself grows into a panel. */}
+        <div className="sx-mobile-cards" aria-label="Explore QueLogics service categories">
+          {serviceGroups.map((group, index) => {
+            const Icon = group.icon;
+            const isOpen = expandedMobileIndex === index;
+            const mobileEntry = isOpen ? active : group.slides[0];
+            return (
+              <div
+                className={`sx-mobile-item${isOpen ? " is-open" : ""}`}
+                key={group.title}
+              >
+                <button
+                  type="button"
+                  className={`sx-card sx-mobile-trigger${isOpen ? " is-active is-mobile-open" : ""}`}
+                  aria-expanded={isOpen}
+                  aria-controls={`service-mobile-details-${index}`}
+                  onClick={() => selectMobileGroup(index)}
+                >
+                  <span className="sx-card-icon" aria-hidden="true"><Icon /></span>
+                  <span className="sx-card-title">{group.title}</span>
+                </button>
+
+                <div
+                  id={`service-mobile-details-${index}`}
+                  className={`sx-mobile-panel${isOpen ? " is-open" : ""}`}
+                  role="region"
+                  aria-label={`${group.title} service details`}
+                  aria-hidden={!isOpen}
+                >
+                  <div className="sx-mobile-panel-inner">
+                    <div className="sx-mobile-content">
+                      <div className="sx-mobile-controls">
+                        <button
+                          type="button"
+                          className="sx-step-nav sx-mobile-prev"
+                          aria-label={`Previous ${group.title} service`}
+                          onClick={() => changeSlide(-1)}
+                          tabIndex={isOpen ? 0 : -1}
+                        >
+                          <ChevronLeft aria-hidden="true" />
+                        </button>
+                        <button
+                          type="button"
+                          className="sx-step-nav sx-mobile-next"
+                          aria-label={`Next ${group.title} service`}
+                          onClick={() => changeSlide(1)}
+                          tabIndex={isOpen ? 0 : -1}
+                        >
+                          <ChevronRight aria-hidden="true" />
+                        </button>
+                      </div>
+
+                      <ServiceDetailBody
+                        group={group}
+                        entry={mobileEntry}
+                        direction={slideDirection}
+                        animationKey={`mobile-${index}-${isOpen ? activeSlideIndex : 0}`}
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            );
+          })}
         </div>
       </div>
     </section>

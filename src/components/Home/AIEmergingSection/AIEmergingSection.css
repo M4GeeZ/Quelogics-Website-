@@ -335,3 +335,182 @@
 @media (prefers-reduced-motion: reduce) {
   .ai-emerging-backdrop { transition: none; }
 }
+
+/* QueLogics responsive service showcase | tablet + phone only.
+   Desktop (>960px) intentionally retains its current layout and typography. */
+@media (max-width: 960px) {
+  .home-page .ai-emerging-section {
+    min-height: 0;
+    height: auto;
+  }
+
+  .home-page .ai-emerging-section .ai-emerging-inner {
+    box-sizing: border-box;
+    width: min(calc(100% - 56px), 820px);
+    min-height: 0;
+    margin-inline: auto;
+    padding-block: 56px 54px;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: flex-start;
+    gap: 0;
+  }
+
+  .home-page .ai-emerging-section .ai-emerging-copy {
+    flex: 0 0 auto;
+    width: 100%;
+    max-width: 640px;
+    min-width: 0;
+  }
+
+  /* Original headline segments must never run into each other when <br> is hidden. */
+  .home-page .ai-emerging-section .ai-emerging-copy h2 {
+    width: 100%;
+    margin: 0 0 17px;
+    font-family: var(--font-display, "Montserrat", sans-serif);
+    font-size: clamp(36px, 5vw, 49px);
+    line-height: 1.13;
+    letter-spacing: -.035em;
+    font-weight: 700;
+    overflow-wrap: break-word;
+    text-wrap: pretty;
+  }
+  .home-page .ai-emerging-section .ai-emerging-copy h2 span { display: block; }
+  .home-page .ai-emerging-section .ai-emerging-copy h2 br { display: none; }
+
+  .home-page .ai-emerging-section .ai-emerging-copy p {
+    width: min(100%, 600px);
+    margin: 0 0 23px;
+    color: #e6e9eb;
+    font-family: var(--font-ui, "Inter", sans-serif);
+    font-size: 15px;
+    line-height: 1.7;
+  }
+
+  .home-page .ai-emerging-section .ai-emerging-cta {
+    box-sizing: border-box;
+    min-height: 46px;
+    max-width: 100%;
+    padding-inline: 21px;
+    font-size: 13px;
+  }
+
+  .home-page .ai-emerging-section .ai-emerging-side {
+    display: flex;
+    flex: 0 0 auto;
+    flex-direction: column;
+    align-items: stretch;
+    width: 100%;
+    min-width: 0;
+    margin-top: 32px;
+  }
+
+  .home-page .ai-emerging-section .ai-emerging-links {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 10px;
+    min-width: 0;
+    width: 100%;
+    margin: 0;
+  }
+
+  .home-page .ai-emerging-section .ai-emerging-link {
+    box-sizing: border-box;
+    width: 100%;
+    min-width: 0;
+    min-height: 48px;
+    padding: 10px 12px;
+    border-radius: 6px;
+    gap: 9px;
+    background: rgba(2, 13, 25, .92);
+    font-family: var(--font-ui, "Inter", sans-serif);
+    font-size: 13px;
+    font-weight: 600;
+    line-height: 1.38;
+    white-space: normal;
+    overflow-wrap: break-word;
+  }
+  .home-page .ai-emerging-section .ai-emerging-link svg { flex: 0 0 17px; }
+
+  .home-page .ai-emerging-section .ai-emerging-controls {
+    position: static;
+    display: flex;
+    align-self: flex-start;
+    justify-content: flex-start;
+    gap: 16px;
+    width: auto;
+    margin: 26px 0 0;
+    transform: none;
+  }
+
+  .home-page .ai-emerging-section .ai-emerging-arrow {
+    width: 40px;
+    height: 40px;
+  }
+
+  .home-page .ai-emerging-section .ai-emerging-backdrop {
+    background-position: 65% center;
+  }
+  .home-page .ai-emerging-section::before {
+    background: linear-gradient(90deg, rgba(4, 33, 58, .93) 0%, rgba(4, 33, 58, .83) 45%, rgba(4, 33, 58, .40) 100%);
+  }
+}
+
+@media (max-width: 680px) {
+  .home-page .ai-emerging-section .ai-emerging-inner {
+    width: min(calc(100% - 44px), 530px);
+    padding-block: 45px 43px;
+  }
+  .home-page .ai-emerging-section .ai-emerging-copy h2 {
+    font-size: clamp(31px, 7.7vw, 40px);
+    line-height: 1.14;
+    margin-bottom: 16px;
+    letter-spacing: -.03em;
+  }
+  .home-page .ai-emerging-section .ai-emerging-copy p {
+    font-size: 14px;
+    line-height: 1.68;
+    margin-bottom: 22px;
+  }
+  .home-page .ai-emerging-section .ai-emerging-cta {
+    min-height: 44px;
+    padding-inline: 18px;
+    font-size: 12px;
+    gap: 12px;
+  }
+  .home-page .ai-emerging-section .ai-emerging-side { margin-top: 27px; }
+  .home-page .ai-emerging-section .ai-emerging-links {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px;
+  }
+  .home-page .ai-emerging-section .ai-emerging-link {
+    min-height: 47px;
+    padding: 10px;
+    font-size: 12px;
+    line-height: 1.35;
+  }
+  .home-page .ai-emerging-section .ai-emerging-controls { margin-top: 25px; }
+  .home-page .ai-emerging-section::before {
+    background: linear-gradient(90deg, rgba(4, 33, 58, .90) 0%, rgba(4, 33, 58, .77) 60%, rgba(4, 33, 58, .49) 100%);
+  }
+  .home-page .ai-emerging-section .ai-emerging-backdrop { background-position: 66% center; }
+}
+
+@media (max-width: 380px) {
+  .home-page .ai-emerging-section .ai-emerging-inner {
+    width: calc(100% - 36px);
+    padding-block: 38px 38px;
+  }
+  .home-page .ai-emerging-section .ai-emerging-copy h2 {
+    font-size: clamp(28px, 8vw, 32px);
+    letter-spacing: -.025em;
+  }
+  .home-page .ai-emerging-section .ai-emerging-link {
+    gap: 7px;
+    padding: 9px 8px;
+    font-size: 11.5px;
+  }
+  .home-page .ai-emerging-section .ai-emerging-link svg { flex-basis: 16px; }
+  .home-page .ai-emerging-section .ai-emerging-controls { margin-top: 23px; }
+}
