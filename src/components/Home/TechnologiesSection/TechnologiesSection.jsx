@@ -11,7 +11,10 @@ import {
   SiSanity, SiWoocommerce, SiWix, SiSquarespace,
   SiGooglecloud, SiDocker, SiKubernetes, SiTerraform, SiJenkins, SiGithubactions,
   SiNginx, SiLinux, SiVercel, SiCloudflare, SiAnsible, SiGrafana,
+  SiTensorflow, SiPytorch, SiHuggingface, SiLangchain, SiN8N, SiMake, SiZapier,
+  SiAnthropic, SiCrewai, SiApacheairflow
 } from "react-icons/si";
+import { TbBrandOpenai } from "react-icons/tb";
 import { FaAws, FaJava } from "react-icons/fa";
 import { VscAzure } from "react-icons/vsc";
 import { DiMsqlServer } from "react-icons/di";
@@ -21,6 +24,25 @@ const t = (label, Icon, color) => ({ label, Icon, color });
 
 // Official brand colours, so every logo is recognisable at a glance.
 const tabs = [
+  {
+    id: "ai-automation",
+    label: "AI & Automation",
+    items: [
+      t("OpenAI", TbBrandOpenai, "#00A67E"),
+      t("Python", SiPython, "#3776AB"),
+      t("LangChain", SiLangchain, "#1C3C3C"),
+      t("TensorFlow", SiTensorflow, "#FF6F00"),
+      t("PyTorch", SiPytorch, "#EE4C2C"),
+      t("Hugging Face", SiHuggingface, "#FFD21E"),
+      t("FastAPI", SiFastapi, "#009688"),
+      t("n8n", SiN8N, "#EA4B71"),
+      t("Make", SiMake, "#6D28D9"),
+      t("Zapier", SiZapier, "#FF4F00"),
+      t("Anthropic", SiAnthropic, "#D97706"),
+      t("CrewAI", SiCrewai, "#FF4500"),
+      t("Airflow", SiApacheairflow, "#017CEE"),
+    ],
+  },
   {
     id: "mobile",
     label: "Mobile",

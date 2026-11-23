@@ -117,6 +117,7 @@ const labelIcons = {
   portfolio: FolderKanban,
   "case studies": FileSearch2,
   "client reviews": Star,
+  insights: BookOpen,
   blogs: FileText,
   "products overview": FolderKanban,
   // Solutions

@@ -573,3 +573,192 @@ body .home-page .project-stack-section .ps-row {
     width: calc(100% - var(--site-gutter, 48px));
   }
 }
+
+/* ========================================================
+   Interactive Live Website Cards with Hover Page-Scroll
+   ======================================================== */
+.project-stack-intro .project-stack-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: #10AC4F;
+  margin-bottom: 14px;
+}
+
+.project-stack-intro .project-stack-eyebrow i {
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #10AC4F;
+  box-shadow: 0 0 10px rgba(16, 172, 79, 0.7);
+  animation: pulseDot 2s infinite ease-in-out;
+}
+
+@keyframes pulseDot {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.4; transform: scale(0.85); }
+}
+
+/* Card Media Frame */
+section.project-stack-section .project-stack-card-media {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 3.1;
+  overflow: hidden;
+  border: 1px solid #e1e7ee;
+  border-radius: 12px;
+  background: #091a2b;
+  box-shadow: 0 4px 18px rgba(4, 33, 58, 0.07);
+  cursor: pointer;
+  isolation: isolate;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+section.project-stack-section .project-stack-card:hover .project-stack-card-media {
+  border-color: #10AC4F;
+  box-shadow: 0 16px 36px -10px rgba(16, 172, 79, 0.28);
+  transform: translateY(-3px);
+}
+
+/* Browser Mockup Top Bar */
+.project-browser-bar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 28px;
+  background: rgba(8, 26, 43, 0.94);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  z-index: 4;
+  display: flex;
+  align-items: center;
+  padding: 0 12px;
+  gap: 10px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.project-browser-dots {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.project-browser-dots .dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.project-browser-dots .dot-red { background: #ff5f56; }
+.project-browser-dots .dot-yellow { background: #ffbd2e; }
+.project-browser-dots .dot-green { background: #27c93f; }
+
+.project-browser-domain {
+  font-size: 11px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+  color: rgba(223, 233, 243, 0.82);
+  letter-spacing: 0.01em;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  flex: 1;
+}
+
+.project-live-badge {
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  padding: 2px 6px;
+  border-radius: 4px;
+  background: rgba(16, 172, 79, 0.2);
+  color: #10AC4F;
+  border: 1px solid rgba(16, 172, 79, 0.35);
+  line-height: 1;
+}
+
+/* Screenshot Window & Scroll Animation */
+.project-screenshot-window {
+  position: absolute;
+  top: 28px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  overflow: hidden;
+  background: #091a2b;
+}
+
+.project-scroll-img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100% !important;
+  height: auto !important;
+  min-height: 100% !important;
+  object-fit: cover !important;
+  object-position: top !important;
+  opacity: 0;
+  transform: translateY(0) !important;
+  transition: opacity 0.4s ease, transform var(--scroll-dur, 6s) cubic-bezier(0.45, 0, 0.3, 1) !important;
+}
+
+.project-scroll-img.is-loaded {
+  opacity: 1;
+}
+
+/* Smooth Scrolling down on Hover */
+section.project-stack-section .project-stack-card:hover .project-scroll-img.is-loaded,
+section.project-stack-section .project-stack-card:focus-within .project-scroll-img.is-loaded {
+  transform: translateY(calc(-100% + var(--sh, 220px))) !important;
+}
+
+/* Hover Action Button */
+section.project-stack-section .project-stack-reveal-link {
+  position: absolute;
+  z-index: 6;
+  left: 50%;
+  bottom: 14px;
+  width: max-content;
+  max-width: calc(100% - 24px);
+  min-height: 38px;
+  padding: 0 16px;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  border-radius: 6px;
+  background: #10AC4F;
+  color: #04213A;
+  font-size: 12px;
+  font-weight: 800;
+  text-decoration: none;
+  box-shadow: 0 8px 20px rgba(16, 172, 79, 0.4);
+  opacity: 0;
+  pointer-events: none;
+  transform: translate3d(-50%, 12px, 0);
+  transition: opacity 240ms ease, transform 300ms cubic-bezier(0.22, 1, 0.36, 1), background-color 200ms ease, color 200ms ease;
+}
+
+section.project-stack-section .project-stack-reveal-link svg {
+  width: 14px;
+  height: 14px;
+}
+
+section.project-stack-section .project-stack-card:hover .project-stack-reveal-link,
+section.project-stack-section .project-stack-card:focus-within .project-stack-reveal-link {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translate3d(-50%, 0, 0);
+}
+
+section.project-stack-section .project-stack-reveal-link:hover {
+  background: #04213A;
+  color: #10AC4F;
+  border: 1px solid #10AC4F;
+}
+

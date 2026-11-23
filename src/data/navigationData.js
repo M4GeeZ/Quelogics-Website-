@@ -139,6 +139,7 @@ export const companyMenu = {
         ["Portfolio", "/portfolio"],
         ["Case Studies", "/case-studies"],
         ["Client Reviews", "/client-reviews"],
+        ["Insights", "/insights"],
       ],
     },
   ],
@@ -248,6 +249,31 @@ export const hireTeamMenu = {
         [
           "Shopify Developer",
           "/contact?role=shopify-developer"
+        ]
+      ]
+    },
+    {
+      "title": "Growth Specialists",
+      "links": [
+        [
+          "SEO Specialist",
+          "/contact?role=seo-specialist"
+        ],
+        [
+          "Digital Marketing Specialist",
+          "/contact?role=digital-marketing-specialist"
+        ],
+        [
+          "Performance Marketer",
+          "/contact?role=performance-marketer"
+        ],
+        [
+          "Growth Strategist",
+          "/contact?role=growth-strategist"
+        ],
+        [
+          "CRO Specialist",
+          "/contact?role=cro-specialist"
         ]
       ]
     },

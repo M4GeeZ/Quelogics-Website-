@@ -1,11 +1,51 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { ArrowUpRight, ChevronDown, Code2, Globe2, Smartphone, Palette, PlugZap, Cloud, Bot, Workflow, Search, TrendingUp, Store, Layers3, Building2, Megaphone, Target, Mail, Video, PenTool, BarChart3, ContactRound, Users, FileText, Gauge, MapPin, Link2, BookOpen, BriefcaseBusiness, MessageSquare, Sparkles, Rocket, Share2, GitBranch } from "lucide-react";
-import { FaLinkedinIn, FaFacebookF, FaWhatsapp } from "react-icons/fa";
+import {
+  ArrowUpRight,
+  ChevronDown,
+  Code2,
+  Globe2,
+  Smartphone,
+  Palette,
+  PlugZap,
+  Cloud,
+  Bot,
+  Workflow,
+  Search,
+  TrendingUp,
+  Store,
+  Layers3,
+  Building2,
+  Megaphone,
+  Target,
+  Mail,
+  Video,
+  PenTool,
+  BarChart3,
+  ContactRound,
+  Users,
+  FileText,
+  Gauge,
+  MapPin,
+  Link2,
+  BookOpen,
+  BriefcaseBusiness,
+  MessageSquare,
+  Sparkles,
+  Rocket,
+  Share2,
+  GitBranch,
+} from "lucide-react";
+import {
+  FaLinkedinIn,
+  FaFacebookF,
+  FaWhatsapp,
+  FaXTwitter,
+  FaInstagram,
+  FaGithub,
+} from "react-icons/fa6";
 import "./Footer.css";
 
-// Keep all existing destination URLs unchanged. Icons are vector glyphs from
-// the installed Lucide and Font Awesome icon libraries, not generated artwork.
 const footerColumns = [
   {
     title: "Development",
@@ -83,19 +123,12 @@ const footerColumns = [
 
 const socialLinks = [
   { label: "LinkedIn", href: "https://www.linkedin.com/company/quelogics/", Icon: FaLinkedinIn },
-  { label: "WhatsApp", href: "https://www.whatsapp.com/", Icon: FaWhatsapp },
+  { label: "X / Twitter", href: "https://x.com/quelogics", Icon: FaXTwitter },
+  { label: "WhatsApp", href: "https://wa.me/", Icon: FaWhatsapp },
   { label: "Facebook", href: "https://www.facebook.com/quelogics", Icon: FaFacebookF },
+  { label: "Instagram", href: "https://www.instagram.com/quelogics", Icon: FaInstagram },
+  { label: "GitHub", href: "https://github.com/quelogics", Icon: FaGithub },
 ];
-
-const FooterBrand = () => (
-  <Link className="ql-footer-large-logo" to="/" aria-label="QueLogics home">
-    <img
-      src="/assets/brand/quelogics-original-white.png"
-      alt="QueLogics — Innovate • Build • Deliver"
-      width="798" height="185" loading="lazy"
-    />
-  </Link>
-);
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -113,10 +146,22 @@ const Footer = () => {
   return (
     <footer className="site-footer ql-footer">
       <div className="ql-footer-container">
+        {/* Lead section with QueLogics Logo right above "Build what comes next." */}
         <div className="ql-footer-lead">
           <div className="ql-footer-lead-copy">
+            <Link className="ql-footer-brand-logo-link" to="/" aria-label="QueLogics home">
+              <img
+                src="/assets/brand/quelogics-original-white.png"
+                alt="QueLogics — Innovate • Build • Deliver"
+                className="ql-footer-lead-brand-img"
+                loading="lazy"
+              />
+            </Link>
             <h2>Build what comes next.</h2>
-            <p>From the first idea to launch and beyond, we build the software, automation, and digital experiences that help businesses move forward.</p>
+            <p>
+              From the first idea to launch and beyond, we build the software,
+              automation, and digital experiences that help businesses move forward.
+            </p>
           </div>
           <Link className="ql-footer-main-cta" to="/contact">
             <span>Discuss your project</span>
@@ -124,6 +169,7 @@ const Footer = () => {
           </Link>
         </div>
 
+        {/* Directory links */}
         <div className="ql-footer-directory" aria-label="Explore QueLogics services and company">
           {footerColumns.map(({ title, Icon, links }) => {
             const isOpen = openColumns.has(title);
@@ -131,8 +177,10 @@ const Footer = () => {
             return (
               <nav className={`ql-footer-column${isOpen ? " is-open" : ""}`} aria-label={title} key={title}>
                 <button
-                  className="ql-footer-column-title" type="button"
-                  aria-expanded={isOpen} aria-controls={linksId}
+                  className="ql-footer-column-title"
+                  type="button"
+                  aria-expanded={isOpen}
+                  aria-controls={linksId}
                   onClick={() => toggleColumn(title)}
                 >
                   <span className="ql-footer-column-label">
@@ -158,10 +206,11 @@ const Footer = () => {
           })}
         </div>
 
-        <div className="ql-footer-logo-stage"><FooterBrand /></div>
-
+        {/* Bottom bar with enhanced social buttons and legal links */}
         <div className="ql-footer-meta">
-          <p className="ql-footer-copyright">© {currentYear} QueLogics. All rights reserved.</p>
+          <p className="ql-footer-copyright">
+            © {currentYear} QueLogics. All rights reserved.
+          </p>
           <nav className="ql-footer-legal" aria-label="Legal">
             <Link to="/privacy-policy">Privacy Policy</Link>
             <Link to="/terms-of-service">Terms of Service</Link>
@@ -170,8 +219,15 @@ const Footer = () => {
           </nav>
           <div className="ql-footer-socials" aria-label="QueLogics social media">
             {socialLinks.map(({ label, href, Icon }) => (
-              <a href={href} target="_blank" rel="noopener noreferrer" aria-label={label} key={label}>
-                <Icon size={18} aria-hidden="true" />
+              <a
+                href={href}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={label}
+                title={label}
+                key={label}
+              >
+                <Icon aria-hidden="true" />
               </a>
             ))}
           </div>

@@ -20,6 +20,10 @@ import {
   SiGoogleads,
   SiHubspot,
   SiZapier,
+  SiGoogle,
+  SiGoogleanalytics,
+  SiSemrush,
+  SiMeta,
 } from "react-icons/si";
 import { FaAws, FaJava } from "react-icons/fa";
 import { VscAzure } from "react-icons/vsc";
@@ -50,6 +54,13 @@ export const brandIcons = {
 
   "wordpress developer": { Icon: SiWordpress, color: "#21759B" },
   "shopify developer": { Icon: SiShopify, color: "#7AB55C" },
+
+  // Growth Specialists
+  "seo specialist": { Icon: SiSemrush, color: "#FF642D" },
+  "digital marketing specialist": { Icon: SiGoogleads, color: "#4285F4" },
+  "performance marketer": { Icon: SiMeta, color: "#0668E1" },
+  "growth strategist": { Icon: SiGoogleanalytics, color: "#E37400" },
+  "cro specialist": { Icon: SiGoogle, color: "#34A853" },
 
   "mern stack developers": { Icon: SiMongodb, color: "#47A248" },
   "qa testers": { Icon: SiSelenium, color: "#43B02A" },
@@ -118,11 +129,17 @@ export const accentColors = {
   careers: "#8B5CF6",
   "contact us": "#EF4444",
   portfolio: "#EC4899",
+  insights: "#10AC4F",
   blogs: "#3B82F6",
   products: "#3B82F6",
 
   cto: "#6366F1",
   "product manager": "#F59E0B",
   "saas developer": "#06B6D4",
+  "seo specialist": "#FF642D",
+  "digital marketing specialist": "#4285F4",
+  "performance marketer": "#0668E1",
+  "growth strategist": "#E37400",
+  "cro specialist": "#34A853",
 };
 
