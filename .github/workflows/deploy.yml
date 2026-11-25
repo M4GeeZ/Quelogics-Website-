@@ -1,0 +1,55 @@
+name: Deploy Quelogics to Namecheap
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: quelogics-production
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build React website
+        run: npm run build
+
+      - name: Upload production files
+        uses: appleboy/scp-action@v1
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USERNAME }}
+          port: ${{ secrets.SSH_PORT }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          passphrase: ${{ secrets.SSH_PASSPHRASE }}
+          fingerprint: ${{ secrets.SSH_FINGERPRINT }}
+          source: "dist/*"
+          target: "/home/inneqpup/quelogics-live"
+          strip_components: 1
+          overwrite: true
+
+      - name: Verify live website
+        run: |
+          curl --fail --silent --show-error \
+          --retry 3 https://quelogics.com/ \
+          -o /tmp/live.html
+          cmp dist/index.html /tmp/live.html
